@@ -8,8 +8,7 @@
 
 
 #import "MainTabBarController.h"
-
-#import "RootNavigationController.h"
+#import "LCPanNavigationController.h"
 #import "HomeViewController.h"
 #import "MsgViewController.h"
 #import "MineViewController.h"
@@ -48,7 +47,6 @@ PropertyNSMutableArray(VCS);//tabbar root VC
         TabBar *tabBar = [[TabBar alloc] init];
         tabBar.frame     = self.tabBar.bounds;
         tabBar.delegate  = self;
-        
         self.TabBar = tabBar;
     })];
     
@@ -77,11 +75,12 @@ PropertyNSMutableArray(VCS);//tabbar root VC
     controller.tabBarItem.title = title;//跟上面一样效果
     controller.tabBarItem.image = [UIImage imageNamed:imageName];
     controller.tabBarItem.selectedImage = [UIImage imageNamed:selectImageName];
-
+    
 //    controller.tabBarItem.badgeValue = _VCS.count%2==0 ? @"100": @"1";
     //包装导航控制器
-    RootNavigationController *nav = [[RootNavigationController alloc]initWithRootViewController:controller];
+    LCPanNavigationController *nav = [[LCPanNavigationController alloc]initWithRootViewController:controller];
     controller.title = title;
+    nav.navigationBar.hidden = YES;
     [_VCS addObject:nav];
     
 }

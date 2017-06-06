@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "MainTabBarController.h"
+#import "LCPanNavigationController.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
@@ -17,6 +18,8 @@
 
 - (void)saveContext;
 @property (strong, nonatomic) MainTabBarController *mainTabBar;
+
+@property (strong, nonatomic) LCPanNavigationController *mainNavi;
 
 @end
 

@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C8995461EE52CE40097AF38 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995451EE52CE40097AF38 /* HomeViewController.xib */; };
+		9C8995591EE57DA10097AF38 /* LCPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995541EE57DA10097AF38 /* LCPanGestureRecognizer.m */; };
+		9C89955A1EE57DA10097AF38 /* LCPanNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995561EE57DA10097AF38 /* LCPanNavigationController.m */; };
+		9C89955B1EE57DA10097AF38 /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995581EE57DA10097AF38 /* UIView+Snapshot.m */; };
+		9C8995AC1EE590640097AF38 /* HomeActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995AA1EE590640097AF38 /* HomeActivityViewController.m */; };
+		9C8995AD1EE590640097AF38 /* HomeActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995AB1EE590640097AF38 /* HomeActivityViewController.xib */; };
+		9C8995C91EE6589B0097AF38 /* HomeSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995C41EE6589B0097AF38 /* HomeSearchView.m */; };
+		9C8995CA1EE6589B0097AF38 /* HomeSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995C51EE6589B0097AF38 /* HomeSearchView.xib */; };
+		9C8995CB1EE6589B0097AF38 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995C71EE6589B0097AF38 /* HomeTableViewCell.m */; };
+		9C8995CC1EE6589B0097AF38 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995C81EE6589B0097AF38 /* HomeTableViewCell.xib */; };
+		9C8995CF1EE658BD0097AF38 /* HomeShoppingCartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995CE1EE658BD0097AF38 /* HomeShoppingCartView.m */; };
+		9C8995D11EE658CE0097AF38 /* HomeShoppingCartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995D01EE658CE0097AF38 /* HomeShoppingCartView.xib */; };
+		9C8995D51EE65A250097AF38 /* HomeShoppingCartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995D31EE65A250097AF38 /* HomeShoppingCartTableViewCell.m */; };
+		9C8995D61EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995D41EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib */; };
 		A3091578DC3875A9216040FB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3803D2764EEAFE68D56C80 /* libPods.a */; };
 		B3DA47821EE50174006B6942 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DA47811EE50174006B6942 /* main.m */; };
 		B3DA478B1EE50174006B6942 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3DA47891EE50174006B6942 /* Main.storyboard */; };
@@ -91,6 +105,29 @@
 
 /* Begin PBXFileReference section */
 		24982BABAE1BB4F18C6B2560 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9C8995451EE52CE40097AF38 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		9C8995521EE57DA10097AF38 /* LCPanBackDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCPanBackDelegate.h; sourceTree = "<group>"; };
+		9C8995531EE57DA10097AF38 /* LCPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCPanGestureRecognizer.h; sourceTree = "<group>"; };
+		9C8995541EE57DA10097AF38 /* LCPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCPanGestureRecognizer.m; sourceTree = "<group>"; };
+		9C8995551EE57DA10097AF38 /* LCPanNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCPanNavigationController.h; sourceTree = "<group>"; };
+		9C8995561EE57DA10097AF38 /* LCPanNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCPanNavigationController.m; sourceTree = "<group>"; };
+		9C8995571EE57DA10097AF38 /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
+		9C8995581EE57DA10097AF38 /* UIView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Snapshot.m"; sourceTree = "<group>"; };
+		9C8995A91EE590640097AF38 /* HomeActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeActivityViewController.h; sourceTree = "<group>"; };
+		9C8995AA1EE590640097AF38 /* HomeActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeActivityViewController.m; sourceTree = "<group>"; };
+		9C8995AB1EE590640097AF38 /* HomeActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeActivityViewController.xib; sourceTree = "<group>"; };
+		9C8995C31EE6589B0097AF38 /* HomeSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchView.h; sourceTree = "<group>"; };
+		9C8995C41EE6589B0097AF38 /* HomeSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSearchView.m; sourceTree = "<group>"; };
+		9C8995C51EE6589B0097AF38 /* HomeSearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeSearchView.xib; sourceTree = "<group>"; };
+		9C8995C61EE6589B0097AF38 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
+		9C8995C71EE6589B0097AF38 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
+		9C8995C81EE6589B0097AF38 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		9C8995CD1EE658BD0097AF38 /* HomeShoppingCartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeShoppingCartView.h; sourceTree = "<group>"; };
+		9C8995CE1EE658BD0097AF38 /* HomeShoppingCartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeShoppingCartView.m; sourceTree = "<group>"; };
+		9C8995D01EE658CE0097AF38 /* HomeShoppingCartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeShoppingCartView.xib; sourceTree = "<group>"; };
+		9C8995D21EE65A250097AF38 /* HomeShoppingCartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeShoppingCartTableViewCell.h; sourceTree = "<group>"; };
+		9C8995D31EE65A250097AF38 /* HomeShoppingCartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeShoppingCartTableViewCell.m; sourceTree = "<group>"; };
+		9C8995D41EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeShoppingCartTableViewCell.xib; sourceTree = "<group>"; };
 		AC51B9B1ED5346D951C173E8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B3DA477D1EE50174006B6942 /* YYDineTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YYDineTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3DA47811EE50174006B6942 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -238,6 +275,20 @@
 				BF3803D2764EEAFE68D56C80 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C8995511EE57DA10097AF38 /* LCPanNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				9C8995521EE57DA10097AF38 /* LCPanBackDelegate.h */,
+				9C8995531EE57DA10097AF38 /* LCPanGestureRecognizer.h */,
+				9C8995541EE57DA10097AF38 /* LCPanGestureRecognizer.m */,
+				9C8995551EE57DA10097AF38 /* LCPanNavigationController.h */,
+				9C8995561EE57DA10097AF38 /* LCPanNavigationController.m */,
+				9C8995571EE57DA10097AF38 /* UIView+Snapshot.h */,
+				9C8995581EE57DA10097AF38 /* UIView+Snapshot.m */,
+			);
+			path = LCPanNavigationController;
 			sourceTree = "<group>";
 		};
 		B3DA47741EE50174006B6942 = {
@@ -449,6 +500,10 @@
 			children = (
 				B3DA47E51EE50650006B6942 /* HomeViewController.h */,
 				B3DA47E61EE50650006B6942 /* HomeViewController.m */,
+				9C8995451EE52CE40097AF38 /* HomeViewController.xib */,
+				9C8995A91EE590640097AF38 /* HomeActivityViewController.h */,
+				9C8995AA1EE590640097AF38 /* HomeActivityViewController.m */,
+				9C8995AB1EE590640097AF38 /* HomeActivityViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -477,6 +532,18 @@
 		B3DA47EA1EE50650006B6942 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9C8995C31EE6589B0097AF38 /* HomeSearchView.h */,
+				9C8995C41EE6589B0097AF38 /* HomeSearchView.m */,
+				9C8995C51EE6589B0097AF38 /* HomeSearchView.xib */,
+				9C8995C61EE6589B0097AF38 /* HomeTableViewCell.h */,
+				9C8995C71EE6589B0097AF38 /* HomeTableViewCell.m */,
+				9C8995C81EE6589B0097AF38 /* HomeTableViewCell.xib */,
+				9C8995CD1EE658BD0097AF38 /* HomeShoppingCartView.h */,
+				9C8995CE1EE658BD0097AF38 /* HomeShoppingCartView.m */,
+				9C8995D01EE658CE0097AF38 /* HomeShoppingCartView.xib */,
+				9C8995D21EE65A250097AF38 /* HomeShoppingCartTableViewCell.h */,
+				9C8995D31EE65A250097AF38 /* HomeShoppingCartTableViewCell.m */,
+				9C8995D41EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -673,6 +740,7 @@
 		B3DA48211EE50650006B6942 /* ThridParty */ = {
 			isa = PBXGroup;
 			children = (
+				9C8995511EE57DA10097AF38 /* LCPanNavigationController */,
 				B3DA48221EE50650006B6942 /* UIKit */,
 			);
 			path = ThridParty;
@@ -856,8 +924,11 @@
 				B3DA48571EE50650006B6942 /* icon_tabbar_merchant_normal@2x.png in Resources */,
 				B3DA48541EE50650006B6942 /* icon_tabbar_homepage_selected.png in Resources */,
 				B3DA48631EE50650006B6942 /* icon_tabbar_nearby_selected.png in Resources */,
+				9C8995D11EE658CE0097AF38 /* HomeShoppingCartView.xib in Resources */,
 				B3DA485A1EE50650006B6942 /* icon_tabbar_mine.png in Resources */,
 				B3DA48621EE50650006B6942 /* icon_tabbar_nearby.png in Resources */,
+				9C8995CA1EE6589B0097AF38 /* HomeSearchView.xib in Resources */,
+				9C8995CC1EE6589B0097AF38 /* HomeTableViewCell.xib in Resources */,
 				B3DA48511EE50650006B6942 /* icon_tabbar_discovery_selected.png in Resources */,
 				B3DA485B1EE50650006B6942 /* icon_tabbar_mine@2x.png in Resources */,
 				B3DA47931EE50174006B6942 /* LaunchScreen.storyboard in Resources */,
@@ -866,8 +937,10 @@
 				B3DA48521EE50650006B6942 /* icon_tabbar_homepage.png in Resources */,
 				B3DA48581EE50650006B6942 /* icon_tabbar_merchant_selected.png in Resources */,
 				B3DA48551EE50650006B6942 /* icon_tabbar_homepage_selected@2x.png in Resources */,
+				9C8995D61EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib in Resources */,
 				B3DA485F1EE50650006B6942 /* icon_tabbar_misc@2x.png in Resources */,
 				B3DA48651EE50650006B6942 /* icon_tabbar_onsite_new@2x.png in Resources */,
+				9C8995461EE52CE40097AF38 /* HomeViewController.xib in Resources */,
 				B3DA48661EE50650006B6942 /* icon_tabbar_onsite_selected@2x.png in Resources */,
 				B3DA48611EE50650006B6942 /* icon_tabbar_misc_selected@2x.png in Resources */,
 				B3DA48561EE50650006B6942 /* icon_tabbar_merchant_normal.png in Resources */,
@@ -878,6 +951,7 @@
 				B3DA478B1EE50174006B6942 /* Main.storyboard in Resources */,
 				B3DA48531EE50650006B6942 /* icon_tabbar_homepage@2x.png in Resources */,
 				B3DA485E1EE50650006B6942 /* icon_tabbar_misc.png in Resources */,
+				9C8995AD1EE590640097AF38 /* HomeActivityViewController.xib in Resources */,
 				B3DA48591EE50650006B6942 /* icon_tabbar_merchant_selected@2x.png in Resources */,
 				B3DA48641EE50650006B6942 /* icon_tabbar_onsite@2x.png in Resources */,
 			);
@@ -956,13 +1030,17 @@
 				B3DA48401EE50650006B6942 /* TabBar.m in Sources */,
 				B3DA483B1EE50650006B6942 /* AppDelegate+PushService.m in Sources */,
 				B3DA483E1EE50650006B6942 /* RootViewController.m in Sources */,
+				9C8995591EE57DA10097AF38 /* LCPanGestureRecognizer.m in Sources */,
 				B3DA484C1EE50650006B6942 /* LoginViewController.m in Sources */,
 				B3DA484F1EE50650006B6942 /* MineViewController.m in Sources */,
 				B3DA486E1EE50650006B6942 /* PPNetworkCache.m in Sources */,
 				B3DA48411EE50650006B6942 /* TabBarBadge.m in Sources */,
+				9C8995D51EE65A250097AF38 /* HomeShoppingCartTableViewCell.m in Sources */,
+				9C8995CF1EE658BD0097AF38 /* HomeShoppingCartView.m in Sources */,
 				B3DA484E1EE50650006B6942 /* MsgViewController.m in Sources */,
 				B3DA48491EE50650006B6942 /* HomeViewController.m in Sources */,
 				B3DA48461EE50650006B6942 /* RxWebViewController.m in Sources */,
+				9C89955B1EE57DA10097AF38 /* UIView+Snapshot.m in Sources */,
 				B3DA48431EE50650006B6942 /* NJKWebViewProgress.m in Sources */,
 				B3DA486C1EE50650006B6942 /* UIResponder+Adapt.m in Sources */,
 				B3DA486B1EE50650006B6942 /* UIFont+Fonts.m in Sources */,
@@ -974,14 +1052,18 @@
 				B3DA48701EE50650006B6942 /* OpenUDID.m in Sources */,
 				B3DA486A1EE50650006B6942 /* UIColor+HexString.m in Sources */,
 				B3DA486D1EE50650006B6942 /* HeaderModel.m in Sources */,
+				9C8995AC1EE590640097AF38 /* HomeActivityViewController.m in Sources */,
 				B3DA48681EE50650006B6942 /* AESCipher.m in Sources */,
 				B3DA48421EE50650006B6942 /* TabBarItem.m in Sources */,
+				9C8995C91EE6589B0097AF38 /* HomeSearchView.m in Sources */,
 				B3DA478E1EE50174006B6942 /* YYDineTogether.xcdatamodeld in Sources */,
 				B3DA48451EE50650006B6942 /* RootWebViewController.m in Sources */,
 				B3DA484A1EE50650006B6942 /* IndentViewController.m in Sources */,
 				B3DA483F1EE50650006B6942 /* MainTabBarController.m in Sources */,
 				B3DA48691EE50650006B6942 /* MBProgressHUD+HH.m in Sources */,
+				9C8995CB1EE6589B0097AF38 /* HomeTableViewCell.m in Sources */,
 				B3DA48481EE50650006B6942 /* AppManager.m in Sources */,
+				9C89955A1EE57DA10097AF38 /* LCPanNavigationController.m in Sources */,
 				B3DA483C1EE50650006B6942 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,39 +1,49 @@
 //
-//  HomeViewController.m
-//  EWDicom
+//  HomeActivityViewController.m
+//  YYDineTogether
 //
-//  Created by 李春菲 on 17/6/2.
+//  Created by 吴頔 on 17/6/5.
 //  Copyright © 2017年 lichunfei. All rights reserved.
 //
 
-#import "HomeViewController.h"
-#import "HomeTableViewCell.h"
-#import "HomeSearchView.h"
 #import "HomeActivityViewController.h"
+#import "HomeShoppingCartView.h"
+#import "HomeTableViewCell.h"
 
-@interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate>{
+@interface HomeActivityViewController ()<UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>{
     CGFloat _mainScrollViewLastContentOffSetY;
     CGFloat _tableViewLastContentOffSetY;
 }
-@property (weak, nonatomic) IBOutlet UIView *mainView;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
-@property (strong, nonatomic) HomeSearchView *homeSearchView;
+@property (strong, nonatomic) HomeShoppingCartView *shoppingView;
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
-@implementation HomeViewController
+@implementation HomeActivityViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
     [self registUI];
-    
 }
 
 - (void)registUI {
-    _mainScrollViewLastContentOffSetY = 0;
-    _tableViewLastContentOffSetY = 0;
-    [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeActivityTableViewCell"];
+}
+- (IBAction)shoppingCartAction:(id)sender {
+    if (_shoppingView == nil) {
+        self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
+        [_shoppingView showShoppingCartView];
+    } else {
+        [_shoppingView removeShoppingCartView];
+        _shoppingView = nil;
+    }
+}
+
+- (IBAction)backAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -50,44 +60,22 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableViewCell" forIndexPath:indexPath];
+    HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeActivityTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeActivityViewController *controller = [[HomeActivityViewController alloc]init];
-    [self.tabBarController.navigationController pushViewController:controller animated:YES];
+    
 }
 
-#pragma mark - UISearchBarDelegate
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-    self.homeSearchView = [[[NSBundle mainBundle] loadNibNamed:@"HomeSearchView" owner:self options:nil] lastObject];
-    _homeSearchView.frame = CGRectMake(0, 64, KScreenWidth, kScreenHeight - 64);
-    [kAppWindow addSubview:_homeSearchView];
-    return YES;
-}
-
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    [searchBar resignFirstResponder];
-    [_homeSearchView removeFromSuperview];
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [searchBar resignFirstResponder];
-    [_homeSearchView removeFromSuperview];
-    [_mainScrollView setContentOffset:CGPointMake(0, 256) animated:NO];
-    _mainScrollView.scrollEnabled = NO;
-    _tableView.scrollEnabled = YES;
-    _tableView.bounces = YES;
-}
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == _mainScrollView) {
-        if (scrollView.contentOffset.y > 240) {
+        if (scrollView.contentOffset.y > 120) {
             if (scrollView.contentOffset.y > _mainScrollViewLastContentOffSetY) {
-                [scrollView setContentOffset:CGPointMake(0, 256) animated:NO];
+                [scrollView setContentOffset:CGPointMake(0, 150) animated:NO];
                 scrollView.scrollEnabled = NO;
                 _tableView.scrollEnabled = YES;
                 _tableView.bounces = YES;
@@ -109,5 +97,20 @@
         _tableViewLastContentOffSetY = scrollView.contentOffset.y;
     }
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end
