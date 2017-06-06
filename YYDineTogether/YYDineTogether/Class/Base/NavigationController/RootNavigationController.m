@@ -7,7 +7,7 @@
 //
 
 #import "RootNavigationController.h"
-
+#import "UIBarButtonItem+Extension.h"
 @interface RootNavigationController ()<UINavigationControllerDelegate>
 
 @property (nonatomic, weak) id popDelegate;
@@ -48,23 +48,29 @@
 //    [self.navigationBar setTintColor:KWhiteColor];    // Do any additional setup after loading the view.
 }
 
-//解决手势失效问题
-- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
-    if (viewController == self.viewControllers[0]) {
-        self.interactivePopGestureRecognizer.delegate = self.popDelegate;
-    }else{
-        self.interactivePopGestureRecognizer.delegate = nil;
-    }
-}
+////解决手势失效问题
+//- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+//{
+//    if (viewController == self.viewControllers[0]) {
+//        self.interactivePopGestureRecognizer.delegate = self.popDelegate;
+//    }else{
+//        self.interactivePopGestureRecognizer.delegate = nil;
+//    }
+//}
 
 //push时隐藏tabbar
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if (self.viewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = YES;
+        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem
+                                                           itemWithImageName:@"Navigation_left" highImageName:@"Navigation_left" target:self action:(@selector(back))];
     }
     [super pushViewController:viewController animated:animated];
+}
+-(void)back{
+    
+    [self popViewControllerAnimated:YES];
 }
 
 -(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{

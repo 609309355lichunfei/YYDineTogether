@@ -9,5 +9,6 @@
 #import "RootViewController.h"
 
 @interface MineViewController : RootViewController
+@property (retain, nonatomic)  UITableView *tableview;
 
 @end

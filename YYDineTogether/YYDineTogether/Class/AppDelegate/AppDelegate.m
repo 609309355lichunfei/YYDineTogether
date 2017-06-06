@@ -24,6 +24,9 @@
     [AppManager monitorNetworkStatus];
     
     
+    //键盘监听
+   // [self YYKeyboardManager];
+    
     return YES;
 }
 

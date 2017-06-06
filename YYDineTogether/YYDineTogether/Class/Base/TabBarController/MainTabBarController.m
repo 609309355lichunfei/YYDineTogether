@@ -66,7 +66,7 @@ PropertyNSMutableArray(VCS);//tabbar root VC
     
     MineViewController *mineVC = [[MineViewController alloc]init];
     [self setupChildViewController:mineVC title:@"我的" imageName:@"icon_tabbar_mine" seleceImageName:@"icon_tabbar_mine_selected"];
-    
+    mineVC.navigationController.navigationBar.hidden = NO;
     self.viewControllers = _VCS;
 }
 

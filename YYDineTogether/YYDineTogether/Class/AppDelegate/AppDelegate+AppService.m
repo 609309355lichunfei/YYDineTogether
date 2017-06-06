@@ -28,9 +28,13 @@
     [[UIButton appearance] setExclusiveTouch:YES];
     [UIActivityIndicatorView appearanceWhenContainedIn:[MBProgressHUD class], nil].color = KWhiteColor;
 }
-
-- (void)initUMeng{
+- (void)YYKeyboardManager {
     
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.shouldToolbarUsesTextFieldTintColor = YES;
+    manager.enableAutoToolbar = NO;
     
 }
 

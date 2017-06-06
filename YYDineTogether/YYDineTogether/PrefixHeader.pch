@@ -24,6 +24,8 @@
 #import "RootNavigationController.h"
 #import "PPNetworkHelper.h"
 #import "AppManager.h"
+#import "UIResponder+Adapt.h"
+#import "UIFont+Fonts.h"
 //#import "MBProgressHUD+XY.h"
 /**
  * @第三方
