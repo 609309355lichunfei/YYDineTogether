@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeTableViewCell : UITableViewCell
+typedef NS_ENUM(NSInteger, HomeTableViewCellType) {
+    HomeTableViewCellTypeStore,
+    HomeTableViewCellTypeFood
+};
 
+@interface HomeTableViewCell : UITableViewCell
+@property (assign, nonatomic) HomeTableViewCellType type;
 @end

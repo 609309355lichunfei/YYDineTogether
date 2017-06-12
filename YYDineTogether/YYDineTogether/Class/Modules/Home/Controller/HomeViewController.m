@@ -10,14 +10,24 @@
 #import "HomeTableViewCell.h"
 #import "HomeSearchView.h"
 #import "HomeActivityViewController.h"
+#import "HomeComboRecomendViewController.h"
+#import "HomeClassificationListViewController.h"
+#import "HomeStoreViewController.h"
+#import "HomeFoodDetailViewController.h"
+#import "HomeComboViewController.h"
+#import "ShoppingChartViewController.h"
+
 
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate>{
+    BOOL _isStoreDataSource;
     CGFloat _mainScrollViewLastContentOffSetY;
     CGFloat _tableViewLastContentOffSetY;
 }
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
+@property (weak, nonatomic) IBOutlet UIButton *storeButton;
+@property (weak, nonatomic) IBOutlet UIButton *foodButton;
 
 @property (strong, nonatomic) HomeSearchView *homeSearchView;
 @end
@@ -31,14 +41,70 @@
 }
 
 - (void)registUI {
+    _isStoreDataSource = YES;
     _mainScrollViewLastContentOffSetY = 0;
     _tableViewLastContentOffSetY = 0;
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeTableViewCell"];
 }
+- (IBAction)shoppingCartAction:(id)sender {
+    ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
+    [self.tabBarController.navigationController pushViewController:shoppingCartVC animated:YES];
+}
+
+- (IBAction)cateAction:(id)sender {
+    HomeClassificationListViewController *classificationVC = [[HomeClassificationListViewController alloc]init];
+    [self.tabBarController.navigationController pushViewController:classificationVC animated:YES
+     ];
+}
+
+- (IBAction)drinkAction:(id)sender {
+    HomeStoreViewController *controller = [[HomeStoreViewController alloc]init];
+    [self.tabBarController.navigationController pushViewController:controller animated:YES];
+}
+
+- (IBAction)fruitAction:(id)sender {
+    
+    HomeActivityViewController *controller = [[HomeActivityViewController alloc]init];
+    [self.tabBarController.navigationController pushViewController:controller animated:YES];
+    
+}
+- (IBAction)supermarketAction:(id)sender {
+    
+    HomeActivityViewController *controller = [[HomeActivityViewController alloc]init];
+    [self.tabBarController.navigationController pushViewController:controller animated:YES];
+    
+}
+
+- (IBAction)comboActivityAction:(id)sender {
+    HomeComboRecomendViewController *comboVC = [[HomeComboRecomendViewController alloc]init];
+    [self.tabBarController.navigationController pushViewController:comboVC animated:YES];
+}
+- (IBAction)comboAction:(id)sender {
+    HomeComboViewController *comboVC = [[HomeComboViewController alloc] init];
+    [self.tabBarController.navigationController pushViewController:comboVC animated:YES];
+}
+
+- (IBAction)storeAction:(id)sender {
+    if (!_isStoreDataSource) {
+        [_storeButton setTitleColor:RGB(219, 82, 64) forState:(UIControlStateNormal)];
+        [_foodButton setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
+        _isStoreDataSource = YES;
+        [self.tableView reloadData];
+    }
+}
+
+- (IBAction)foodAction:(id)sender {
+    if (_isStoreDataSource) {
+        [_foodButton setTitleColor:RGB(219, 82, 64) forState:(UIControlStateNormal)];
+        [_storeButton setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
+        _isStoreDataSource = NO;
+        [self.tableView reloadData];
+    }
+}
 
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 90;
+    return 128;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -52,13 +118,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.type = _isStoreDataSource ? HomeTableViewCellTypeStore : HomeTableViewCellTypeFood;
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeActivityViewController *controller = [[HomeActivityViewController alloc]init];
-    [self.tabBarController.navigationController pushViewController:controller animated:YES];
+    if (_isStoreDataSource) {
+        HomeStoreViewController *storeVC = [[HomeStoreViewController alloc] init];
+        [self.tabBarController.navigationController pushViewController:storeVC animated:YES];
+    } else {
+        HomeFoodDetailViewController *controller = [[HomeFoodDetailViewController alloc]init];
+        [self.tabBarController.navigationController pushViewController:controller animated:YES];
+    }
 }
 
 #pragma mark - UISearchBarDelegate
@@ -87,7 +159,7 @@
     if (scrollView == _mainScrollView) {
         if (scrollView.contentOffset.y > 240) {
             if (scrollView.contentOffset.y > _mainScrollViewLastContentOffSetY) {
-                [scrollView setContentOffset:CGPointMake(0, 256) animated:NO];
+                [scrollView setContentOffset:CGPointMake(0, 260) animated:NO];
                 scrollView.scrollEnabled = NO;
                 _tableView.scrollEnabled = YES;
                 _tableView.bounces = YES;

@@ -21,6 +21,33 @@
 		9C8995D11EE658CE0097AF38 /* HomeShoppingCartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995D01EE658CE0097AF38 /* HomeShoppingCartView.xib */; };
 		9C8995D51EE65A250097AF38 /* HomeShoppingCartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995D31EE65A250097AF38 /* HomeShoppingCartTableViewCell.m */; };
 		9C8995D61EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995D41EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib */; };
+		9C8995DA1EE691500097AF38 /* HomeComboRecomendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995D81EE691500097AF38 /* HomeComboRecomendViewController.m */; };
+		9C8995DB1EE691500097AF38 /* HomeComboRecomendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995D91EE691500097AF38 /* HomeComboRecomendViewController.xib */; };
+		9C8995E31EE996DB0097AF38 /* BorderLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995E21EE996DB0097AF38 /* BorderLineButton.m */; };
+		9C8995E71EED2EDE0097AF38 /* HomeClassificationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995E51EED2EDE0097AF38 /* HomeClassificationListViewController.m */; };
+		9C8995E81EED2EDE0097AF38 /* HomeClassificationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995E61EED2EDE0097AF38 /* HomeClassificationListViewController.xib */; };
+		9C8995EB1EED35C50097AF38 /* HomeFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995EA1EED35C50097AF38 /* HomeFilterView.m */; };
+		9C8995ED1EED35D30097AF38 /* HomeFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995EC1EED35D30097AF38 /* HomeFilterView.xib */; };
+		9C8995F11EED383D0097AF38 /* HomeFilterRightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995EF1EED383D0097AF38 /* HomeFilterRightTableViewCell.m */; };
+		9C8995F21EED383D0097AF38 /* HomeFilterRightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995F01EED383D0097AF38 /* HomeFilterRightTableViewCell.xib */; };
+		9C8995F61EED40F00097AF38 /* HomeStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995F41EED40F00097AF38 /* HomeStoreViewController.m */; };
+		9C8995F71EED40F00097AF38 /* HomeStoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995F51EED40F00097AF38 /* HomeStoreViewController.xib */; };
+		9C8995FB1EED7B6A0097AF38 /* HomeStoreRightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995F91EED7B6A0097AF38 /* HomeStoreRightTableViewCell.m */; };
+		9C8995FC1EED7B6A0097AF38 /* HomeStoreRightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995FA1EED7B6A0097AF38 /* HomeStoreRightTableViewCell.xib */; };
+		9C8996001EEE3D9D0097AF38 /* HomeFoodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995FE1EEE3D9D0097AF38 /* HomeFoodDetailViewController.m */; };
+		9C8996011EEE3D9D0097AF38 /* HomeFoodDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995FF1EEE3D9D0097AF38 /* HomeFoodDetailViewController.xib */; };
+		9C8996051EEE431F0097AF38 /* HomeStoreDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996031EEE431F0097AF38 /* HomeStoreDetailViewController.m */; };
+		9C8996061EEE431F0097AF38 /* HomeStoreDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996041EEE431F0097AF38 /* HomeStoreDetailViewController.xib */; };
+		9C89960A1EEE4C970097AF38 /* HomeComboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996081EEE4C970097AF38 /* HomeComboViewController.m */; };
+		9C89960B1EEE4C970097AF38 /* HomeComboViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996091EEE4C970097AF38 /* HomeComboViewController.xib */; };
+		9C89960F1EEE617A0097AF38 /* HomSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89960D1EEE617A0097AF38 /* HomSearchTableViewCell.m */; };
+		9C8996101EEE617A0097AF38 /* HomSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C89960E1EEE617A0097AF38 /* HomSearchTableViewCell.xib */; };
+		9C8996141EEE65050097AF38 /* ShoppingChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996121EEE65050097AF38 /* ShoppingChartViewController.m */; };
+		9C8996151EEE65050097AF38 /* ShoppingChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996131EEE65050097AF38 /* ShoppingChartViewController.xib */; };
+		9C8996191EEE676F0097AF38 /* ShoppingChartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996171EEE676F0097AF38 /* ShoppingChartTableViewCell.m */; };
+		9C89961A1EEE676F0097AF38 /* ShoppingChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996181EEE676F0097AF38 /* ShoppingChartTableViewCell.xib */; };
+		9C89961E1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89961C1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.m */; };
+		9C89961F1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C89961D1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.xib */; };
 		A3091578DC3875A9216040FB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3803D2764EEAFE68D56C80 /* libPods.a */; };
 		B389405C1EE69B3000407E45 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B389401D1EE69B3000407E45 /* LICENSE */; };
 		B389405D1EE69B3000407E45 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B38940201EE69B3000407E45 /* AbstractActionSheetPicker.m */; };
@@ -171,6 +198,47 @@
 		9C8995D21EE65A250097AF38 /* HomeShoppingCartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeShoppingCartTableViewCell.h; sourceTree = "<group>"; };
 		9C8995D31EE65A250097AF38 /* HomeShoppingCartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeShoppingCartTableViewCell.m; sourceTree = "<group>"; };
 		9C8995D41EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeShoppingCartTableViewCell.xib; sourceTree = "<group>"; };
+		9C8995D71EE691500097AF38 /* HomeComboRecomendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeComboRecomendViewController.h; sourceTree = "<group>"; };
+		9C8995D81EE691500097AF38 /* HomeComboRecomendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeComboRecomendViewController.m; sourceTree = "<group>"; };
+		9C8995D91EE691500097AF38 /* HomeComboRecomendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeComboRecomendViewController.xib; sourceTree = "<group>"; };
+		9C8995E11EE996DB0097AF38 /* BorderLineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderLineButton.h; sourceTree = "<group>"; };
+		9C8995E21EE996DB0097AF38 /* BorderLineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderLineButton.m; sourceTree = "<group>"; };
+		9C8995E41EED2EDE0097AF38 /* HomeClassificationListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeClassificationListViewController.h; sourceTree = "<group>"; };
+		9C8995E51EED2EDE0097AF38 /* HomeClassificationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeClassificationListViewController.m; sourceTree = "<group>"; };
+		9C8995E61EED2EDE0097AF38 /* HomeClassificationListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeClassificationListViewController.xib; sourceTree = "<group>"; };
+		9C8995E91EED35C50097AF38 /* HomeFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeFilterView.h; sourceTree = "<group>"; };
+		9C8995EA1EED35C50097AF38 /* HomeFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeFilterView.m; sourceTree = "<group>"; };
+		9C8995EC1EED35D30097AF38 /* HomeFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeFilterView.xib; sourceTree = "<group>"; };
+		9C8995EE1EED383D0097AF38 /* HomeFilterRightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeFilterRightTableViewCell.h; sourceTree = "<group>"; };
+		9C8995EF1EED383D0097AF38 /* HomeFilterRightTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeFilterRightTableViewCell.m; sourceTree = "<group>"; };
+		9C8995F01EED383D0097AF38 /* HomeFilterRightTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeFilterRightTableViewCell.xib; sourceTree = "<group>"; };
+		9C8995F31EED40F00097AF38 /* HomeStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeStoreViewController.h; sourceTree = "<group>"; };
+		9C8995F41EED40F00097AF38 /* HomeStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeStoreViewController.m; sourceTree = "<group>"; };
+		9C8995F51EED40F00097AF38 /* HomeStoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeStoreViewController.xib; sourceTree = "<group>"; };
+		9C8995F81EED7B6A0097AF38 /* HomeStoreRightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeStoreRightTableViewCell.h; sourceTree = "<group>"; };
+		9C8995F91EED7B6A0097AF38 /* HomeStoreRightTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeStoreRightTableViewCell.m; sourceTree = "<group>"; };
+		9C8995FA1EED7B6A0097AF38 /* HomeStoreRightTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeStoreRightTableViewCell.xib; sourceTree = "<group>"; };
+		9C8995FD1EEE3D9D0097AF38 /* HomeFoodDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeFoodDetailViewController.h; sourceTree = "<group>"; };
+		9C8995FE1EEE3D9D0097AF38 /* HomeFoodDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeFoodDetailViewController.m; sourceTree = "<group>"; };
+		9C8995FF1EEE3D9D0097AF38 /* HomeFoodDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeFoodDetailViewController.xib; sourceTree = "<group>"; };
+		9C8996021EEE431F0097AF38 /* HomeStoreDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeStoreDetailViewController.h; sourceTree = "<group>"; };
+		9C8996031EEE431F0097AF38 /* HomeStoreDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeStoreDetailViewController.m; sourceTree = "<group>"; };
+		9C8996041EEE431F0097AF38 /* HomeStoreDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeStoreDetailViewController.xib; sourceTree = "<group>"; };
+		9C8996071EEE4C970097AF38 /* HomeComboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeComboViewController.h; sourceTree = "<group>"; };
+		9C8996081EEE4C970097AF38 /* HomeComboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeComboViewController.m; sourceTree = "<group>"; };
+		9C8996091EEE4C970097AF38 /* HomeComboViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeComboViewController.xib; sourceTree = "<group>"; };
+		9C89960C1EEE617A0097AF38 /* HomSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomSearchTableViewCell.h; sourceTree = "<group>"; };
+		9C89960D1EEE617A0097AF38 /* HomSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomSearchTableViewCell.m; sourceTree = "<group>"; };
+		9C89960E1EEE617A0097AF38 /* HomSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomSearchTableViewCell.xib; sourceTree = "<group>"; };
+		9C8996111EEE65050097AF38 /* ShoppingChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingChartViewController.h; sourceTree = "<group>"; };
+		9C8996121EEE65050097AF38 /* ShoppingChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingChartViewController.m; sourceTree = "<group>"; };
+		9C8996131EEE65050097AF38 /* ShoppingChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingChartViewController.xib; sourceTree = "<group>"; };
+		9C8996161EEE676F0097AF38 /* ShoppingChartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingChartTableViewCell.h; sourceTree = "<group>"; };
+		9C8996171EEE676F0097AF38 /* ShoppingChartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingChartTableViewCell.m; sourceTree = "<group>"; };
+		9C8996181EEE676F0097AF38 /* ShoppingChartTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingChartTableViewCell.xib; sourceTree = "<group>"; };
+		9C89961B1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartSmallTableViewCell.h; sourceTree = "<group>"; };
+		9C89961C1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartSmallTableViewCell.m; sourceTree = "<group>"; };
+		9C89961D1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCartSmallTableViewCell.xib; sourceTree = "<group>"; };
 		AC51B9B1ED5346D951C173E8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B389401D1EE69B3000407E45 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B389401F1EE69B3000407E45 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractActionSheetPicker.h; sourceTree = "<group>"; };
@@ -413,6 +481,15 @@
 				9C8995581EE57DA10097AF38 /* UIView+Snapshot.m */,
 			);
 			path = LCPanNavigationController;
+			sourceTree = "<group>";
+		};
+		9C8995E01EE9962A0097AF38 /* CustomeView */ = {
+			isa = PBXGroup;
+			children = (
+				9C8995E11EE996DB0097AF38 /* BorderLineButton.h */,
+				9C8995E21EE996DB0097AF38 /* BorderLineButton.m */,
+			);
+			path = CustomeView;
 			sourceTree = "<group>";
 		};
 		B389401C1EE69B3000407E45 /* ActionSheetPicker-3.0 */ = {
@@ -843,6 +920,27 @@
 				9C8995A91EE590640097AF38 /* HomeActivityViewController.h */,
 				9C8995AA1EE590640097AF38 /* HomeActivityViewController.m */,
 				9C8995AB1EE590640097AF38 /* HomeActivityViewController.xib */,
+				9C8996071EEE4C970097AF38 /* HomeComboViewController.h */,
+				9C8996081EEE4C970097AF38 /* HomeComboViewController.m */,
+				9C8996091EEE4C970097AF38 /* HomeComboViewController.xib */,
+				9C8995D71EE691500097AF38 /* HomeComboRecomendViewController.h */,
+				9C8995D81EE691500097AF38 /* HomeComboRecomendViewController.m */,
+				9C8995D91EE691500097AF38 /* HomeComboRecomendViewController.xib */,
+				9C8995E41EED2EDE0097AF38 /* HomeClassificationListViewController.h */,
+				9C8995E51EED2EDE0097AF38 /* HomeClassificationListViewController.m */,
+				9C8995E61EED2EDE0097AF38 /* HomeClassificationListViewController.xib */,
+				9C8995F31EED40F00097AF38 /* HomeStoreViewController.h */,
+				9C8995F41EED40F00097AF38 /* HomeStoreViewController.m */,
+				9C8995F51EED40F00097AF38 /* HomeStoreViewController.xib */,
+				9C8995FD1EEE3D9D0097AF38 /* HomeFoodDetailViewController.h */,
+				9C8995FE1EEE3D9D0097AF38 /* HomeFoodDetailViewController.m */,
+				9C8995FF1EEE3D9D0097AF38 /* HomeFoodDetailViewController.xib */,
+				9C8996021EEE431F0097AF38 /* HomeStoreDetailViewController.h */,
+				9C8996031EEE431F0097AF38 /* HomeStoreDetailViewController.m */,
+				9C8996041EEE431F0097AF38 /* HomeStoreDetailViewController.xib */,
+				9C8996111EEE65050097AF38 /* ShoppingChartViewController.h */,
+				9C8996121EEE65050097AF38 /* ShoppingChartViewController.m */,
+				9C8996131EEE65050097AF38 /* ShoppingChartViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -874,6 +972,9 @@
 				9C8995C31EE6589B0097AF38 /* HomeSearchView.h */,
 				9C8995C41EE6589B0097AF38 /* HomeSearchView.m */,
 				9C8995C51EE6589B0097AF38 /* HomeSearchView.xib */,
+				9C89960C1EEE617A0097AF38 /* HomSearchTableViewCell.h */,
+				9C89960D1EEE617A0097AF38 /* HomSearchTableViewCell.m */,
+				9C89960E1EEE617A0097AF38 /* HomSearchTableViewCell.xib */,
 				9C8995C61EE6589B0097AF38 /* HomeTableViewCell.h */,
 				9C8995C71EE6589B0097AF38 /* HomeTableViewCell.m */,
 				9C8995C81EE6589B0097AF38 /* HomeTableViewCell.xib */,
@@ -883,6 +984,21 @@
 				9C8995D21EE65A250097AF38 /* HomeShoppingCartTableViewCell.h */,
 				9C8995D31EE65A250097AF38 /* HomeShoppingCartTableViewCell.m */,
 				9C8995D41EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib */,
+				9C8995E91EED35C50097AF38 /* HomeFilterView.h */,
+				9C8995EA1EED35C50097AF38 /* HomeFilterView.m */,
+				9C8995EC1EED35D30097AF38 /* HomeFilterView.xib */,
+				9C8995EE1EED383D0097AF38 /* HomeFilterRightTableViewCell.h */,
+				9C8995EF1EED383D0097AF38 /* HomeFilterRightTableViewCell.m */,
+				9C8995F01EED383D0097AF38 /* HomeFilterRightTableViewCell.xib */,
+				9C8995F81EED7B6A0097AF38 /* HomeStoreRightTableViewCell.h */,
+				9C8995F91EED7B6A0097AF38 /* HomeStoreRightTableViewCell.m */,
+				9C8995FA1EED7B6A0097AF38 /* HomeStoreRightTableViewCell.xib */,
+				9C8996161EEE676F0097AF38 /* ShoppingChartTableViewCell.h */,
+				9C8996171EEE676F0097AF38 /* ShoppingChartTableViewCell.m */,
+				9C8996181EEE676F0097AF38 /* ShoppingChartTableViewCell.xib */,
+				9C89961B1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.h */,
+				9C89961C1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.m */,
+				9C89961D1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1048,6 +1164,7 @@
 		B3DA48231EE50650006B6942 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9C8995E01EE9962A0097AF38 /* CustomeView */,
 				B389409E1EE69D4C00407E45 /* Category */,
 				B3DA48241EE50650006B6942 /* AES */,
 				B3DA48301EE50650006B6942 /* NetWork */,
@@ -1199,14 +1316,19 @@
 				B3DA485C1EE50650006B6942 /* icon_tabbar_mine_selected.png in Resources */,
 				B3DA484D1EE50650006B6942 /* LoginViewController.xib in Resources */,
 				B3DA48571EE50650006B6942 /* icon_tabbar_merchant_normal@2x.png in Resources */,
+				9C8995F21EED383D0097AF38 /* HomeFilterRightTableViewCell.xib in Resources */,
 				B3DA48541EE50650006B6942 /* icon_tabbar_homepage_selected.png in Resources */,
 				B3DA48631EE50650006B6942 /* icon_tabbar_nearby_selected.png in Resources */,
 				9C8995D11EE658CE0097AF38 /* HomeShoppingCartView.xib in Resources */,
 				B38940751EE69B3100407E45 /* IQKeyboardManager.bundle in Resources */,
+				9C8996011EEE3D9D0097AF38 /* HomeFoodDetailViewController.xib in Resources */,
 				B389405C1EE69B3000407E45 /* LICENSE in Resources */,
 				B3DA485A1EE50650006B6942 /* icon_tabbar_mine.png in Resources */,
 				B3DA48621EE50650006B6942 /* icon_tabbar_nearby.png in Resources */,
 				9C8995CA1EE6589B0097AF38 /* HomeSearchView.xib in Resources */,
+				9C8995DB1EE691500097AF38 /* HomeComboRecomendViewController.xib in Resources */,
+				9C89960B1EEE4C970097AF38 /* HomeComboViewController.xib in Resources */,
+				9C89961F1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.xib in Resources */,
 				9C8995CC1EE6589B0097AF38 /* HomeTableViewCell.xib in Resources */,
 				B3DA48511EE50650006B6942 /* icon_tabbar_discovery_selected.png in Resources */,
 				B3DA485B1EE50650006B6942 /* icon_tabbar_mine@2x.png in Resources */,
@@ -1216,12 +1338,16 @@
 				B3DA48521EE50650006B6942 /* icon_tabbar_homepage.png in Resources */,
 				B3DA48581EE50650006B6942 /* icon_tabbar_merchant_selected.png in Resources */,
 				B389409D1EE69CEA00407E45 /* shippTableViewCell.xib in Resources */,
+				9C8996101EEE617A0097AF38 /* HomSearchTableViewCell.xib in Resources */,
+				9C8995ED1EED35D30097AF38 /* HomeFilterView.xib in Resources */,
 				B3DA48551EE50650006B6942 /* icon_tabbar_homepage_selected@2x.png in Resources */,
 				9C8995D61EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib in Resources */,
 				B3DA485F1EE50650006B6942 /* icon_tabbar_misc@2x.png in Resources */,
 				B3DA48651EE50650006B6942 /* icon_tabbar_onsite_new@2x.png in Resources */,
 				9C8995461EE52CE40097AF38 /* HomeViewController.xib in Resources */,
 				B3DA48661EE50650006B6942 /* icon_tabbar_onsite_selected@2x.png in Resources */,
+				9C8995FC1EED7B6A0097AF38 /* HomeStoreRightTableViewCell.xib in Resources */,
+				9C8996061EEE431F0097AF38 /* HomeStoreDetailViewController.xib in Resources */,
 				B38940931EE69CEA00407E45 /* inforViewController.xib in Resources */,
 				B3DA48611EE50650006B6942 /* icon_tabbar_misc_selected@2x.png in Resources */,
 				B3DA48561EE50650006B6942 /* icon_tabbar_merchant_normal.png in Resources */,
@@ -1229,10 +1355,14 @@
 				B3DA48601EE50650006B6942 /* icon_tabbar_misc_selected.png in Resources */,
 				B3DA485D1EE50650006B6942 /* icon_tabbar_mine_selected@2x.png in Resources */,
 				B3DA484B1EE50650006B6942 /* IndentViewController.xib in Resources */,
+				9C8996151EEE65050097AF38 /* ShoppingChartViewController.xib in Resources */,
+				9C8995E81EED2EDE0097AF38 /* HomeClassificationListViewController.xib in Resources */,
+				9C89961A1EEE676F0097AF38 /* ShoppingChartTableViewCell.xib in Resources */,
 				B3DA478B1EE50174006B6942 /* Main.storyboard in Resources */,
 				B3DA48531EE50650006B6942 /* icon_tabbar_homepage@2x.png in Resources */,
 				B3DA485E1EE50650006B6942 /* icon_tabbar_misc.png in Resources */,
 				9C8995AD1EE590640097AF38 /* HomeActivityViewController.xib in Resources */,
+				9C8995F71EED40F00097AF38 /* HomeStoreViewController.xib in Resources */,
 				B3DA48591EE50650006B6942 /* icon_tabbar_merchant_selected@2x.png in Resources */,
 				B38940971EE69CEA00407E45 /* PassWordViewController.xib in Resources */,
 				B3DA48641EE50650006B6942 /* icon_tabbar_onsite@2x.png in Resources */,
@@ -1313,9 +1443,12 @@
 				B38940611EE69B3000407E45 /* ActionSheetLocalePicker.m in Sources */,
 				B3DA48401EE50650006B6942 /* TabBar.m in Sources */,
 				B3DA483B1EE50650006B6942 /* AppDelegate+PushService.m in Sources */,
+				9C8996001EEE3D9D0097AF38 /* HomeFoodDetailViewController.m in Sources */,
 				B3DA483E1EE50650006B6942 /* RootViewController.m in Sources */,
+				9C8995E71EED2EDE0097AF38 /* HomeClassificationListViewController.m in Sources */,
 				9C8995591EE57DA10097AF38 /* LCPanGestureRecognizer.m in Sources */,
 				B3DA484C1EE50650006B6942 /* LoginViewController.m in Sources */,
+				9C8995FB1EED7B6A0097AF38 /* HomeStoreRightTableViewCell.m in Sources */,
 				B38940711EE69B3100407E45 /* IQPreviousNextView.m in Sources */,
 				B3DA486E1EE50650006B6942 /* PPNetworkCache.m in Sources */,
 				B3DA48411EE50650006B6942 /* TabBarBadge.m in Sources */,
@@ -1323,12 +1456,15 @@
 				B38940B31EE69D4C00407E45 /* UIFont+Fonts.m in Sources */,
 				B38940761EE69B3100407E45 /* LICENSE.md in Sources */,
 				B38940651EE69B3000407E45 /* SWActionSheet.m in Sources */,
+				9C8996141EEE65050097AF38 /* ShoppingChartViewController.m in Sources */,
 				B38940B51EE69D4C00407E45 /* UIResponder+Adapt.m in Sources */,
 				9C8995CF1EE658BD0097AF38 /* HomeShoppingCartView.m in Sources */,
 				B389409C1EE69CEA00407E45 /* shippTableViewCell.m in Sources */,
 				B38940981EE69CEA00407E45 /* PersonalViewController.m in Sources */,
 				B3DA484E1EE50650006B6942 /* MsgViewController.m in Sources */,
 				B3DA48491EE50650006B6942 /* HomeViewController.m in Sources */,
+				9C89961E1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.m in Sources */,
+				9C8995EB1EED35C50097AF38 /* HomeFilterView.m in Sources */,
 				B38940B11EE69D4C00407E45 /* UIBarButtonItem+Extension.m in Sources */,
 				B38940771EE69B3100407E45 /* README.md in Sources */,
 				B389409B1EE69CEA00407E45 /* AJImageheadData.m in Sources */,
@@ -1349,15 +1485,19 @@
 				B3DA48441EE50650006B6942 /* NJKWebViewProgressView.m in Sources */,
 				B38940B61EE69D4C00407E45 /* UIView+CCExtension.m in Sources */,
 				B389406A1EE69B3100407E45 /* IQUIView+Hierarchy.m in Sources */,
+				9C89960A1EEE4C970097AF38 /* HomeComboViewController.m in Sources */,
 				B3DA47821EE50174006B6942 /* main.m in Sources */,
 				B3DA48701EE50650006B6942 /* OpenUDID.m in Sources */,
+				9C8996051EEE431F0097AF38 /* HomeStoreDetailViewController.m in Sources */,
 				B38940AF1EE69D4C00407E45 /* AbstractActionSheetPicker+Interface.m in Sources */,
 				B3DA486D1EE50650006B6942 /* HeaderModel.m in Sources */,
 				B38940991EE69CEA00407E45 /* SettingUpController.m in Sources */,
+				9C8995F61EED40F00097AF38 /* HomeStoreViewController.m in Sources */,
 				9C8995AC1EE590640097AF38 /* HomeActivityViewController.m in Sources */,
 				B38940921EE69CEA00407E45 /* inforViewController.m in Sources */,
 				B389405F1EE69B3000407E45 /* ActionSheetDatePicker.m in Sources */,
 				B38940681EE69B3000407E45 /* IQUIScrollView+Additions.m in Sources */,
+				9C8995DA1EE691500097AF38 /* HomeComboRecomendViewController.m in Sources */,
 				B3DA48681EE50650006B6942 /* AESCipher.m in Sources */,
 				B3DA48421EE50650006B6942 /* TabBarItem.m in Sources */,
 				B389406D1EE69B3100407E45 /* IQKeyboardManager.m in Sources */,
@@ -1377,14 +1517,18 @@
 				B389406C1EE69B3100407E45 /* IQUIWindow+Hierarchy.m in Sources */,
 				B38940B01EE69D4C00407E45 /* MBProgressHUD+HH.m in Sources */,
 				B389405E1EE69B3000407E45 /* ActionSheetCustomPicker.m in Sources */,
+				9C8995E31EE996DB0097AF38 /* BorderLineButton.m in Sources */,
 				B38940641EE69B3000407E45 /* DistancePickerView.m in Sources */,
 				B38940601EE69B3000407E45 /* ActionSheetDistancePicker.m in Sources */,
 				B38940B21EE69D4C00407E45 /* UIColor+HexString.m in Sources */,
 				B38940631EE69B3000407E45 /* ActionSheetStringPicker.m in Sources */,
 				B3DA48481EE50650006B6942 /* AppManager.m in Sources */,
+				9C89960F1EEE617A0097AF38 /* HomSearchTableViewCell.m in Sources */,
 				9C89955A1EE57DA10097AF38 /* LCPanNavigationController.m in Sources */,
+				9C8996191EEE676F0097AF38 /* ShoppingChartTableViewCell.m in Sources */,
 				B3DA483C1EE50650006B6942 /* AppDelegate.m in Sources */,
 				B38940731EE69B3100407E45 /* IQToolbar.m in Sources */,
+				9C8995F11EED383D0097AF38 /* HomeFilterRightTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

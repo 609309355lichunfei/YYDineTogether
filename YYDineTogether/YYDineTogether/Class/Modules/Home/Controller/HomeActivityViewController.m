@@ -48,7 +48,7 @@
 
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 90;
+    return 128;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -75,7 +75,7 @@
     if (scrollView == _mainScrollView) {
         if (scrollView.contentOffset.y > 120) {
             if (scrollView.contentOffset.y > _mainScrollViewLastContentOffSetY) {
-                [scrollView setContentOffset:CGPointMake(0, 150) animated:NO];
+                [scrollView setContentOffset:CGPointMake(0, 170) animated:NO];
                 scrollView.scrollEnabled = NO;
                 _tableView.scrollEnabled = YES;
                 _tableView.bounces = YES;

@@ -7,6 +7,7 @@
 //
 
 #import "HomeSearchView.h"
+#import "HomSearchTableViewCell.h"
 #import <YYTextView.h>
 #import <NSAttributedString+YYText.h>
 
@@ -29,7 +30,7 @@
 - (void)registUI {
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HomeSearchTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HomSearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomSearchTableViewCell"];
     
     self.textView = [YYTextView new];
     _textView.backgroundColor = [UIColor clearColor];
@@ -92,13 +93,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeSearchTableViewCell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor clearColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.textLabel.text = @"推荐菜品";
-    cell.textLabel.font = [UIFont systemFontOfSize:12];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    HomSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomSearchTableViewCell" forIndexPath:indexPath];
+    
     return cell;
 }
 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="HomSearchTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="麦当劳" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEL-mc-yXU">
+                        <rect key="frame" x="14" y="12" width="40" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_new" translatesAutoresizingMaskIntoConstraints="NO" id="uq1-Tv-uXc">
+                        <rect key="frame" x="62" y="12" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="uq1-Tv-uXc" secondAttribute="height" id="cGZ-Vi-6Mr"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_reduce" translatesAutoresizingMaskIntoConstraints="NO" id="sNl-E8-fie">
+                        <rect key="frame" x="90" y="12" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="sNl-E8-fie" secondAttribute="height" id="sjv-4I-n9P"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mvl-oi-8VV">
+                        <rect key="frame" x="292.5" y="11.5" width="19.5" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="mvl-oi-8VV" secondAttribute="height" multiplier="26:27" id="Sl0-R4-czW"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="mvl-oi-8VV" firstAttribute="height" secondItem="sNl-E8-fie" secondAttribute="height" id="456-Fl-IKQ"/>
+                    <constraint firstItem="uq1-Tv-uXc" firstAttribute="leading" secondItem="oEL-mc-yXU" secondAttribute="trailing" constant="8" id="4ja-Si-ktc"/>
+                    <constraint firstItem="sNl-E8-fie" firstAttribute="leading" secondItem="uq1-Tv-uXc" secondAttribute="trailing" constant="8" id="79F-1a-drr"/>
+                    <constraint firstItem="mvl-oi-8VV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="LKW-CK-Z2z"/>
+                    <constraint firstItem="sNl-E8-fie" firstAttribute="centerY" secondItem="uq1-Tv-uXc" secondAttribute="centerY" id="bOC-KO-eCo"/>
+                    <constraint firstItem="sNl-E8-fie" firstAttribute="height" secondItem="uq1-Tv-uXc" secondAttribute="height" id="fKT-UC-rPz"/>
+                    <constraint firstItem="uq1-Tv-uXc" firstAttribute="centerY" secondItem="oEL-mc-yXU" secondAttribute="centerY" id="jr3-G8-6Cz"/>
+                    <constraint firstItem="oEL-mc-yXU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kbb-Ad-kRB"/>
+                    <constraint firstItem="uq1-Tv-uXc" firstAttribute="height" secondItem="oEL-mc-yXU" secondAttribute="height" id="kvR-4n-9cv"/>
+                    <constraint firstItem="oEL-mc-yXU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="6" id="nwv-a2-gNM"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="mvl-oi-8VV" secondAttribute="trailing" id="uz7-f6-RRV"/>
+                    <constraint firstItem="sNl-E8-fie" firstAttribute="width" secondItem="sNl-E8-fie" secondAttribute="height" id="zgF-Dj-EGq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="home_new" width="20" height="20"/>
+        <image name="home_reduce" width="20" height="20"/>
+    </resources>
+</document>
