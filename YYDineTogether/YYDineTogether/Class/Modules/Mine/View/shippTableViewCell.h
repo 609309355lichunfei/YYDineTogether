@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol shippTableViewCellDelegate <NSObject>
+- (void)CompileWithBt;
+@end
 
 @interface shippTableViewCell : UITableViewCell
 + (instancetype) InstallTableViewCellWith:(UITableView *)tableview indexPath:(NSIndexPath *)indexPath;
 - (void)configInstallTableCellWith:(NSIndexPath *)indexPath;
+
+@property (weak,nonatomic)id <shippTableViewCellDelegate>delegate;
 @end

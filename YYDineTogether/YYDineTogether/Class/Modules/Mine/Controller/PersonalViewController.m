@@ -19,9 +19,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     self.navigationItem.title = @"个人信息";
      [self.view addSubview:self.tableview];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem
+                                             itemWithImageName:@"Navigation_left" highImageName:@"Navigation_left" target:self action:(@selector(back))];
  
+}
+- (void)back {
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

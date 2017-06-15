@@ -11,6 +11,7 @@
 #import "PersonalViewController.h"
 #import "shippingViewController.h"
 #import "SettingUpController.h"
+#import "DisCountViewController.h"
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *iconimage;
 
@@ -65,9 +66,9 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (section == 0) return 2;
+    if (section == 0) return 4;
     if (section == 1) return 2;
-    if (section == 2) return 2;
+
     return 1;
 }
 
@@ -81,41 +82,40 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }
+    }   
       cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             cell.textLabel.text = @"我的优惠券";
                          cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
-        }else {
+        }else if (indexPath.row == 1){
             cell.textLabel.text = @"收货地址";
                         cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
+        }else if (indexPath.row == 2){
+            cell.textLabel.text = @"我的收藏";
+            cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
+        }else{
+            cell.textLabel.text = @"浏览记录";
+            cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
         }
+        
+      
     }else if (indexPath.section == 1){
         
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"浏览记录";
+            cell.textLabel.text = @"客服中心";
                         cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
         }else{
             
-            cell.textLabel.text = @"客服中心  ";
+            cell.textLabel.text = @"意见反馈";
                         cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
         }
     }else if (indexPath.section == 2){
         
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"意见反馈";
-                        cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
-        }else{
-            
-                        cell.textLabel.text = @"关于我们";
-                        cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
-        }
+        cell.textLabel.text = @"关于我们";
+        cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
     }
-    
- 
-   
   
     return cell;
 }
@@ -124,11 +124,16 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-          
-        }else {
+          DisCountViewController * disCount = [DisCountViewController new];
+          [self.navigationController pushViewController:disCount animated:YES];
+        }else if (indexPath.row == 1){
             shippingViewController * ship = [shippingViewController new];
             [self.navigationController pushViewController:ship animated:YES];
 
+        }else if (indexPath.row == 2){
+            
+        }else{
+            
         }
     }else if (indexPath.section == 1){
         

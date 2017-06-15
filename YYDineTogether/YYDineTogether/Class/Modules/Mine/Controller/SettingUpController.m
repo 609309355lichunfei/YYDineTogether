@@ -8,6 +8,7 @@
 
 #import "SettingUpController.h"
 #import "PassWordViewController.h"
+
 @interface SettingUpController ()<UITableViewDelegate,UITableViewDataSource>
 @property (retain, nonatomic)  UITableView *tableview;
 @end
@@ -18,6 +19,13 @@
     [super viewDidLoad];
     self.navigationItem.title = @"设置";
      [self.view addSubview:self.tableview];
+    
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem
+                                             itemWithImageName:@"Navigation_left" highImageName:@"Navigation_left" target:self action:(@selector(back))];
+}
+- (void)back {
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (UITableView *)tableview {
@@ -36,7 +44,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (section == 0) return 3;
+    if (section == 0) return 1;
    
     return 1;
 }
@@ -59,21 +67,19 @@
             cell.textLabel.text = @"密码修改";
             cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
         }else if(indexPath.row == 1){
-            cell.textLabel.text = @"换绑手机";
+            cell.textLabel.text = @"";
             cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
         }else{
-            cell.textLabel.text = @"第三方账号绑定";
+            cell.textLabel.text = @"";
             cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
         }
     }else if (indexPath.section == 1){
         
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"清楚缓存";
+            cell.textLabel.text = @"清除缓存";
             cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
         }
     }
-    
-    
     
     return cell;
 }
@@ -85,8 +91,8 @@
            PassWordViewController * password = [PassWordViewController new];
            [self.navigationController pushViewController:password animated:YES];
         }else {
+         
           
-            
         }
     }else if (indexPath.section == 1){
         

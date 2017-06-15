@@ -8,6 +8,7 @@
 
 #import "shippTableViewCell.h"
 
+
 @implementation shippTableViewCell
 
 - (void)awakeFromNib {
@@ -29,7 +30,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"shippTableViewCell" owner:nil options:nil]lastObject];
     }
     
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
     
 }
@@ -37,6 +38,12 @@
 -(void)configInstallTableCellWith:(NSIndexPath *)indexPath {
     
     
+}
+//编辑
+- (IBAction)Compile:(id)sender {
+    if ([self.delegate  performSelector:@selector(CompileWithBt)]) {
+        [self.delegate  respondsToSelector:@selector(CompileWithBt)];
+    }
 }
 
 

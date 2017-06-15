@@ -17,11 +17,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"消息通知";
+
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem
+                                                       itemWithImageName:@"Navigation_left" highImageName:@"Navigation_left" target:self action:(@selector(back))];
+}
+
+- (void)back {
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  
 }
 
 

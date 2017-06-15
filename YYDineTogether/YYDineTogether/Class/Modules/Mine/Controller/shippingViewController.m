@@ -8,7 +8,7 @@
 
 #import "shippingViewController.h"
 #import "shippTableViewCell.h"
-@interface shippingViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface shippingViewController ()<UITableViewDelegate,UITableViewDataSource,shippTableViewCellDelegate>
 @property (retain, nonatomic)  UITableView *tableview;
 @end
 
@@ -21,7 +21,15 @@
     [self.view addSubview:self.tableview];
     UIView * view = [UIView new];
     self.tableview.tableFooterView = view;
+    
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem
+                                             itemWithImageName:@"Navigation_left" highImageName:@"Navigation_left" target:self action:(@selector(back))];
 }
+- (void)back {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (UITableView *)tableview {
     
     if (!_tableview) {
@@ -40,17 +48,21 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 60;
+    return 152;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     shippTableViewCell * cell = [shippTableViewCell InstallTableViewCellWith:tableView indexPath:indexPath];
     [cell configInstallTableCellWith:indexPath];
     
-    
+    cell.delegate = self;
     return cell;
 }
-
+//编辑
+- (void)CompileWithBt {
+    
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
