@@ -15,6 +15,7 @@
 #import "FontAndColorMacros.h"
 #import "ThirdMacros.h"
 #import "URLMacros.h"
+#import "DefaineMacros.h"
 /**
  * @基础类
  */
@@ -26,6 +27,9 @@
 #import "AppManager.h"
 #import "UIResponder+Adapt.h"
 #import "UIFont+Fonts.h"
+#import "UIBarButtonItem+Extension.h"
+#import "HomeShoppingCartView.h"
+#import "ShoppingChartViewController.h"
 //#import "MBProgressHUD+XY.h"
 /**
  * @第三方

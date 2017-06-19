@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -20,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="380" height="128"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yvf-x2-Itr">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="Yvf-x2-Itr">
                         <rect key="frame" x="8" y="12" width="94.5" height="94.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Yvf-x2-Itr" secondAttribute="height" id="W0o-Cl-tOR"/>
@@ -256,5 +255,6 @@
         <image name="home_new" width="20" height="20"/>
         <image name="home_reduce" width="20" height="20"/>
         <image name="home_subtract" width="15" height="15"/>
+        <image name="icon" width="300" height="300"/>
     </resources>
 </document>

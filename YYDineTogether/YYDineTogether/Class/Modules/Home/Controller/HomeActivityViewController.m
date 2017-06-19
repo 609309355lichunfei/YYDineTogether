@@ -18,6 +18,7 @@
 @property (strong, nonatomic) HomeShoppingCartView *shoppingView;
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shopCartBTBottom;
 
 @end
 
@@ -36,10 +37,16 @@
     if (_shoppingView == nil) {
         self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
         [_shoppingView showShoppingCartView];
+        self.shopCartBTBottom.constant = 0;
     } else {
         [_shoppingView removeShoppingCartView];
+        self.shopCartBTBottom.constant = 25;
         _shoppingView = nil;
     }
+}
+- (IBAction)clearShoppingCartAction:(id)sender {
+    ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
+    [self.navigationController pushViewController:shoppingCartVC animated:YES];
 }
 
 - (IBAction)backAction:(id)sender {
@@ -61,6 +68,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeActivityTableViewCell" forIndexPath:indexPath];
+    cell.type = ViewControllerTypeTypeFood;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -75,7 +83,7 @@
     if (scrollView == _mainScrollView) {
         if (scrollView.contentOffset.y > 120) {
             if (scrollView.contentOffset.y > _mainScrollViewLastContentOffSetY) {
-                [scrollView setContentOffset:CGPointMake(0, 170) animated:NO];
+                [scrollView scrollToBottomAnimated:NO];
                 scrollView.scrollEnabled = NO;
                 _tableView.scrollEnabled = YES;
                 _tableView.bounces = YES;

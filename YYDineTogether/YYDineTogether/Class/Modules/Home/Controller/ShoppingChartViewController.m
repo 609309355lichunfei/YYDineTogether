@@ -8,6 +8,7 @@
 
 #import "ShoppingChartViewController.h"
 #import "ShoppingChartTableViewCell.h"
+#import "IndentConfirmViewController.h"
 
 @interface ShoppingChartViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -29,6 +30,10 @@
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+- (IBAction)payAction:(id)sender {
+    IndentConfirmViewController *confirmVC = [[IndentConfirmViewController alloc]init];
+    [self.navigationController pushViewController:confirmVC animated:YES];
+}
 
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -45,6 +50,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ShoppingChartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShoppingChartTableViewCell" forIndexPath:indexPath];
+    cell.isShoppingCart = YES;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

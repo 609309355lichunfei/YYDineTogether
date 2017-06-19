@@ -43,6 +43,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ShoppingCartSmallTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShoppingCartCellTableViewCell" forIndexPath:indexPath];
+    cell.isShoppingCart = _isShoppingCart;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

@@ -10,6 +10,7 @@
 #import "HomeStoreRightTableViewCell.h"
 #import "HomeStoreDetailViewController.h"
 #import "HomeFoodDetailViewController.h"
+#import "HomeActivityViewController.h"
 
 @interface HomeStoreViewController ()<UITableViewDelegate, UITableViewDataSource>{
     BOOL _isCombo;
@@ -20,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *comboButton;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomLineLeading;
+@property (strong, nonatomic) HomeShoppingCartView *shoppingView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shoppingCartBTBottom;
 
 
 @end
@@ -43,6 +46,23 @@
 }
 - (IBAction)flowAction:(id)sender {
     
+}
+
+- (IBAction)clearShoppingCartAction:(id)sender {
+    ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
+    [self.navigationController pushViewController:shoppingCartVC animated:YES];
+}
+
+- (IBAction)shoppingCartAction:(id)sender {
+    if (_shoppingView == nil) {
+        self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
+        [_shoppingView showShoppingCartView];
+        self.shoppingCartBTBottom.constant = 0;
+    } else {
+        [_shoppingView removeShoppingCartView];
+        self.shoppingCartBTBottom.constant = 25;
+        _shoppingView = nil;
+    }
 }
 
 - (IBAction)foodAction:(id)sender {
@@ -105,8 +125,13 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == _rightTableView) {
-        HomeFoodDetailViewController *foodDetailVC = [[HomeFoodDetailViewController alloc] init];
-        [self.navigationController pushViewController:foodDetailVC animated:YES];
+        if (_isCombo) {
+            HomeActivityViewController *comboVC = [[HomeActivityViewController alloc]init];
+            [self.navigationController pushViewController:comboVC animated:YES];
+        } else {
+            HomeFoodDetailViewController *foodDetailVC = [[HomeFoodDetailViewController alloc] init];
+            [self.navigationController pushViewController:foodDetailVC animated:YES];
+        }
     }
 }
 

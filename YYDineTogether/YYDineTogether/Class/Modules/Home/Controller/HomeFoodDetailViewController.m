@@ -11,6 +11,8 @@
 @interface HomeFoodDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UIButton *subtractButton;
+@property (strong, nonatomic) HomeShoppingCartView *shoppingView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shoppingCartBTBottom;
 
 @end
 
@@ -23,6 +25,23 @@
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (IBAction)shoppingCartAction:(id)sender {
+    if (_shoppingView == nil) {
+        self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
+        [_shoppingView showShoppingCartView];
+        self.shoppingCartBTBottom.constant = 0;
+    } else {
+        [_shoppingView removeShoppingCartView];
+        self.shoppingCartBTBottom.constant = 25;
+        _shoppingView = nil;
+    }
+}
+- (IBAction)clearShoppingCartAction:(id)sender {
+    ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
+    [self.navigationController pushViewController:shoppingCartVC animated:YES];
+}
+
 - (IBAction)addAction:(id)sender {
     if (_subtractButton.isHidden) {
         _numberLabel.hidden = NO;

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ShoppingChartTableViewCell : UITableViewCell
-
+@property (assign, nonatomic) BOOL isShoppingCart;
 @end

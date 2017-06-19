@@ -8,11 +8,21 @@
 
 #import "ShoppingCartSmallTableViewCell.h"
 
+@interface ShoppingCartSmallTableViewCell ()
+@property (weak, nonatomic) IBOutlet UIView *changeCountView;
+
+@end
+
 @implementation ShoppingCartSmallTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+
+- (void)setIsShoppingCart:(BOOL)isShoppingCart {
+    _isShoppingCart = isShoppingCart;
+    self.changeCountView.hidden = !_isShoppingCart;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

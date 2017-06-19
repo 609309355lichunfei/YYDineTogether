@@ -37,6 +37,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self registUI];
+    NSArray *cityArray =[NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"citydata" ofType:@"plist"]];
+    NSLog(@"cityArray = %@",cityArray);
     
 }
 
@@ -77,6 +79,7 @@
 
 - (IBAction)comboActivityAction:(id)sender {
     HomeComboRecomendViewController *comboVC = [[HomeComboRecomendViewController alloc]init];
+    comboVC.type = ViewControllerTypeTypeStore;
     [self.tabBarController.navigationController pushViewController:comboVC animated:YES];
 }
 - (IBAction)comboAction:(id)sender {
@@ -118,7 +121,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.type = _isStoreDataSource ? HomeTableViewCellTypeStore : HomeTableViewCellTypeFood;
+    cell.type = _isStoreDataSource ? ViewControllerTypeTypeStore : ViewControllerTypeTypeFood;
     return cell;
 }
 
@@ -159,7 +162,7 @@
     if (scrollView == _mainScrollView) {
         if (scrollView.contentOffset.y > 240) {
             if (scrollView.contentOffset.y > _mainScrollViewLastContentOffSetY) {
-                [scrollView setContentOffset:CGPointMake(0, 260) animated:NO];
+                [scrollView scrollToBottomAnimated:NO];
                 scrollView.scrollEnabled = NO;
                 _tableView.scrollEnabled = YES;
                 _tableView.bounces = YES;

@@ -48,6 +48,34 @@
 		9C89961A1EEE676F0097AF38 /* ShoppingChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996181EEE676F0097AF38 /* ShoppingChartTableViewCell.xib */; };
 		9C89961E1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89961C1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.m */; };
 		9C89961F1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C89961D1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.xib */; };
+		9C89962C1EF2C0B30097AF38 /* IndentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89962A1EF2C0B30097AF38 /* IndentTableViewCell.m */; };
+		9C89962D1EF2C0B30097AF38 /* IndentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C89962B1EF2C0B30097AF38 /* IndentTableViewCell.xib */; };
+		9C8996311EF2C39D0097AF38 /* IndentCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89962F1EF2C39D0097AF38 /* IndentCellTableViewCell.m */; };
+		9C8996321EF2C39D0097AF38 /* IndentCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996301EF2C39D0097AF38 /* IndentCellTableViewCell.xib */; };
+		9C8996371EF2C9ED0097AF38 /* CollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996341EF2C9ED0097AF38 /* CollectViewController.m */; };
+		9C8996381EF2C9ED0097AF38 /* DisCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996361EF2C9ED0097AF38 /* DisCountViewController.m */; };
+		9C89963E1EF2CA310097AF38 /* CollectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89963A1EF2CA310097AF38 /* CollectTableViewCell.m */; };
+		9C89963F1EF2CA310097AF38 /* CollectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C89963B1EF2CA310097AF38 /* CollectTableViewCell.xib */; };
+		9C8996401EF2CA310097AF38 /* TNCustomSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89963D1EF2CA310097AF38 /* TNCustomSegment.m */; };
+		9C8996441EF2CD1B0097AF38 /* IndentConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996421EF2CD1B0097AF38 /* IndentConfirmViewController.m */; };
+		9C8996451EF2CD1B0097AF38 /* IndentConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996431EF2CD1B0097AF38 /* IndentConfirmViewController.xib */; };
+		9C8996471EF2D39C0097AF38 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C8996461EF2D39C0097AF38 /* MapKit.framework */; };
+		9C89964B1EF2D9FE0097AF38 /* IndentChooseAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996491EF2D9FE0097AF38 /* IndentChooseAddressViewController.m */; };
+		9C89964C1EF2D9FE0097AF38 /* IndentChooseAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C89964A1EF2D9FE0097AF38 /* IndentChooseAddressViewController.xib */; };
+		9C8996501EF2DAD70097AF38 /* IndentChooseAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89964E1EF2DAD70097AF38 /* IndentChooseAddressTableViewCell.m */; };
+		9C8996511EF2DAD70097AF38 /* IndentChooseAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C89964F1EF2DAD70097AF38 /* IndentChooseAddressTableViewCell.xib */; };
+		9C8996551EF2DCD90097AF38 /* IndentEditAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996531EF2DCD90097AF38 /* IndentEditAddressViewController.m */; };
+		9C8996561EF2DCD90097AF38 /* IndentEditAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996541EF2DCD90097AF38 /* IndentEditAddressViewController.xib */; };
+		9C89965A1EF2E28C0097AF38 /* IndentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996581EF2E28C0097AF38 /* IndentDetailViewController.m */; };
+		9C89965B1EF2E28C0097AF38 /* IndentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996591EF2E28C0097AF38 /* IndentDetailViewController.xib */; };
+		9C89965D1EF519280097AF38 /* MsgViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C89965C1EF519280097AF38 /* MsgViewController.xib */; };
+		9C8996611EF51A640097AF38 /* MsgTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89965F1EF51A640097AF38 /* MsgTableViewCell.m */; };
+		9C8996621EF51A640097AF38 /* MsgTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996601EF51A640097AF38 /* MsgTableViewCell.xib */; };
+		9C8996651EF51DA90097AF38 /* MsgTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996641EF51DA90097AF38 /* MsgTableHeaderView.m */; };
+		9C8996671EF51DBA0097AF38 /* MsgTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996661EF51DBA0097AF38 /* MsgTableHeaderView.xib */; };
+		9C89966B1EF52A780097AF38 /* MsgEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996691EF52A780097AF38 /* MsgEditViewController.m */; };
+		9C89966C1EF52A780097AF38 /* MsgEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C89966A1EF52A780097AF38 /* MsgEditViewController.xib */; };
+		9C89966F1EF5461E0097AF38 /* citydata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C89966E1EF5461E0097AF38 /* citydata.plist */; };
 		A3091578DC3875A9216040FB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3803D2764EEAFE68D56C80 /* libPods.a */; };
 		B389405C1EE69B3000407E45 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B389401D1EE69B3000407E45 /* LICENSE */; };
 		B389405D1EE69B3000407E45 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B38940201EE69B3000407E45 /* AbstractActionSheetPicker.m */; };
@@ -239,6 +267,49 @@
 		9C89961B1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartSmallTableViewCell.h; sourceTree = "<group>"; };
 		9C89961C1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartSmallTableViewCell.m; sourceTree = "<group>"; };
 		9C89961D1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCartSmallTableViewCell.xib; sourceTree = "<group>"; };
+		9C8996291EF2C0B30097AF38 /* IndentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndentTableViewCell.h; sourceTree = "<group>"; };
+		9C89962A1EF2C0B30097AF38 /* IndentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndentTableViewCell.m; sourceTree = "<group>"; };
+		9C89962B1EF2C0B30097AF38 /* IndentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndentTableViewCell.xib; sourceTree = "<group>"; };
+		9C89962E1EF2C39D0097AF38 /* IndentCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndentCellTableViewCell.h; sourceTree = "<group>"; };
+		9C89962F1EF2C39D0097AF38 /* IndentCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndentCellTableViewCell.m; sourceTree = "<group>"; };
+		9C8996301EF2C39D0097AF38 /* IndentCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndentCellTableViewCell.xib; sourceTree = "<group>"; };
+		9C8996331EF2C9ED0097AF38 /* CollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectViewController.h; sourceTree = "<group>"; };
+		9C8996341EF2C9ED0097AF38 /* CollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectViewController.m; sourceTree = "<group>"; };
+		9C8996351EF2C9ED0097AF38 /* DisCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisCountViewController.h; sourceTree = "<group>"; };
+		9C8996361EF2C9ED0097AF38 /* DisCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisCountViewController.m; sourceTree = "<group>"; };
+		9C8996391EF2CA310097AF38 /* CollectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectTableViewCell.h; sourceTree = "<group>"; };
+		9C89963A1EF2CA310097AF38 /* CollectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectTableViewCell.m; sourceTree = "<group>"; };
+		9C89963B1EF2CA310097AF38 /* CollectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectTableViewCell.xib; sourceTree = "<group>"; };
+		9C89963C1EF2CA310097AF38 /* TNCustomSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNCustomSegment.h; sourceTree = "<group>"; };
+		9C89963D1EF2CA310097AF38 /* TNCustomSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNCustomSegment.m; sourceTree = "<group>"; };
+		9C8996411EF2CD1B0097AF38 /* IndentConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndentConfirmViewController.h; sourceTree = "<group>"; };
+		9C8996421EF2CD1B0097AF38 /* IndentConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndentConfirmViewController.m; sourceTree = "<group>"; };
+		9C8996431EF2CD1B0097AF38 /* IndentConfirmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndentConfirmViewController.xib; sourceTree = "<group>"; };
+		9C8996461EF2D39C0097AF38 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9C8996481EF2D9FE0097AF38 /* IndentChooseAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndentChooseAddressViewController.h; sourceTree = "<group>"; };
+		9C8996491EF2D9FE0097AF38 /* IndentChooseAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndentChooseAddressViewController.m; sourceTree = "<group>"; };
+		9C89964A1EF2D9FE0097AF38 /* IndentChooseAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndentChooseAddressViewController.xib; sourceTree = "<group>"; };
+		9C89964D1EF2DAD70097AF38 /* IndentChooseAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndentChooseAddressTableViewCell.h; sourceTree = "<group>"; };
+		9C89964E1EF2DAD70097AF38 /* IndentChooseAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndentChooseAddressTableViewCell.m; sourceTree = "<group>"; };
+		9C89964F1EF2DAD70097AF38 /* IndentChooseAddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndentChooseAddressTableViewCell.xib; sourceTree = "<group>"; };
+		9C8996521EF2DCD90097AF38 /* IndentEditAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndentEditAddressViewController.h; sourceTree = "<group>"; };
+		9C8996531EF2DCD90097AF38 /* IndentEditAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndentEditAddressViewController.m; sourceTree = "<group>"; };
+		9C8996541EF2DCD90097AF38 /* IndentEditAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndentEditAddressViewController.xib; sourceTree = "<group>"; };
+		9C8996571EF2E28C0097AF38 /* IndentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndentDetailViewController.h; sourceTree = "<group>"; };
+		9C8996581EF2E28C0097AF38 /* IndentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndentDetailViewController.m; sourceTree = "<group>"; };
+		9C8996591EF2E28C0097AF38 /* IndentDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndentDetailViewController.xib; sourceTree = "<group>"; };
+		9C89965C1EF519280097AF38 /* MsgViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgViewController.xib; sourceTree = "<group>"; };
+		9C89965E1EF51A640097AF38 /* MsgTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgTableViewCell.h; sourceTree = "<group>"; };
+		9C89965F1EF51A640097AF38 /* MsgTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgTableViewCell.m; sourceTree = "<group>"; };
+		9C8996601EF51A640097AF38 /* MsgTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgTableViewCell.xib; sourceTree = "<group>"; };
+		9C8996631EF51DA90097AF38 /* MsgTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgTableHeaderView.h; sourceTree = "<group>"; };
+		9C8996641EF51DA90097AF38 /* MsgTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgTableHeaderView.m; sourceTree = "<group>"; };
+		9C8996661EF51DBA0097AF38 /* MsgTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgTableHeaderView.xib; sourceTree = "<group>"; };
+		9C8996681EF52A780097AF38 /* MsgEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgEditViewController.h; sourceTree = "<group>"; };
+		9C8996691EF52A780097AF38 /* MsgEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgEditViewController.m; sourceTree = "<group>"; };
+		9C89966A1EF52A780097AF38 /* MsgEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgEditViewController.xib; sourceTree = "<group>"; };
+		9C89966D1EF537BC0097AF38 /* DefaineMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaineMacros.h; sourceTree = "<group>"; };
+		9C89966E1EF5461E0097AF38 /* citydata.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = citydata.plist; sourceTree = "<group>"; };
 		AC51B9B1ED5346D951C173E8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B389401D1EE69B3000407E45 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B389401F1EE69B3000407E45 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractActionSheetPicker.h; sourceTree = "<group>"; };
@@ -431,6 +502,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C8996471EF2D39C0097AF38 /* MapKit.framework in Frameworks */,
 				A3091578DC3875A9216040FB /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +536,7 @@
 		645F783CAED06FC4FAD00636 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C8996461EF2D39C0097AF38 /* MapKit.framework */,
 				BF3803D2764EEAFE68D56C80 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -490,6 +563,48 @@
 				9C8995E21EE996DB0097AF38 /* BorderLineButton.m */,
 			);
 			path = CustomeView;
+			sourceTree = "<group>";
+		};
+		9C8996261EF2C0810097AF38 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9C8996411EF2CD1B0097AF38 /* IndentConfirmViewController.h */,
+				9C8996421EF2CD1B0097AF38 /* IndentConfirmViewController.m */,
+				9C8996431EF2CD1B0097AF38 /* IndentConfirmViewController.xib */,
+				9C8996481EF2D9FE0097AF38 /* IndentChooseAddressViewController.h */,
+				9C8996491EF2D9FE0097AF38 /* IndentChooseAddressViewController.m */,
+				9C89964A1EF2D9FE0097AF38 /* IndentChooseAddressViewController.xib */,
+				9C8996521EF2DCD90097AF38 /* IndentEditAddressViewController.h */,
+				9C8996531EF2DCD90097AF38 /* IndentEditAddressViewController.m */,
+				9C8996541EF2DCD90097AF38 /* IndentEditAddressViewController.xib */,
+				9C8996571EF2E28C0097AF38 /* IndentDetailViewController.h */,
+				9C8996581EF2E28C0097AF38 /* IndentDetailViewController.m */,
+				9C8996591EF2E28C0097AF38 /* IndentDetailViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9C8996271EF2C0810097AF38 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9C8996281EF2C0810097AF38 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9C8996291EF2C0B30097AF38 /* IndentTableViewCell.h */,
+				9C89962A1EF2C0B30097AF38 /* IndentTableViewCell.m */,
+				9C89962B1EF2C0B30097AF38 /* IndentTableViewCell.xib */,
+				9C89962E1EF2C39D0097AF38 /* IndentCellTableViewCell.h */,
+				9C89962F1EF2C39D0097AF38 /* IndentCellTableViewCell.m */,
+				9C8996301EF2C39D0097AF38 /* IndentCellTableViewCell.xib */,
+				9C89964D1EF2DAD70097AF38 /* IndentChooseAddressTableViewCell.h */,
+				9C89964E1EF2DAD70097AF38 /* IndentChooseAddressTableViewCell.m */,
+				9C89964F1EF2DAD70097AF38 /* IndentChooseAddressTableViewCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B389401C1EE69B3000407E45 /* ActionSheetPicker-3.0 */ = {
@@ -632,6 +747,10 @@
 		B38940791EE69CEA00407E45 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9C8996331EF2C9ED0097AF38 /* CollectViewController.h */,
+				9C8996341EF2C9ED0097AF38 /* CollectViewController.m */,
+				9C8996351EF2C9ED0097AF38 /* DisCountViewController.h */,
+				9C8996361EF2C9ED0097AF38 /* DisCountViewController.m */,
 				B389407A1EE69CEA00407E45 /* inforViewController.h */,
 				B389407B1EE69CEA00407E45 /* inforViewController.m */,
 				B389407C1EE69CEA00407E45 /* inforViewController.xib */,
@@ -677,6 +796,11 @@
 		B389408E1EE69CEA00407E45 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9C8996391EF2CA310097AF38 /* CollectTableViewCell.h */,
+				9C89963A1EF2CA310097AF38 /* CollectTableViewCell.m */,
+				9C89963B1EF2CA310097AF38 /* CollectTableViewCell.xib */,
+				9C89963C1EF2CA310097AF38 /* TNCustomSegment.h */,
+				9C89963D1EF2CA310097AF38 /* TNCustomSegment.m */,
 				B389408F1EE69CEA00407E45 /* shippTableViewCell.h */,
 				B38940901EE69CEA00407E45 /* shippTableViewCell.m */,
 				B38940911EE69CEA00407E45 /* shippTableViewCell.xib */,
@@ -874,6 +998,7 @@
 				B3DA47DC1EE50650006B6942 /* ThirdMacros.h */,
 				B3DA47DD1EE50650006B6942 /* URLMacros.h */,
 				B3DA47DE1EE50650006B6942 /* UtilsMacros.h */,
+				9C89966D1EF537BC0097AF38 /* DefaineMacros.h */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -1006,6 +1131,9 @@
 		B3DA47EB1EE50650006B6942 /* Indent */ = {
 			isa = PBXGroup;
 			children = (
+				9C8996261EF2C0810097AF38 /* Controller */,
+				9C8996271EF2C0810097AF38 /* Model */,
+				9C8996281EF2C0810097AF38 /* View */,
 				B3DA47EC1EE50650006B6942 /* IndentViewController.h */,
 				B3DA47ED1EE50650006B6942 /* IndentViewController.m */,
 				B3DA47EE1EE50650006B6942 /* IndentViewController.xib */,
@@ -1080,6 +1208,10 @@
 			children = (
 				B3DA47FA1EE50650006B6942 /* MsgViewController.h */,
 				B3DA47FB1EE50650006B6942 /* MsgViewController.m */,
+				9C89965C1EF519280097AF38 /* MsgViewController.xib */,
+				9C8996681EF52A780097AF38 /* MsgEditViewController.h */,
+				9C8996691EF52A780097AF38 /* MsgEditViewController.m */,
+				9C89966A1EF52A780097AF38 /* MsgEditViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1108,6 +1240,12 @@
 		B3DA47FF1EE50650006B6942 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9C89965E1EF51A640097AF38 /* MsgTableViewCell.h */,
+				9C89965F1EF51A640097AF38 /* MsgTableViewCell.m */,
+				9C8996601EF51A640097AF38 /* MsgTableViewCell.xib */,
+				9C8996631EF51DA90097AF38 /* MsgTableHeaderView.h */,
+				9C8996641EF51DA90097AF38 /* MsgTableHeaderView.m */,
+				9C8996661EF51DBA0097AF38 /* MsgTableHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1115,6 +1253,7 @@
 		B3DA48081EE50650006B6942 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				9C89966E1EF5461E0097AF38 /* citydata.plist */,
 				B3DA48091EE50650006B6942 /* icon_tabbar_discovery.png */,
 				B3DA480A1EE50650006B6942 /* icon_tabbar_discovery_selected.png */,
 				B3DA480B1EE50650006B6942 /* icon_tabbar_homepage.png */,
@@ -1317,16 +1456,20 @@
 				B3DA484D1EE50650006B6942 /* LoginViewController.xib in Resources */,
 				B3DA48571EE50650006B6942 /* icon_tabbar_merchant_normal@2x.png in Resources */,
 				9C8995F21EED383D0097AF38 /* HomeFilterRightTableViewCell.xib in Resources */,
+				9C89964C1EF2D9FE0097AF38 /* IndentChooseAddressViewController.xib in Resources */,
 				B3DA48541EE50650006B6942 /* icon_tabbar_homepage_selected.png in Resources */,
 				B3DA48631EE50650006B6942 /* icon_tabbar_nearby_selected.png in Resources */,
 				9C8995D11EE658CE0097AF38 /* HomeShoppingCartView.xib in Resources */,
 				B38940751EE69B3100407E45 /* IQKeyboardManager.bundle in Resources */,
 				9C8996011EEE3D9D0097AF38 /* HomeFoodDetailViewController.xib in Resources */,
+				9C89966F1EF5461E0097AF38 /* citydata.plist in Resources */,
 				B389405C1EE69B3000407E45 /* LICENSE in Resources */,
 				B3DA485A1EE50650006B6942 /* icon_tabbar_mine.png in Resources */,
 				B3DA48621EE50650006B6942 /* icon_tabbar_nearby.png in Resources */,
+				9C8996511EF2DAD70097AF38 /* IndentChooseAddressTableViewCell.xib in Resources */,
 				9C8995CA1EE6589B0097AF38 /* HomeSearchView.xib in Resources */,
 				9C8995DB1EE691500097AF38 /* HomeComboRecomendViewController.xib in Resources */,
+				9C89965D1EF519280097AF38 /* MsgViewController.xib in Resources */,
 				9C89960B1EEE4C970097AF38 /* HomeComboViewController.xib in Resources */,
 				9C89961F1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.xib in Resources */,
 				9C8995CC1EE6589B0097AF38 /* HomeTableViewCell.xib in Resources */,
@@ -1341,9 +1484,12 @@
 				9C8996101EEE617A0097AF38 /* HomSearchTableViewCell.xib in Resources */,
 				9C8995ED1EED35D30097AF38 /* HomeFilterView.xib in Resources */,
 				B3DA48551EE50650006B6942 /* icon_tabbar_homepage_selected@2x.png in Resources */,
+				9C8996671EF51DBA0097AF38 /* MsgTableHeaderView.xib in Resources */,
+				9C89966C1EF52A780097AF38 /* MsgEditViewController.xib in Resources */,
 				9C8995D61EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib in Resources */,
 				B3DA485F1EE50650006B6942 /* icon_tabbar_misc@2x.png in Resources */,
 				B3DA48651EE50650006B6942 /* icon_tabbar_onsite_new@2x.png in Resources */,
+				9C89965B1EF2E28C0097AF38 /* IndentDetailViewController.xib in Resources */,
 				9C8995461EE52CE40097AF38 /* HomeViewController.xib in Resources */,
 				B3DA48661EE50650006B6942 /* icon_tabbar_onsite_selected@2x.png in Resources */,
 				9C8995FC1EED7B6A0097AF38 /* HomeStoreRightTableViewCell.xib in Resources */,
@@ -1354,13 +1500,19 @@
 				B3DA48501EE50650006B6942 /* icon_tabbar_discovery.png in Resources */,
 				B3DA48601EE50650006B6942 /* icon_tabbar_misc_selected.png in Resources */,
 				B3DA485D1EE50650006B6942 /* icon_tabbar_mine_selected@2x.png in Resources */,
+				9C8996451EF2CD1B0097AF38 /* IndentConfirmViewController.xib in Resources */,
+				9C89963F1EF2CA310097AF38 /* CollectTableViewCell.xib in Resources */,
+				9C8996621EF51A640097AF38 /* MsgTableViewCell.xib in Resources */,
+				9C89962D1EF2C0B30097AF38 /* IndentTableViewCell.xib in Resources */,
 				B3DA484B1EE50650006B6942 /* IndentViewController.xib in Resources */,
 				9C8996151EEE65050097AF38 /* ShoppingChartViewController.xib in Resources */,
 				9C8995E81EED2EDE0097AF38 /* HomeClassificationListViewController.xib in Resources */,
 				9C89961A1EEE676F0097AF38 /* ShoppingChartTableViewCell.xib in Resources */,
+				9C8996561EF2DCD90097AF38 /* IndentEditAddressViewController.xib in Resources */,
 				B3DA478B1EE50174006B6942 /* Main.storyboard in Resources */,
 				B3DA48531EE50650006B6942 /* icon_tabbar_homepage@2x.png in Resources */,
 				B3DA485E1EE50650006B6942 /* icon_tabbar_misc.png in Resources */,
+				9C8996321EF2C39D0097AF38 /* IndentCellTableViewCell.xib in Resources */,
 				9C8995AD1EE590640097AF38 /* HomeActivityViewController.xib in Resources */,
 				9C8995F71EED40F00097AF38 /* HomeStoreViewController.xib in Resources */,
 				B3DA48591EE50650006B6942 /* icon_tabbar_merchant_selected@2x.png in Resources */,
@@ -1443,6 +1595,8 @@
 				B38940611EE69B3000407E45 /* ActionSheetLocalePicker.m in Sources */,
 				B3DA48401EE50650006B6942 /* TabBar.m in Sources */,
 				B3DA483B1EE50650006B6942 /* AppDelegate+PushService.m in Sources */,
+				9C8996371EF2C9ED0097AF38 /* CollectViewController.m in Sources */,
+				9C8996441EF2CD1B0097AF38 /* IndentConfirmViewController.m in Sources */,
 				9C8996001EEE3D9D0097AF38 /* HomeFoodDetailViewController.m in Sources */,
 				B3DA483E1EE50650006B6942 /* RootViewController.m in Sources */,
 				9C8995E71EED2EDE0097AF38 /* HomeClassificationListViewController.m in Sources */,
@@ -1450,10 +1604,12 @@
 				B3DA484C1EE50650006B6942 /* LoginViewController.m in Sources */,
 				9C8995FB1EED7B6A0097AF38 /* HomeStoreRightTableViewCell.m in Sources */,
 				B38940711EE69B3100407E45 /* IQPreviousNextView.m in Sources */,
+				9C8996501EF2DAD70097AF38 /* IndentChooseAddressTableViewCell.m in Sources */,
 				B3DA486E1EE50650006B6942 /* PPNetworkCache.m in Sources */,
 				B3DA48411EE50650006B6942 /* TabBarBadge.m in Sources */,
 				9C8995D51EE65A250097AF38 /* HomeShoppingCartTableViewCell.m in Sources */,
 				B38940B31EE69D4C00407E45 /* UIFont+Fonts.m in Sources */,
+				9C8996651EF51DA90097AF38 /* MsgTableHeaderView.m in Sources */,
 				B38940761EE69B3100407E45 /* LICENSE.md in Sources */,
 				B38940651EE69B3000407E45 /* SWActionSheet.m in Sources */,
 				9C8996141EEE65050097AF38 /* ShoppingChartViewController.m in Sources */,
@@ -1464,8 +1620,10 @@
 				B3DA484E1EE50650006B6942 /* MsgViewController.m in Sources */,
 				B3DA48491EE50650006B6942 /* HomeViewController.m in Sources */,
 				9C89961E1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.m in Sources */,
+				9C89962C1EF2C0B30097AF38 /* IndentTableViewCell.m in Sources */,
 				9C8995EB1EED35C50097AF38 /* HomeFilterView.m in Sources */,
 				B38940B11EE69D4C00407E45 /* UIBarButtonItem+Extension.m in Sources */,
+				9C8996551EF2DCD90097AF38 /* IndentEditAddressViewController.m in Sources */,
 				B38940771EE69B3100407E45 /* README.md in Sources */,
 				B389409B1EE69CEA00407E45 /* AJImageheadData.m in Sources */,
 				B38940B41EE69D4C00407E45 /* UIImage+SearchHeight.m in Sources */,
@@ -1485,7 +1643,10 @@
 				B3DA48441EE50650006B6942 /* NJKWebViewProgressView.m in Sources */,
 				B38940B61EE69D4C00407E45 /* UIView+CCExtension.m in Sources */,
 				B389406A1EE69B3100407E45 /* IQUIView+Hierarchy.m in Sources */,
+				9C8996611EF51A640097AF38 /* MsgTableViewCell.m in Sources */,
 				9C89960A1EEE4C970097AF38 /* HomeComboViewController.m in Sources */,
+				9C89965A1EF2E28C0097AF38 /* IndentDetailViewController.m in Sources */,
+				9C8996381EF2C9ED0097AF38 /* DisCountViewController.m in Sources */,
 				B3DA47821EE50174006B6942 /* main.m in Sources */,
 				B3DA48701EE50650006B6942 /* OpenUDID.m in Sources */,
 				9C8996051EEE431F0097AF38 /* HomeStoreDetailViewController.m in Sources */,
@@ -1499,6 +1660,8 @@
 				B38940681EE69B3000407E45 /* IQUIScrollView+Additions.m in Sources */,
 				9C8995DA1EE691500097AF38 /* HomeComboRecomendViewController.m in Sources */,
 				B3DA48681EE50650006B6942 /* AESCipher.m in Sources */,
+				9C8996311EF2C39D0097AF38 /* IndentCellTableViewCell.m in Sources */,
+				9C89966B1EF52A780097AF38 /* MsgEditViewController.m in Sources */,
 				B3DA48421EE50650006B6942 /* TabBarItem.m in Sources */,
 				B389406D1EE69B3100407E45 /* IQKeyboardManager.m in Sources */,
 				B389406E1EE69B3100407E45 /* IQKeyboardReturnKeyHandler.m in Sources */,
@@ -1518,14 +1681,17 @@
 				B38940B01EE69D4C00407E45 /* MBProgressHUD+HH.m in Sources */,
 				B389405E1EE69B3000407E45 /* ActionSheetCustomPicker.m in Sources */,
 				9C8995E31EE996DB0097AF38 /* BorderLineButton.m in Sources */,
+				9C89963E1EF2CA310097AF38 /* CollectTableViewCell.m in Sources */,
 				B38940641EE69B3000407E45 /* DistancePickerView.m in Sources */,
 				B38940601EE69B3000407E45 /* ActionSheetDistancePicker.m in Sources */,
 				B38940B21EE69D4C00407E45 /* UIColor+HexString.m in Sources */,
 				B38940631EE69B3000407E45 /* ActionSheetStringPicker.m in Sources */,
 				B3DA48481EE50650006B6942 /* AppManager.m in Sources */,
+				9C89964B1EF2D9FE0097AF38 /* IndentChooseAddressViewController.m in Sources */,
 				9C89960F1EEE617A0097AF38 /* HomSearchTableViewCell.m in Sources */,
 				9C89955A1EE57DA10097AF38 /* LCPanNavigationController.m in Sources */,
 				9C8996191EEE676F0097AF38 /* ShoppingChartTableViewCell.m in Sources */,
+				9C8996401EF2CA310097AF38 /* TNCustomSegment.m in Sources */,
 				B3DA483C1EE50650006B6942 /* AppDelegate.m in Sources */,
 				B38940731EE69B3100407E45 /* IQToolbar.m in Sources */,
 				9C8995F11EED383D0097AF38 /* HomeFilterRightTableViewCell.m in Sources */,
@@ -1678,7 +1844,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YYDineTogether/PrefixHeader.pch";
 				INFOPLIST_FILE = YYDineTogether/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lichunfei.YYDineTogether;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1692,7 +1858,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YYDineTogether/PrefixHeader.pch";
 				INFOPLIST_FILE = YYDineTogether/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lichunfei.YYDineTogether;
 				PRODUCT_NAME = "$(TARGET_NAME)";

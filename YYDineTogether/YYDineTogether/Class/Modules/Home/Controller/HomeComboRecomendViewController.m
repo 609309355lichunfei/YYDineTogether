@@ -18,6 +18,11 @@
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *titleImageView;
+@property (strong, nonatomic) HomeShoppingCartView *shoppingView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shoppingCartBTBottom;
+@property (weak, nonatomic) IBOutlet UIView *shoppingCartView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainScrollViewToBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightToMainVIewHeight;
 
 @end
 
@@ -30,6 +35,15 @@
 }
 
 - (void)registUI {
+    if (_type == ViewControllerTypeTypeStore) {
+        _shoppingCartView.hidden = YES;
+        _tableViewHeightToMainVIewHeight.constant = -75;
+        _mainScrollViewToBottom.constant = 0;
+    } else {
+        _shoppingView.hidden = NO;
+        _tableViewHeightToMainVIewHeight.constant = -115;
+        _mainScrollViewToBottom.constant = 70;
+    }
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeComboRecomendTableViewCell"];
 }
 - (IBAction)backAction:(id)sender {
@@ -37,6 +51,22 @@
 }
 - (IBAction)orderAction:(id)sender {
     
+}
+- (IBAction)clearShoppingCartAction:(id)sender {
+    ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
+    [self.navigationController pushViewController:shoppingCartVC animated:YES];
+}
+
+- (IBAction)shoppingCartAction:(id)sender {
+    if (_shoppingView == nil) {
+        self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
+        [_shoppingView showShoppingCartView];
+        self.shoppingCartBTBottom.constant = 0;
+    } else {
+        [_shoppingView removeShoppingCartView];
+        self.shoppingCartBTBottom.constant = 25;
+        _shoppingView = nil;
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -68,7 +98,7 @@
     if (scrollView == _mainScrollView) {
         if (scrollView.contentOffset.y > 260) {
             if (scrollView.contentOffset.y > _mainScrollViewLastContentOffSetY) {
-                [scrollView setContentOffset:CGPointMake(0, 280) animated:NO];
+                [scrollView scrollToBottomAnimated:NO];
                 scrollView.scrollEnabled = NO;
                 _tableView.scrollEnabled = YES;
                 _tableView.bounces = YES;

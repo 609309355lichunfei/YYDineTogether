@@ -29,8 +29,8 @@
     // Configure the view for the selected state
 }
 
-- (void)setType:(HomeTableViewCellType)type {
-    if (type == HomeTableViewCellTypeStore) {
+- (void)setType:(ViewControllerType)type {
+    if (type == ViewControllerTypeTypeStore) {
         self.storeView.hidden = NO;
         self.numberView.hidden = YES;
     } else {

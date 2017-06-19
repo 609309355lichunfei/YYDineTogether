@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,10 +39,10 @@
                                     <state key="normal" image="back">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="backAction:" destination="-1" eventType="touchUpInside" id="ODz-5L-Tef"/>
+                                    </connections>
                                 </button>
-                                <connections>
-                                    <action selector="backAction:" destination="-1" id="1Sb-Ax-skx"/>
-                                </connections>
                             </barButtonItem>
                         </navigationItem>
                     </items>
@@ -117,6 +116,9 @@
                             <state key="normal" title="结算">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="payAction:" destination="-1" eventType="touchUpInside" id="hvw-22-syW"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
