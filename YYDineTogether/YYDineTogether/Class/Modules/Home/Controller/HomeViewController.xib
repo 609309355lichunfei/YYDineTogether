@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -13,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
+                <outlet property="cityLabel" destination="7KY-nk-wEs" id="22M-Sd-4Xx"/>
                 <outlet property="foodButton" destination="VqW-Ia-s7u" id="gcn-g0-yFl"/>
                 <outlet property="mainScrollView" destination="T1T-qb-twY" id="MQa-80-n1e"/>
                 <outlet property="mainView" destination="yX1-v8-0fv" id="6IQ-0P-YB6"/>
@@ -58,6 +58,7 @@
                                     </constraints>
                                 </imageView>
                             </subviews>
+                            <gestureRecognizers/>
                             <constraints>
                                 <constraint firstItem="7KY-nk-wEs" firstAttribute="leading" secondItem="bYr-Ji-DxQ" secondAttribute="leading" id="Alp-pi-NbB"/>
                                 <constraint firstAttribute="trailing" secondItem="7KY-nk-wEs" secondAttribute="trailing" id="LUa-kL-HsW"/>
@@ -66,6 +67,9 @@
                                 <constraint firstItem="7KY-nk-wEs" firstAttribute="top" secondItem="ESY-ML-s3F" secondAttribute="bottom" id="ec9-pO-cjC"/>
                                 <constraint firstItem="ESY-ML-s3F" firstAttribute="top" secondItem="bYr-Ji-DxQ" secondAttribute="top" id="siQ-0D-lxH"/>
                             </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="3Gu-PM-ZSC" appends="YES" id="MUI-ac-X9b"/>
+                            </connections>
                         </view>
                     </subviews>
                     <color key="backgroundColor" red="0.85882352939999995" green="0.32156862749999998" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -409,6 +413,11 @@
         <tapGestureRecognizer id="p3L-xe-nWm">
             <connections>
                 <action selector="comboAction:" destination="-1" id="xj6-V7-zux"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="3Gu-PM-ZSC" userLabel="locationTap">
+            <connections>
+                <action selector="locationAction:" destination="-1" id="5bo-c3-WC2"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

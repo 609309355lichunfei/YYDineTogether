@@ -16,6 +16,7 @@
 #import "HomeFoodDetailViewController.h"
 #import "HomeComboViewController.h"
 #import "ShoppingChartViewController.h"
+#import "HomeCityViewController.h"
 
 
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate>{
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *storeButton;
 @property (weak, nonatomic) IBOutlet UIButton *foodButton;
+@property (weak, nonatomic) IBOutlet UILabel *cityLabel;
 
 @property (strong, nonatomic) HomeSearchView *homeSearchView;
 @end
@@ -37,9 +39,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self registUI];
-    NSArray *cityArray =[NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"citydata" ofType:@"plist"]];
-    NSLog(@"cityArray = %@",cityArray);
-    
 }
 
 - (void)registUI {
@@ -48,6 +47,13 @@
     _tableViewLastContentOffSetY = 0;
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeTableViewCell"];
 }
+
+- (IBAction)locationAction:(id)sender {
+    HomeCityViewController *cityVC = [[HomeCityViewController alloc]init];
+    cityVC.cityLabel = self.cityLabel;
+    [self presentViewController:cityVC animated:YES completion:nil];
+}
+
 - (IBAction)shoppingCartAction:(id)sender {
     ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
     [self.tabBarController.navigationController pushViewController:shoppingCartVC animated:YES];
