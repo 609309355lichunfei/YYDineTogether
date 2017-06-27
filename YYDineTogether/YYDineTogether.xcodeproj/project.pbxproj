@@ -78,6 +78,8 @@
 		9C89966F1EF5461E0097AF38 /* citydata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C89966E1EF5461E0097AF38 /* citydata.plist */; };
 		9C8996731EF7B3440097AF38 /* HomeCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996711EF7B3440097AF38 /* HomeCityViewController.m */; };
 		9C8996741EF7B3440097AF38 /* HomeCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996721EF7B3440097AF38 /* HomeCityViewController.xib */; };
+		9C8997D11F0095780097AF38 /* HomeTableViewFunctionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8997CF1F0095780097AF38 /* HomeTableViewFunctionCell.m */; };
+		9C8997D21F0095780097AF38 /* HomeTableViewFunctionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8997D01F0095780097AF38 /* HomeTableViewFunctionCell.xib */; };
 		A3091578DC3875A9216040FB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3803D2764EEAFE68D56C80 /* libPods.a */; };
 		B389405C1EE69B3000407E45 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B389401D1EE69B3000407E45 /* LICENSE */; };
 		B389405D1EE69B3000407E45 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B38940201EE69B3000407E45 /* AbstractActionSheetPicker.m */; };
@@ -315,6 +317,9 @@
 		9C8996701EF7B3440097AF38 /* HomeCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCityViewController.h; sourceTree = "<group>"; };
 		9C8996711EF7B3440097AF38 /* HomeCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCityViewController.m; sourceTree = "<group>"; };
 		9C8996721EF7B3440097AF38 /* HomeCityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCityViewController.xib; sourceTree = "<group>"; };
+		9C8997CE1F0095780097AF38 /* HomeTableViewFunctionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewFunctionCell.h; sourceTree = "<group>"; };
+		9C8997CF1F0095780097AF38 /* HomeTableViewFunctionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewFunctionCell.m; sourceTree = "<group>"; };
+		9C8997D01F0095780097AF38 /* HomeTableViewFunctionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTableViewFunctionCell.xib; sourceTree = "<group>"; };
 		AC51B9B1ED5346D951C173E8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B389401D1EE69B3000407E45 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B389401F1EE69B3000407E45 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractActionSheetPicker.h; sourceTree = "<group>"; };
@@ -1132,6 +1137,9 @@
 				9C89961B1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.h */,
 				9C89961C1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.m */,
 				9C89961D1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.xib */,
+				9C8997CE1F0095780097AF38 /* HomeTableViewFunctionCell.h */,
+				9C8997CF1F0095780097AF38 /* HomeTableViewFunctionCell.m */,
+				9C8997D01F0095780097AF38 /* HomeTableViewFunctionCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1521,6 +1529,7 @@
 				B3DA478B1EE50174006B6942 /* Main.storyboard in Resources */,
 				B3DA48531EE50650006B6942 /* icon_tabbar_homepage@2x.png in Resources */,
 				B3DA485E1EE50650006B6942 /* icon_tabbar_misc.png in Resources */,
+				9C8997D21F0095780097AF38 /* HomeTableViewFunctionCell.xib in Resources */,
 				9C8996321EF2C39D0097AF38 /* IndentCellTableViewCell.xib in Resources */,
 				9C8995AD1EE590640097AF38 /* HomeActivityViewController.xib in Resources */,
 				9C8995F71EED40F00097AF38 /* HomeStoreViewController.xib in Resources */,
@@ -1648,6 +1657,7 @@
 				B38940721EE69B3100407E45 /* IQTitleBarButtonItem.m in Sources */,
 				B38940941EE69CEA00407E45 /* MineViewController.m in Sources */,
 				B3DA483A1EE50650006B6942 /* AppDelegate+AppService.m in Sources */,
+				9C8997D11F0095780097AF38 /* HomeTableViewFunctionCell.m in Sources */,
 				B3DA486F1EE50650006B6942 /* PPNetworkHelper.m in Sources */,
 				B389409A1EE69CEA00407E45 /* shippingViewController.m in Sources */,
 				B3DA48441EE50650006B6942 /* NJKWebViewProgressView.m in Sources */,

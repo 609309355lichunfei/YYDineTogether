@@ -17,18 +17,14 @@
 #import "HomeComboViewController.h"
 #import "ShoppingChartViewController.h"
 #import "HomeCityViewController.h"
+#import "HomeTableViewFunctionCell.h"
 
 
-@interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate>{
+@interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate ,UIGestureRecognizerDelegate>{
     BOOL _isStoreDataSource;
-    CGFloat _mainScrollViewLastContentOffSetY;
-    CGFloat _tableViewLastContentOffSetY;
 }
-@property (weak, nonatomic) IBOutlet UIView *mainView;
+@property (weak, nonatomic) IBOutlet UIView *barView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
-@property (weak, nonatomic) IBOutlet UIButton *storeButton;
-@property (weak, nonatomic) IBOutlet UIButton *foodButton;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
 
 @property (strong, nonatomic) HomeSearchView *homeSearchView;
@@ -43,9 +39,9 @@
 
 - (void)registUI {
     _isStoreDataSource = YES;
-    _mainScrollViewLastContentOffSetY = 0;
-    _tableViewLastContentOffSetY = 0;
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewFunctionCell" bundle:nil] forCellReuseIdentifier:@"HomeTableViewFunctionCell"];
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (IBAction)locationAction:(id)sender {
@@ -54,29 +50,29 @@
     [self presentViewController:cityVC animated:YES completion:nil];
 }
 
-- (IBAction)shoppingCartAction:(id)sender {
+- (void)shoppingCartAction:(id)sender {
     ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
     [self.tabBarController.navigationController pushViewController:shoppingCartVC animated:YES];
 }
 
-- (IBAction)cateAction:(id)sender {
+- (void)cateAction:(id)sender {
     HomeClassificationListViewController *classificationVC = [[HomeClassificationListViewController alloc]init];
     [self.tabBarController.navigationController pushViewController:classificationVC animated:YES
      ];
 }
 
-- (IBAction)drinkAction:(id)sender {
+- (void)drinkAction:(id)sender {
     HomeStoreViewController *controller = [[HomeStoreViewController alloc]init];
     [self.tabBarController.navigationController pushViewController:controller animated:YES];
 }
 
-- (IBAction)fruitAction:(id)sender {
+- (void)fruitAction:(id)sender {
     
     HomeActivityViewController *controller = [[HomeActivityViewController alloc]init];
     [self.tabBarController.navigationController pushViewController:controller animated:YES];
     
 }
-- (IBAction)supermarketAction:(id)sender {
+- (void)supermarketAction:(id)sender {
     
     HomeActivityViewController *controller = [[HomeActivityViewController alloc]init];
     [self.tabBarController.navigationController pushViewController:controller animated:YES];
@@ -93,38 +89,61 @@
     [self.tabBarController.navigationController pushViewController:comboVC animated:YES];
 }
 
-- (IBAction)storeAction:(id)sender {
-    if (!_isStoreDataSource) {
-        [_storeButton setTitleColor:RGB(219, 82, 64) forState:(UIControlStateNormal)];
-        [_foodButton setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
-        _isStoreDataSource = YES;
-        [self.tableView reloadData];
-    }
-}
-
-- (IBAction)foodAction:(id)sender {
-    if (_isStoreDataSource) {
-        [_foodButton setTitleColor:RGB(219, 82, 64) forState:(UIControlStateNormal)];
-        [_storeButton setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
-        _isStoreDataSource = NO;
-        [self.tableView reloadData];
-    }
-}
-
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return 457;
+    }
     return 128;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 0) {
+        return 1;
+    }
     return 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        HomeTableViewFunctionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableViewFunctionCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        MJWeakSelf;
+        cell.cateBlock = ^(){
+            [weakSelf cateAction:nil];
+        };
+        cell.drinkBlock = ^(){
+            [weakSelf drinkAction:nil];
+        };
+        cell.fruitBlock = ^(){
+            [weakSelf fruitAction:nil];
+        };
+        cell.supermarketBlock = ^(){
+            [weakSelf supermarketAction:nil];
+        };
+        __weak HomeTableViewFunctionCell *weakCell = cell;
+        cell.merchantBlock = ^(){
+            if (!_isStoreDataSource) {
+                [weakCell.merchantBt setTitleColor:RGB(253, 89, 95) forState:(UIControlStateNormal)];
+                [weakCell.dishesBt setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
+                _isStoreDataSource = YES;
+                [weakSelf.tableView reloadSection:1 withRowAnimation:(UITableViewRowAnimationNone)];
+            }
+        };
+        cell.dishesBlock = ^(){
+            if (_isStoreDataSource) {
+                [weakCell.dishesBt setTitleColor:RGB(253, 89, 95) forState:(UIControlStateNormal)];
+                [weakCell.merchantBt setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
+                _isStoreDataSource = NO;
+                [weakSelf.tableView reloadSection:1 withRowAnimation:(UITableViewRowAnimationNone)];
+            }
+        };
+        return cell;
+    }
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.type = _isStoreDataSource ? ViewControllerTypeTypeStore : ViewControllerTypeTypeFood;
@@ -133,6 +152,9 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return;
+    }
     if (_isStoreDataSource) {
         HomeStoreViewController *storeVC = [[HomeStoreViewController alloc] init];
         [self.tabBarController.navigationController pushViewController:storeVC animated:YES];
@@ -147,48 +169,39 @@
     self.homeSearchView = [[[NSBundle mainBundle] loadNibNamed:@"HomeSearchView" owner:self options:nil] lastObject];
     _homeSearchView.frame = CGRectMake(0, 64, KScreenWidth, kScreenHeight - 64);
     [kAppWindow addSubview:_homeSearchView];
+    self.barView.backgroundColor = [UIColor whiteColor];
     return YES;
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
     [_homeSearchView removeFromSuperview];
+    if (_tableView.contentOffset.y > 450) {
+        self.barView.backgroundColor = [UIColor whiteColor];
+    } else {
+        self.barView.backgroundColor = [UIColor clearColor];
+    }
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
     [_homeSearchView removeFromSuperview];
-    [_mainScrollView setContentOffset:CGPointMake(0, 256) animated:NO];
-    _mainScrollView.scrollEnabled = NO;
     _tableView.scrollEnabled = YES;
     _tableView.bounces = YES;
+    if (_tableView.contentOffset.y > 450) {
+        self.barView.backgroundColor = [UIColor whiteColor];
+    } else {
+        self.barView.backgroundColor = [UIColor clearColor];
+    }
 }
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView == _mainScrollView) {
-        if (scrollView.contentOffset.y > 240) {
-            if (scrollView.contentOffset.y > _mainScrollViewLastContentOffSetY) {
-                [scrollView scrollToBottomAnimated:NO];
-                scrollView.scrollEnabled = NO;
-                _tableView.scrollEnabled = YES;
-                _tableView.bounces = YES;
-            }
-        }
-        
-        _mainScrollViewLastContentOffSetY = scrollView.contentOffset.y;
-    }
-    
-    if (scrollView == _tableView) {
-        if (scrollView.contentOffset.y < 10) {
-            if (scrollView.contentOffset.y < _tableViewLastContentOffSetY) {
-                [scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-                scrollView.scrollEnabled = NO;
-                _mainScrollView.scrollEnabled = YES;
-                _mainScrollView.bounces = YES;
-            }
-        }
-        _tableViewLastContentOffSetY = scrollView.contentOffset.y;
+    if (scrollView.contentOffset.y > 450) {
+        self.barView.backgroundColor = [UIColor whiteColor];
+    } else {
+        self.barView.backgroundColor = [UIColor clearColor];
     }
 }
+
 
 @end
