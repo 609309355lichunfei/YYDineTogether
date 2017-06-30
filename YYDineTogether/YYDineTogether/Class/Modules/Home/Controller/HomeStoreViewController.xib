@@ -212,7 +212,7 @@
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PLH-Ey-1hX">
-                            <rect key="frame" x="128" y="35" width="243" height="422"/>
+                            <rect key="frame" x="128" y="35" width="243" height="434"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="7bW-xV-cxf"/>
@@ -220,7 +220,7 @@
                             </connections>
                         </tableView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dwN-CR-Qav">
-                            <rect key="frame" x="0.0" y="35" width="120" height="422"/>
+                            <rect key="frame" x="0.0" y="35" width="120" height="434"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="71b-Tm-ZEe"/>
@@ -288,7 +288,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZL-xq-Ngx">
-                            <rect key="frame" x="12" y="448" width="44" height="44"/>
+                            <rect key="frame" x="12" y="473" width="44" height="44"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rpa-8X-LPo">
                                     <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -313,7 +313,7 @@
                     <constraints>
                         <constraint firstItem="Nkb-bE-uof" firstAttribute="top" secondItem="vJF-Gm-F9s" secondAttribute="top" id="01B-zm-Mzu"/>
                         <constraint firstItem="PLH-Ey-1hX" firstAttribute="leading" secondItem="dwN-CR-Qav" secondAttribute="trailing" constant="8" id="2L4-Lg-YF2"/>
-                        <constraint firstAttribute="bottom" secondItem="kZL-xq-Ngx" secondAttribute="bottom" constant="25" id="37m-NR-VzG"/>
+                        <constraint firstAttribute="bottom" secondItem="kZL-xq-Ngx" secondAttribute="bottom" id="37m-NR-VzG"/>
                         <constraint firstItem="kZL-xq-Ngx" firstAttribute="leading" secondItem="vJF-Gm-F9s" secondAttribute="leading" constant="12" id="9Nk-0A-y79"/>
                         <constraint firstAttribute="bottom" secondItem="9zO-K4-ziH" secondAttribute="bottom" id="9Pl-bI-flT"/>
                         <constraint firstItem="qwq-Mo-RWF" firstAttribute="leading" secondItem="vJF-Gm-F9s" secondAttribute="leading" id="9v3-gl-1Us"/>
@@ -324,7 +324,7 @@
                         <constraint firstAttribute="trailing" secondItem="Nkb-bE-uof" secondAttribute="trailing" id="HGN-6T-Q4N"/>
                         <constraint firstItem="kZL-xq-Ngx" firstAttribute="leading" secondItem="9zO-K4-ziH" secondAttribute="leading" constant="12" id="HaZ-1T-t05"/>
                         <constraint firstAttribute="trailing" secondItem="PLH-Ey-1hX" secondAttribute="trailing" constant="4" id="PNv-MI-H4v"/>
-                        <constraint firstAttribute="bottom" secondItem="dwN-CR-Qav" secondAttribute="bottom" constant="60" id="PkX-bi-eBl"/>
+                        <constraint firstAttribute="bottom" secondItem="dwN-CR-Qav" secondAttribute="bottom" constant="48" id="PkX-bi-eBl"/>
                         <constraint firstItem="dwN-CR-Qav" firstAttribute="leading" secondItem="vJF-Gm-F9s" secondAttribute="leading" id="VbR-vC-149"/>
                         <constraint firstItem="Nkb-bE-uof" firstAttribute="width" secondItem="iE0-QJ-7uQ" secondAttribute="width" id="XdM-0X-mOL"/>
                         <constraint firstItem="PLH-Ey-1hX" firstAttribute="height" secondItem="dwN-CR-Qav" secondAttribute="height" id="myW-7l-LV8"/>

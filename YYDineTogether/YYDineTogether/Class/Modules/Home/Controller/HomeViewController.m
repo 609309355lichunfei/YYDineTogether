@@ -35,6 +35,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self registUI];
+    [PPNetworkHelper POST:URL_Register parameters:@{@"username":@"15325747141",@"password":@"123456"} success:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 - (void)registUI {
@@ -92,7 +97,7 @@
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 457;
+        return 507;
     }
     return 128;
 }
@@ -118,6 +123,9 @@
         };
         cell.drinkBlock = ^(){
             [weakSelf drinkAction:nil];
+        };
+        cell.comboBlock = ^(){
+            [weakSelf comboAction:nil];
         };
         cell.fruitBlock = ^(){
             [weakSelf fruitAction:nil];

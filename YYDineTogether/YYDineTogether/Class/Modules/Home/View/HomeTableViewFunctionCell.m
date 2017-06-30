@@ -36,6 +36,9 @@
 - (IBAction)drinkAction:(id)sender {
     _drinkBlock();
 }
+- (IBAction)comboAction:(id)sender {
+    _comboBlock();
+}
 - (IBAction)fruitAction:(id)sender {
     _fruitBlock();
 }

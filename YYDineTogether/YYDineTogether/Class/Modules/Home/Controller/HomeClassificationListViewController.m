@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *myTitleLabel;
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 
+@property (strong, nonatomic) HomeShoppingCartView *shoppingView;
+
 @property (strong, nonatomic)  HomeFilterView *filterView;
 
 
@@ -59,6 +61,28 @@
         self.myTitleLabel.text = @"美食店";
     }
 }
+
+- (IBAction)clearShoppingCartAction:(id)sender {
+    ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
+    [self.navigationController pushViewController:shoppingCartVC animated:YES];
+}
+
+- (IBAction)shoppingCartAction:(id)sender {
+    if (_shoppingView == nil) {
+        self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
+            [_shoppingView removeShoppingCartView];
+            _shoppingView = nil;
+        }];
+        [_shoppingView addGestureRecognizer:tap];
+        [_shoppingView showShoppingCartView];
+    } else {
+        [_shoppingView removeShoppingCartView];
+        _shoppingView = nil;
+    }
+}
+
+
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 128;

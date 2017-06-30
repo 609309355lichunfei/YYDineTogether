@@ -46,12 +46,15 @@
     }
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeComboRecomendTableViewCell"];
 }
+
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 - (IBAction)orderAction:(id)sender {
     
 }
+
 - (IBAction)clearShoppingCartAction:(id)sender {
     ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
     [self.navigationController pushViewController:shoppingCartVC animated:YES];
@@ -60,11 +63,14 @@
 - (IBAction)shoppingCartAction:(id)sender {
     if (_shoppingView == nil) {
         self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
+            [_shoppingView removeShoppingCartView];
+            _shoppingView = nil;
+        }];
+        [_shoppingView addGestureRecognizer:tap];
         [_shoppingView showShoppingCartView];
-        self.shoppingCartBTBottom.constant = 0;
     } else {
         [_shoppingView removeShoppingCartView];
-        self.shoppingCartBTBottom.constant = 25;
         _shoppingView = nil;
     }
 }

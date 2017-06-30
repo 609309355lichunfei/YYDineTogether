@@ -48,7 +48,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="宁波" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7KY-nk-wEs">
-                                            <rect key="frame" x="0.0" y="11.5" width="50" height="21"/>
+                                            <rect key="frame" x="0.0" y="12" width="50" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="C6h-qp-35w"/>
                                             </constraints>
@@ -102,16 +102,6 @@
             </constraints>
             <point key="canvasLocation" x="78.5" y="129.5"/>
         </view>
-        <tapGestureRecognizer id="MU1-hE-fqf">
-            <connections>
-                <action selector="comboActivityAction:" destination="-1" id="rgi-i6-tgI"/>
-            </connections>
-        </tapGestureRecognizer>
-        <tapGestureRecognizer id="p3L-xe-nWm">
-            <connections>
-                <action selector="comboAction:" destination="-1" id="xj6-V7-zux"/>
-            </connections>
-        </tapGestureRecognizer>
         <tapGestureRecognizer id="3Gu-PM-ZSC" userLabel="locationTap">
             <connections>
                 <action selector="locationAction:" destination="-1" id="5bo-c3-WC2"/>

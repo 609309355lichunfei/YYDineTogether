@@ -37,7 +37,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_green" translatesAutoresizingMaskIntoConstraints="NO" id="StY-EZ-mUx">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_green" translatesAutoresizingMaskIntoConstraints="NO" id="StY-EZ-mUx">
                         <rect key="frame" x="216.5" y="12" width="16" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="3OV-d0-B6f"/>
@@ -146,10 +146,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9zZ-nd-kc5">
-                        <rect key="frame" x="0.0" y="124.5" width="380" height="4"/>
+                        <rect key="frame" x="0.0" y="127.5" width="380" height="1"/>
                         <color key="backgroundColor" red="0.88719951923076912" green="0.88719951923076912" blue="0.88719951923076912" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="4" id="FIf-N9-WC8"/>
+                            <constraint firstAttribute="height" constant="1" id="FIf-N9-WC8"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9e-TR-LmY">

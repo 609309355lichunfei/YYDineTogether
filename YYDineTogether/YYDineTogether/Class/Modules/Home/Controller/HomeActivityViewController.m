@@ -36,11 +36,14 @@
 - (IBAction)shoppingCartAction:(id)sender {
     if (_shoppingView == nil) {
         self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
+            [_shoppingView removeShoppingCartView];
+            _shoppingView = nil;
+        }];
+        [_shoppingView addGestureRecognizer:tap];
         [_shoppingView showShoppingCartView];
-        self.shopCartBTBottom.constant = 0;
     } else {
         [_shoppingView removeShoppingCartView];
-        self.shopCartBTBottom.constant = 25;
         _shoppingView = nil;
     }
 }

@@ -323,7 +323,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PHg-KB-olo">
-                    <rect key="frame" x="12" y="598" width="44" height="44"/>
+                    <rect key="frame" x="12" y="623" width="44" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="von-dw-JnG">
                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -353,7 +353,7 @@
                 <constraint firstItem="dEv-Lt-by7" firstAttribute="leading" secondItem="Fyr-Za-jAa" secondAttribute="leading" id="CAX-Qg-NzJ"/>
                 <constraint firstAttribute="bottom" secondItem="U9l-9B-nU3" secondAttribute="bottom" id="Ifu-7y-xFL"/>
                 <constraint firstAttribute="trailing" secondItem="U9l-9B-nU3" secondAttribute="trailing" id="Ip5-CC-Jhf"/>
-                <constraint firstAttribute="bottom" secondItem="PHg-KB-olo" secondAttribute="bottom" constant="25" id="IsR-Mn-Oz7"/>
+                <constraint firstAttribute="bottom" secondItem="PHg-KB-olo" secondAttribute="bottom" id="IsR-Mn-Oz7"/>
                 <constraint firstAttribute="trailing" secondItem="oaP-gN-d0t" secondAttribute="trailing" id="MZD-LH-X4Z"/>
                 <constraint firstAttribute="trailing" secondItem="tMl-gv-BYQ" secondAttribute="trailing" id="Rfv-HP-HaV"/>
                 <constraint firstItem="U9l-9B-nU3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TjN-Mf-aeP"/>

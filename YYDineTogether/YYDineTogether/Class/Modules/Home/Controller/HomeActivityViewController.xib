@@ -53,13 +53,13 @@
                     </items>
                 </navigationBar>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QtN-ll-UqZ">
-                    <rect key="frame" x="0.0" y="64" width="375" height="528"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                     <subviews>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LiS-fg-LMJ">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="528"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ff-vN-Te0">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="688"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="714"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M5z-lQ-Zkb">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="160"/>
@@ -105,7 +105,7 @@
                                             </constraints>
                                         </view>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RGi-aN-neT">
-                                            <rect key="frame" x="4" y="172" width="366" height="466"/>
+                                            <rect key="frame" x="4" y="172" width="366" height="492"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <outlet property="dataSource" destination="-1" id="eTu-RW-NgQ"/>
@@ -147,7 +147,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnI-KA-ADI">
-                    <rect key="frame" x="4" y="542" width="367" height="50"/>
+                    <rect key="frame" x="4" y="568" width="367" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22Q-jR-XFL">
                             <rect key="frame" x="277" y="11.5" width="70" height="27"/>
@@ -237,7 +237,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NXQ-36-U7n">
-                    <rect key="frame" x="12" y="598" width="44" height="44"/>
+                    <rect key="frame" x="12" y="623" width="44" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGE-8Q-abl">
                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -267,9 +267,9 @@
                 <constraint firstAttribute="trailing" secondItem="RZu-Mj-KBO" secondAttribute="trailing" id="B3V-96-Aqn"/>
                 <constraint firstItem="RZu-Mj-KBO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Eku-eH-gr1"/>
                 <constraint firstAttribute="trailing" secondItem="BLz-m0-1Va" secondAttribute="trailing" id="JIm-Gd-C73"/>
-                <constraint firstItem="RZu-Mj-KBO" firstAttribute="top" secondItem="QtN-ll-UqZ" secondAttribute="bottom" constant="30" id="Nur-6B-2DS"/>
+                <constraint firstItem="RZu-Mj-KBO" firstAttribute="top" secondItem="QtN-ll-UqZ" secondAttribute="bottom" constant="4" id="Nur-6B-2DS"/>
                 <constraint firstItem="bnI-KA-ADI" firstAttribute="trailing" secondItem="QtN-ll-UqZ" secondAttribute="trailing" constant="-4" id="Yww-5X-8qc"/>
-                <constraint firstAttribute="bottom" secondItem="NXQ-36-U7n" secondAttribute="bottom" constant="25" id="Yzq-tH-zCg"/>
+                <constraint firstAttribute="bottom" secondItem="NXQ-36-U7n" secondAttribute="bottom" id="Yzq-tH-zCg"/>
                 <constraint firstItem="BLz-m0-1Va" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bOD-d9-5mX"/>
                 <constraint firstAttribute="bottom" secondItem="RZu-Mj-KBO" secondAttribute="bottom" id="blp-eE-M5F"/>
                 <constraint firstItem="BLz-m0-1Va" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="imH-Lz-XVH"/>

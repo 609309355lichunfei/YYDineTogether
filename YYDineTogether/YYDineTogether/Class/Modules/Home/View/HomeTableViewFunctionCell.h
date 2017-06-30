@@ -21,5 +21,6 @@
 @property (copy, nonatomic) void(^supermarketBlock)();
 @property (copy, nonatomic) void(^merchantBlock)();
 @property (copy, nonatomic) void(^dishesBlock)();
+@property (copy, nonatomic) void(^comboBlock)();
 
 @end

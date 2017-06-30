@@ -28,7 +28,7 @@
 #if DevelopSever
 
 /**开发服务器*/
-#define URL_main @"http://192.168.20.31:20000"
+#define URL_main @"http://116.62.206.155:8000"
 //#define URL_main @"http://192.168.11.122:8090" //展鹏
 
 #elif TestSever
@@ -50,5 +50,5 @@
 //NSString *const URL_Test = @"api/recharge/price/list";
 #define URL_Test @"/api/cast/home/start"
 
-
+#define URL_Register [NSString stringWithFormat:@"%@/register/", URL_main]
 #endif /* URLMacros_h */

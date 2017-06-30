@@ -59,7 +59,7 @@
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ndE-1g-mCs">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="533"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="555"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a9N-Sh-8wO">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="848"/>
@@ -194,10 +194,10 @@
                             </connections>
                         </scrollView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F6V-BG-QQv">
-                            <rect key="frame" x="0.0" y="533" width="375" height="70"/>
+                            <rect key="frame" x="0.0" y="559" width="375" height="44"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPh-He-1nn">
-                                    <rect key="frame" x="0.0" y="25" width="375" height="45"/>
+                                    <rect key="frame" x="0.0" y="-1" width="375" height="45"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77P-EZ-2R6">
                                             <rect key="frame" x="255" y="0.0" width="120" height="45"/>
@@ -254,7 +254,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ais-qg-XYw">
-                                    <rect key="frame" x="12" y="1" width="44" height="44"/>
+                                    <rect key="frame" x="12" y="0.0" width="44" height="44"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGA-5f-oVx">
                                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -277,8 +277,8 @@
                             </subviews>
                             <color key="backgroundColor" red="0.88719951919999995" green="0.88719951919999995" blue="0.88719951919999995" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="ais-qg-XYw" secondAttribute="bottom" constant="25" id="5Tg-fX-14q"/>
-                                <constraint firstAttribute="height" constant="70" id="5c9-SU-nb3"/>
+                                <constraint firstAttribute="bottom" secondItem="ais-qg-XYw" secondAttribute="bottom" id="5Tg-fX-14q"/>
+                                <constraint firstAttribute="height" constant="44" id="5c9-SU-nb3"/>
                                 <constraint firstItem="ais-qg-XYw" firstAttribute="leading" secondItem="F6V-BG-QQv" secondAttribute="leading" constant="12" id="LkZ-Je-BiJ"/>
                                 <constraint firstAttribute="bottom" secondItem="cPh-He-1nn" secondAttribute="bottom" id="SJC-Zh-mXD"/>
                                 <constraint firstAttribute="trailing" secondItem="cPh-He-1nn" secondAttribute="trailing" id="uIT-48-E8h"/>
@@ -288,7 +288,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="ndE-1g-mCs" secondAttribute="bottom" constant="70" id="4bK-6E-8Na"/>
+                        <constraint firstAttribute="bottom" secondItem="ndE-1g-mCs" secondAttribute="bottom" constant="48" id="4bK-6E-8Na"/>
                         <constraint firstAttribute="trailing" secondItem="F6V-BG-QQv" secondAttribute="trailing" id="72T-ev-aEw"/>
                         <constraint firstAttribute="trailing" secondItem="ndE-1g-mCs" secondAttribute="trailing" id="CvV-Mh-ZEK"/>
                         <constraint firstItem="ndE-1g-mCs" firstAttribute="leading" secondItem="Tjz-bC-yfo" secondAttribute="leading" id="O0v-k9-2tS"/>
