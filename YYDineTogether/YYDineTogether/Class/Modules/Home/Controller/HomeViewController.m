@@ -40,6 +40,7 @@
     } failure:^(NSError *error) {
         
     }];
+    NSLog(@"asdfasfda");
 }
 
 - (void)registUI {
