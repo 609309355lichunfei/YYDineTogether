@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonalViewController">
             <connections>
+                <outlet property="dateTF" destination="e4s-nS-reN" id="H8L-mb-pif"/>
+                <outlet property="sexTF" destination="kPL-Hr-SXE" id="gFE-Od-vic"/>
                 <outlet property="view" destination="iN0-l3-epB" id="DyH-lg-8aq"/>
             </connections>
         </placeholder>
@@ -52,7 +54,7 @@
                         <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_设置页面小箭头" translatesAutoresizingMaskIntoConstraints="NO" id="KGJ-NC-Vad">
                             <rect key="frame" x="355" y="0.0" width="8" height="80"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nMW-OE-9Ec">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_店铺中心默认头像" translatesAutoresizingMaskIntoConstraints="NO" id="nMW-OE-9Ec">
                             <rect key="frame" x="260" y="5" width="70" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="70" id="GRi-og-dBc"/>
@@ -72,6 +74,9 @@
                         <constraint firstItem="7rZ-41-K6Q" firstAttribute="centerY" secondItem="9P1-jR-bq9" secondAttribute="centerY" id="c10-fv-4gg"/>
                         <constraint firstItem="nMW-OE-9Ec" firstAttribute="centerY" secondItem="KGJ-NC-Vad" secondAttribute="centerY" id="ccD-qW-CB3"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="dJd-OY-9eU" appends="YES" id="GUm-8t-TLj"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbe-lB-CIR">
                     <rect key="frame" x="0.0" y="145" width="375" height="50"/>
@@ -118,7 +123,7 @@
                         <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_设置页面小箭头" translatesAutoresizingMaskIntoConstraints="NO" id="71R-tp-JNd">
                             <rect key="frame" x="355" y="0.0" width="8" height="50"/>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="男" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kPL-Hr-SXE">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="男" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kPL-Hr-SXE">
                             <rect key="frame" x="56" y="16" width="287" height="21"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
@@ -138,6 +143,9 @@
                         <constraint firstItem="71R-tp-JNd" firstAttribute="top" secondItem="AZr-qa-H6L" secondAttribute="top" id="kTg-1W-Ul2"/>
                         <constraint firstItem="kPL-Hr-SXE" firstAttribute="leading" secondItem="x8i-Ui-Jjs" secondAttribute="trailing" constant="12" id="sFg-cJ-ZuP"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="oph-mZ-EsA" appends="YES" id="h8G-PP-cci"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbU-Ek-oEX">
                     <rect key="frame" x="0.0" y="247" width="375" height="50"/>
@@ -151,7 +159,7 @@
                         <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_设置页面小箭头" translatesAutoresizingMaskIntoConstraints="NO" id="NAm-yH-9gU">
                             <rect key="frame" x="355" y="0.0" width="8" height="50"/>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="08-09" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e4s-nS-reN">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="08-09" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e4s-nS-reN">
                             <rect key="frame" x="56" y="15" width="287" height="21"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
@@ -171,6 +179,9 @@
                         <constraint firstItem="nyA-7M-ckn" firstAttribute="leading" secondItem="WbU-Ek-oEX" secondAttribute="leading" constant="12" id="rE5-SD-rp3"/>
                         <constraint firstItem="NAm-yH-9gU" firstAttribute="leading" secondItem="e4s-nS-reN" secondAttribute="trailing" constant="12" id="xSV-eO-umX"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="7is-ez-MTv" appends="YES" id="Qhu-UQ-pag"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.88719951919999995" green="0.88719951919999995" blue="0.88719951919999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -193,9 +204,25 @@
             </constraints>
             <point key="canvasLocation" x="32.5" y="75.5"/>
         </view>
+        <tapGestureRecognizer id="7is-ez-MTv" userLabel="dateSelected">
+            <connections>
+                <action selector="dateAction:" destination="-1" id="RlR-N7-cmk"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="dJd-OY-9eU" userLabel="imageSelected">
+            <connections>
+                <action selector="imageAction:" destination="-1" id="7f2-2G-VJn"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="oph-mZ-EsA" userLabel="sexSelected">
+            <connections>
+                <action selector="sexAction:" destination="-1" id="vqL-X2-Z0k"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="back" width="32" height="32"/>
+        <image name="mine_店铺中心默认头像" width="80" height="80"/>
         <image name="mine_设置页面小箭头" width="8" height="15"/>
     </resources>
 </document>

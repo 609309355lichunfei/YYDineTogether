@@ -39,28 +39,31 @@
                                     <state key="normal" image="back">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="backAction:" destination="-1" eventType="touchUpInside" id="obb-8r-yGc"/>
+                                    </connections>
                                 </button>
                             </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tMI-Yq-1DQ">
-                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="4" y="64" width="367" height="603"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="EsW-7z-o27"/>
                         <outlet property="delegate" destination="-1" id="UeS-KT-dtc"/>
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="OL9-mm-Hxo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="30e-bn-2bd"/>
                 <constraint firstAttribute="bottom" secondItem="tMI-Yq-1DQ" secondAttribute="bottom" id="4Ag-Gr-VoD"/>
                 <constraint firstItem="OL9-mm-Hxo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5Pq-BU-tV2"/>
-                <constraint firstAttribute="trailing" secondItem="tMI-Yq-1DQ" secondAttribute="trailing" id="URB-Ul-oLy"/>
+                <constraint firstAttribute="trailing" secondItem="tMI-Yq-1DQ" secondAttribute="trailing" constant="4" id="URB-Ul-oLy"/>
                 <constraint firstAttribute="trailing" secondItem="OL9-mm-Hxo" secondAttribute="trailing" id="h1R-Lg-GJk"/>
-                <constraint firstItem="tMI-Yq-1DQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vNw-Uq-qd5"/>
+                <constraint firstItem="tMI-Yq-1DQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="vNw-Uq-qd5"/>
                 <constraint firstItem="tMI-Yq-1DQ" firstAttribute="top" secondItem="OL9-mm-Hxo" secondAttribute="bottom" id="wUW-7M-6XH"/>
             </constraints>
         </view>

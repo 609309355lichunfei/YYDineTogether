@@ -24,7 +24,8 @@
 }
 
 - (IBAction)changePasswordAction:(id)sender {
-    
+    PassWordViewController *passwordVC = [[PassWordViewController alloc] init];
+    [self.navigationController pushViewController:passwordVC animated:YES];
 }
 
 - (IBAction)clearCacheAction:(id)sender {

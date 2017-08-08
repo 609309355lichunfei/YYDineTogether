@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@protocol shippTableViewCellDelegate <NSObject>
-- (void)CompileWithBt;
-@end
+
+typedef void(^OPERATIONBLOCK)();
 
 @interface shippTableViewCell : UITableViewCell
-+ (instancetype) InstallTableViewCellWith:(UITableView *)tableview indexPath:(NSIndexPath *)indexPath;
-- (void)configInstallTableCellWith:(NSIndexPath *)indexPath;
-
-@property (weak,nonatomic)id <shippTableViewCellDelegate>delegate;
+@property (copy, nonatomic) OPERATIONBLOCK editBlock;
+@property (copy, nonatomic) OPERATIONBLOCK removeBlock;
 @end

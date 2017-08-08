@@ -8,7 +8,8 @@
 
 #import "shippingViewController.h"
 #import "shippTableViewCell.h"
-@interface shippingViewController ()<UITableViewDelegate,UITableViewDataSource,shippTableViewCellDelegate>
+#import "IndentEditAddressViewController.h"
+@interface shippingViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
@@ -22,6 +23,9 @@
 - (void)registUI {
     [self.tableView registerNib:[UINib nibWithNibName:@"shippTableViewCell" bundle:nil] forCellReuseIdentifier:@"shippTableViewCell"];
 }
+- (IBAction)backAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
@@ -30,14 +34,20 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 152;
+    return 110;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    shippTableViewCell * cell = [shippTableViewCell InstallTableViewCellWith:tableView indexPath:indexPath];
-    [cell configInstallTableCellWith:indexPath];
+    shippTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"shippTableViewCell" forIndexPath:indexPath];
+    MJWeakSelf;
+    cell.editBlock = ^(){
+        IndentEditAddressViewController *editAddressVC = [[IndentEditAddressViewController alloc] init];
+        [weakSelf.navigationController pushViewController:editAddressVC animated:YES];
+    };
+    cell.removeBlock = ^(){
+        
+    };
     
-    cell.delegate = self;
     return cell;
 }
 //编辑
