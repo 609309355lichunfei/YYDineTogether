@@ -52,7 +52,6 @@
 		9C89962D1EF2C0B30097AF38 /* IndentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C89962B1EF2C0B30097AF38 /* IndentTableViewCell.xib */; };
 		9C8996311EF2C39D0097AF38 /* IndentCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89962F1EF2C39D0097AF38 /* IndentCellTableViewCell.m */; };
 		9C8996321EF2C39D0097AF38 /* IndentCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996301EF2C39D0097AF38 /* IndentCellTableViewCell.xib */; };
-		9C8996371EF2C9ED0097AF38 /* CollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996341EF2C9ED0097AF38 /* CollectViewController.m */; };
 		9C8996381EF2C9ED0097AF38 /* DisCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996361EF2C9ED0097AF38 /* DisCountViewController.m */; };
 		9C89963E1EF2CA310097AF38 /* CollectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89963A1EF2CA310097AF38 /* CollectTableViewCell.m */; };
 		9C89963F1EF2CA310097AF38 /* CollectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C89963B1EF2CA310097AF38 /* CollectTableViewCell.xib */; };
@@ -84,6 +83,19 @@
 		9CB799EA1F03D68E00597B6A /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799E91F03D68E00597B6A /* UserManager.m */; };
 		9CB799ED1F03D84400597B6A /* DB_Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799EC1F03D84400597B6A /* DB_Helper.m */; };
 		9CB799F61F03DF1C00597B6A /* ShoppingCartImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799F51F03DF1C00597B6A /* ShoppingCartImageView.m */; };
+		9CDB2E941F1751B80072DBF6 /* MineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB2E921F1751B80072DBF6 /* MineTableViewCell.m */; };
+		9CDB2E951F1751B80072DBF6 /* MineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CDB2E931F1751B80072DBF6 /* MineTableViewCell.xib */; };
+		9CDB2E971F1758300072DBF6 /* DisCountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CDB2E961F1758300072DBF6 /* DisCountViewController.xib */; };
+		9CDB2E991F175CE30072DBF6 /* shippingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CDB2E981F175CE30072DBF6 /* shippingViewController.xib */; };
+		9CDB2E9C1F1764700072DBF6 /* HomeStandardChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB2E9B1F1764700072DBF6 /* HomeStandardChooseView.m */; };
+		9CDB2E9E1F1764820072DBF6 /* HomeStandardChooseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CDB2E9D1F1764820072DBF6 /* HomeStandardChooseView.xib */; };
+		9CDB2EA51F176FA90072DBF6 /* HomeStandardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB2EA31F176FA90072DBF6 /* HomeStandardCollectionViewCell.m */; };
+		9CDB2EA61F176FA90072DBF6 /* HomeStandardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CDB2EA41F176FA90072DBF6 /* HomeStandardCollectionViewCell.xib */; };
+		9CDB2EAA1F17767F0072DBF6 /* HomeStandarHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB2EA81F17767F0072DBF6 /* HomeStandarHeaderCollectionReusableView.m */; };
+		9CDB2EAB1F17767F0072DBF6 /* HomeStandarHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CDB2EA91F17767F0072DBF6 /* HomeStandarHeaderCollectionReusableView.xib */; };
+		9CDCC4D31F19C2170005FB76 /* JSRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDCC4D21F19C2170005FB76 /* JSRequestManager.m */; };
+		9CDCC4DB1F1C5B8D0005FB76 /* SettingUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CDCC4DA1F1C5B8D0005FB76 /* SettingUpController.xib */; };
+		9CDCC4DD1F1C5F040005FB76 /* PersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CDCC4DC1F1C5F040005FB76 /* PersonalViewController.xib */; };
 		A3091578DC3875A9216040FB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3803D2764EEAFE68D56C80 /* libPods.a */; };
 		B389405C1EE69B3000407E45 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B389401D1EE69B3000407E45 /* LICENSE */; };
 		B389405D1EE69B3000407E45 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B38940201EE69B3000407E45 /* AbstractActionSheetPicker.m */; };
@@ -281,8 +293,6 @@
 		9C89962E1EF2C39D0097AF38 /* IndentCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndentCellTableViewCell.h; sourceTree = "<group>"; };
 		9C89962F1EF2C39D0097AF38 /* IndentCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndentCellTableViewCell.m; sourceTree = "<group>"; };
 		9C8996301EF2C39D0097AF38 /* IndentCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndentCellTableViewCell.xib; sourceTree = "<group>"; };
-		9C8996331EF2C9ED0097AF38 /* CollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectViewController.h; sourceTree = "<group>"; };
-		9C8996341EF2C9ED0097AF38 /* CollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectViewController.m; sourceTree = "<group>"; };
 		9C8996351EF2C9ED0097AF38 /* DisCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisCountViewController.h; sourceTree = "<group>"; };
 		9C8996361EF2C9ED0097AF38 /* DisCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisCountViewController.m; sourceTree = "<group>"; };
 		9C8996391EF2CA310097AF38 /* CollectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectTableViewCell.h; sourceTree = "<group>"; };
@@ -332,6 +342,24 @@
 		9CB799EC1F03D84400597B6A /* DB_Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Helper.m; sourceTree = "<group>"; };
 		9CB799F41F03DF1C00597B6A /* ShoppingCartImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartImageView.h; sourceTree = "<group>"; };
 		9CB799F51F03DF1C00597B6A /* ShoppingCartImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartImageView.m; sourceTree = "<group>"; };
+		9CDB2E911F1751B80072DBF6 /* MineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineTableViewCell.h; sourceTree = "<group>"; };
+		9CDB2E921F1751B80072DBF6 /* MineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineTableViewCell.m; sourceTree = "<group>"; };
+		9CDB2E931F1751B80072DBF6 /* MineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineTableViewCell.xib; sourceTree = "<group>"; };
+		9CDB2E961F1758300072DBF6 /* DisCountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisCountViewController.xib; sourceTree = "<group>"; };
+		9CDB2E981F175CE30072DBF6 /* shippingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = shippingViewController.xib; sourceTree = "<group>"; };
+		9CDB2E9A1F1764700072DBF6 /* HomeStandardChooseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeStandardChooseView.h; sourceTree = "<group>"; };
+		9CDB2E9B1F1764700072DBF6 /* HomeStandardChooseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeStandardChooseView.m; sourceTree = "<group>"; };
+		9CDB2E9D1F1764820072DBF6 /* HomeStandardChooseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeStandardChooseView.xib; sourceTree = "<group>"; };
+		9CDB2EA21F176FA90072DBF6 /* HomeStandardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeStandardCollectionViewCell.h; sourceTree = "<group>"; };
+		9CDB2EA31F176FA90072DBF6 /* HomeStandardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeStandardCollectionViewCell.m; sourceTree = "<group>"; };
+		9CDB2EA41F176FA90072DBF6 /* HomeStandardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeStandardCollectionViewCell.xib; sourceTree = "<group>"; };
+		9CDB2EA71F17767F0072DBF6 /* HomeStandarHeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeStandarHeaderCollectionReusableView.h; sourceTree = "<group>"; };
+		9CDB2EA81F17767F0072DBF6 /* HomeStandarHeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeStandarHeaderCollectionReusableView.m; sourceTree = "<group>"; };
+		9CDB2EA91F17767F0072DBF6 /* HomeStandarHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeStandarHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		9CDCC4D11F19C2170005FB76 /* JSRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSRequestManager.h; sourceTree = "<group>"; };
+		9CDCC4D21F19C2170005FB76 /* JSRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSRequestManager.m; sourceTree = "<group>"; };
+		9CDCC4DA1F1C5B8D0005FB76 /* SettingUpController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingUpController.xib; sourceTree = "<group>"; };
+		9CDCC4DC1F1C5F040005FB76 /* PersonalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalViewController.xib; sourceTree = "<group>"; };
 		AC51B9B1ED5346D951C173E8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B389401D1EE69B3000407E45 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B389401F1EE69B3000407E45 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractActionSheetPicker.h; sourceTree = "<group>"; };
@@ -771,10 +799,9 @@
 		B38940791EE69CEA00407E45 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9C8996331EF2C9ED0097AF38 /* CollectViewController.h */,
-				9C8996341EF2C9ED0097AF38 /* CollectViewController.m */,
 				9C8996351EF2C9ED0097AF38 /* DisCountViewController.h */,
 				9C8996361EF2C9ED0097AF38 /* DisCountViewController.m */,
+				9CDB2E961F1758300072DBF6 /* DisCountViewController.xib */,
 				B389407A1EE69CEA00407E45 /* inforViewController.h */,
 				B389407B1EE69CEA00407E45 /* inforViewController.m */,
 				B389407C1EE69CEA00407E45 /* inforViewController.xib */,
@@ -786,10 +813,13 @@
 				B38940821EE69CEA00407E45 /* PassWordViewController.xib */,
 				B38940831EE69CEA00407E45 /* PersonalViewController.h */,
 				B38940841EE69CEA00407E45 /* PersonalViewController.m */,
+				9CDCC4DC1F1C5F040005FB76 /* PersonalViewController.xib */,
 				B38940851EE69CEA00407E45 /* SettingUpController.h */,
 				B38940861EE69CEA00407E45 /* SettingUpController.m */,
+				9CDCC4DA1F1C5B8D0005FB76 /* SettingUpController.xib */,
 				B38940871EE69CEA00407E45 /* shippingViewController.h */,
 				B38940881EE69CEA00407E45 /* shippingViewController.m */,
+				9CDB2E981F175CE30072DBF6 /* shippingViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -828,6 +858,9 @@
 				B389408F1EE69CEA00407E45 /* shippTableViewCell.h */,
 				B38940901EE69CEA00407E45 /* shippTableViewCell.m */,
 				B38940911EE69CEA00407E45 /* shippTableViewCell.xib */,
+				9CDB2E911F1751B80072DBF6 /* MineTableViewCell.h */,
+				9CDB2E921F1751B80072DBF6 /* MineTableViewCell.m */,
+				9CDB2E931F1751B80072DBF6 /* MineTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1038,6 +1071,8 @@
 				9CB799E91F03D68E00597B6A /* UserManager.m */,
 				9CB799EB1F03D84400597B6A /* DB_Helper.h */,
 				9CB799EC1F03D84400597B6A /* DB_Helper.m */,
+				9CDCC4D11F19C2170005FB76 /* JSRequestManager.h */,
+				9CDCC4D21F19C2170005FB76 /* JSRequestManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1160,6 +1195,15 @@
 				9C8997CE1F0095780097AF38 /* HomeTableViewFunctionCell.h */,
 				9C8997CF1F0095780097AF38 /* HomeTableViewFunctionCell.m */,
 				9C8997D01F0095780097AF38 /* HomeTableViewFunctionCell.xib */,
+				9CDB2E9A1F1764700072DBF6 /* HomeStandardChooseView.h */,
+				9CDB2E9B1F1764700072DBF6 /* HomeStandardChooseView.m */,
+				9CDB2E9D1F1764820072DBF6 /* HomeStandardChooseView.xib */,
+				9CDB2EA21F176FA90072DBF6 /* HomeStandardCollectionViewCell.h */,
+				9CDB2EA31F176FA90072DBF6 /* HomeStandardCollectionViewCell.m */,
+				9CDB2EA41F176FA90072DBF6 /* HomeStandardCollectionViewCell.xib */,
+				9CDB2EA71F17767F0072DBF6 /* HomeStandarHeaderCollectionReusableView.h */,
+				9CDB2EA81F17767F0072DBF6 /* HomeStandarHeaderCollectionReusableView.m */,
+				9CDB2EA91F17767F0072DBF6 /* HomeStandarHeaderCollectionReusableView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1490,7 +1534,9 @@
 			files = (
 				B3DA485C1EE50650006B6942 /* icon_tabbar_mine_selected.png in Resources */,
 				B3DA484D1EE50650006B6942 /* LoginViewController.xib in Resources */,
+				9CDB2E951F1751B80072DBF6 /* MineTableViewCell.xib in Resources */,
 				B3DA48571EE50650006B6942 /* icon_tabbar_merchant_normal@2x.png in Resources */,
+				9CDB2EAB1F17767F0072DBF6 /* HomeStandarHeaderCollectionReusableView.xib in Resources */,
 				9C8995F21EED383D0097AF38 /* HomeFilterRightTableViewCell.xib in Resources */,
 				9C89964C1EF2D9FE0097AF38 /* IndentChooseAddressViewController.xib in Resources */,
 				B3DA48541EE50650006B6942 /* icon_tabbar_homepage_selected.png in Resources */,
@@ -1506,7 +1552,9 @@
 				9C8995CA1EE6589B0097AF38 /* HomeSearchView.xib in Resources */,
 				9C8995DB1EE691500097AF38 /* HomeComboRecomendViewController.xib in Resources */,
 				9C89965D1EF519280097AF38 /* MsgViewController.xib in Resources */,
+				9CDCC4DD1F1C5F040005FB76 /* PersonalViewController.xib in Resources */,
 				9C89960B1EEE4C970097AF38 /* HomeComboViewController.xib in Resources */,
+				9CDB2E991F175CE30072DBF6 /* shippingViewController.xib in Resources */,
 				9C89961F1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.xib in Resources */,
 				9C8995CC1EE6589B0097AF38 /* HomeTableViewCell.xib in Resources */,
 				B3DA48511EE50650006B6942 /* icon_tabbar_discovery_selected.png in Resources */,
@@ -1530,12 +1578,15 @@
 				B3DA48661EE50650006B6942 /* icon_tabbar_onsite_selected@2x.png in Resources */,
 				9C8995FC1EED7B6A0097AF38 /* HomeStoreRightTableViewCell.xib in Resources */,
 				9C8996061EEE431F0097AF38 /* HomeStoreDetailViewController.xib in Resources */,
+				9CDB2E9E1F1764820072DBF6 /* HomeStandardChooseView.xib in Resources */,
 				B38940931EE69CEA00407E45 /* inforViewController.xib in Resources */,
 				B3DA48611EE50650006B6942 /* icon_tabbar_misc_selected@2x.png in Resources */,
 				B3DA48561EE50650006B6942 /* icon_tabbar_merchant_normal.png in Resources */,
+				9CDB2EA61F176FA90072DBF6 /* HomeStandardCollectionViewCell.xib in Resources */,
 				B3DA48501EE50650006B6942 /* icon_tabbar_discovery.png in Resources */,
 				B3DA48601EE50650006B6942 /* icon_tabbar_misc_selected.png in Resources */,
 				B3DA485D1EE50650006B6942 /* icon_tabbar_mine_selected@2x.png in Resources */,
+				9CDB2E971F1758300072DBF6 /* DisCountViewController.xib in Resources */,
 				9C8996741EF7B3440097AF38 /* HomeCityViewController.xib in Resources */,
 				9C8996451EF2CD1B0097AF38 /* IndentConfirmViewController.xib in Resources */,
 				9C89963F1EF2CA310097AF38 /* CollectTableViewCell.xib in Resources */,
@@ -1553,6 +1604,7 @@
 				9C8996321EF2C39D0097AF38 /* IndentCellTableViewCell.xib in Resources */,
 				9C8995AD1EE590640097AF38 /* HomeActivityViewController.xib in Resources */,
 				9C8995F71EED40F00097AF38 /* HomeStoreViewController.xib in Resources */,
+				9CDCC4DB1F1C5B8D0005FB76 /* SettingUpController.xib in Resources */,
 				B3DA48591EE50650006B6942 /* icon_tabbar_merchant_selected@2x.png in Resources */,
 				B38940971EE69CEA00407E45 /* PassWordViewController.xib in Resources */,
 				B3DA48641EE50650006B6942 /* icon_tabbar_onsite@2x.png in Resources */,
@@ -1633,7 +1685,6 @@
 				B38940611EE69B3000407E45 /* ActionSheetLocalePicker.m in Sources */,
 				B3DA48401EE50650006B6942 /* TabBar.m in Sources */,
 				B3DA483B1EE50650006B6942 /* AppDelegate+PushService.m in Sources */,
-				9C8996371EF2C9ED0097AF38 /* CollectViewController.m in Sources */,
 				9C8996441EF2CD1B0097AF38 /* IndentConfirmViewController.m in Sources */,
 				9C8996001EEE3D9D0097AF38 /* HomeFoodDetailViewController.m in Sources */,
 				B3DA483E1EE50650006B6942 /* RootViewController.m in Sources */,
@@ -1654,8 +1705,10 @@
 				B38940761EE69B3100407E45 /* LICENSE.md in Sources */,
 				B38940651EE69B3000407E45 /* SWActionSheet.m in Sources */,
 				9C8996141EEE65050097AF38 /* ShoppingChartViewController.m in Sources */,
+				9CDB2EAA1F17767F0072DBF6 /* HomeStandarHeaderCollectionReusableView.m in Sources */,
 				B38940B51EE69D4C00407E45 /* UIResponder+Adapt.m in Sources */,
 				9C8995CF1EE658BD0097AF38 /* HomeShoppingCartView.m in Sources */,
+				9CDB2EA51F176FA90072DBF6 /* HomeStandardCollectionViewCell.m in Sources */,
 				B389409C1EE69CEA00407E45 /* shippTableViewCell.m in Sources */,
 				B38940981EE69CEA00407E45 /* PersonalViewController.m in Sources */,
 				B3DA484E1EE50650006B6942 /* MsgViewController.m in Sources */,
@@ -1693,11 +1746,13 @@
 				B3DA48701EE50650006B6942 /* OpenUDID.m in Sources */,
 				9C8996051EEE431F0097AF38 /* HomeStoreDetailViewController.m in Sources */,
 				B38940AF1EE69D4C00407E45 /* AbstractActionSheetPicker+Interface.m in Sources */,
+				9CDB2E941F1751B80072DBF6 /* MineTableViewCell.m in Sources */,
 				B3DA486D1EE50650006B6942 /* HeaderModel.m in Sources */,
 				B38940991EE69CEA00407E45 /* SettingUpController.m in Sources */,
 				9C8995F61EED40F00097AF38 /* HomeStoreViewController.m in Sources */,
 				9C8995AC1EE590640097AF38 /* HomeActivityViewController.m in Sources */,
 				B38940921EE69CEA00407E45 /* inforViewController.m in Sources */,
+				9CDCC4D31F19C2170005FB76 /* JSRequestManager.m in Sources */,
 				B389405F1EE69B3000407E45 /* ActionSheetDatePicker.m in Sources */,
 				B38940681EE69B3000407E45 /* IQUIScrollView+Additions.m in Sources */,
 				9C8995DA1EE691500097AF38 /* HomeComboRecomendViewController.m in Sources */,
@@ -1717,6 +1772,7 @@
 				B3DA484A1EE50650006B6942 /* IndentViewController.m in Sources */,
 				B3DA483F1EE50650006B6942 /* MainTabBarController.m in Sources */,
 				B38940691EE69B3100407E45 /* IQUITextFieldView+Additions.m in Sources */,
+				9CDB2E9C1F1764700072DBF6 /* HomeStandardChooseView.m in Sources */,
 				B38940741EE69B3100407E45 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				9C8995CB1EE6589B0097AF38 /* HomeTableViewCell.m in Sources */,
 				B389406C1EE69B3100407E45 /* IQUIWindow+Hierarchy.m in Sources */,

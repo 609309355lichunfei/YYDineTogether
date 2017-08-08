@@ -7,6 +7,7 @@
 //
 
 #import "HomeStoreRightTableViewCell.h"
+#import "HomeStandardChooseView.h"
 
 @interface HomeStoreRightTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIButton *subtractButton;
@@ -28,6 +29,8 @@
     } else {
         _numberLabel.text =  [NSString stringWithFormat:@"%ld",[_numberLabel.text integerValue] + 1];
     }
+    HomeStandardChooseView *view = [[[NSBundle mainBundle] loadNibNamed:@"HomeStandardChooseView" owner:self options:nil] firstObject];
+    [view showView];
 }
 - (IBAction)subtractAction:(id)sender {
     if ([_numberLabel.text isEqualToString:@"1"]) {

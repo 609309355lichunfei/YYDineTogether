@@ -15,16 +15,16 @@
 @implementation PassWordViewController
 
 - (void)viewDidLoad {
-
     [super viewDidLoad];
-    self.navigationItem.title = @"密码修改";
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem
-                                             itemWithImageName:@"Navigation_left" highImageName:@"Navigation_left" target:self action:(@selector(back))];
   
 }
-- (void)back {
-    
+
+- (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)doneAction:(id)sender {
+    
 }
 
 @end

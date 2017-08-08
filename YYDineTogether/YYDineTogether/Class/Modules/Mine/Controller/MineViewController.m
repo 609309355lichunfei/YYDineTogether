@@ -12,6 +12,7 @@
 #import "shippingViewController.h"
 #import "SettingUpController.h"
 #import "DisCountViewController.h"
+#import "MineTableViewCell.h"
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *iconimage;
 
@@ -19,43 +20,28 @@
 
 @implementation MineViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    
-    [super viewWillAppear:animated];
-   // self.isHidenNaviBar = YES;
-    self.navigationController.navigationBar.hidden = YES;
-}
-
--(void)viewWillDisappear:(BOOL)animated {
-    
-   self.navigationController.navigationBar.hidden = NO;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"我的";
      //设计头像图片圆形
-    self.iconimage.layer.masksToBounds = YES;
-    self.iconimage.layer.cornerRadius = 50;
-    self.iconimage.userInteractionEnabled = YES;//打开用户交互
-    [self.iconimage addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickCategory)]];
     [self.view addSubview:self.tableview];
     
     
     
 }
 
-- (void)clickCategory {
-    
+- (IBAction)userTapAction:(id)sender {
     PersonalViewController * persona = [PersonalViewController new];
-    [self.navigationController pushViewController:persona animated:YES];
+    [self.tabBarController.navigationController pushViewController:persona animated:YES];
 }
+
 - (UITableView *)tableview {
     
     if (!_tableview) {
-        _tableview = [[UITableView alloc]initWithFrame:CGRectMakeAdapt(0, 158, KScreenWidth, KScreenHeight) style:UITableViewStyleGrouped];
+        _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 200, KScreenWidth, KScreenHeight) style:UITableViewStyleGrouped];
         _tableview.delegate = self;
         _tableview.dataSource= self;
+        [_tableview registerNib:[UINib nibWithNibName:@"MineTableViewCell" bundle:nil] forCellReuseIdentifier:@"MineTableViewCell"];
       //  _tableview.backgroundColor = [UIColor whiteColor];
     }
     return _tableview;
@@ -74,47 +60,42 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 44;
+    return 50;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *cellID = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }   
-      cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    MineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MineTableViewCell" forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"我的优惠券";
-                         cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
+            cell.myLabel.text = @"我的优惠券";
+            cell.myImageView.image = [UIImage imageNamed:@"mine_我的优惠券"];
         }else if (indexPath.row == 1){
-            cell.textLabel.text = @"收货地址";
-                        cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
+            cell.myLabel.text = @"收货地址";
+            cell.myImageView.image = [UIImage imageNamed:@"mine_收货地址"];
         }else if (indexPath.row == 2){
-            cell.textLabel.text = @"我的收藏";
-            cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
+            cell.myLabel.text = @"我的收藏";
+            cell.myImageView.image = [UIImage imageNamed:@"mine_我的收藏"];
         }else{
-            cell.textLabel.text = @"浏览记录";
-            cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
+            cell.myLabel.text = @"浏览记录";
+            cell.myImageView.image = [UIImage imageNamed:@"mine_浏览记录"];
         }
         
       
     }else if (indexPath.section == 1){
         
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"客服中心";
-                        cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
+            cell.myLabel.text = @"客服中心";
+            cell.myImageView.image = [UIImage imageNamed:@"mine_客服中心"];
         }else{
             
-            cell.textLabel.text = @"意见反馈";
-                        cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
+            cell.myLabel.text = @"意见反馈";
+            cell.myImageView.image = [UIImage imageNamed:@"mine_意见反馈"];
         }
     }else if (indexPath.section == 2){
         
-        cell.textLabel.text = @"关于我们";
-        cell.textLabel.font = [UIFont systemFontOfSize:12 weight:10];
+        cell.myLabel.text = @"关于我们";
+        cell.myImageView.image = [UIImage imageNamed:@"mine_关于我们"];
     }
   
     return cell;
@@ -125,10 +106,10 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
           DisCountViewController * disCount = [DisCountViewController new];
-          [self.navigationController pushViewController:disCount animated:YES];
+          [self.tabBarController.navigationController pushViewController:disCount animated:YES];
         }else if (indexPath.row == 1){
             shippingViewController * ship = [shippingViewController new];
-            [self.navigationController pushViewController:ship animated:YES];
+            [self.tabBarController.navigationController pushViewController:ship animated:YES];
 
         }else if (indexPath.row == 2){
             
@@ -158,7 +139,7 @@
 //消息通知
 - (IBAction)inform:(id)sender {
 inforViewController * infor = [inforViewController new];
-[self.navigationController pushViewController:infor animated:YES];
+[self.tabBarController.navigationController pushViewController:infor animated:YES];
 
 }
 //设置

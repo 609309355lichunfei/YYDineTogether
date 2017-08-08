@@ -9,36 +9,18 @@
 #import "shippingViewController.h"
 #import "shippTableViewCell.h"
 @interface shippingViewController ()<UITableViewDelegate,UITableViewDataSource,shippTableViewCellDelegate>
-@property (retain, nonatomic)  UITableView *tableview;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation shippingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"收货地址";
-    
-    [self.view addSubview:self.tableview];
-    UIView * view = [UIView new];
-    self.tableview.tableFooterView = view;
-    
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem
-                                             itemWithImageName:@"Navigation_left" highImageName:@"Navigation_left" target:self action:(@selector(back))];
-}
-- (void)back {
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    [self registUI];
 }
 
-- (UITableView *)tableview {
-    
-    if (!_tableview) {
-        _tableview = [[UITableView alloc]initWithFrame:CGRectMakeAdapt(0, 0, KScreenWidth, KScreenHeight) style:UITableViewStyleGrouped];
-        _tableview.delegate = self;
-        _tableview.dataSource= self;
-       
-    }
-    return _tableview;
+- (void)registUI {
+    [self.tableView registerNib:[UINib nibWithNibName:@"shippTableViewCell" bundle:nil] forCellReuseIdentifier:@"shippTableViewCell"];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

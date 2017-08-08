@@ -19,12 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-     self.navigationItem.title = @"我的优惠券";
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem
-                                             itemWithImageName:@"Navigation_left" highImageName:@"Navigation_left" target:self action:(@selector(back))];
     NSArray *items = @[@"未使用",@"已使用",@"已过期"];
     
-    TNCustomSegment *segment = [[TNCustomSegment alloc] initWithItems:items withFrame:CGRectMake(8, 70, [UIScreen mainScreen].bounds.size.width - 16, 30) withSelectedColor:RGB(219, 82, 64) withNormolColor:[UIColor whiteColor] withFont:nil];
+    TNCustomSegment *segment = [[TNCustomSegment alloc] initWithItems:items withFrame:CGRectMake(8, 80, [UIScreen mainScreen].bounds.size.width - 16, 30) withSelectedColor:RGB(219, 82, 64) withNormolColor:[UIColor whiteColor] withFont:nil];
     segment.delegate = self;
     segment.selectedIndex = 0;
     [self.view addSubview:segment];
@@ -32,8 +29,7 @@
     self.tableView.frame = CGRectMake(0, CGRectGetMaxY(segment.frame)-44, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - CGRectGetMaxY(segment.frame) + 5);
  
 }
-- (void)back {
-    
+- (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 

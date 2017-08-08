@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="shippingViewController">
+            <connections>
+                <outlet property="tableView" destination="tMI-Yq-1DQ" id="7DF-En-aZ6"/>
+                <outlet property="view" destination="iN0-l3-epB" id="CXL-HB-Qa6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OL9-mm-Hxo">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="XVc-GM-Sa8"/>
+                    </constraints>
+                    <color key="barTintColor" red="0.85882352939999995" green="0.32156862749999998" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="收货地址" id="jBx-k0-3CB">
+                            <barButtonItem key="leftBarButtonItem" title="Item" id="d7I-Ta-JaQ">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="In3-KD-yEK">
+                                    <rect key="frame" x="16" y="26" width="72" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="back">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tMI-Yq-1DQ">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="EsW-7z-o27"/>
+                        <outlet property="delegate" destination="-1" id="UeS-KT-dtc"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="OL9-mm-Hxo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="30e-bn-2bd"/>
+                <constraint firstAttribute="bottom" secondItem="tMI-Yq-1DQ" secondAttribute="bottom" id="4Ag-Gr-VoD"/>
+                <constraint firstItem="OL9-mm-Hxo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5Pq-BU-tV2"/>
+                <constraint firstAttribute="trailing" secondItem="tMI-Yq-1DQ" secondAttribute="trailing" id="URB-Ul-oLy"/>
+                <constraint firstAttribute="trailing" secondItem="OL9-mm-Hxo" secondAttribute="trailing" id="h1R-Lg-GJk"/>
+                <constraint firstItem="tMI-Yq-1DQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vNw-Uq-qd5"/>
+                <constraint firstItem="tMI-Yq-1DQ" firstAttribute="top" secondItem="OL9-mm-Hxo" secondAttribute="bottom" id="wUW-7M-6XH"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="back" width="32" height="32"/>
+    </resources>
+</document>

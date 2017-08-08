@@ -11,6 +11,7 @@
 #import "HomeStoreDetailViewController.h"
 #import "HomeFoodDetailViewController.h"
 #import "HomeActivityViewController.h"
+#import "HomeStandardChooseView.h"
 
 @interface HomeStoreViewController ()<UITableViewDelegate, UITableViewDataSource>{
     BOOL _isCombo;

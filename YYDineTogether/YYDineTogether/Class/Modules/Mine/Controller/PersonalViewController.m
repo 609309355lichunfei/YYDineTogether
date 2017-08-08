@@ -10,8 +10,8 @@
 #import "AJImageheadData.h"
 #import "ActionSheetPicker.h"
 #import "AbstractActionSheetPicker+Interface.h"
-@interface PersonalViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property (retain, nonatomic)  UITableView *tableview;
+@interface PersonalViewController ()
+
 
 @end
 
@@ -19,16 +19,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    self.navigationItem.title = @"个人信息";
-     [self.view addSubview:self.tableview];
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem
-                                             itemWithImageName:@"Navigation_left" highImageName:@"Navigation_left" target:self action:(@selector(back))];
+   
  
 }
-- (void)back {
-    
+- (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -37,76 +31,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UITableView *)tableview {
-    
-    if (!_tableview) {
-        _tableview = [[UITableView alloc]initWithFrame:CGRectMakeAdapt(0, 0, KScreenWidth, KScreenHeight) style:UITableViewStyleGrouped];
-        _tableview.delegate = self;
-        _tableview.dataSource= self;
-        
-    }
-    return _tableview;
-}
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1 ;
-    
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return 4;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return 60;
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *cellID = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }
-     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    switch (indexPath.row) {
-        case 0:
-           cell.detailTextLabel.text = @"头像";
-            cell.textLabel.font = [UIFont AmericanTypewriterBoldFontSize:12.];
-            cell.imageView.image = [UIImage imageNamed:@"icon"];
-            break;
-        case 1:
-            cell.textLabel.text = @"昵称";
-             cell.textLabel.font = [UIFont AmericanTypewriterBoldFontSize:12.];
-            
-            break;
-        case 2:
-            cell.textLabel.text = @"性别";
-             cell.textLabel.font = [UIFont AmericanTypewriterBoldFontSize:12.];
-            break;
-        default:
-            break;
-    }
-    
-    
-    
-    return cell;
-}
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
-    switch (indexPath.row) {
-        case 0:
-          [self setAJImageheadData];
-            break;
-        case 2:
-         [self setActionSheetStringPicker];
-            break;
-        default:
-            break;
-    }
-    
-}
 
 - (void)setAJImageheadData {
     

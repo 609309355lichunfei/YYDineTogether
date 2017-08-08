@@ -28,6 +28,7 @@
 
 - (void)registUI {
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"MsgEditTableViewCell"];
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -63,7 +64,7 @@
     if (scrollView == _mainScrollView) {
         if (scrollView.contentOffset.y > 140) {
             if (scrollView.contentOffset.y > _mainScrollViewLastContentOffSetY) {
-                [scrollView scrollToBottom];
+                [scrollView scrollToBottomAnimated:NO];
                 scrollView.scrollEnabled = NO;
                 _tableView.scrollEnabled = YES;
                 _tableView.bounces = YES;

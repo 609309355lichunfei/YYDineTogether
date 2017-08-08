@@ -11,6 +11,6 @@
 
 #import "UIColor+HexString.h"
 
-#define CNavBgColor  [UIColor colorWithHexString:@"00AE68"]
+#define CNavBgColor  [UIColor colorWithHexString:@"ff6b6b"]
 
 #endif /* FontAndColorMacros_h */

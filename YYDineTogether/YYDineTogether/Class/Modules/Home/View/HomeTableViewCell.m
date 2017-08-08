@@ -56,7 +56,7 @@
         _subtractButton.hidden = YES;
         _numberLabel.hidden = YES;
     } else {
-        _numberLabel.text =  [NSString stringWithFormat:@"%ld",[_numberLabel.text integerValue] + 1];
+        _numberLabel.text =  [NSString stringWithFormat:@"%ld",[_numberLabel.text integerValue] - 1];
     }
 }
 

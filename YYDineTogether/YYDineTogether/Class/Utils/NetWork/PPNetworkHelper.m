@@ -392,7 +392,7 @@ static AFHTTPSessionManager *_sessionManager;
     // 打开状态栏的等待菊花
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     //开启加密模式
-    [self openAES];
+    [self closeAES];
 }
 
 #pragma mark - 重置AFHTTPSessionManager相关属性

@@ -55,18 +55,17 @@ PropertyNSMutableArray(VCS);//tabbar root VC
 -(void)setUpAllChildViewController{
     _VCS = @[].mutableCopy;
     HomeViewController *homeVC = [[HomeViewController alloc]init];
-    [self setupChildViewController:homeVC title:@"首页" imageName:@"icon_tabbar_homepage" seleceImageName:@"icon_tabbar_homepage_selected"];
+    [self setupChildViewController:homeVC title:@"首页" imageName:@"homebar" seleceImageName:@"homebar_color"];
     
-
+    
     MsgViewController *msgVC = [[MsgViewController alloc]init];
-    [self setupChildViewController:msgVC title:@"吃货" imageName:@"icon_tabbar_merchant_normal" seleceImageName:@"icon_tabbar_merchant_selected"];
+    [self setupChildViewController:msgVC title:@"吃货" imageName:@"eatbar_color" seleceImageName:@"eatbar_color"];
     
     IndentViewController * indent = [[IndentViewController alloc] init];
-    [self setupChildViewController:indent title:@"订单" imageName:@"" seleceImageName:@""];
+    [self setupChildViewController:indent title:@"订单" imageName:@"orderbar" seleceImageName:@"orderbar_color"];
     
     MineViewController *mineVC = [[MineViewController alloc]init];
-    [self setupChildViewController:mineVC title:@"我的" imageName:@"icon_tabbar_mine" seleceImageName:@"icon_tabbar_mine_selected"];
-    mineVC.navigationController.navigationBar.hidden = NO;
+    [self setupChildViewController:mineVC title:@"我的" imageName:@"mybar" seleceImageName:@"mybar_color"];
     self.viewControllers = _VCS;
 }
 

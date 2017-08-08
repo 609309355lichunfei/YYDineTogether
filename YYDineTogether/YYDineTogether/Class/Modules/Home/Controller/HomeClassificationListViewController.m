@@ -10,6 +10,7 @@
 #import "HomeTableViewCell.h"
 #import "HomeFilterView.h"
 #import "HomeStoreViewController.h"
+#import "HomeStandardChooseView.h"
 
 @interface HomeClassificationListViewController ()<UITableViewDelegate, UITableViewDataSource, HomeFilterViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
