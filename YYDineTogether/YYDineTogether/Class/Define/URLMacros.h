@@ -74,7 +74,10 @@
 #define URL_Tags [NSString stringWithFormat:@"%@/v1/shops/tags/", URL_main]
 //提交预订单
 #define URL_Order [NSString stringWithFormat:@"%@/v1/order/", URL_main]
-
+//成员地址
+#define URL_Member_address [NSString stringWithFormat:@"%@/v1/member/address/", URL_main]
+//成员信息
+#define URL_Member_info [NSString stringWithFormat:@"%@/v1/member/info/", URL_main]
 
 
 

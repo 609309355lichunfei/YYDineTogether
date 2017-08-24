@@ -117,4 +117,77 @@
 
 
 
+/**
+ 获得地址
+
+ */
+- (void)getMemberAddressSuccess:(PPHttpRequestSuccess)success
+                         Failed:(PPHttpRequestFailed)failed;
+
+
+/**
+ 修改地址
+
+ */
+- (void)putMemberAddressWithDic:(NSDictionary *)dic
+                        Success:(PPHttpRequestSuccess)success
+                         Failed:(PPHttpRequestFailed)failed;
+
+/**
+ 添加地址
+
+ */
+- (void)postMemberAddressWithDic:(NSDictionary *)dic
+                            Success:(PPHttpRequestSuccess)success
+                             Failed:(PPHttpRequestFailed)failed;
+
+/**
+ 删除地址
+
+ */
+- (void)deleteMemeberAddressWithDic:(NSDictionary *)dic
+                               Success:(PPHttpRequestSuccess)success
+                                Failed:(PPHttpRequestFailed)failed;
+
+
+/**
+ 获得成员信息
+ */
+- (void)getMemberInfoSuccess:(PPHttpRequestSuccess)success
+                      Failed:(PPHttpRequestFailed)failed;
+
+
+
+/**
+ 修改信息
+
+ */
+- (void)putMemberInfoWithDic:(NSDictionary *)dic
+                        data:(NSData *)data
+                     Success:(PPHttpRequestSuccess)success
+                      Failed:(PPHttpRequestFailed)failed;
+
+
+
+/**
+ 上传成员信息
+
+ */
+- (void)postMemberInfoWithDic:(NSDictionary *)dic
+                         data:(NSData *)data
+                      Success:(PPHttpRequestSuccess)success
+                       Failed:(PPHttpRequestFailed)failed;
+
+
+/**
+ 删除成员信息
+
+ */
+- (void)deleteMemeberInfoWithDic:(NSDictionary *)dic
+                            Success:(PPHttpRequestSuccess)success
+                             Failed:(PPHttpRequestFailed)failed;
+
+
+
+
 @end

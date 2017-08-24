@@ -215,6 +215,79 @@ typedef void(^PPNetworkStatus)(PPNetworkStatusType status);
                             success:(PPHttpRequestSuccess)success
                             failure:(PPHttpRequestFailed)failure;
 
+
+/**
+ *  DELETE请求,无缓存
+ *
+ *  @param URL        请求地址
+ *  @param parameters 请求参数
+ *  @param success    请求成功的回调
+ *  @param failure    请求失败的回调
+ *
+ *  @return 返回的对象可取消请求,调用cancel方法
+ */
++ (__kindof NSURLSessionTask *)DELETE:(NSString *)URL
+                           parameters:(id)parameters
+                              success:(PPHttpRequestSuccess)success
+                              failure:(PPHttpRequestFailed)failure;
+
+/**
+ *  DELETE请求,自动缓存
+ *
+ *  @param URL           请求地址
+ *  @param parameters    请求参数
+ *  @param responseCache 缓存数据的回调
+ *  @param success       请求成功的回调
+ *  @param failure       请求失败的回调
+ *
+ *  @return 返回的对象可取消请求,调用cancel方法
+ */
++ (__kindof NSURLSessionTask *)DELETE:(NSString *)URL
+                           parameters:(id)parameters
+                        responseCache:(PPHttpRequestCache)responseCache
+                              success:(PPHttpRequestSuccess)success
+                              failure:(PPHttpRequestFailed)failure;
+
+/**
+ *  PUT请求,无缓存
+ *
+ *  @param URL        请求地址
+ *  @param parameters 请求参数
+ *  @param success    请求成功的回调
+ *  @param failure    请求失败的回调
+ *
+ *  @return 返回的对象可取消请求,调用cancel方法
+ */
++ (__kindof NSURLSessionTask *)PUT:(NSString *)URL
+                        parameters:(id)parameters
+                           success:(PPHttpRequestSuccess)success
+                           failure:(PPHttpRequestFailed)failure;
+
+/**
+ *  PUT请求,自动缓存
+ *
+ *  @param URL           请求地址
+ *  @param parameters    请求参数
+ *  @param responseCache 缓存数据的回调
+ *  @param success       请求成功的回调
+ *  @param failure       请求失败的回调
+ *
+ *  @return 返回的对象可取消请求,调用cancel方法
+ */
++ (__kindof NSURLSessionTask *)PUT:(NSString *)URL
+                        parameters:(id)parameters
+                     responseCache:(PPHttpRequestCache)responseCache
+                           success:(PPHttpRequestSuccess)success
+                           failure:(PPHttpRequestFailed)failure;
+
++ (__kindof NSURLSessionTask *)PUT:(NSString *)URL
+                        parameters:(id)parameters
+                              data:(NSData *)data
+                     responseCache:(PPHttpRequestCache)responseCache
+                           success:(PPHttpRequestSuccess)success
+                           failure:(PPHttpRequestFailed)failure;
+
+
 /**
  *  上传文件
  *

@@ -24,8 +24,7 @@
 #import "JSYHShopModel.h"
 #import "HomeDishTableViewCell.h"
 
-
-@interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate ,UIGestureRecognizerDelegate>{
+@interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate ,UIGestureRecognizerDelegate, CLLocationManagerDelegate>{
     BOOL _isStoreDataSource;
     NSInteger _cellHeight;
     NSInteger _shoppageIndex;
@@ -49,6 +48,8 @@
 @property (strong, nonatomic) NSMutableArray *bannerImageUrlArray;
 
 @property (strong, nonatomic) HomeSearchView *homeSearchView;
+
+
 @end
 
 @implementation HomeViewController
@@ -73,12 +74,14 @@
 }
 
 - (void)registUI {
-    if ([JSRequestManager sharedManager].token == nil || [JSRequestManager sharedManager].token.length == 0) {
-        LoginViewController *loginVC = [[LoginViewController alloc] init];
-        [self.tabBarController presentViewController:loginVC animated:YES completion:^{
-            
-        }];
-    }
+//    if ([JSRequestManager sharedManager].token == nil || [JSRequestManager sharedManager].token.length == 0) {
+//        
+//    }
+    [JSYHLocationManager sharedManager];
+    LoginViewController *loginVC = [[LoginViewController alloc] init];
+    [self.tabBarController presentViewController:loginVC animated:YES completion:^{
+        
+    }];
     self.shoppingCartCountLabel.layer.cornerRadius = 9;
     _isStoreDataSource = YES;
     _cellHeight = 150;
@@ -113,9 +116,11 @@
     }];
 }
 
+
+
 - (void)getConnectHomePageShop:(DataLoadType)dataLoadType {
     _shoppageIndex = dataLoadType == DataLoadTypeNone ? 0 : _shoppageIndex + 1;
-    [[JSRequestManager sharedManager] homepageShopWithPage:NSStringFormat(@"%ld",_shoppageIndex) lng:@"122.34321" lat:@"32.2222" Success:^(id responseObject) {
+    [[JSRequestManager sharedManager] homepageShopWithPage:NSStringFormat(@"%ld",_shoppageIndex) lng:[JSYHLocationManager sharedManager].lng lat:[JSYHLocationManager sharedManager].lat Success:^(id responseObject) {
         NSDictionary *dataDic = responseObject[@"data"];
         NSArray *shopsArray = dataDic[@"shops"];
         if (shopsArray.count < 20) {
@@ -154,7 +159,7 @@
 
 - (void)getConnectHomePageDish:(DataLoadType)dataLoadType {
     _dishpageIndex = dataLoadType == DataLoadTypeNone ? 0 : _dishpageIndex + 1;
-    [[JSRequestManager sharedManager] homepageDishWithPage:NSStringFormat(@"%ld",_dishpageIndex) lng:@"122.34321" lat:@"32.2222" Success:^(id responseObject) {
+    [[JSRequestManager sharedManager] homepageDishWithPage:NSStringFormat(@"%ld",_dishpageIndex) lng:[JSYHLocationManager sharedManager].lng lat:[JSYHLocationManager sharedManager].lat Success:^(id responseObject) {
         
         NSDictionary *dataDic = responseObject[@"data"];
         NSArray *dishesArray = dataDic[@"dishs"];

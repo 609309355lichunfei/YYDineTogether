@@ -33,6 +33,7 @@
 #import "ShoppingCartManager.h"
 #import "JSRequestManager.h"
 #import "LoginViewController.h"
+#import "JSYHLocationManager.h"
 //#import "MBProgressHUD+XY.h"
 /**
  * @第三方

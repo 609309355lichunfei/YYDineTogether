@@ -7,6 +7,14 @@
 //
 
 #import "IndentChooseAddressTableViewCell.h"
+#import "JSYHAddressModel.h"
+
+@interface IndentChooseAddressTableViewCell ()
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+
+@end
 
 @implementation IndentChooseAddressTableViewCell
 
@@ -16,6 +24,13 @@
 }
 - (IBAction)editAction:(id)sender {
     self.editBlock();
+}
+
+- (void)setAddressModel:(JSYHAddressModel *)addressModel {
+    _addressModel = addressModel;
+    self.nameLabel.text = _addressModel.username;
+    self.phoneLabel.text = _addressModel.phone;
+    self.addressLabel.text = _addressModel.address;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

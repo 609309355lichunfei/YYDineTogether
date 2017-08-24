@@ -42,13 +42,14 @@
 }
 
 - (IBAction)userTapAction:(id)sender {
-//    PersonalViewController * persona = [PersonalViewController new];
-//    [self.tabBarController.navigationController pushViewController:persona animated:YES];
     if ([self.userNameLabel.text isEqualToString:@"登录/注册"]) {
         LoginViewController *loginVC = [[LoginViewController alloc] init];
         [self.tabBarController presentViewController:loginVC animated:YES completion:^{
-            
         }];
+    } else {
+        PersonalViewController * persona = [PersonalViewController new];
+        [self.tabBarController.navigationController pushViewController:persona animated:YES];
+
     }
 }
 

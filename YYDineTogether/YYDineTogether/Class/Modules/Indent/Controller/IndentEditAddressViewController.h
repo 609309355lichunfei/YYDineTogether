@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IndentEditAddressViewController : UIViewController
 
+@class JSYHAddressModel;
+
+@interface IndentEditAddressViewController : UIViewController
+@property (strong, nonatomic) JSYHAddressModel *addressModel;
 @end

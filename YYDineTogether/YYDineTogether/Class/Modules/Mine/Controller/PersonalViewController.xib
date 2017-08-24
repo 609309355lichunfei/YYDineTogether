@@ -11,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonalViewController">
             <connections>
                 <outlet property="dateTF" destination="e4s-nS-reN" id="H8L-mb-pif"/>
+                <outlet property="logoImageView" destination="nMW-OE-9Ec" id="pxm-PN-1Hg"/>
+                <outlet property="nickNameTF" destination="WEW-VE-TXT" id="y1l-Vc-8jw"/>
                 <outlet property="sexTF" destination="kPL-Hr-SXE" id="gFE-Od-vic"/>
                 <outlet property="view" destination="iN0-l3-epB" id="DyH-lg-8aq"/>
             </connections>
@@ -25,18 +27,24 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="Iw9-eK-b0n"/>
                     </constraints>
-                    <color key="barTintColor" red="0.85882352939999995" green="0.32156862749999998" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <textAttributes key="titleTextAttributes">
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </textAttributes>
                     <items>
                         <navigationItem title="个人信息" id="6Oi-nq-k6H">
-                            <barButtonItem key="leftBarButtonItem" image="back" id="Yhn-9J-4xa">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <barButtonItem key="leftBarButtonItem" image="Navigation_left" id="Yhn-9J-4xa">
+                                <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="backAction:" destination="-1" id="Re0-f6-mZm"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" title="保存" id="kdO-Im-jCO">
+                                <color key="tintColor" red="0.97254901959999995" green="0.23137254900000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="saveInfo:" destination="-1" id="B0w-09-NFd"/>
                                 </connections>
                             </barButtonItem>
                         </navigationItem>
@@ -90,7 +98,7 @@
                         <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="KGm-Nc-ib4">
                             <rect key="frame" x="355" y="0.0" width="8" height="50"/>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="吃饭啦" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WEW-VE-TXT">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="吃饭啦" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WEW-VE-TXT">
                             <rect key="frame" x="56" y="15" width="287" height="21"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
@@ -110,6 +118,9 @@
                         <constraint firstItem="WEW-VE-TXT" firstAttribute="leading" secondItem="RUD-pY-lpc" secondAttribute="trailing" constant="12" id="tKA-Sc-dDC"/>
                         <constraint firstItem="RUD-pY-lpc" firstAttribute="leading" secondItem="xbe-lB-CIR" secondAttribute="leading" constant="12" id="wij-vQ-Byh"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="zW4-dV-sDF" appends="YES" id="lth-E0-Aba"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AZr-qa-H6L">
                     <rect key="frame" x="0.0" y="196" width="375" height="50"/>
@@ -219,9 +230,14 @@
                 <action selector="sexAction:" destination="-1" id="vqL-X2-Z0k"/>
             </connections>
         </tapGestureRecognizer>
+        <tapGestureRecognizer id="zW4-dV-sDF" userLabel="nickNameTap">
+            <connections>
+                <action selector="nickNameTapAction:" destination="-1" id="xJ2-Uw-h5Q"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="back" width="32" height="32"/>
+        <image name="Navigation_left" width="32" height="32"/>
         <image name="mine_defaultHead" width="80" height="80"/>
         <image name="mine_rightArrow" width="8" height="15"/>
     </resources>

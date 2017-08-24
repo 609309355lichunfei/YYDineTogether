@@ -80,6 +80,11 @@
                     <constraint firstItem="VdP-3p-O4T" firstAttribute="top" secondItem="Bpi-tu-nbv" secondAttribute="bottom" id="ljP-Hr-KIy"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="addressLabel" destination="fav-rs-DRH" id="xIZ-lD-NeW"/>
+                <outlet property="nameLabel" destination="qVG-zo-Hyh" id="sFf-It-rEt"/>
+                <outlet property="phoneLabel" destination="hBb-qg-8iW" id="SX4-Lj-vnr"/>
+            </connections>
             <point key="canvasLocation" x="96.5" y="101.5"/>
         </tableViewCell>
     </objects>

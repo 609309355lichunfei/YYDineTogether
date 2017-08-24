@@ -46,7 +46,7 @@
 
 - (void)getConnectWithShops:(DataLoadType)dataLoadType {
     _shoppageIndex = dataLoadType == DataLoadTypeNone ? 0 : _shoppageIndex + 1;
-    [[JSRequestManager sharedManager] shopsWithPage:NSStringFormat(@"%ld",(long)_shoppageIndex) lng:@"122.34321" lat:@"32.2222" tagid:@"0" Success:^(id responseObject) {
+    [[JSRequestManager sharedManager] shopsWithPage:NSStringFormat(@"%ld",(long)_shoppageIndex) lng:[JSYHLocationManager sharedManager].lng lat:[JSYHLocationManager sharedManager].lat tagid:@"0" Success:^(id responseObject) {
         NSDictionary *dataDic = responseObject[@"data"];
         NSArray *shopsArray = dataDic[@"shops"];
         if (dataLoadType == DataLoadTypeNone) {

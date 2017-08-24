@@ -69,7 +69,7 @@
 }
 
 - (void)getConnect {
-    [[JSRequestManager sharedManager] getCombDetailWithComboid:_combId lng:@"0" lat:@"0" Success:^(id responseObject) {
+    [[JSRequestManager sharedManager] getCombDetailWithComboid:_combId lng:[JSYHLocationManager sharedManager].lng lat:[JSYHLocationManager sharedManager].lat Success:^(id responseObject) {
         NSDictionary *dataDic = responseObject[@"data"];
         NSDictionary *combDic = dataDic[@"comb"];
         self.model = [[JSYHComboModel alloc] init];

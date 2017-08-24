@@ -26,6 +26,14 @@
 		9C628FA91F4ED6280014E828 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C628FA11F4ED6280014E828 /* FMDatabasePool.m */; };
 		9C628FAA1F4ED6280014E828 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C628FA31F4ED6280014E828 /* FMDatabaseQueue.m */; };
 		9C628FAB1F4ED6280014E828 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C628FA61F4ED6280014E828 /* FMResultSet.m */; };
+		9C628FAE1F4F0A550014E828 /* JSYHAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C628FAD1F4F0A550014E828 /* JSYHAddressModel.m */; };
+		9C628FB21F4F0E0C0014E828 /* JSAddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C628FB01F4F0E0C0014E828 /* JSAddAddressViewController.m */; };
+		9C628FB31F4F0E0C0014E828 /* JSAddAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C628FB11F4F0E0C0014E828 /* JSAddAddressViewController.xib */; };
+		9C628FBA1F4F26D30014E828 /* JSYHUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C628FB91F4F26D30014E828 /* JSYHUserModel.m */; };
+		9C628FBE1F4F2BA40014E828 /* JSYHUserNickNameEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C628FBC1F4F2BA40014E828 /* JSYHUserNickNameEditViewController.m */; };
+		9C628FBF1F4F2BA40014E828 /* JSYHUserNickNameEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C628FBD1F4F2BA40014E828 /* JSYHUserNickNameEditViewController.xib */; };
+		9C628FC21F4F3B4F0014E828 /* JSYHLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C628FC11F4F3B4F0014E828 /* JSYHLocationManager.m */; };
+		9C628FC41F4F40570014E828 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C628FC31F4F40570014E828 /* CoreLocation.framework */; };
 		9C85D7EF1F4683AF00622EBF /* JSYHHomeStoreActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85D7ED1F4683AF00622EBF /* JSYHHomeStoreActivityViewController.m */; };
 		9C85D7F01F4683AF00622EBF /* JSYHHomeStoreActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C85D7EE1F4683AF00622EBF /* JSYHHomeStoreActivityViewController.xib */; };
 		9C85D7F41F46881400622EBF /* JSYHStoreActivityHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85D7F21F46881400622EBF /* JSYHStoreActivityHeaderTableViewCell.m */; };
@@ -305,6 +313,19 @@
 		9C628FA41F4ED6280014E828 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
 		9C628FA51F4ED6280014E828 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		9C628FA61F4ED6280014E828 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		9C628FAC1F4F0A550014E828 /* JSYHAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSYHAddressModel.h; sourceTree = "<group>"; };
+		9C628FAD1F4F0A550014E828 /* JSYHAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSYHAddressModel.m; sourceTree = "<group>"; };
+		9C628FAF1F4F0E0C0014E828 /* JSAddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSAddAddressViewController.h; sourceTree = "<group>"; };
+		9C628FB01F4F0E0C0014E828 /* JSAddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSAddAddressViewController.m; sourceTree = "<group>"; };
+		9C628FB11F4F0E0C0014E828 /* JSAddAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSAddAddressViewController.xib; sourceTree = "<group>"; };
+		9C628FB81F4F26D30014E828 /* JSYHUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSYHUserModel.h; sourceTree = "<group>"; };
+		9C628FB91F4F26D30014E828 /* JSYHUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSYHUserModel.m; sourceTree = "<group>"; };
+		9C628FBB1F4F2BA40014E828 /* JSYHUserNickNameEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSYHUserNickNameEditViewController.h; sourceTree = "<group>"; };
+		9C628FBC1F4F2BA40014E828 /* JSYHUserNickNameEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSYHUserNickNameEditViewController.m; sourceTree = "<group>"; };
+		9C628FBD1F4F2BA40014E828 /* JSYHUserNickNameEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSYHUserNickNameEditViewController.xib; sourceTree = "<group>"; };
+		9C628FC01F4F3B4F0014E828 /* JSYHLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSYHLocationManager.h; sourceTree = "<group>"; };
+		9C628FC11F4F3B4F0014E828 /* JSYHLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSYHLocationManager.m; sourceTree = "<group>"; };
+		9C628FC31F4F40570014E828 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9C85D7EC1F4683AF00622EBF /* JSYHHomeStoreActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSYHHomeStoreActivityViewController.h; sourceTree = "<group>"; };
 		9C85D7ED1F4683AF00622EBF /* JSYHHomeStoreActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSYHHomeStoreActivityViewController.m; sourceTree = "<group>"; };
 		9C85D7EE1F4683AF00622EBF /* JSYHHomeStoreActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSYHHomeStoreActivityViewController.xib; sourceTree = "<group>"; };
@@ -672,6 +693,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C628FC41F4F40570014E828 /* CoreLocation.framework in Frameworks */,
 				9C8996471EF2D39C0097AF38 /* MapKit.framework in Frameworks */,
 				A3091578DC3875A9216040FB /* libPods.a in Frameworks */,
 			);
@@ -706,6 +728,7 @@
 		645F783CAED06FC4FAD00636 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C628FC31F4F40570014E828 /* CoreLocation.framework */,
 				9C8996461EF2D39C0097AF38 /* MapKit.framework */,
 				BF3803D2764EEAFE68D56C80 /* libPods.a */,
 			);
@@ -984,12 +1007,18 @@
 				B38940831EE69CEA00407E45 /* PersonalViewController.h */,
 				B38940841EE69CEA00407E45 /* PersonalViewController.m */,
 				9CDCC4DC1F1C5F040005FB76 /* PersonalViewController.xib */,
+				9C628FBB1F4F2BA40014E828 /* JSYHUserNickNameEditViewController.h */,
+				9C628FBC1F4F2BA40014E828 /* JSYHUserNickNameEditViewController.m */,
+				9C628FBD1F4F2BA40014E828 /* JSYHUserNickNameEditViewController.xib */,
 				B38940851EE69CEA00407E45 /* SettingUpController.h */,
 				B38940861EE69CEA00407E45 /* SettingUpController.m */,
 				9CDCC4DA1F1C5B8D0005FB76 /* SettingUpController.xib */,
 				B38940871EE69CEA00407E45 /* shippingViewController.h */,
 				B38940881EE69CEA00407E45 /* shippingViewController.m */,
 				9CDB2E981F175CE30072DBF6 /* shippingViewController.xib */,
+				9C628FAF1F4F0E0C0014E828 /* JSAddAddressViewController.h */,
+				9C628FB01F4F0E0C0014E828 /* JSAddAddressViewController.m */,
+				9C628FB11F4F0E0C0014E828 /* JSAddAddressViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -997,6 +1026,10 @@
 		B38940891EE69CEA00407E45 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9C628FAC1F4F0A550014E828 /* JSYHAddressModel.h */,
+				9C628FAD1F4F0A550014E828 /* JSYHAddressModel.m */,
+				9C628FB81F4F26D30014E828 /* JSYHUserModel.h */,
+				9C628FB91F4F26D30014E828 /* JSYHUserModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1245,6 +1278,8 @@
 				9CB799EC1F03D84400597B6A /* DB_Helper.m */,
 				9CDCC4D11F19C2170005FB76 /* JSRequestManager.h */,
 				9CDCC4D21F19C2170005FB76 /* JSRequestManager.m */,
+				9C628FC01F4F3B4F0014E828 /* JSYHLocationManager.h */,
+				9C628FC11F4F3B4F0014E828 /* JSYHLocationManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1714,6 +1749,11 @@
 					B3DA477C1EE50174006B6942 = {
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					B3DA47981EE50174006B6942 = {
 						CreatedOnToolsVersion = 8.1;
@@ -1766,6 +1806,7 @@
 				9C8996011EEE3D9D0097AF38 /* HomeFoodDetailViewController.xib in Resources */,
 				9C85D7FF1F4A754C00622EBF /* MsgDetailTableViewCell.xib in Resources */,
 				9C89966F1EF5461E0097AF38 /* citydata.plist in Resources */,
+				9C628FB31F4F0E0C0014E828 /* JSAddAddressViewController.xib in Resources */,
 				B389405C1EE69B3000407E45 /* LICENSE in Resources */,
 				B3DA485A1EE50650006B6942 /* icon_tabbar_mine.png in Resources */,
 				B3DA48621EE50650006B6942 /* icon_tabbar_nearby.png in Resources */,
@@ -1778,6 +1819,7 @@
 				9C89960B1EEE4C970097AF38 /* HomeComboViewController.xib in Resources */,
 				9CDB2E991F175CE30072DBF6 /* shippingViewController.xib in Resources */,
 				9C89961F1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.xib in Resources */,
+				9C628FBF1F4F2BA40014E828 /* JSYHUserNickNameEditViewController.xib in Resources */,
 				9C85D7FA1F46DD2B00622EBF /* JSYHSharedView.xib in Resources */,
 				9C8995CC1EE6589B0097AF38 /* HomeTableViewCell.xib in Resources */,
 				B3DA48511EE50650006B6942 /* icon_tabbar_discovery_selected.png in Resources */,
@@ -1934,6 +1976,7 @@
 				9C8996731EF7B3440097AF38 /* HomeCityViewController.m in Sources */,
 				9C8995FB1EED7B6A0097AF38 /* HomeStoreRightTableViewCell.m in Sources */,
 				9C85D7F81F46DD1C00622EBF /* JSYHSharedView.m in Sources */,
+				9C628FAE1F4F0A550014E828 /* JSYHAddressModel.m in Sources */,
 				9CB799F61F03DF1C00597B6A /* ShoppingCartImageView.m in Sources */,
 				B38940711EE69B3100407E45 /* IQPreviousNextView.m in Sources */,
 				9C8996501EF2DAD70097AF38 /* IndentChooseAddressTableViewCell.m in Sources */,
@@ -1953,6 +1996,7 @@
 				9CDB2EA51F176FA90072DBF6 /* HomeStandardCollectionViewCell.m in Sources */,
 				B389409C1EE69CEA00407E45 /* shippTableViewCell.m in Sources */,
 				B38940981EE69CEA00407E45 /* PersonalViewController.m in Sources */,
+				9C628FBE1F4F2BA40014E828 /* JSYHUserNickNameEditViewController.m in Sources */,
 				B3DA484E1EE50650006B6942 /* MsgViewController.m in Sources */,
 				B3DA48491EE50650006B6942 /* HomeViewController.m in Sources */,
 				9C89961E1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.m in Sources */,
@@ -2014,6 +2058,7 @@
 				9C89966B1EF52A780097AF38 /* MsgEditViewController.m in Sources */,
 				9C628F951F4E84C00014E828 /* JSYHCateModel.m in Sources */,
 				B3DA48421EE50650006B6942 /* TabBarItem.m in Sources */,
+				9C628FC21F4F3B4F0014E828 /* JSYHLocationManager.m in Sources */,
 				B389406D1EE69B3100407E45 /* IQKeyboardManager.m in Sources */,
 				B389406E1EE69B3100407E45 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				9C8995C91EE6589B0097AF38 /* HomeSearchView.m in Sources */,
@@ -2025,6 +2070,7 @@
 				B3DA48451EE50650006B6942 /* RootWebViewController.m in Sources */,
 				B3DA484A1EE50650006B6942 /* IndentViewController.m in Sources */,
 				B3DA483F1EE50650006B6942 /* MainTabBarController.m in Sources */,
+				9C628FBA1F4F26D30014E828 /* JSYHUserModel.m in Sources */,
 				9C85D7F41F46881400622EBF /* JSYHStoreActivityHeaderTableViewCell.m in Sources */,
 				B38940691EE69B3100407E45 /* IQUITextFieldView+Additions.m in Sources */,
 				9C85D7FE1F4A754C00622EBF /* MsgDetailTableViewCell.m in Sources */,
@@ -2043,6 +2089,7 @@
 				B38940641EE69B3000407E45 /* DistancePickerView.m in Sources */,
 				B38940601EE69B3000407E45 /* ActionSheetDistancePicker.m in Sources */,
 				B38940B21EE69D4C00407E45 /* UIColor+HexString.m in Sources */,
+				9C628FB21F4F0E0C0014E828 /* JSAddAddressViewController.m in Sources */,
 				B38940631EE69B3000407E45 /* ActionSheetStringPicker.m in Sources */,
 				B3DA48481EE50650006B6942 /* AppManager.m in Sources */,
 				9C89964B1EF2D9FE0097AF38 /* IndentChooseAddressViewController.m in Sources */,

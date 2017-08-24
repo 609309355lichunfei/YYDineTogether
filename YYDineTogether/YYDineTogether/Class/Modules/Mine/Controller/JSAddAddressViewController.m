@@ -1,35 +1,27 @@
 //
-//  IndentEditAddressViewController.m
+//  JSAddAddressViewController.m
 //  YYDineTogether
 //
-//  Created by 吴頔 on 17/6/15.
+//  Created by 吴頔 on 17/8/24.
 //  Copyright © 2017年 lichunfei. All rights reserved.
 //
 
-#import "IndentEditAddressViewController.h"
-#import "JSYHAddressModel.h"
+#import "JSAddAddressViewController.h"
 
-@interface IndentEditAddressViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *nameTF;
-@property (weak, nonatomic) IBOutlet UITextField *phoneTF;
-@property (weak, nonatomic) IBOutlet UITextField *addressTF;
+@interface JSAddAddressViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *doneBT;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+@property (weak, nonatomic) IBOutlet UITextField *addressTextField;
 
 @end
 
-@implementation IndentEditAddressViewController
+@implementation JSAddAddressViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self registUI];
-}
-
-- (void)registUI {
     self.doneBT.layer.cornerRadius = 2;
-    self.nameTF.text = _addressModel.username;
-    self.phoneTF.text = _addressModel.phone;
-    self.addressTF.text = _addressModel.address;
 }
 
 - (IBAction)backAction:(id)sender {
@@ -37,37 +29,31 @@
 }
 
 - (IBAction)doneAction:(id)sender {
-    NSString *nameStr = [_nameTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *nameStr = [_nameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if (nameStr.length == 0 || nameStr == nil) {
         [AppManager showToastWithMsg:@"请填写姓名"];
         return;
     }
-    NSString *phoneStr = [_phoneTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *phoneStr = [_phoneTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if (phoneStr == 0 || phoneStr == nil) {
         [AppManager showToastWithMsg:@"请填写电话号码"];
         return;
     }
-    NSString *addressStr = [_addressTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *addressStr = [_addressTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if (addressStr.length == 0 || addressStr == nil) {
         [AppManager showToastWithMsg:@"请填写地址"];
         return;
     }
-    NSMutableDictionary *addressDic = [@{@"address":self.addressTF.text,@"username":self.nameTF.text,@"phone":self.phoneTF.text,@"addressid":_addressModel.addressid} mutableCopy];
+    NSMutableDictionary *addressDic = [@{@"address":self.addressTextField.text,@"username":self.nameTextField.text,@"phone":self.phoneTextField.text,@"addressid":@"0"} mutableCopy];
     [addressDic setValue:@"0" forKey:@"lng"];
     [addressDic setValue:@"0" forKey:@"lat"];
-    [[JSRequestManager sharedManager] putMemberAddressWithDic:addressDic Success:^(id responseObject) {
+    [[JSRequestManager sharedManager] postMemberAddressWithDic:addressDic Success:^(id responseObject) {
         [self.navigationController popViewControllerAnimated:YES];
     } Failed:^(NSError *error) {
         
     }];
 }
 
-- (IBAction)locationAction:(id)sender {
-}
-
-- (void)setAddressModel:(JSYHAddressModel *)addressModel {
-    _addressModel = addressModel;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
