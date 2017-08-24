@@ -30,10 +30,13 @@
 #import "UIBarButtonItem+Extension.h"
 #import "HomeShoppingCartView.h"
 #import "ShoppingChartViewController.h"
+#import "ShoppingCartManager.h"
+#import "JSRequestManager.h"
+#import "LoginViewController.h"
 //#import "MBProgressHUD+XY.h"
 /**
  * @第三方
  */
 #import <YYKit.h>
-#import <MBProgressHUD.h>
+#import "MBProgressHUD+HH.h"
 #endif /* PrefixHeader_h */

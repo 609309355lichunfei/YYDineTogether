@@ -8,10 +8,16 @@
 
 #import "HomeStoreRightTableViewCell.h"
 #import "HomeStandardChooseView.h"
+#import "JSYHDishModel.h"
 
 @interface HomeStoreRightTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIButton *subtractButton;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *starLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *salesCountLabel;
 
 @end
 
@@ -31,6 +37,10 @@
     }
     HomeStandardChooseView *view = [[[NSBundle mainBundle] loadNibNamed:@"HomeStandardChooseView" owner:self options:nil] firstObject];
     [view showView];
+    _dishModel.count = [_numberLabel.text integerValue];
+    _dishModel.shopname = _shopname;
+    _dishModel.shoplogo = _shoplogo;
+    [[ShoppingCartManager sharedManager] addToShoppingCartWithDish:_dishModel];
 }
 - (IBAction)subtractAction:(id)sender {
     if ([_numberLabel.text isEqualToString:@"1"]) {
@@ -41,6 +51,26 @@
         _numberLabel.text =  [NSString stringWithFormat:@"%ld",[_numberLabel.text integerValue] - 1];
     }
     
+    _dishModel.count = [_numberLabel.text integerValue];
+    [[ShoppingCartManager sharedManager] removeFromeShoppingCartWithDish:_dishModel];
+    
+}
+
+- (void)setDishModel:(JSYHDishModel *)dishModel {
+    _dishModel = dishModel;
+    [self.logoImageView setImageWithURL:[NSURL URLWithString:_dishModel.logo] placeholder:nil];
+    self.nameLabel.text = _dishModel.name;
+    self.salesCountLabel.text = [NSString stringWithFormat:@"%d",_dishModel.salescount];
+    self.starLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.star];
+    self.priceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.price];
+    if (_dishModel.count > 0) {
+        _numberLabel.hidden = NO;
+        _subtractButton.hidden = NO;
+        _numberLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.count];
+    } else {
+        _numberLabel.hidden = YES;
+        _subtractButton.hidden = YES;
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

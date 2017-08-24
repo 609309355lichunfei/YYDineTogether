@@ -7,12 +7,21 @@
 //
 
 #import "HomeTableViewCell.h"
+#import "JSYHShopModel.h"
+#import "JSYHActivityModel.h"
+#import "JSYHHomeStoreActivityView.h"
 
 @interface HomeTableViewCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *shopStarLabel;
+@property (weak, nonatomic) IBOutlet UILabel *shopSalesCountLabel;
+
+
+
 @property (weak, nonatomic) IBOutlet UIView *storeView;
-@property (weak, nonatomic) IBOutlet UIButton *subtractButton;
-@property (weak, nonatomic) IBOutlet UILabel *numberLabel;
-@property (weak, nonatomic) IBOutlet UIView *numberView;
 
 @end
 
@@ -29,35 +38,22 @@
     // Configure the view for the selected state
 }
 
-- (void)setType:(ViewControllerType)type {
-    if (type == ViewControllerTypeTypeStore) {
-        self.storeView.hidden = NO;
-        self.numberView.hidden = YES;
-    } else {
-        self.storeView.hidden = YES;
-        self.numberView.hidden = NO;
+- (void)setShopModel:(JSYHShopModel *)shopModel {
+    _shopModel = shopModel;
+    [self.logoImageView setImageWithURL:[NSURL URLWithString:_shopModel.logo] placeholder:nil];
+    self.nameLabel.text = _shopModel.name;
+    self.shopStarLabel.text = [NSString stringWithFormat:@"%ld单",(long)_shopModel.star];
+    self.shopSalesCountLabel.text = [NSString stringWithFormat:@"%ld单",(long)_shopModel.salescount];
+    self.distanceLabel.text = _shopModel.distance;
+    [self.storeView removeAllSubviews];
+    for (NSInteger i = 0; i < _shopModel.activites.count; i ++){
+        JSYHActivityModel *model = _shopModel.activites[i];
+        JSYHHomeStoreActivityView *view = [[[NSBundle mainBundle] loadNibNamed:@"JSYHHomeStoreActivityView" owner:self options:nil] lastObject];
+        view.frame = CGRectMake(8, 4 + i * 20, 100, 20);
+        [self.storeView addSubview:view];
+        [view setActivityModel:model];
     }
-}
-
-- (IBAction)addAction:(id)sender {
-    if (_subtractButton.isHidden) {
-        _numberLabel.hidden = NO;
-        _numberLabel.text = @"1";
-        _subtractButton.hidden = NO;
-    } else {
-        _numberLabel.text =  [NSString stringWithFormat:@"%ld",[_numberLabel.text integerValue] + 1];
-    }
-}
-
-
-- (IBAction)subtractAction:(id)sender {
-    if ([_numberLabel.text isEqualToString:@"1"]) {
-        _numberLabel.text = @"0";
-        _subtractButton.hidden = YES;
-        _numberLabel.hidden = YES;
-    } else {
-        _numberLabel.text =  [NSString stringWithFormat:@"%ld",[_numberLabel.text integerValue] - 1];
-    }
+    
 }
 
 @end

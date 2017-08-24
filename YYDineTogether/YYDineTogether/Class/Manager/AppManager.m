@@ -7,6 +7,7 @@
 //
 
 #import "AppManager.h"
+#import "UIView+Toast.h"
 
 @implementation AppManager
 #pragma mark - 实时监测网络状态
@@ -34,6 +35,14 @@
         
     }];
     
+}
+
++ (void)showToastWithMsg:(NSString *)msgStr
+{
+    if (!msgStr || msgStr.length == 0) {
+        return;
+    }
+    [kAppWindow makeToast:msgStr duration:2.0 position:CSToastPositionCenter title:nil image:nil style:nil completion:nil];
 }
 
 @end

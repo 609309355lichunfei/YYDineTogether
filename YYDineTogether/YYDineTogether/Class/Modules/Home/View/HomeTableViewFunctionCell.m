@@ -11,10 +11,8 @@
 @interface HomeTableViewFunctionCell ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *underlineTolead;
 
-@property (weak, nonatomic) IBOutlet UIButton *tuijianBT;
-@property (weak, nonatomic) IBOutlet UIButton *zuijinBT;
-@property (weak, nonatomic) IBOutlet UIButton *starsBT;
 @property (strong, nonatomic) UIButton *currentBT;
+
 
 @end
 
@@ -27,7 +25,10 @@
 }
 
 - (void)registUI {
-    self.currentBT = self.tuijianBT;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        _activity();
+    }];
+    [self.activityView addGestureRecognizer:tap];
 }
 
 - (IBAction)cateAction:(id)sender {
@@ -54,32 +55,6 @@
     _underlineTolead.constant = KScreenWidth / 2;
     _dishesBlock();
     
-}
-- (IBAction)tuijianAction:(id)sender {
-    if (self.currentBT == self.tuijianBT) {
-        return;
-    }
-    [self.currentBT setTitleColor:RGB(100, 100, 100) forState:(UIControlStateNormal)];
-    self.currentBT = self.tuijianBT;
-    [self.currentBT setTitleColor:RGB(253, 89, 95) forState:(UIControlStateNormal)];
-}
-
-- (IBAction)zuijinAction:(id)sender {
-    if (self.currentBT == self.zuijinBT) {
-        return;
-    }
-    [self.currentBT setTitleColor:RGB(100, 100, 100) forState:(UIControlStateNormal)];
-    self.currentBT = self.zuijinBT;
-    [self.currentBT setTitleColor:RGB(253, 89, 95) forState:(UIControlStateNormal)];
-}
-
-- (IBAction)starAction:(id)sender {
-    if (self.currentBT == self.starsBT) {
-        return;
-    }
-    [self.currentBT setTitleColor:RGB(100, 100, 100) forState:(UIControlStateNormal)];
-    self.currentBT = self.starsBT;
-    [self.currentBT setTitleColor:RGB(253, 89, 95) forState:(UIControlStateNormal)];
 }
 
 

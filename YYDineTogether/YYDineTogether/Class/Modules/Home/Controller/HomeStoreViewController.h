@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeStoreViewController : UIViewController
-
+@property (strong, nonatomic) NSString *shopid;
 @end

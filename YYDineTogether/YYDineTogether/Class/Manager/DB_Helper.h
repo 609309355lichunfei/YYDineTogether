@@ -9,5 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface DB_Helper : NSObject
++ (id)defaultHelper;
 
+- (void)updateShoppingCart;
+
+- (NSArray *)getShoppingCart;
 @end

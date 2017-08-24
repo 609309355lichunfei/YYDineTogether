@@ -32,7 +32,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="wwe-fw-23g"/>
                     </constraints>
-                    <color key="barTintColor" red="0.85882352939999995" green="0.32156862749999998" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" red="0.97254901959999995" green="0.23137254900000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -201,7 +201,7 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77P-EZ-2R6">
                                             <rect key="frame" x="255" y="0.0" width="120" height="45"/>
-                                            <color key="backgroundColor" red="0.80392156859999997" green="0.30196078430000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.99215686270000003" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="Vm3-P6-Xt4"/>
                                             </constraints>
@@ -258,7 +258,7 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGA-5f-oVx">
                                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                                            <state key="normal" backgroundImage="home_gwc"/>
+                                            <state key="normal" backgroundImage="shoppingCart"/>
                                             <connections>
                                                 <action selector="shoppingCartAction:" destination="-1" eventType="touchUpInside" id="dOm-0c-g1B"/>
                                             </connections>
@@ -319,7 +319,7 @@
     </objects>
     <resources>
         <image name="back" width="32" height="32"/>
-        <image name="home_gwc" width="64" height="64"/>
         <image name="icon" width="300" height="300"/>
+        <image name="shoppingCart" width="57" height="57"/>
     </resources>
 </document>

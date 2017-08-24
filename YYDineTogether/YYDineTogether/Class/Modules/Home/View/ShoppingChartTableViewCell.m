@@ -8,9 +8,15 @@
 
 #import "ShoppingChartTableViewCell.h"
 #import "ShoppingCartSmallTableViewCell.h"
+#import "JSYHShopModel.h"
+#import "JSYHDishModel.h"
 
 @interface ShoppingChartTableViewCell ()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *shopNameLabel;
+
+@property (strong, nonatomic) NSMutableArray *dataArray;
 
 @end
 
@@ -30,7 +36,7 @@
 
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 30;
+    return 35;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -38,11 +44,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ShoppingCartSmallTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShoppingCartCellTableViewCell" forIndexPath:indexPath];
+    JSYHDishModel *dishModel = self.dataArray[indexPath.row];
+    cell.dishModel = dishModel;
     cell.isShoppingCart = _isShoppingCart;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -51,6 +59,22 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+- (void)setShopModel:(JSYHShopModel *)shopModel {
+    _shopModel = shopModel;
+    [self.logoImageView setImageWithURL:[NSURL URLWithString:_shopModel.logo] placeholder:nil];
+    self.shopNameLabel.text = _shopModel.name;
+    self.dataArray = _shopModel.dishs;
+    [self.tableView reloadData];
+}
+
+#pragma mark - 懒加载
+- (NSMutableArray *)dataArray {
+    if (_dataArray == nil) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -139,7 +139,7 @@ static AFHTTPSessionManager *_sessionManager;
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //解密
-        responseObject = aesDecryptWithData(responseObject);
+        //responseObject = aesDecryptWithData(responseObject);
         
         if (_isOpenLog) {PPLog(@"responseObject = %@",[self jsonToString:responseObject]);}
         [[self allSessionTask] removeObject:task];
@@ -176,7 +176,7 @@ static AFHTTPSessionManager *_sessionManager;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 
         //解密
-        responseObject = aesDecryptWithData(responseObject);
+        //responseObject = aesDecryptWithData(responseObject);
         
         if (_isOpenLog) {PPLog(@"responseObject = %@",[self jsonToString:responseObject]);}
         [[self allSessionTask] removeObject:task];

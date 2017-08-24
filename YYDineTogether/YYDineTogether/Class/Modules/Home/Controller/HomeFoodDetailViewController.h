@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeFoodDetailViewController : UIViewController
-
+@property (strong, nonatomic) NSString *dishid;
 @end

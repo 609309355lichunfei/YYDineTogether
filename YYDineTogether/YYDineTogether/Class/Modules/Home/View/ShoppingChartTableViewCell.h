@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class JSYHShopModel;
 @interface ShoppingChartTableViewCell : UITableViewCell
 @property (assign, nonatomic) BOOL isShoppingCart;
+
+@property (strong, nonatomic) JSYHShopModel *shopModel;
 @end

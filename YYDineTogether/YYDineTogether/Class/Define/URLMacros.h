@@ -21,8 +21,8 @@
  这样做切换方便,不用来回每个网络请求修改请求域名,降低出错事件
  */
 
-#define DevelopSever    0
-#define TestSever       1
+#define DevelopSever    1
+#define TestSever       0
 #define ProductSever    0
 
 #if DevelopSever
@@ -58,8 +58,22 @@
 #define URL_Logout [NSString stringWithFormat:@"%@/v1/logout/", URL_main]
 //banner
 #define URL_Banner [NSString stringWithFormat:@"%@/v1/banners/", URL_main]
-//商店列表
-#define URL_Shop
+//首页商店
+#define URL_HomePageShop [NSString stringWithFormat:@"%@/v1/homepage/shop/", URL_main]
+//首页菜品
+#define URL_HomePageDish [NSString stringWithFormat:@"%@/v1/homepage/dish/", URL_main]
+//套餐列表
+#define URL_Combo [NSString stringWithFormat:@"%@/v1/comb/", URL_main]
+//套餐详情
+#define URL_ComboDetail [NSString stringWithFormat:@"%@/v1/comb/detail/", URL_main]
+//商店详情
+#define URL_ShopDetail [NSString stringWithFormat:@"%@/v1/shop/", URL_main]
+//美食店分类
+#define URL_Shops [NSString stringWithFormat:@"%@/v1/shops/", URL_main]
+//获取 美食tag信息
+#define URL_Tags [NSString stringWithFormat:@"%@/v1/shops/tags/", URL_main]
+//提交预订单
+#define URL_Order [NSString stringWithFormat:@"%@/v1/order/", URL_main]
 
 
 

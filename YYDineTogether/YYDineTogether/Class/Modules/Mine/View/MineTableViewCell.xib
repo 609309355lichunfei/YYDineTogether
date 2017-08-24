@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="283" height="49"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="283" height="48.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="283" height="48"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kYJ-0E-hZn">
@@ -31,7 +31,7 @@
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_设置页面小箭头" translatesAutoresizingMaskIntoConstraints="NO" id="RoR-by-GXt">
+                    <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="RoR-by-GXt">
                         <rect key="frame" x="255" y="10" width="8" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="t0c-wj-33G"/>
@@ -55,6 +55,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="mine_设置页面小箭头" width="8" height="15"/>
+        <image name="mine_rightArrow" width="8" height="15"/>
     </resources>
 </document>

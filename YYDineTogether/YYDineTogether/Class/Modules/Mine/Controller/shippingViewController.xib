@@ -24,10 +24,10 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="XVc-GM-Sa8"/>
                     </constraints>
-                    <color key="barTintColor" red="0.85882352939999995" green="0.32156862749999998" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </textAttributes>
                     <items>
@@ -36,7 +36,7 @@
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="In3-KD-yEK">
                                     <rect key="frame" x="16" y="26" width="72" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="back">
+                                    <state key="normal" image="Navigation_left">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -48,27 +48,48 @@
                     </items>
                 </navigationBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tMI-Yq-1DQ">
-                    <rect key="frame" x="4" y="64" width="367" height="603"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="558"/>
                     <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="EsW-7z-o27"/>
                         <outlet property="delegate" destination="-1" id="UeS-KT-dtc"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vis-YO-QNe">
+                    <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Euw-Yh-UGG">
+                            <rect key="frame" x="133" y="11.5" width="109" height="22"/>
+                            <state key="normal" title="   新增地址" image="indent_add">
+                                <color key="titleColor" red="0.99215686270000003" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Euw-Yh-UGG" firstAttribute="centerX" secondItem="vis-YO-QNe" secondAttribute="centerX" id="OfB-mm-arX"/>
+                        <constraint firstItem="Euw-Yh-UGG" firstAttribute="centerY" secondItem="vis-YO-QNe" secondAttribute="centerY" id="j32-ct-sBA"/>
+                        <constraint firstAttribute="height" constant="45" id="m3O-Lz-NpU"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="OL9-mm-Hxo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="30e-bn-2bd"/>
-                <constraint firstAttribute="bottom" secondItem="tMI-Yq-1DQ" secondAttribute="bottom" id="4Ag-Gr-VoD"/>
+                <constraint firstAttribute="bottom" secondItem="tMI-Yq-1DQ" secondAttribute="bottom" constant="45" id="4Ag-Gr-VoD"/>
                 <constraint firstItem="OL9-mm-Hxo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5Pq-BU-tV2"/>
-                <constraint firstAttribute="trailing" secondItem="tMI-Yq-1DQ" secondAttribute="trailing" constant="4" id="URB-Ul-oLy"/>
+                <constraint firstItem="vis-YO-QNe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9En-wk-3RF"/>
+                <constraint firstAttribute="trailing" secondItem="tMI-Yq-1DQ" secondAttribute="trailing" id="URB-Ul-oLy"/>
+                <constraint firstAttribute="trailing" secondItem="vis-YO-QNe" secondAttribute="trailing" id="bg0-Bf-QKY"/>
+                <constraint firstAttribute="bottom" secondItem="vis-YO-QNe" secondAttribute="bottom" id="eWT-WF-cFk"/>
                 <constraint firstAttribute="trailing" secondItem="OL9-mm-Hxo" secondAttribute="trailing" id="h1R-Lg-GJk"/>
-                <constraint firstItem="tMI-Yq-1DQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="vNw-Uq-qd5"/>
+                <constraint firstItem="tMI-Yq-1DQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vNw-Uq-qd5"/>
                 <constraint firstItem="tMI-Yq-1DQ" firstAttribute="top" secondItem="OL9-mm-Hxo" secondAttribute="bottom" id="wUW-7M-6XH"/>
             </constraints>
         </view>
     </objects>
     <resources>
-        <image name="back" width="32" height="32"/>
+        <image name="Navigation_left" width="32" height="32"/>
+        <image name="indent_add" width="21" height="21"/>
     </resources>
 </document>

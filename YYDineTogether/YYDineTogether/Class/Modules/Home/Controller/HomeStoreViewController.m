@@ -12,6 +12,10 @@
 #import "HomeFoodDetailViewController.h"
 #import "HomeActivityViewController.h"
 #import "HomeStandardChooseView.h"
+#import "JSYHHomeStoreActivityView.h"
+#import "JSYHShopModel.h"
+#import "JSYHCateModel.h"
+#import "JSYHActivityModel.h"
 
 @interface HomeStoreViewController ()<UITableViewDelegate, UITableViewDataSource>{
     BOOL _isCombo;
@@ -24,6 +28,23 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomLineLeading;
 @property (strong, nonatomic) HomeShoppingCartView *shoppingView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *shoppingCartBTBottom;
+@property (weak, nonatomic) IBOutlet UIView *activityView;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *arrowImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *shopNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noticeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UIButton *activityButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *activityViewHeight;
+@property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
+
+
+@property (strong, nonatomic) NSMutableArray *catesArray;
+@property (strong, nonatomic) NSMutableArray *dishsArray;
+
+
+@property (strong, nonatomic) JSYHShopModel *shopModel;
 
 
 @end
@@ -36,10 +57,83 @@
     [self registUI];
 }
 
+- (void)getConnectShopDetail {
+    [[JSRequestManager sharedManager] shopDetailWithShopid:self.shopid Success:^(id responseObject) {
+        NSDictionary *dataDic = responseObject[@"data"];
+        NSDictionary *shop = dataDic[@"shop"];
+        self.shopModel = [[JSYHShopModel alloc] init];
+        [self.shopModel setValuesForKeysWithDictionary:shop];
+        [self fillData];
+    } Failed:^(NSError *error) {
+        
+    }];
+}
+
 - (void)registUI {
+    self.shoppingCartCountLabel.layer.cornerRadius = 9;
+    if ([ShoppingCartManager sharedManager].shoppingCartDataArray.count == 0) {
+        self.shoppingCartCountLabel.hidden = YES;
+    } else {
+        self.shoppingCartCountLabel.hidden = NO;
+        self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].shoppingCartDataArray.count];
+    }
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"JSYHShoppingCartCountChanged" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        if ([ShoppingCartManager sharedManager].shoppingCartDataArray.count == 0) {
+            self.shoppingCartCountLabel.hidden = YES;
+        } else {
+            self.shoppingCartCountLabel.hidden = NO;
+            self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].shoppingCartDataArray.count];
+        }
+        
+    }];
     _isCombo = NO;
     [self.leftTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HomeStoreLeftTableViewCell"];
     [self.rightTableView registerNib:[UINib nibWithNibName:@"HomeStoreRightTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeStoreRightTableViewCell"];
+    
+    //  创建需要的毛玻璃特效类型
+    
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    
+    //  毛玻璃view 视图
+    
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    
+    //添加到要有毛玻璃特效的控件中
+    
+    effectView.frame = [UIScreen mainScreen].bounds;
+    
+    [self.backgroundImageView addSubview:effectView];
+    
+    //设置模糊透明度
+    
+    effectView.alpha = 1;
+
+    
+    
+    [self getConnectShopDetail];
+}
+
+- (void)fillData {
+    self.shopNameLabel.text = _shopModel.name;
+    self.noticeLabel.text = _shopModel.notice_info;
+    self.statusLabel.hidden = _shopModel.status == 1 ? NO : YES;
+    self.catesArray = self.shopModel.cates;
+    [self.logoImageView setImageWithURL:[NSURL URLWithString:self.shopModel.logo] placeholder:nil];
+    [self.backgroundImageView setImageWithURL:[NSURL URLWithString:self.shopModel.logo] placeholder:nil];
+    [self.activityButton setTitle:[NSString stringWithFormat:@"%ld个活动",_shopModel.activites.count] forState:(UIControlStateNormal)];
+    for (NSInteger i = 0; i < _shopModel.activites.count; i ++){
+        JSYHActivityModel *model = _shopModel.activites[i];
+        JSYHHomeStoreActivityView *view = [[[NSBundle mainBundle] loadNibNamed:@"JSYHHomeStoreActivityView" owner:self options:nil] lastObject];
+        view.frame = CGRectMake(8, 4 + i * 20, 100, 20);
+        [self.activityView addSubview:view];
+        [view setActivityModel:model];
+    }
+    [self.leftTableView reloadData];
+    if (_shopModel.cates.count > 0) {
+        JSYHCateModel *cateModel = [_shopModel.cates firstObject];
+        self.dishsArray = cateModel.dishs;
+        [self.rightTableView reloadData];
+    }
 }
 
 - (IBAction)backAction:(id)sender {
@@ -91,13 +185,23 @@
     HomeStoreDetailViewController *detailVC = [[HomeStoreDetailViewController alloc]init];
     [self.navigationController pushViewController:detailVC animated:YES];
 }
+- (IBAction)activityAction:(id)sender {
+    if (self.activityViewHeight.constant == 46) {
+        self.activityViewHeight.constant = 23 * _shopModel.activites.count;
+        self.arrowImageView.image = [UIImage imageNamed:@"home_up"];
+    } else {
+        self.activityViewHeight.constant = 46;
+        self.arrowImageView.image = [UIImage imageNamed:@"home_down"];
+        
+    }
+}
 
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == _leftTableView) {
         return 30;
     } else {
-        return 110;
+        return 100;
     }
 }
 
@@ -106,21 +210,31 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    if (tableView == self.leftTableView) {
+        return self.catesArray.count;
+    } else {
+        return self.dishsArray.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == _leftTableView) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeStoreLeftTableViewCell" forIndexPath:indexPath];
+        JSYHCateModel *model = self.catesArray[indexPath.row];
+        
         cell.backgroundColor = [UIColor whiteColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.textColor = [UIColor lightGrayColor];
-        cell.textLabel.text = @"荤菜";
+        cell.textLabel.text = model.catename;
         cell.textLabel.font = [UIFont systemFontOfSize:16];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
         return cell;
     } else {
         HomeStoreRightTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeStoreRightTableViewCell" forIndexPath:indexPath];
+        JSYHDishModel *model = self.dishsArray[indexPath.row];
+        cell.dishModel = model;
+        cell.shopname = _shopModel.name;
+        cell.shoplogo = _shopModel.logo;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -136,7 +250,30 @@
             HomeFoodDetailViewController *foodDetailVC = [[HomeFoodDetailViewController alloc] init];
             [self.navigationController pushViewController:foodDetailVC animated:YES];
         }
+    } else {
+        JSYHCateModel *model = self.catesArray[indexPath.row];
+        self.dishsArray = model.dishs;
+        [self.rightTableView reloadData];
     }
+}
+
+#pragma mark - 懒加载
+- (NSMutableArray *)dishsArray {
+    if (_dishsArray == nil) {
+        _dishsArray = [NSMutableArray array];
+    }
+    return _dishsArray;
+}
+
+- (NSMutableArray *)catesArray {
+    if (_catesArray == nil) {
+        _catesArray = [NSMutableArray array];
+    }
+    return _catesArray;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,7 +7,8 @@
 //
 
 #import "MsgEditViewController.h"
-#import "HomeTableViewCell.h"
+#import "HomeDishTableViewCell.h"
+#import "MsgChooseIndentViewController.h"
 
 @interface MsgEditViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>{
     CGFloat _mainScrollViewLastContentOffSetY;
@@ -27,11 +28,15 @@
 }
 
 - (void)registUI {
-    [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"MsgEditTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HomeDishTableViewCell" bundle:nil] forCellReuseIdentifier:@"MsgEditTableViewCell"];
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)addIndentAction:(id)sender {
+    MsgChooseIndentViewController *chooseIndentVC = [[MsgChooseIndentViewController alloc] init];
+    [self.navigationController pushViewController:chooseIndentVC animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -44,12 +49,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MsgEditTableViewCell" forIndexPath:indexPath];
-    cell.type = ViewControllerTypeTypeFood;
+    HomeDishTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MsgEditTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -57,34 +61,6 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-}
-
-#pragma mark - UIScrollViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView == _mainScrollView) {
-        if (scrollView.contentOffset.y > 140) {
-            if (scrollView.contentOffset.y > _mainScrollViewLastContentOffSetY) {
-                [scrollView scrollToBottomAnimated:NO];
-                scrollView.scrollEnabled = NO;
-                _tableView.scrollEnabled = YES;
-                _tableView.bounces = YES;
-            }
-        }
-        
-        _mainScrollViewLastContentOffSetY = scrollView.contentOffset.y;
-    }
-    
-    if (scrollView == _tableView) {
-        if (scrollView.contentOffset.y < 10) {
-            if (scrollView.contentOffset.y < _tableViewLastContentOffSetY) {
-                [scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-                scrollView.scrollEnabled = NO;
-                _mainScrollView.scrollEnabled = YES;
-                _mainScrollView.bounces = YES;
-            }
-        }
-        _tableViewLastContentOffSetY = scrollView.contentOffset.y;
-    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class JSYHDishModel;
 @interface ShoppingCartSmallTableViewCell : UITableViewCell
 @property (assign, nonatomic) BOOL isShoppingCart;
+@property (strong, nonatomic) JSYHDishModel *dishModel;
 @end

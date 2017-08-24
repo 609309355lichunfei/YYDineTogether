@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class JSYHDishModel;
 @interface HomeStoreRightTableViewCell : UITableViewCell
+
+@property (strong, nonatomic) NSString *shopname;
+@property (strong, nonatomic) NSString *shoplogo;
+
+@property (strong, nonatomic) JSYHDishModel *dishModel;
 
 @end

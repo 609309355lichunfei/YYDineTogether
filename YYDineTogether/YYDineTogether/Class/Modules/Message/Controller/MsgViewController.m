@@ -11,6 +11,7 @@
 #import "MsgTableHeaderView.h"
 #import "HomeActivityViewController.h"
 #import "MsgEditViewController.h"
+#import "MsgDetailViewController.h"
 
 @interface MsgViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -26,17 +27,22 @@
 }
 
 - (void)registUI {
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self.tableView registerNib:[UINib nibWithNibName:@"MsgTableViewCell" bundle:nil] forCellReuseIdentifier:@"MsgTableViewCell"];
 }
 
 - (IBAction)editAction:(id)sender {
     MsgEditViewController *editVC = [[MsgEditViewController alloc] init];
-    [self.tabBarController.navigationController pushViewController:editVC animated:YES];
+    if (_isMine) {
+        [self.navigationController pushViewController:editVC animated:YES];
+    } else {
+        [self.tabBarController.navigationController pushViewController:editVC animated:YES];
+    }
 }
 
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 260;
+    return 300;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -64,8 +70,12 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeActivityViewController *comboVC = [[HomeActivityViewController alloc] init];
-    [self.tabBarController.navigationController pushViewController:comboVC animated:YES];
+    MsgDetailViewController *detailVC = [[MsgDetailViewController alloc] init];
+    if (_isMine) {
+        [self.navigationController pushViewController:detailVC animated:YES];
+    } else {
+        [self.tabBarController.navigationController pushViewController:detailVC animated:YES];
+    }
 }
 
 #pragma mark - 懒加载

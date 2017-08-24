@@ -8,8 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+@class JSYHDishModel;
+
 @interface ShoppingCartManager : NSObject
 + (ShoppingCartManager *)sharedManager;
 
 @property (strong, nonatomic) NSMutableArray *shoppingCartDataArray;
+
+@property (strong, nonatomic) NSMutableArray *shoppingCartDataShopArray;
+
+- (void)addToShoppingCartWithDish:(JSYHDishModel *)dishModel;
+
+- (void)removeFromeShoppingCartWithDish:(JSYHDishModel *)dishModel;
+
+- (void)updateCountWithModel:(JSYHDishModel *)dishModel;
+
+//按照商店分类
+- (void)clearUpDataArrayWithShop;
+
 @end

@@ -59,7 +59,8 @@ PropertyNSMutableArray(VCS);//tabbar root VC
     
     
     MsgViewController *msgVC = [[MsgViewController alloc]init];
-    [self setupChildViewController:msgVC title:@"吃货" imageName:@"eatbar_color" seleceImageName:@"eatbar_color"];
+    msgVC.isMine = NO;
+    [self setupChildViewController:msgVC title:@"吃货" imageName:@"eatbar" seleceImageName:@"eatbar_color"];
     
     IndentViewController * indent = [[IndentViewController alloc] init];
     [self setupChildViewController:indent title:@"订单" imageName:@"orderbar" seleceImageName:@"orderbar_color"];

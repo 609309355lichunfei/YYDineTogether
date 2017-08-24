@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeActivityViewController : UIViewController
-
+@property (strong, nonatomic) NSString *combId;
 @end

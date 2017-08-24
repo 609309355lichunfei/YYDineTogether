@@ -8,7 +8,10 @@
 
 #import "HomeActivityViewController.h"
 #import "HomeShoppingCartView.h"
-#import "HomeTableViewCell.h"
+#import "JSYHSharedView.h"
+#import "JSYHComboModel.h"
+#import "JSYHDishModel.h"
+#import "HomeDishTableViewCell.h"
 
 @interface HomeActivityViewController ()<UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>{
     CGFloat _mainScrollViewLastContentOffSetY;
@@ -18,7 +21,17 @@
 @property (strong, nonatomic) HomeShoppingCartView *shoppingView;
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *shopCartBTBottom;
+@property (weak, nonatomic) IBOutlet UIImageView *firstImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *secondImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *thirdImageVIew;
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
+
+@property (strong, nonatomic) NSMutableArray *dataArray;
+
+@property (strong, nonatomic) JSYHComboModel *model;
 
 @end
 
@@ -30,22 +43,81 @@
     [self registUI];
 }
 
-- (void)registUI {
-    [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeActivityTableViewCell"];
+- (void)viewDidAppear:(BOOL)animated {
+    [self.tableView reloadData];
 }
-- (IBAction)shoppingCartAction:(id)sender {
-    if (_shoppingView == nil) {
-        self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
-            [_shoppingView removeShoppingCartView];
-            _shoppingView = nil;
-        }];
-        [_shoppingView addGestureRecognizer:tap];
-        [_shoppingView showShoppingCartView];
+
+- (void)registUI {
+    self.shoppingCartCountLabel.layer.cornerRadius = 9;
+    if ([ShoppingCartManager sharedManager].shoppingCartDataArray.count == 0) {
+        self.shoppingCartCountLabel.hidden = YES;
     } else {
-        [_shoppingView removeShoppingCartView];
-        _shoppingView = nil;
+        self.shoppingCartCountLabel.hidden = NO;
+        self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].shoppingCartDataArray.count];
     }
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"JSYHShoppingCartCountChanged" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        if ([ShoppingCartManager sharedManager].shoppingCartDataArray.count == 0) {
+            self.shoppingCartCountLabel.hidden = YES;
+        } else {
+            self.shoppingCartCountLabel.hidden = NO;
+            self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].shoppingCartDataArray.count];
+        }
+        
+    }];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HomeDishTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeActivityTableViewCell"];
+    [self getConnect];
+}
+
+- (void)getConnect {
+    [[JSRequestManager sharedManager] getCombDetailWithComboid:_combId lng:@"0" lat:@"0" Success:^(id responseObject) {
+        NSDictionary *dataDic = responseObject[@"data"];
+        NSDictionary *combDic = dataDic[@"comb"];
+        self.model = [[JSYHComboModel alloc] init];
+        self.model.combid = combDic[@"id"];
+        [self.model setValuesForKeysWithDictionary:combDic];
+        [self fillData];
+    } Failed:^(NSError *error) {
+        
+    }];
+}
+
+- (void)fillData {
+    self.infoLabel.text = self.model.info;
+    for (NSInteger i = 0; i < self.model.imgs.count; i ++) {
+        NSString *imgUrlStr = self.model.imgs[i];
+        switch (i) {
+            case 0:
+                [self.firstImageView setImageWithURL:[NSURL URLWithString:imgUrlStr] placeholder:nil];
+                break;
+            case 1:
+                [self.secondImageView setImageWithURL:[NSURL URLWithString:imgUrlStr] placeholder:nil];
+                break;
+            case 2:
+                [self.thirdImageVIew setImageWithURL:[NSURL URLWithString:imgUrlStr] placeholder:nil];
+                break;
+                
+            default:
+                break;
+        }
+    }
+    self.dataArray = self.model.dishs;
+    self.tableViewHeight.constant = 128 * self.dataArray.count;
+    [self.tableView reloadData];
+}
+
+- (IBAction)shoppingCartAction:(id)sender {
+//    if (_shoppingView == nil) {
+//        self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
+//            [_shoppingView removeShoppingCartView];
+//            _shoppingView = nil;
+//        }];
+//        [_shoppingView addGestureRecognizer:tap];
+//        [_shoppingView showShoppingCartView];
+//    } else {
+//        [_shoppingView removeShoppingCartView];
+//        _shoppingView = nil;
+//    }
 }
 - (IBAction)clearShoppingCartAction:(id)sender {
     ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
@@ -55,10 +127,15 @@
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+- (IBAction)sharedAction:(id)sender {
+    JSYHSharedView *sharedView = [[[NSBundle mainBundle] loadNibNamed:@"JSYHSharedView" owner:self options:nil] firstObject];
+    sharedView.frame = kScreen_Bounds;
+    [kAppWindow addSubview:sharedView];
+}
 
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 128;
+    return 110;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -66,47 +143,23 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeActivityTableViewCell" forIndexPath:indexPath];
-    cell.type = ViewControllerTypeTypeFood;
+    HomeDishTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeActivityTableViewCell" forIndexPath:indexPath];
+//    cell.type = ViewControllerTypeTypeFood;
+    JSYHDishModel *model = self.model.dishs[indexPath.row];
+    cell.dishModel = model;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
-#pragma mark - UITableViewDelegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
-
-#pragma mark - UIScrollViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView == _mainScrollView) {
-        if (scrollView.contentOffset.y > 120) {
-            if (scrollView.contentOffset.y > _mainScrollViewLastContentOffSetY) {
-                [scrollView scrollToBottomAnimated:NO];
-                scrollView.scrollEnabled = NO;
-                _tableView.scrollEnabled = YES;
-                _tableView.bounces = YES;
-            }
-        }
-        
-        _mainScrollViewLastContentOffSetY = scrollView.contentOffset.y;
+- (NSMutableArray *)dataArray {
+    if (_dataArray == nil) {
+        _dataArray = [NSMutableArray array];
     }
-    
-    if (scrollView == _tableView) {
-        if (scrollView.contentOffset.y < 10) {
-            if (scrollView.contentOffset.y < _tableViewLastContentOffSetY) {
-                [scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-                scrollView.scrollEnabled = NO;
-                _mainScrollView.scrollEnabled = YES;
-                _mainScrollView.bounces = YES;
-            }
-        }
-        _tableViewLastContentOffSetY = scrollView.contentOffset.y;
-    }
+    return _dataArray;
 }
 
 - (void)didReceiveMemoryWarning {

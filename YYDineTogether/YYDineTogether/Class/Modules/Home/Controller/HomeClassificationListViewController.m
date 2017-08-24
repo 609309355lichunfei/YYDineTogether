@@ -11,11 +11,23 @@
 #import "HomeFilterView.h"
 #import "HomeStoreViewController.h"
 #import "HomeStandardChooseView.h"
+#import "HomeDishTableViewCell.h"
+#import "JSYHShopModel.h"
+#import "JSYHDishModel.h"
 
-@interface HomeClassificationListViewController ()<UITableViewDelegate, UITableViewDataSource, HomeFilterViewDelegate>
+@interface HomeClassificationListViewController ()<UITableViewDelegate, UITableViewDataSource, HomeFilterViewDelegate>{
+    BOOL _isShops;
+    NSInteger _shoppageIndex;
+    NSInteger _dishpageIndex;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UILabel *myTitleLabel;
 @property (weak, nonatomic) IBOutlet UIView *mainView;
+
+@property (strong, nonatomic) NSMutableArray *dataArray;
+
+@property (strong, nonatomic) NSMutableArray *shopArray;
+
+@property (strong, nonatomic) NSMutableArray *dishArray;
 
 @property (strong, nonatomic) HomeShoppingCartView *shoppingView;
 
@@ -32,8 +44,60 @@
     [self registUI];
 }
 
+- (void)getConnectWithShops:(DataLoadType)dataLoadType {
+    _shoppageIndex = dataLoadType == DataLoadTypeNone ? 0 : _shoppageIndex + 1;
+    [[JSRequestManager sharedManager] shopsWithPage:NSStringFormat(@"%ld",(long)_shoppageIndex) lng:@"122.34321" lat:@"32.2222" tagid:@"0" Success:^(id responseObject) {
+        NSDictionary *dataDic = responseObject[@"data"];
+        NSArray *shopsArray = dataDic[@"shops"];
+        if (dataLoadType == DataLoadTypeNone) {
+            [self.tableView.mj_header endRefreshing];
+            [self.shopArray removeAllObjects];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
+        for (NSDictionary *shopDic in shopsArray) {
+            JSYHDishModel *model = [[JSYHDishModel alloc] init];
+            [model setValuesForKeysWithDictionary:shopDic];
+            [[ShoppingCartManager sharedManager] updateCountWithModel:model];
+            [self.shopArray addObject:model];
+        }
+        self.dataArray = self.shopArray;
+        [self.tableView reloadData];
+    } Failed:^(NSError *error) {
+        if (dataLoadType == DataLoadTypeNone) {
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
+    }];
+}
+
+- (void)getConnectWithDish:(DataLoadType)dataloadType {
+    _dishpageIndex = dataloadType == DataLoadTypeNone ? 0 : _dishpageIndex + 1;
+}
+
 - (void)registUI {
+    _isShops = YES;
+    MJWeakSelf;
+    self.tableView.mj_header  = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        if (_isShops) {
+            [weakSelf getConnectWithShops:DataLoadTypeNone];
+        } else {
+            
+        }
+    }];
+    
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        if (_isShops) {
+            [weakSelf getConnectWithShops:DataLoadTypeMore];
+        } else {
+            
+        }
+    }];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeClassificationTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HomeDishTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeClassificationDishTableViewCell"];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (IBAction)backAction:(id)sender {
@@ -55,12 +119,14 @@
     [self.mainView addSubview:self.filterView];
 }
 
-- (IBAction)changeTitleTapAction:(id)sender {
-    if ([self.myTitleLabel.text isEqualToString:@"美食店"]) {
-        self.myTitleLabel.text = @"美味菜";
+- (IBAction)changeTityle:(UISegmentedControl *)sender {
+    if (sender.selectedSegmentIndex == 0) {
+        _isShops = YES;
     } else {
-        self.myTitleLabel.text = @"美食店";
+        _isShops = NO;
+        
     }
+    [self.tableView reloadData];
 }
 
 - (IBAction)clearShoppingCartAction:(id)sender {
@@ -86,7 +152,7 @@
 
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 128;
+    return 150;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -94,13 +160,21 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeClassificationTableViewCell" forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    return cell;
+    if (_isShops) {
+        HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeClassificationTableViewCell" forIndexPath:indexPath];
+        JSYHShopModel *model = self.shopArray[indexPath.row];
+        cell.shopModel = model;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    } else {
+        HomeDishTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeClassificationDishTableViewCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
 }
 
 #pragma mark - UITableViewDelegate
@@ -112,6 +186,28 @@
 #pragma mark - HomeFilterViewDelegate
 - (void)homeFilterViewSelectedString:(NSString *)string {
     
+}
+
+#pragma makr - 懒加载
+- (NSMutableArray *)dataArray {
+    if (_dataArray == nil) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
+
+- (NSMutableArray *)shopArray {
+    if (_shopArray == nil) {
+        _shopArray = [NSMutableArray array];
+    }
+    return _shopArray;
+}
+
+- (NSMutableArray *)dishArray {
+    if (_dishArray == nil) {
+        _dishArray = [NSMutableArray array];
+    }
+    return _dishArray;
 }
 
 

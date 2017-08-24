@@ -30,7 +30,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6V-wX-CR5">
                                     <rect key="frame" x="299" y="0.0" width="44" height="44"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_关闭" translatesAutoresizingMaskIntoConstraints="NO" id="zYp-k2-rCV">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_close" translatesAutoresizingMaskIntoConstraints="NO" id="zYp-k2-rCV">
                                             <rect key="frame" x="10.5" y="10.5" width="23" height="23"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="23" id="0SF-tc-ccE"/>
@@ -147,6 +147,6 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="home_关闭" width="13" height="13"/>
+        <image name="home_close" width="13" height="13"/>
     </resources>
 </document>

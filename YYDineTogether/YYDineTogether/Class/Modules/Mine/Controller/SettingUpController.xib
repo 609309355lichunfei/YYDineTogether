@@ -49,7 +49,7 @@
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_设置页面小箭头" translatesAutoresizingMaskIntoConstraints="NO" id="UHI-zY-vDN">
+                        <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="UHI-zY-vDN">
                             <rect key="frame" x="355" y="0.0" width="8" height="50"/>
                         </imageView>
                     </subviews>
@@ -115,6 +115,6 @@
     </objects>
     <resources>
         <image name="back" width="32" height="32"/>
-        <image name="mine_设置页面小箭头" width="8" height="15"/>
+        <image name="mine_rightArrow" width="8" height="15"/>
     </resources>
 </document>

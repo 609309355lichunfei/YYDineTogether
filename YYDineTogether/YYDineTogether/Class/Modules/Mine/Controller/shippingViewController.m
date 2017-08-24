@@ -9,6 +9,7 @@
 #import "shippingViewController.h"
 #import "shippTableViewCell.h"
 #import "IndentEditAddressViewController.h"
+#import "IndentChooseAddressTableViewCell.h"
 @interface shippingViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
@@ -21,7 +22,7 @@
 }
 
 - (void)registUI {
-    [self.tableView registerNib:[UINib nibWithNibName:@"shippTableViewCell" bundle:nil] forCellReuseIdentifier:@"shippTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"IndentChooseAddressTableViewCell" bundle:nil] forCellReuseIdentifier:@"shippTableViewCell"];
 }
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -34,20 +35,17 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 110;
+    return 75;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    shippTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"shippTableViewCell" forIndexPath:indexPath];
+    IndentChooseAddressTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"shippTableViewCell" forIndexPath:indexPath];
     MJWeakSelf;
     cell.editBlock = ^(){
         IndentEditAddressViewController *editAddressVC = [[IndentEditAddressViewController alloc] init];
         [weakSelf.navigationController pushViewController:editAddressVC animated:YES];
     };
-    cell.removeBlock = ^(){
-        
-    };
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 //编辑

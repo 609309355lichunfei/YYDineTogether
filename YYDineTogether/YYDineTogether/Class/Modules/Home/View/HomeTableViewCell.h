@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 
-
+@class JSYHShopModel;
 @interface HomeTableViewCell : UITableViewCell
-@property (assign, nonatomic) ViewControllerType type;
+
+@property (strong, nonatomic) JSYHShopModel *shopModel;
 @end

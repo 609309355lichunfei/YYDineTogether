@@ -51,10 +51,10 @@
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_设置页面小箭头" translatesAutoresizingMaskIntoConstraints="NO" id="KGJ-NC-Vad">
+                        <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="KGJ-NC-Vad">
                             <rect key="frame" x="355" y="0.0" width="8" height="80"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_店铺中心默认头像" translatesAutoresizingMaskIntoConstraints="NO" id="nMW-OE-9Ec">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_defaultHead" translatesAutoresizingMaskIntoConstraints="NO" id="nMW-OE-9Ec">
                             <rect key="frame" x="260" y="5" width="70" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="70" id="GRi-og-dBc"/>
@@ -87,7 +87,7 @@
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_设置页面小箭头" translatesAutoresizingMaskIntoConstraints="NO" id="KGm-Nc-ib4">
+                        <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="KGm-Nc-ib4">
                             <rect key="frame" x="355" y="0.0" width="8" height="50"/>
                         </imageView>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="吃饭啦" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WEW-VE-TXT">
@@ -120,7 +120,7 @@
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_设置页面小箭头" translatesAutoresizingMaskIntoConstraints="NO" id="71R-tp-JNd">
+                        <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="71R-tp-JNd">
                             <rect key="frame" x="355" y="0.0" width="8" height="50"/>
                         </imageView>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="男" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kPL-Hr-SXE">
@@ -156,7 +156,7 @@
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_设置页面小箭头" translatesAutoresizingMaskIntoConstraints="NO" id="NAm-yH-9gU">
+                        <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="NAm-yH-9gU">
                             <rect key="frame" x="355" y="0.0" width="8" height="50"/>
                         </imageView>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="08-09" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e4s-nS-reN">
@@ -222,7 +222,7 @@
     </objects>
     <resources>
         <image name="back" width="32" height="32"/>
-        <image name="mine_店铺中心默认头像" width="80" height="80"/>
-        <image name="mine_设置页面小箭头" width="8" height="15"/>
+        <image name="mine_defaultHead" width="80" height="80"/>
+        <image name="mine_rightArrow" width="8" height="15"/>
     </resources>
 </document>

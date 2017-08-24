@@ -24,14 +24,14 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="VgN-Et-baJ"/>
                     </constraints>
-                    <color key="barTintColor" red="0.85882352939999995" green="0.32156862749999998" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" red="0.99215686270000003" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </textAttributes>
                     <items>
-                        <navigationItem title="送货地址选择" id="e3X-ng-F9y">
+                        <navigationItem title="收货地址" id="e3X-ng-F9y">
                             <barButtonItem key="leftBarButtonItem" id="1nr-z1-9qh">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="r5c-5C-Mdn">
                                     <rect key="frame" x="16" y="26" width="32" height="32"/>
@@ -57,20 +57,40 @@
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cz7-zv-DVA">
-                            <rect key="frame" x="4" y="4" width="367" height="595"/>
+                            <rect key="frame" x="0.0" y="4" width="375" height="554"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="FAI-eA-Fcn"/>
                                 <outlet property="delegate" destination="-1" id="hs2-2W-prX"/>
                             </connections>
                         </tableView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ose-Bg-OrF">
+                            <rect key="frame" x="0.0" y="558" width="375" height="45"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5s-zN-EO9">
+                                    <rect key="frame" x="133" y="11.5" width="109" height="22"/>
+                                    <state key="normal" title="   新增地址" image="indent_add">
+                                        <color key="titleColor" red="0.99215686270000003" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="TF4-Sa-PxO"/>
+                                <constraint firstItem="i5s-zN-EO9" firstAttribute="centerX" secondItem="ose-Bg-OrF" secondAttribute="centerX" id="VXs-6l-ESV"/>
+                                <constraint firstItem="i5s-zN-EO9" firstAttribute="centerY" secondItem="ose-Bg-OrF" secondAttribute="centerY" id="vXW-WA-LCx"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.88719951919999995" green="0.88719951919999995" blue="0.88719951919999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="cz7-zv-DVA" secondAttribute="trailing" constant="4" id="JWj-Le-hRi"/>
-                        <constraint firstAttribute="bottom" secondItem="cz7-zv-DVA" secondAttribute="bottom" constant="4" id="S6Y-ip-xmE"/>
-                        <constraint firstItem="cz7-zv-DVA" firstAttribute="leading" secondItem="n3g-5S-Ysg" secondAttribute="leading" constant="4" id="UBu-js-EUh"/>
+                        <constraint firstItem="ose-Bg-OrF" firstAttribute="leading" secondItem="n3g-5S-Ysg" secondAttribute="leading" id="I0Z-RX-ETx"/>
+                        <constraint firstAttribute="trailing" secondItem="cz7-zv-DVA" secondAttribute="trailing" id="JWj-Le-hRi"/>
+                        <constraint firstAttribute="bottom" secondItem="cz7-zv-DVA" secondAttribute="bottom" constant="45" id="S6Y-ip-xmE"/>
+                        <constraint firstItem="cz7-zv-DVA" firstAttribute="leading" secondItem="n3g-5S-Ysg" secondAttribute="leading" id="UBu-js-EUh"/>
+                        <constraint firstAttribute="trailing" secondItem="ose-Bg-OrF" secondAttribute="trailing" id="UfH-r8-fid"/>
                         <constraint firstItem="cz7-zv-DVA" firstAttribute="top" secondItem="n3g-5S-Ysg" secondAttribute="top" constant="4" id="cEB-MW-fkG"/>
+                        <constraint firstAttribute="bottom" secondItem="ose-Bg-OrF" secondAttribute="bottom" id="gyc-MW-hoO"/>
                     </constraints>
                 </view>
             </subviews>
@@ -89,5 +109,6 @@
     <resources>
         <image name="back" width="32" height="32"/>
         <image name="home_share" width="25" height="25"/>
+        <image name="indent_add" width="21" height="21"/>
     </resources>
 </document>

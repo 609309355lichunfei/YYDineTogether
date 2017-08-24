@@ -18,14 +18,35 @@
 #import "ShoppingChartViewController.h"
 #import "HomeCityViewController.h"
 #import "HomeTableViewFunctionCell.h"
+#import "JSYHHomeStoreActivityViewController.h"
+#import "SDCycleScrollView.h"
+#import "JSYHDishModel.h"
+#import "JSYHShopModel.h"
+#import "HomeDishTableViewCell.h"
 
 
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate ,UIGestureRecognizerDelegate>{
     BOOL _isStoreDataSource;
+    NSInteger _cellHeight;
+    NSInteger _shoppageIndex;
+    NSInteger _dishpageIndex;
 }
 @property (weak, nonatomic) IBOutlet UIView *barView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cancelBTWidth;
+@property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
+
+@property (strong, nonatomic) SDCycleScrollView *bannerScrollView;
+
+@property (strong, nonatomic) NSMutableArray *dataArray;
+
+@property (strong, nonatomic) NSMutableArray *shopArray;
+
+@property (strong, nonatomic) NSMutableArray *dishArray;
+
+@property (strong, nonatomic) NSMutableArray *bannerImageUrlArray;
 
 @property (strong, nonatomic) HomeSearchView *homeSearchView;
 @end
@@ -35,25 +56,155 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self registUI];
-    [PPNetworkHelper POST:URL_Register parameters:@{@"username":@"15325747141",@"password":@"123456"} success:^(id responseObject) {
-        
-    } failure:^(NSError *error) {
-        
-    }];
-    NSLog(@"asdfasfda");
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    for (JSYHDishModel *model in self.dishArray) {
+        [[ShoppingCartManager sharedManager] updateCountWithModel:model];
+    }
+    if ([ShoppingCartManager sharedManager].shoppingCartDataArray.count == 0) {
+        self.shoppingCartCountLabel.hidden = YES;
+    } else {
+        self.shoppingCartCountLabel.hidden = NO;
+        self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].shoppingCartDataArray.count];
+    }
+    [self.tableView reloadData];
 }
 
 - (void)registUI {
+    if ([JSRequestManager sharedManager].token == nil || [JSRequestManager sharedManager].token.length == 0) {
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        [self.tabBarController presentViewController:loginVC animated:YES completion:^{
+            
+        }];
+    }
+    self.shoppingCartCountLabel.layer.cornerRadius = 9;
     _isStoreDataSource = YES;
+    _cellHeight = 150;
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewFunctionCell" bundle:nil] forCellReuseIdentifier:@"HomeTableViewFunctionCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HomeDishTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeDishTableViewCell"];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    MJWeakSelf;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        if (_isStoreDataSource) {
+            [weakSelf getConnectHomePageShop:DataLoadTypeNone];
+        } else {
+            [weakSelf getConnectHomePageDish:DataLoadTypeNone];
+        }
+    }];
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        if (_isStoreDataSource) {
+            [weakSelf getConnectHomePageShop:DataLoadTypeMore];
+        } else {
+            [weakSelf getConnectHomePageDish:DataLoadTypeMore];
+        }
+    }];
+    [self.tableView.mj_header beginRefreshing];
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"JSYHShoppingCartCountChanged" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        if ([ShoppingCartManager sharedManager].shoppingCartDataArray.count == 0) {
+            self.shoppingCartCountLabel.hidden = YES;
+        } else {
+            self.shoppingCartCountLabel.hidden = NO;
+            self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].shoppingCartDataArray.count];
+        }
+        
+    }];
+}
+
+- (void)getConnectHomePageShop:(DataLoadType)dataLoadType {
+    _shoppageIndex = dataLoadType == DataLoadTypeNone ? 0 : _shoppageIndex + 1;
+    [[JSRequestManager sharedManager] homepageShopWithPage:NSStringFormat(@"%ld",_shoppageIndex) lng:@"122.34321" lat:@"32.2222" Success:^(id responseObject) {
+        NSDictionary *dataDic = responseObject[@"data"];
+        NSArray *shopsArray = dataDic[@"shops"];
+        if (shopsArray.count < 20) {
+            self.tableView.mj_footer.hidden = YES;
+        } else {
+            self.tableView.mj_footer.hidden = NO;
+        }
+        if (dataLoadType == DataLoadTypeNone) {
+            [self.shopArray removeAllObjects];
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
+        for (NSDictionary *dishDic in shopsArray) {
+            JSYHShopModel *model = [[JSYHShopModel alloc] init];
+            [model setValuesForKeysWithDictionary:dishDic];
+            [model updateHeightWithActivity];
+            [self.shopArray addObject:model];
+        }
+        self.dataArray = self.shopArray;
+        NSArray *bannersArray = dataDic[@"banners"];
+        [self.bannerImageUrlArray removeAllObjects];
+        for (NSDictionary *bannerDic in bannersArray) {
+            [self.bannerImageUrlArray addObject:bannerDic[@"logo"]];
+        }
+        [self.tableView reloadData];
+        
+    } Failed:^(NSError *error) {
+        if (dataLoadType == DataLoadTypeNone) {
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
+    }];
+}
+
+- (void)getConnectHomePageDish:(DataLoadType)dataLoadType {
+    _dishpageIndex = dataLoadType == DataLoadTypeNone ? 0 : _dishpageIndex + 1;
+    [[JSRequestManager sharedManager] homepageDishWithPage:NSStringFormat(@"%ld",_dishpageIndex) lng:@"122.34321" lat:@"32.2222" Success:^(id responseObject) {
+        
+        NSDictionary *dataDic = responseObject[@"data"];
+        NSArray *dishesArray = dataDic[@"dishs"];
+        if (dishesArray.count < 20) {
+            self.tableView.mj_footer.hidden = YES;
+        } else {
+            self.tableView.mj_footer.hidden = NO;
+        }
+        if (dataLoadType == DataLoadTypeNone) {
+            [self.dishArray removeAllObjects];
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
+        for (NSDictionary *dishDic in dishesArray) {
+            JSYHDishModel *model = [[JSYHDishModel alloc] init];
+            [model setValuesForKeysWithDictionary:dishDic];
+            [[ShoppingCartManager sharedManager] updateCountWithModel:model];
+            [self.dishArray addObject:model];
+        }
+        self.dataArray = self.dishArray;
+        NSArray *bannersArray = dataDic[@"banners"];
+        [self.bannerImageUrlArray removeAllObjects];
+        for (NSDictionary *bannerDic in bannersArray) {
+            [self.bannerImageUrlArray addObject:bannerDic[@"logo"]];
+        }
+        [self.tableView reloadData];
+        
+    } Failed:^(NSError *error) {
+        if (dataLoadType == DataLoadTypeNone) {
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
+    }];
+}
+
+- (IBAction)cancelAction:(id)sender {
+    [self.searchBar resignFirstResponder];
+    [_homeSearchView removeFromSuperview];
+    self.cancelBTWidth.constant = 1;
 }
 
 - (IBAction)locationAction:(id)sender {
     HomeCityViewController *cityVC = [[HomeCityViewController alloc]init];
     cityVC.cityLabel = self.cityLabel;
     [self presentViewController:cityVC animated:YES completion:nil];
+}
+- (IBAction)shoppingCartTapAction:(id)sender {
+    [self shoppingCartAction:nil];
 }
 
 - (void)shoppingCartAction:(id)sender {
@@ -85,6 +236,11 @@
     
 }
 
+- (void)activityAction{
+    JSYHHomeStoreActivityViewController *activityVC = [[JSYHHomeStoreActivityViewController alloc] init];
+    [self.tabBarController.navigationController pushViewController:activityVC animated:YES];
+}
+
 - (IBAction)comboActivityAction:(id)sender {
     HomeComboRecomendViewController *comboVC = [[HomeComboRecomendViewController alloc]init];
     comboVC.type = ViewControllerTypeTypeStore;
@@ -98,9 +254,13 @@
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 507;
+        return 475;
     }
-    return 128;
+    if (_isStoreDataSource) {
+        JSYHShopModel *model = self.shopArray[indexPath.row];
+        return model.height;
+    }
+    return _cellHeight;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -111,7 +271,7 @@
     if (section == 0) {
         return 1;
     }
-    return 20;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -134,13 +294,18 @@
         cell.supermarketBlock = ^(){
             [weakSelf supermarketAction:nil];
         };
+        cell.activity = ^(){
+            [weakSelf activityAction];
+        };
         __weak HomeTableViewFunctionCell *weakCell = cell;
         cell.merchantBlock = ^(){
             if (!_isStoreDataSource) {
                 [weakCell.merchantBt setTitleColor:RGB(253, 89, 95) forState:(UIControlStateNormal)];
                 [weakCell.dishesBt setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
                 _isStoreDataSource = YES;
-                [weakSelf.tableView reloadSection:1 withRowAnimation:(UITableViewRowAnimationNone)];
+                _cellHeight = 150;
+                self.dataArray = self.shopArray;
+                [self.tableView reloadSection:1 withRowAnimation:(UITableViewRowAnimationNone)];
             }
         };
         cell.dishesBlock = ^(){
@@ -148,15 +313,39 @@
                 [weakCell.dishesBt setTitleColor:RGB(253, 89, 95) forState:(UIControlStateNormal)];
                 [weakCell.merchantBt setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
                 _isStoreDataSource = NO;
-                [weakSelf.tableView reloadSection:1 withRowAnimation:(UITableViewRowAnimationNone)];
+                _cellHeight = 100;
+                self.dataArray = self.dishArray;
+                [self.tableView reloadSection:1 withRowAnimation:(UITableViewRowAnimationNone)];
+                if (self.dishArray.count == 0) {
+                    [self.tableView.mj_header beginRefreshing];
+                }
             }
         };
+        if (self.bannerScrollView == nil) {
+            self.bannerScrollView = [SDCycleScrollView cycleScrollViewWithFrame:cell.activityView.bounds imageURLStringsGroup:self.bannerImageUrlArray];
+            [cell.activityView addSubview:self.bannerScrollView];
+        } else {
+            self.bannerScrollView.imageURLStringsGroup = self.bannerImageUrlArray;
+        }
         return cell;
     }
-    HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableViewCell" forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.type = _isStoreDataSource ? ViewControllerTypeTypeStore : ViewControllerTypeTypeFood;
-    return cell;
+    if (_isStoreDataSource) {
+        HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableViewCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        JSYHShopModel *model = self.shopArray[indexPath.row];
+        cell.shopModel = model;
+        return cell;
+    } else {
+        HomeDishTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeDishTableViewCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        JSYHDishModel *model = self.dishArray[indexPath.row];
+        cell.dishModel = model;
+        return cell;
+    }
+    
+    
+    
+    
 }
 
 #pragma mark - UITableViewDelegate
@@ -166,51 +355,73 @@
     }
     if (_isStoreDataSource) {
         HomeStoreViewController *storeVC = [[HomeStoreViewController alloc] init];
+        JSYHShopModel *model = self.shopArray[indexPath.row];
+        storeVC.shopid = [model.shopid stringValue];
         [self.tabBarController.navigationController pushViewController:storeVC animated:YES];
     } else {
         HomeFoodDetailViewController *controller = [[HomeFoodDetailViewController alloc]init];
+        JSYHDishModel *model = self.dishArray[indexPath.row];
+        NSString *dishId = [model.dishid stringValue];
         [self.tabBarController.navigationController pushViewController:controller animated:YES];
     }
 }
 
 #pragma mark - UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-    self.homeSearchView = [[[NSBundle mainBundle] loadNibNamed:@"HomeSearchView" owner:self options:nil] lastObject];
-    _homeSearchView.frame = CGRectMake(0, 64, KScreenWidth, kScreenHeight - 64);
-    [kAppWindow addSubview:_homeSearchView];
+    if (self.homeSearchView == nil) {
+        self.homeSearchView = [[[NSBundle mainBundle] loadNibNamed:@"HomeSearchView" owner:self options:nil] lastObject];
+    }
+    _homeSearchView.frame = CGRectMake(0, 64, KScreenWidth, kScreenHeight - 108);
+    [self.view addSubview:_homeSearchView];
     self.barView.backgroundColor = [UIColor whiteColor];
+    self.cancelBTWidth.constant = 46;
+    _homeSearchView.type = SearchViewTypeSearch;
     return YES;
 }
 
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+//    [searchBar resignFirstResponder];
+//    [_homeSearchView removeFromSuperview];
+//    _tableView.scrollEnabled = YES;
+//    _tableView.bounces = YES;
+//    if (_tableView.contentOffset.y > 450) {
+//        self.barView.backgroundColor = [UIColor whiteColor];
+//    } else {
+//        self.barView.backgroundColor = [UIColor clearColor];
+//    }
     [searchBar resignFirstResponder];
-    [_homeSearchView removeFromSuperview];
-    if (_tableView.contentOffset.y > 450) {
-        self.barView.backgroundColor = [UIColor whiteColor];
-    } else {
-        self.barView.backgroundColor = [UIColor clearColor];
-    }
+    self.homeSearchView.type = SearchViewTypeResult;
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [searchBar resignFirstResponder];
-    [_homeSearchView removeFromSuperview];
-    _tableView.scrollEnabled = YES;
-    _tableView.bounces = YES;
-    if (_tableView.contentOffset.y > 450) {
-        self.barView.backgroundColor = [UIColor whiteColor];
-    } else {
-        self.barView.backgroundColor = [UIColor clearColor];
+#pragma mark - 懒加载
+- (NSMutableArray *)dataArray {
+    if (_dataArray == nil) {
+        _dataArray = [NSMutableArray array];
     }
+    return _dataArray;
 }
-#pragma mark - UIScrollViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView.contentOffset.y > 450) {
-        self.barView.backgroundColor = [UIColor whiteColor];
-    } else {
-        self.barView.backgroundColor = [UIColor clearColor];
+
+- (NSMutableArray *)shopArray {
+    if (_shopArray  == nil) {
+        _shopArray = [NSMutableArray array];
     }
+    return _shopArray;
 }
+
+- (NSMutableArray *)dishArray {
+    if (_dishArray == nil) {
+        _dishArray = [NSMutableArray array];
+    }
+    return _dishArray;
+}
+
+- (NSMutableArray *)bannerImageUrlArray {
+    if (_bannerImageUrlArray == nil) {
+        _bannerImageUrlArray = [NSMutableArray array];
+    }
+    return _bannerImageUrlArray;
+}
+
 
 
 @end

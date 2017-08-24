@@ -13,8 +13,10 @@
 #import "SettingUpController.h"
 #import "DisCountViewController.h"
 #import "MineTableViewCell.h"
+#import "MsgViewController.h"
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *iconimage;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 
 @end
 
@@ -30,9 +32,24 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([JSRequestManager sharedManager].userName == nil || [JSRequestManager sharedManager].userName.length == 0) {
+        
+    }else {
+        self.userNameLabel.text = [JSRequestManager sharedManager].userName;
+    }
+}
+
 - (IBAction)userTapAction:(id)sender {
-    PersonalViewController * persona = [PersonalViewController new];
-    [self.tabBarController.navigationController pushViewController:persona animated:YES];
+//    PersonalViewController * persona = [PersonalViewController new];
+//    [self.tabBarController.navigationController pushViewController:persona animated:YES];
+    if ([self.userNameLabel.text isEqualToString:@"登录/注册"]) {
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        [self.tabBarController presentViewController:loginVC animated:YES completion:^{
+            
+        }];
+    }
 }
 
 - (UITableView *)tableview {
@@ -68,17 +85,17 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            cell.myLabel.text = @"我的优惠券";
-            cell.myImageView.image = [UIImage imageNamed:@"mine_我的优惠券"];
+            cell.myLabel.text = @"我的吃货";
+            cell.myImageView.image = [UIImage imageNamed:@"mine_eat"];
         }else if (indexPath.row == 1){
             cell.myLabel.text = @"收货地址";
-            cell.myImageView.image = [UIImage imageNamed:@"mine_收货地址"];
+            cell.myImageView.image = [UIImage imageNamed:@"mine_address"];
         }else if (indexPath.row == 2){
-            cell.myLabel.text = @"我的收藏";
-            cell.myImageView.image = [UIImage imageNamed:@"mine_我的收藏"];
+            cell.myLabel.text = @"我的红包";
+            cell.myImageView.image = [UIImage imageNamed:@"mine_redBag"];
         }else{
-            cell.myLabel.text = @"浏览记录";
-            cell.myImageView.image = [UIImage imageNamed:@"mine_浏览记录"];
+            cell.myLabel.text = @"我的收藏";
+            cell.myImageView.image = [UIImage imageNamed:@"mine_record"];
         }
         
       
@@ -86,16 +103,16 @@
         
         if (indexPath.row == 0) {
             cell.myLabel.text = @"客服中心";
-            cell.myImageView.image = [UIImage imageNamed:@"mine_客服中心"];
+            cell.myImageView.image = [UIImage imageNamed:@"mine_serviceCenter"];
         }else{
             
             cell.myLabel.text = @"意见反馈";
-            cell.myImageView.image = [UIImage imageNamed:@"mine_意见反馈"];
+            cell.myImageView.image = [UIImage imageNamed:@"mine_opinion"];
         }
     }else if (indexPath.section == 2){
         
         cell.myLabel.text = @"关于我们";
-        cell.myImageView.image = [UIImage imageNamed:@"mine_关于我们"];
+        cell.myImageView.image = [UIImage imageNamed:@"mine_aboutUs"];
     }
   
     return cell;
@@ -105,8 +122,9 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-          DisCountViewController * disCount = [DisCountViewController new];
-          [self.tabBarController.navigationController pushViewController:disCount animated:YES];
+            MsgViewController *msgVC = [[MsgViewController alloc] init];
+            msgVC.isMine = YES;
+            [self.tabBarController.navigationController pushViewController:msgVC animated:YES];
         }else if (indexPath.row == 1){
             shippingViewController * ship = [shippingViewController new];
             [self.tabBarController.navigationController pushViewController:ship animated:YES];

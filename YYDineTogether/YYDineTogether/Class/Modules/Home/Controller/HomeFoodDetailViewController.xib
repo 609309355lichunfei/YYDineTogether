@@ -68,7 +68,7 @@
                                 <constraint firstAttribute="width" constant="30" id="1gR-vL-OTX"/>
                                 <constraint firstAttribute="width" secondItem="43V-Ld-JWt" secondAttribute="height" id="hlb-QV-3t9"/>
                             </constraints>
-                            <state key="normal" backgroundImage="home_add"/>
+                            <state key="normal" backgroundImage="home_+"/>
                             <connections>
                                 <action selector="addAction:" destination="-1" eventType="touchUpInside" id="lgM-Iu-CXV"/>
                             </connections>
@@ -79,7 +79,7 @@
                                 <constraint firstAttribute="width" constant="30" id="QN4-eW-pyX"/>
                                 <constraint firstAttribute="width" secondItem="04S-Hh-MgD" secondAttribute="height" id="oH1-NV-DkN"/>
                             </constraints>
-                            <state key="normal" backgroundImage="home_subtract"/>
+                            <state key="normal" backgroundImage="home_-"/>
                             <connections>
                                 <action selector="subtractAction:" destination="-1" eventType="touchUpInside" id="L4f-aK-VWw"/>
                             </connections>
@@ -173,8 +173,8 @@
                         <constraint firstAttribute="bottom" secondItem="35E-Na-tcC" secondAttribute="bottom" id="xIS-39-nsf"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jrz-zO-uEy">
-                    <rect key="frame" x="0.0" y="281" width="375" height="70"/>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jrz-zO-uEy">
+                    <rect key="frame" x="0.0" y="281" width="375" height="0.0"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品评价" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2K-fm-B8I">
                             <rect key="frame" x="8" y="8" width="65.5" height="19.5"/>
@@ -227,7 +227,7 @@
                         <constraint firstItem="isd-hN-W9J" firstAttribute="centerY" secondItem="dta-G5-smQ" secondAttribute="centerY" id="2db-yc-oBr"/>
                         <constraint firstItem="WDN-VK-2iH" firstAttribute="bottom" secondItem="V2K-fm-B8I" secondAttribute="bottom" id="7SP-vK-pJL"/>
                         <constraint firstItem="dta-G5-smQ" firstAttribute="top" secondItem="V2K-fm-B8I" secondAttribute="bottom" constant="16" id="8Y4-su-rKB"/>
-                        <constraint firstAttribute="height" constant="70" id="9Yt-oE-RWq"/>
+                        <constraint firstAttribute="height" id="9Yt-oE-RWq"/>
                         <constraint firstAttribute="trailing" secondItem="A6W-JJ-VEC" secondAttribute="trailing" id="Cx6-ty-wli"/>
                         <constraint firstItem="WDN-VK-2iH" firstAttribute="leading" secondItem="V2K-fm-B8I" secondAttribute="trailing" constant="16.5" id="FZ5-MO-95b"/>
                         <constraint firstItem="dta-G5-smQ" firstAttribute="leading" secondItem="V2K-fm-B8I" secondAttribute="leading" id="Fas-XC-joT"/>
@@ -241,7 +241,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMl-gv-BYQ">
-                    <rect key="frame" x="0.0" y="352" width="375" height="170"/>
+                    <rect key="frame" x="0.0" y="282" width="375" height="170"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dEv-Lt-by7">
                             <rect key="frame" x="8" y="35" width="359" height="135"/>
@@ -260,7 +260,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品介绍" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fyr-Za-jAa">
-                    <rect key="frame" x="8" y="359" width="65.5" height="19.5"/>
+                    <rect key="frame" x="8" y="289" width="65.5" height="19.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -270,11 +270,11 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMX-Lf-msA">
                             <rect key="frame" x="255" y="0.0" width="120" height="45"/>
-                            <color key="backgroundColor" red="0.80392156859999997" green="0.30196078430000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.99215686270000003" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="vbG-Ju-Lsr"/>
                             </constraints>
-                            <state key="normal" title="结算">
+                            <state key="normal" title="选好了">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
@@ -327,7 +327,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="von-dw-JnG">
                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                            <state key="normal" backgroundImage="home_gwc"/>
+                            <state key="normal" backgroundImage="shoppingCart"/>
                             <connections>
                                 <action selector="shoppingCartAction:" destination="-1" eventType="touchUpInside" id="M7X-l7-ple"/>
                             </connections>
@@ -379,11 +379,11 @@
     </objects>
     <resources>
         <image name="back" width="32" height="32"/>
-        <image name="home_add" width="25" height="25"/>
+        <image name="home_+" width="21" height="21"/>
+        <image name="home_-" width="21" height="21"/>
         <image name="home_dz" width="16" height="16"/>
-        <image name="home_gwc" width="64" height="64"/>
         <image name="home_sc" width="25" height="25"/>
-        <image name="home_subtract" width="15" height="15"/>
         <image name="icon" width="300" height="300"/>
+        <image name="shoppingCart" width="57" height="57"/>
     </resources>
 </document>

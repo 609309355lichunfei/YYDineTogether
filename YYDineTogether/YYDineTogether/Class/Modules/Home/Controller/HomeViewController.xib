@@ -5,13 +5,17 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
                 <outlet property="barView" destination="aa4-OX-qJO" id="DEO-72-FAj"/>
+                <outlet property="cancelBTWidth" destination="WTU-z5-Jth" id="Nsy-N8-0fT"/>
                 <outlet property="cityLabel" destination="7KY-nk-wEs" id="22M-Sd-4Xx"/>
+                <outlet property="searchBar" destination="RPn-PJ-ba9" id="gYU-ff-EY7"/>
+                <outlet property="shoppingCartCountLabel" destination="2Bj-Oa-el3" id="3X3-EH-oc7"/>
                 <outlet property="tableView" destination="D9L-ag-ik3" id="Ssg-eS-GZN"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Bn8-f1-H9r"/>
             </connections>
@@ -35,8 +39,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DLH-eY-rvM">
                             <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                             <subviews>
-                                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="搜索" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RPn-PJ-ba9">
-                                    <rect key="frame" x="50" y="0.0" width="325" height="44"/>
+                                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="搜索" translatesAutoresizingMaskIntoConstraints="NO" id="RPn-PJ-ba9">
+                                    <rect key="frame" x="50" y="0.0" width="316" height="44"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -67,13 +71,28 @@
                                         <outletCollection property="gestureRecognizers" destination="3Gu-PM-ZSC" appends="YES" id="MUI-ac-X9b"/>
                                     </connections>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpD-Tn-PhJ">
+                                    <rect key="frame" x="366" y="4.5" width="1" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="1" id="WTU-z5-Jth"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
+                                    <state key="normal" title="取消">
+                                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="cancelAction:" destination="-1" eventType="touchUpInside" id="CuH-y8-BbD"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="bYr-Ji-DxQ" secondAttribute="bottom" id="AEL-PZ-D9g"/>
                                 <constraint firstItem="bYr-Ji-DxQ" firstAttribute="top" secondItem="DLH-eY-rvM" secondAttribute="top" id="DwM-md-o5v"/>
                                 <constraint firstItem="RPn-PJ-ba9" firstAttribute="leading" secondItem="DLH-eY-rvM" secondAttribute="leading" constant="50" id="Kto-me-fiP"/>
-                                <constraint firstAttribute="trailing" secondItem="RPn-PJ-ba9" secondAttribute="trailing" id="NGo-yw-Yfa"/>
+                                <constraint firstItem="dpD-Tn-PhJ" firstAttribute="centerY" secondItem="DLH-eY-rvM" secondAttribute="centerY" id="OQj-kb-Y69"/>
                                 <constraint firstItem="RPn-PJ-ba9" firstAttribute="top" secondItem="DLH-eY-rvM" secondAttribute="top" id="YBF-oI-7Wz"/>
+                                <constraint firstItem="dpD-Tn-PhJ" firstAttribute="leading" secondItem="RPn-PJ-ba9" secondAttribute="trailing" id="khf-5n-pJs"/>
+                                <constraint firstAttribute="trailing" secondItem="dpD-Tn-PhJ" secondAttribute="trailing" constant="8" id="lKF-Kv-Z1a"/>
                                 <constraint firstItem="RPn-PJ-ba9" firstAttribute="leading" secondItem="bYr-Ji-DxQ" secondAttribute="trailing" id="mYr-Gb-NXX"/>
                                 <constraint firstAttribute="height" constant="44" id="n0Q-xI-RAu"/>
                                 <constraint firstAttribute="bottom" secondItem="RPn-PJ-ba9" secondAttribute="bottom" id="qwU-SB-5a7"/>
@@ -89,6 +108,37 @@
                         <constraint firstAttribute="height" constant="64" id="uNE-ia-002"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiR-bq-lMX">
+                    <rect key="frame" x="317" y="565" width="50" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shoppingCart" translatesAutoresizingMaskIntoConstraints="NO" id="lvo-pQ-8gt">
+                            <rect key="frame" x="-3.5" y="-3.5" width="57" height="57"/>
+                        </imageView>
+                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Bj-Oa-el3">
+                            <rect key="frame" x="32" y="0.0" width="18" height="18"/>
+                            <color key="backgroundColor" red="0.97254901959999995" green="0.23137254900000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="2Bj-Oa-el3" secondAttribute="height" id="DNd-SI-Q7x"/>
+                                <constraint firstAttribute="width" constant="18" id="aPa-F2-wFj"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="8"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="lvo-pQ-8gt" firstAttribute="centerY" secondItem="YiR-bq-lMX" secondAttribute="centerY" id="Asu-Qo-3qv"/>
+                        <constraint firstItem="2Bj-Oa-el3" firstAttribute="top" secondItem="YiR-bq-lMX" secondAttribute="top" id="PjA-1H-xc8"/>
+                        <constraint firstAttribute="width" constant="50" id="anS-Ez-Cbj"/>
+                        <constraint firstAttribute="trailing" secondItem="2Bj-Oa-el3" secondAttribute="trailing" id="g5s-Me-wk8"/>
+                        <constraint firstItem="lvo-pQ-8gt" firstAttribute="centerX" secondItem="YiR-bq-lMX" secondAttribute="centerX" id="hEr-1n-mOM"/>
+                        <constraint firstAttribute="height" constant="50" id="sIG-Qv-zQB"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="ygc-fB-5Lf" appends="YES" id="2mm-h0-Chp"/>
+                    </connections>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -97,6 +147,8 @@
                 <constraint firstItem="D9L-ag-ik3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DNO-VH-ej6"/>
                 <constraint firstAttribute="trailing" secondItem="D9L-ag-ik3" secondAttribute="trailing" id="GNG-YY-xe3"/>
                 <constraint firstItem="D9L-ag-ik3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HzR-39-05G"/>
+                <constraint firstAttribute="trailing" secondItem="YiR-bq-lMX" secondAttribute="trailing" constant="8" id="aqx-k6-YzA"/>
+                <constraint firstAttribute="bottom" secondItem="YiR-bq-lMX" secondAttribute="bottom" constant="52" id="plO-03-Wza"/>
                 <constraint firstAttribute="trailing" secondItem="aa4-OX-qJO" secondAttribute="trailing" id="qcE-kJ-Y88"/>
                 <constraint firstAttribute="bottom" secondItem="D9L-ag-ik3" secondAttribute="bottom" constant="44" id="svm-zU-P4n"/>
             </constraints>
@@ -107,5 +159,13 @@
                 <action selector="locationAction:" destination="-1" id="5bo-c3-WC2"/>
             </connections>
         </tapGestureRecognizer>
+        <tapGestureRecognizer id="ygc-fB-5Lf" userLabel="shoppingCartTap">
+            <connections>
+                <action selector="shoppingCartTapAction:" destination="-1" id="bAL-eU-N2D"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
+    <resources>
+        <image name="shoppingCart" width="57" height="57"/>
+    </resources>
 </document>

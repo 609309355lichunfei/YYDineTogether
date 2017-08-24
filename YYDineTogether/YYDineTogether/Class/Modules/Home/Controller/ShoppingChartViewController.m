@@ -9,9 +9,13 @@
 #import "ShoppingChartViewController.h"
 #import "ShoppingChartTableViewCell.h"
 #import "IndentConfirmViewController.h"
+#import "JSYHShopModel.h"
 
 @interface ShoppingChartViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
+
+@property (strong, nonatomic) NSMutableArray *dataArray;
 
 @end
 
@@ -24,7 +28,29 @@
 }
 
 - (void)registUI {
+    self.shoppingCartCountLabel.layer.cornerRadius = 9;
+    if ([ShoppingCartManager sharedManager].shoppingCartDataArray.count == 0) {
+        self.shoppingCartCountLabel.hidden = YES;
+    } else {
+        self.shoppingCartCountLabel.hidden = NO;
+        self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].shoppingCartDataArray.count];
+    }
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"JSYHShoppingCartCountChanged" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        if ([ShoppingCartManager sharedManager].shoppingCartDataArray.count == 0) {
+            self.shoppingCartCountLabel.hidden = YES;
+        } else {
+            self.shoppingCartCountLabel.hidden = NO;
+            self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].shoppingCartDataArray.count];
+        }
+        
+    }];
     [self.tableView registerNib:[UINib nibWithNibName:@"ShoppingChartTableViewCell" bundle:nil] forCellReuseIdentifier:@"ShoppingChartTableViewCell"];
+    [[ShoppingCartManager sharedManager] clearUpDataArrayWithShop];
+    for (JSYHShopModel *model in [ShoppingCartManager sharedManager].shoppingCartDataShopArray) {
+        [model updateHeightWithDish];
+    }
+    self.dataArray = [ShoppingCartManager sharedManager].shoppingCartDataShopArray;
+    [self.tableView reloadData];
 }
 
 - (IBAction)backAction:(id)sender {
@@ -37,7 +63,8 @@
 
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 130;
+    JSYHShopModel *model = self.dataArray[indexPath.row];
+    return model.shopCartHeight;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -45,12 +72,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ShoppingChartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShoppingChartTableViewCell" forIndexPath:indexPath];
     cell.isShoppingCart = YES;
+    JSYHShopModel *shopmodel = self.dataArray[indexPath.row];
+    cell.shopModel = shopmodel;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -58,6 +87,18 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+#pragma makr - 懒加载
+- (NSMutableArray *)dataArray {
+    if (_dataArray == nil) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {

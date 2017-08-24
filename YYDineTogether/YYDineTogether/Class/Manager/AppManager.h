@@ -16,4 +16,11 @@
 
 #pragma mark - 实时监测网络状态
 + (void)monitorNetworkStatus;
+
+/**
+ *  显示提示
+ *
+ *  @param msgStr 提示消息
+ */
++ (void)showToastWithMsg:(NSString *)msgStr;
 @end

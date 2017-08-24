@@ -15,6 +15,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *dishesBt;
 
+@property (weak, nonatomic) IBOutlet UIView *activityView;
+
 @property (copy, nonatomic) void(^cateBlock)();
 @property (copy, nonatomic) void(^drinkBlock)();
 @property (copy, nonatomic) void(^fruitBlock)();
@@ -22,5 +24,7 @@
 @property (copy, nonatomic) void(^merchantBlock)();
 @property (copy, nonatomic) void(^dishesBlock)();
 @property (copy, nonatomic) void(^comboBlock)();
+@property (copy, nonatomic) void(^activity)();
+
 
 @end

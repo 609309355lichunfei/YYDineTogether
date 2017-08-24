@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, SearchViewType) {
+    SearchViewTypeSearch,
+    SearchViewTypeResult
+};
+
 @interface HomeSearchView : UIView
 
+@property (assign, nonatomic) SearchViewType type;
 @end

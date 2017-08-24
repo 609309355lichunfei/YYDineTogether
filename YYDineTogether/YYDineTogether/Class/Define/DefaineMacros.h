@@ -13,4 +13,9 @@ typedef NS_ENUM(NSInteger, ViewControllerType) {
     ViewControllerTypeTypeStore,
     ViewControllerTypeTypeFood
 };
+
+typedef NS_ENUM(NSInteger, DataLoadType) {
+    DataLoadTypeNone,
+    DataLoadTypeMore
+};
 #endif /* DefaineMacros_h */

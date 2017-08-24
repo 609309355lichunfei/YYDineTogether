@@ -11,6 +11,7 @@
 #import "IndentChooseAddressViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "JSYHDishModel.h"
 
 @interface IndentConfirmViewController ()<UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -25,8 +26,26 @@
     [self registUI];
 }
 
+- (void)getConnectOrder {
+    NSArray *dishs = [ShoppingCartManager sharedManager].shoppingCartDataArray;
+    NSMutableArray *dishsArray = [NSMutableArray array];
+    for (JSYHDishModel *model in dishs) {
+        NSMutableDictionary *modelDic = [@{@"count":[NSString stringWithFormat:@"%ld",model.count],@"dishid":[model.dishid stringValue],@"is_comb":@"0",@"shopid":[NSString stringWithFormat:@"%ld",model.shopid]} mutableCopy];
+        [modelDic setValue:model.combid forKey:@"combid"];
+        [dishsArray addObject:modelDic];
+    }
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dishsArray options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:(NSUTF8StringEncoding)];
+    [[JSRequestManager sharedManager] postOrderWithString:jsonStr Success:^(id responseObject) {
+        
+    } Failed:^(NSError *error) {
+        
+    }];
+}
+
 - (void)registUI {
     [self.tableView registerNib:[UINib nibWithNibName:@"ShoppingChartTableViewCell" bundle:nil] forCellReuseIdentifier:@"IndentConfirmTableViewCell"];
+    [self getConnectOrder];
 }
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -46,7 +65,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

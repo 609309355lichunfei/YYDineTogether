@@ -9,5 +9,5 @@
 #import "RootViewController.h"
 
 @interface MsgViewController : RootViewController
-
+@property (assign, nonatomic) BOOL isMine;
 @end
