@@ -72,7 +72,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCK-V8-F9r">
-                                <rect key="frame" x="62" y="10.5" width="18" height="18"/>
+                                <rect key="frame" x="62" y="9.5" width="18" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iCK-V8-F9r" secondAttribute="height" id="u0y-L8-4Xl"/>
                                 </constraints>
@@ -107,6 +107,13 @@
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_comb" translatesAutoresizingMaskIntoConstraints="NO" id="OiB-lb-OYY">
+                        <rect key="frame" x="57" y="9" width="38" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="A1Y-OQ-6KK"/>
+                            <constraint firstAttribute="width" constant="38" id="f2d-vq-4eL"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="JQi-ot-pma" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="5Sw-iH-cYD"/>
@@ -116,16 +123,19 @@
                     <constraint firstAttribute="bottom" secondItem="XGS-UG-J4P" secondAttribute="bottom" id="Rx0-WI-E14"/>
                     <constraint firstItem="ddW-kS-s9E" firstAttribute="centerX" secondItem="XGS-UG-J4P" secondAttribute="centerX" id="Uzd-qr-Nho"/>
                     <constraint firstItem="TDJ-mD-vaP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="aw1-cG-nCl"/>
+                    <constraint firstItem="OiB-lb-OYY" firstAttribute="leading" secondItem="JQi-ot-pma" secondAttribute="trailing" id="edF-jS-Ebk"/>
                     <constraint firstItem="laH-ay-fPz" firstAttribute="centerY" secondItem="TDJ-mD-vaP" secondAttribute="centerY" id="gIx-fT-vpJ"/>
                     <constraint firstAttribute="trailing" secondItem="XGS-UG-J4P" secondAttribute="trailing" constant="4" id="hFZ-Ku-1Co"/>
                     <constraint firstItem="TDJ-mD-vaP" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ovW-pl-jSq"/>
                     <constraint firstItem="XGS-UG-J4P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pPq-qC-KuZ"/>
+                    <constraint firstItem="OiB-lb-OYY" firstAttribute="top" secondItem="JQi-ot-pma" secondAttribute="top" id="sXi-XF-fFN"/>
                     <constraint firstItem="laH-ay-fPz" firstAttribute="leading" secondItem="TDJ-mD-vaP" secondAttribute="trailing" constant="4" id="soX-3A-kWH"/>
                     <constraint firstItem="ddW-kS-s9E" firstAttribute="centerY" secondItem="XGS-UG-J4P" secondAttribute="centerY" id="tvJ-g0-U85"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="changeCountView" destination="XGS-UG-J4P" id="orb-qw-tlN"/>
+                <outlet property="combImageView" destination="OiB-lb-OYY" id="Yt5-Xu-mhB"/>
                 <outlet property="dishNameLabel" destination="JQi-ot-pma" id="Fyb-5p-tRT"/>
                 <outlet property="numberLabel" destination="1g8-XM-Pyl" id="0mN-qb-w29"/>
                 <outlet property="priceLabel" destination="laH-ay-fPz" id="e6O-Wg-FLc"/>
@@ -137,5 +147,6 @@
     <resources>
         <image name="home_+" width="21" height="21"/>
         <image name="home_-" width="21" height="21"/>
+        <image name="home_comb" width="25" height="10"/>
     </resources>
 </document>

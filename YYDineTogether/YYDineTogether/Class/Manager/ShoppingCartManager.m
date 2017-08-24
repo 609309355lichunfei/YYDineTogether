@@ -32,6 +32,9 @@ static ShoppingCartManager *_shoppingCartManager;
     for (JSYHDishModel *model in self.shoppingCartDataArray) {
         if ([dishModel.dishid isEqualToNumber:model.dishid]) {
             model.count ++;
+            if ([dishModel.iscomb isEqualToString:@"1"]) {
+                model.iscomb = @"1";
+            }
             return;
         }
     }

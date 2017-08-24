@@ -145,6 +145,9 @@
                                                     <state key="normal" title="一键下单">
                                                         <color key="titleColor" red="0.99215686270000003" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="orderAction:" destination="-1" eventType="touchUpInside" id="SGm-mD-xan"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

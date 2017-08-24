@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UIButton *subtractButton;
+@property (weak, nonatomic) IBOutlet UIImageView *combImageView;
 
 @end
 
@@ -56,6 +57,7 @@
 
 - (void)setDishModel:(JSYHDishModel *)dishModel {
     _dishModel = dishModel;
+    self.combImageView.hidden = [_dishModel.iscomb isEqualToString:@"1"] ? NO : YES;
     self.dishNameLabel.text = _dishModel.name;
     self.priceLabel.text = [NSString stringWithFormat:@"%@", _dishModel.price];
     if (_dishModel.count > 0) {

@@ -104,6 +104,17 @@
     self.tableViewHeight.constant = 128 * self.dataArray.count;
     [self.tableView reloadData];
 }
+- (IBAction)orderAction:(id)sender {
+    for (JSYHDishModel *dishModel in self.model.dishs) {
+        dishModel.iscomb = @"1";
+        [[ShoppingCartManager sharedManager] addToShoppingCartWithDish:dishModel];
+        dishModel.iscomb = @"0";
+    }
+    for (JSYHDishModel *dishModel in self.model.dishs) {
+        [[ShoppingCartManager sharedManager]updateCountWithModel:dishModel];
+    }
+    [self.tableView reloadData];
+}
 
 - (IBAction)shoppingCartAction:(id)sender {
 //    if (_shoppingView == nil) {
