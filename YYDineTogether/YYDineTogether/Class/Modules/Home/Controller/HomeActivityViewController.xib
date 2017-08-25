@@ -19,6 +19,7 @@
                 <outlet property="tableView" destination="zUL-1A-tyd" id="vwh-lB-UkV"/>
                 <outlet property="tableViewHeight" destination="ESp-Et-RDm" id="IVe-jh-U4m"/>
                 <outlet property="thirdImageVIew" destination="jNM-RI-1lY" id="vnu-dT-eJW"/>
+                <outlet property="totalPriceLabel" destination="vGe-wG-M4b" id="7bN-WY-lhU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -283,8 +284,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6B-x4-r4G">
                             <rect key="frame" x="0.0" y="0.0" width="254" height="45"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="quP-dX-mx9">
-                                    <rect key="frame" x="134.5" y="15.5" width="12.5" height="14.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="quP-dX-mx9">
+                                    <rect key="frame" x="134.5" y="23" width="0.0" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>

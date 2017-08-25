@@ -27,6 +27,7 @@
                 <outlet property="shoppingCartBTBottom" destination="37m-NR-VzG" id="apu-R6-PBR"/>
                 <outlet property="shoppingCartCountLabel" destination="ne6-Ta-Le2" id="xNk-Yn-bz9"/>
                 <outlet property="statusLabel" destination="4fj-Rf-jzV" id="o2l-Vp-zSp"/>
+                <outlet property="totalPriceLabel" destination="X3v-sf-mvW" id="jXG-40-nxw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -227,8 +228,8 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I3L-n9-HA9">
                                     <rect key="frame" x="0.0" y="0.0" width="254" height="45"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWM-Hv-snx">
-                                            <rect key="frame" x="134.5" y="15.5" width="12.5" height="14.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWM-Hv-snx">
+                                            <rect key="frame" x="134.5" y="23" width="0.0" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>

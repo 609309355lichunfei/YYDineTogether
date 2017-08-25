@@ -17,6 +17,8 @@
 
 @property (strong, nonatomic) NSMutableArray *shoppingCartDataShopArray;
 
+@property (strong, nonatomic) NSString *totalPrice;
+
 - (void)addToShoppingCartWithDish:(JSYHDishModel *)dishModel;
 
 - (void)removeFromeShoppingCartWithDish:(JSYHDishModel *)dishModel;

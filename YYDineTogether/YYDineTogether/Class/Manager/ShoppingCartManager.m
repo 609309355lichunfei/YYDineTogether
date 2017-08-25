@@ -93,7 +93,14 @@ static ShoppingCartManager *_shoppingCartManager;
             [self.shoppingCartDataShopArray addObject:shopModel];
         }
     }
-    
+}
+
+- (NSString *)totalPrice {
+    NSInteger total = 0;
+    for (JSYHDishModel *model in self.shoppingCartDataArray) {
+        total += model.count * [model.price integerValue];
+    }
+    return [NSString stringWithFormat:@"%ld",total];
 }
 
 

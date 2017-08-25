@@ -32,10 +32,21 @@
 }
 
 - (IBAction)loginAction:(id)sender {
+    NSString *phoneStr = [_numberTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (phoneStr == nil || phoneStr.length == 0) {
+        [AppManager showToastWithMsg:@"请输入账号"];
+        return;
+    }
+    NSString *passwordStr = [_verificationTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (passwordStr == nil || passwordStr.length == 0) {
+        [AppManager showToastWithMsg:@"请输入密码"];
+        return;
+    }
     [[JSRequestManager sharedManager] loginWithUserName:_numberTF.text Passord:_verificationTF.text Success:^(id responseObject) {
         [self dismissViewControllerAnimated:YES completion:^{
         }];
     } Failed:^(NSError *error) {
+        [AppManager showToastWithMsg:@"账号密码错误"];
     }];
     
 }
