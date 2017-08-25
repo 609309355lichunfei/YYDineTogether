@@ -8,6 +8,8 @@
 
 #import "JSRequestManager.h"
 
+#import "JSYHUserModel.h"
+
 #define JSRequest_Token [NSString stringWithFormat:@"bearer %@",_token]
 
 
@@ -42,6 +44,12 @@
         [[NSUserDefaults standardUserDefaults] setValue:token forKey:@"JSYHToken"];
         [[NSUserDefaults standardUserDefaults] setValue:userName forKey:@"JSYHUserName"];
         [PPNetworkHelper setValue:[NSString stringWithFormat:@"bearer %@",token]forHTTPHeaderField:@"Authorization"];
+        [[JSRequestManager sharedManager] getMemberInfoSuccess:^(id responseObject) {
+            NSDictionary *dataDic = responseObject[@"data"];
+            [[JSYHUserModel defaultModel] setValuesForKeysWithDictionary:dataDic];
+        } Failed:^(NSError *error) {
+            
+        }];
     } failure:^(NSError *error) {
         failed(error);
     }];

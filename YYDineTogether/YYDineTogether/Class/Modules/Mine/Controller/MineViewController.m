@@ -14,6 +14,7 @@
 #import "DisCountViewController.h"
 #import "MineTableViewCell.h"
 #import "MsgViewController.h"
+#import "JSYHUserModel.h"
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *iconimage;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
@@ -39,6 +40,7 @@
     }else {
         self.userNameLabel.text = [JSRequestManager sharedManager].userName;
     }
+    [self.iconimage setImageWithURL:[NSURL URLWithString:[JSYHUserModel defaultModel].logo] placeholder:nil];
 }
 
 - (IBAction)userTapAction:(id)sender {
