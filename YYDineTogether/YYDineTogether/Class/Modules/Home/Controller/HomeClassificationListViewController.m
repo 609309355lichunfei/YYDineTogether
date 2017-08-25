@@ -56,9 +56,9 @@
             [self.tableView.mj_footer endRefreshing];
         }
         for (NSDictionary *shopDic in shopsArray) {
-            JSYHDishModel *model = [[JSYHDishModel alloc] init];
+            JSYHShopModel *model = [[JSYHShopModel alloc] init];
             [model setValuesForKeysWithDictionary:shopDic];
-            [[ShoppingCartManager sharedManager] updateCountWithModel:model];
+            [model updateHeightWithActivity];
             [self.shopArray addObject:model];
         }
         self.dataArray = self.shopArray;
@@ -152,7 +152,8 @@
 
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 150;
+    JSYHShopModel *model = self.dataArray[indexPath.row];
+    return model.height;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -180,6 +181,8 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeStoreViewController *storeVC = [[HomeStoreViewController alloc] init];
+    JSYHShopModel *model = self.dataArray[indexPath.row];
+    storeVC.shopid = [model.shopid stringValue];
     [self.navigationController pushViewController:storeVC animated:YES];
 }
 
