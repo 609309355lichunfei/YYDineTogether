@@ -36,6 +36,14 @@
             [cates addObject:model];
         }
         self.cates = cates;
+    } else if ([key isEqualToString:@"dishs"]) {
+        NSMutableArray *dishs = [NSMutableArray array];
+        for (NSDictionary *dishDic in value) {
+            JSYHDishModel *model = [[JSYHDishModel alloc] init];
+            [model setValuesForKeysWithDictionary:dishDic];
+            [dishs addObject:model];
+        }
+        self.dishs = dishs;
     }
 }
 
@@ -52,6 +60,14 @@
 
 - (void)updateHeightWithDish {
     self.shopCartHeight = 60 + self.dishs.count * 37;
+}
+
+- (void)updateHeightWithOrder {
+    self.orderHeight = 75 + self.dishs.count * 44;
+}
+
+- (void)updateHeightWithSearchView {
+    self.searchHeigh = 100 + self.activites.count * 22 + self.dishs.count * 77;
 }
 
 @end

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^AGAINBLOCK)();
-
+@class JSYHOrderModel;
 @interface IndentTableViewCell : UITableViewCell
-@property (copy, nonatomic) AGAINBLOCK againblock;
+@property (strong, nonatomic) JSYHOrderModel *orderModel;
+
+@property (copy, nonatomic) void (^firstBlock)(JSYHOrderModel *model);
+@property (copy, nonatomic) void (^secondBlock)(JSYHOrderModel *model);
 @end

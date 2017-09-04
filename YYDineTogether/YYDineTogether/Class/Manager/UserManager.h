@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class JSYHCouponModel;
 @interface UserManager : NSObject
+
+@property (strong, nonatomic) JSYHCouponModel *couponModel;
+
 + (UserManager *)sharedManager;
 @end

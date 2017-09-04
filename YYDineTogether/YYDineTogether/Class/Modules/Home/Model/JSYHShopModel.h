@@ -19,6 +19,9 @@
 @property (strong, nonatomic) NSString *distance;
 @property (strong, nonatomic) NSString *notice_info;
 
+@property (strong, nonatomic) NSNumber *lat;
+@property (strong, nonatomic) NSNumber *lng;
+
 @property (strong, nonatomic) NSMutableArray *cates;
 
 #pragma mark 自加属性
@@ -26,10 +29,22 @@
 
 @property (assign, nonatomic) CGFloat shopCartHeight;
 
+@property (assign, nonatomic) CGFloat orderHeight;
+
+@property (assign, nonatomic) CGFloat searchHeigh;
+
 @property (strong, nonatomic) NSMutableArray *dishs;
 
+//首页根据活动获得高度
 - (void)updateHeightWithActivity;
 
+//购物车界面根据食品数量获得高度
 - (void)updateHeightWithDish;
+
+//订单界面获得高度
+- (void)updateHeightWithOrder;
+
+//搜索界面获得高度
+- (void)updateHeightWithSearchView;
 
 @end

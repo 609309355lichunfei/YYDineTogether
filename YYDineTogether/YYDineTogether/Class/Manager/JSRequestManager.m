@@ -96,6 +96,27 @@
     }];
 }
 
+- (void)getBannerWithPage:(NSString *)page
+                     type:(NSString *)type
+                      lng:(NSString *)lng
+                      lat:(NSString *)lat
+                  Success:(PPHttpRequestSuccess)success
+                   Failed:(PPHttpRequestFailed)failed {
+    [PPNetworkHelper closeAES];
+    if (_token != nil && _token.length > 0 ) {
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    } else {
+        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"JSYHToken"];
+        _token = token;
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    }
+    [PPNetworkHelper GET:URL_Banner parameters:@{@"page":page,@"type":type,@"lng":lng,@"lat":lat} success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        failed(error);
+    }];
+}
+
 - (void)shopDetailWithShopid:(NSString *)shopid
                      Success:(PPHttpRequestSuccess)success
                       Failed:(PPHttpRequestFailed)failed {
@@ -189,9 +210,9 @@
     }];
 }
 
-- (void)postOrderWithString:(NSString *)string
-                    Success:(PPHttpRequestSuccess)success
-                     Failed:(PPHttpRequestFailed)failed {
+- (void)postOrderWithDic:(NSDictionary *)dic
+                   Success:(PPHttpRequestSuccess)success
+                    Failed:(PPHttpRequestFailed)failed {
     [PPNetworkHelper closeAES];
     if (_token != nil && _token.length > 0 ) {
         [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
@@ -200,7 +221,7 @@
         _token = token;
         [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
     }
-    [PPNetworkHelper POST:URL_Order parameters:@{@"data":string} success:^(id responseObject) {
+    [PPNetworkHelper POST:URL_Order parameters:dic success:^(id responseObject) {
         success(responseObject);
     } failure:^(NSError *error) {
         failed(error);
@@ -340,6 +361,180 @@
         [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
     }
     [PPNetworkHelper DELETE:URL_Member_info parameters:dic success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        failed(error);
+    }];
+}
+
+- (void)getPostcostWithAddressid:(NSString *)addressid
+                         orderNo:(NSString *)orderNo
+                         Success:(PPHttpRequestSuccess)success
+                          Failed:(PPHttpRequestFailed)failed {
+    [PPNetworkHelper closeAES];
+    if (_token != nil && _token.length > 0 ) {
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    } else {
+        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"JSYHToken"];
+        _token = token;
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    }
+    NSDictionary *dic = @{@"addressid":addressid, @"order_no":orderNo};
+    [PPNetworkHelper GET:URL_Postcost parameters:dic success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        failed(error);
+    }];
+}
+
+- (void)takeorderWithOrderno:(NSString *)order_no
+                    couponid:(NSString *)couponid
+                     remarks:(NSArray *)remarks
+                   addressid:(NSString *)addressid
+                     Success:(PPHttpRequestSuccess)success
+                      Failed:(PPHttpRequestFailed)failed {
+    [PPNetworkHelper closeAES];
+    if (_token != nil && _token.length > 0 ) {
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    } else {
+        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"JSYHToken"];
+        _token = token;
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    }
+    NSMutableDictionary *dic = [@{@"order_no":order_no, @"couponid":couponid, @"addressid":addressid} mutableCopy];
+    [dic setValue:remarks forKey:@"remarks"];
+    [PPNetworkHelper POST:URL_Member_takeorder parameters:dic success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        failed(error);
+    }];
+}
+
+- (void)getorderWithOrderNo:(NSString *)order_no
+                    Success:(PPHttpRequestSuccess)success
+                     Failed:(PPHttpRequestFailed)failed {
+    [PPNetworkHelper closeAES];
+    if (_token != nil && _token.length > 0 ) {
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    } else {
+        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"JSYHToken"];
+        _token = token;
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    }
+    NSDictionary *dic = @{ @"order_no":order_no};
+    [PPNetworkHelper GET:URL_Member_order parameters:dic success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        failed(error);
+    }];
+}
+
+- (void)getOrdersWithPage:(NSString *)page
+                  Success:(PPHttpRequestSuccess)success
+                   Failed:(PPHttpRequestFailed)failed {
+    [PPNetworkHelper closeAES];
+    if (_token != nil && _token.length > 0 ) {
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    } else {
+        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"JSYHToken"];
+        _token = token;
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    }
+    NSDictionary *dic = @{ @"page":page};
+    [PPNetworkHelper GET:URL_Member_orders parameters:dic success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        failed(error);
+    }];
+}
+
+- (void)payWithPaytype:(NSString *)type
+               Orderno:(NSString *)order_no
+               Success:(PPHttpRequestSuccess)success
+                Failed:(PPHttpRequestFailed)failed {
+    [PPNetworkHelper closeAES];
+    if (_token != nil && _token.length > 0 ) {
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    } else {
+        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"JSYHToken"];
+        _token = token;
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    }
+    NSDictionary *dic = @{@"order_no":order_no, @"paytype":type};
+    [PPNetworkHelper POST:URL_Member_pay parameters:dic success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        failed(error);
+    }];
+}
+
+- (void)getSearchWithKey:(NSString *)key
+                    page:(NSString *)page
+                 Success:(PPHttpRequestSuccess)success
+                  Failed:(PPHttpRequestFailed)failed{
+    [PPNetworkHelper closeAES];
+    if (_token != nil && _token.length > 0 ) {
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    } else {
+        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"JSYHToken"];
+        _token = token;
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    }
+    NSString *lng = [JSYHLocationManager sharedManager].lng;
+    NSString *lat = [JSYHLocationManager sharedManager].lat;
+    NSMutableDictionary *dic = [@{ @"keyword":key, @"page":page} mutableCopy];
+    [dic setValue:lng forKey:@"lng"];
+    [dic setValue:lat forKey:@"lat"];
+    [PPNetworkHelper GET:URL_Search parameters:dic success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        failed(error);
+    }];
+}
+
+- (void)postFeedback:(NSString *)feedback
+          imageArray:(NSArray *)imageArray
+      imageNameArray:(NSArray *)imageNameArray
+             Success:(PPHttpRequestSuccess)success
+              Failed:(PPHttpRequestFailed)failed {
+    [PPNetworkHelper closeAES];
+    if (_token != nil && _token.length > 0 ) {
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    } else {
+        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"JSYHToken"];
+        _token = token;
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    }
+    NSDictionary *dic = @{@"content":feedback};
+//    [PPNetworkHelper POST:URL_Feedback parameters:dic success:^(id responseObject) {
+//        success(responseObject);
+//    } failure:^(NSError *error) {
+//        failed(error);
+//    }];
+    
+    [PPNetworkHelper uploadImagesWithURL:URL_Feedback parameters:dic name:@"data.png" images:imageArray fileNames:imageNameArray imageScale:0.8 imageType:@"png" progress:^(NSProgress *progress) {
+        
+    } success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        failed(error);
+    }];
+}
+
+- (void)getCouponWithPage:(NSString *)page
+                  Success:(PPHttpRequestSuccess)success
+                   Failed:(PPHttpRequestFailed)failed {
+
+    [PPNetworkHelper closeAES];
+    if (_token != nil && _token.length > 0 ) {
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    } else {
+        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"JSYHToken"];
+        _token = token;
+        [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
+    }
+    NSMutableDictionary *dic = [@{ @"page":page} mutableCopy];
+    [PPNetworkHelper GET:URL_coupon parameters:dic success:^(id responseObject) {
         success(responseObject);
     } failure:^(NSError *error) {
         failed(error);

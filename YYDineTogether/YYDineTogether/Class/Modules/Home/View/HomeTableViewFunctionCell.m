@@ -25,10 +25,6 @@
 }
 
 - (void)registUI {
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-        _activity();
-    }];
-    [self.activityView addGestureRecognizer:tap];
 }
 
 - (IBAction)cateAction:(id)sender {

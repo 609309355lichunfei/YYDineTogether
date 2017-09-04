@@ -16,4 +16,9 @@ typedef NS_ENUM(NSInteger, SearchViewType) {
 @interface HomeSearchView : UIView
 
 @property (assign, nonatomic) SearchViewType type;
+
+@property (copy, nonatomic) void(^didSelectBlock)(NSString *keyword);
+
+- (void)getConnectWithSearchKeyWord:(NSString *)keyword;
+
 @end

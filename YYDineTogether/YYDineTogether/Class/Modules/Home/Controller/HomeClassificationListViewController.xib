@@ -5,13 +5,16 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeClassificationListViewController">
             <connections>
                 <outlet property="mainView" destination="CBn-2K-qgJ" id="gHw-QN-7YN"/>
+                <outlet property="shoppingCartCountLabel" destination="pAq-qO-aHE" id="EhK-xd-rQD"/>
                 <outlet property="tableView" destination="2VT-YZ-f8b" id="41a-fF-9XM"/>
+                <outlet property="totalPriceLabel" destination="GAd-53-xDQ" id="cDQ-0H-MF2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -205,14 +208,8 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Gi-ib-q8O">
                                     <rect key="frame" x="0.0" y="0.0" width="254" height="45"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b47-9r-Um0">
-                                            <rect key="frame" x="134.5" y="15.5" width="12.5" height="14.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAd-53-xDQ">
-                                            <rect key="frame" x="119.5" y="15.5" width="15" height="14.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAd-53-xDQ">
+                                            <rect key="frame" x="114" y="15.5" width="26" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.97254901959999995" green="0.23137254900000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -221,10 +218,8 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <gestureRecognizers/>
                                     <constraints>
-                                        <constraint firstItem="b47-9r-Um0" firstAttribute="centerY" secondItem="6Gi-ib-q8O" secondAttribute="centerY" id="BhG-15-7U8"/>
                                         <constraint firstItem="GAd-53-xDQ" firstAttribute="centerX" secondItem="6Gi-ib-q8O" secondAttribute="centerX" id="DLU-3O-dc0"/>
-                                        <constraint firstItem="b47-9r-Um0" firstAttribute="leading" secondItem="GAd-53-xDQ" secondAttribute="trailing" id="ZNC-io-qGW"/>
-                                        <constraint firstItem="GAd-53-xDQ" firstAttribute="centerY" secondItem="b47-9r-Um0" secondAttribute="centerY" id="c8B-fI-g7s"/>
+                                        <constraint firstItem="GAd-53-xDQ" firstAttribute="centerY" secondItem="6Gi-ib-q8O" secondAttribute="centerY" id="Va8-Li-OJv"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -254,15 +249,28 @@
                                         <action selector="shoppingCartAction:" destination="-1" eventType="touchUpInside" id="xco-6T-ehT"/>
                                     </connections>
                                 </button>
+                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAq-qO-aHE">
+                                    <rect key="frame" x="26" y="0.0" width="18" height="18"/>
+                                    <color key="backgroundColor" red="0.97254901959999995" green="0.23137254900000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="pAq-qO-aHE" secondAttribute="height" id="4l7-KM-OKg"/>
+                                        <constraint firstAttribute="width" constant="18" id="iIh-en-eU6"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="8"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="T8f-Os-3oC" firstAttribute="leading" secondItem="mmU-eF-BKz" secondAttribute="leading" id="3bR-r9-PEH"/>
+                                <constraint firstItem="pAq-qO-aHE" firstAttribute="top" secondItem="mmU-eF-BKz" secondAttribute="top" id="42F-n4-ooO"/>
                                 <constraint firstItem="T8f-Os-3oC" firstAttribute="top" secondItem="mmU-eF-BKz" secondAttribute="top" id="5V3-XY-1Ou"/>
                                 <constraint firstAttribute="width" constant="44" id="iaZ-aL-6Td"/>
                                 <constraint firstAttribute="bottom" secondItem="T8f-Os-3oC" secondAttribute="bottom" id="jBc-Au-JFC"/>
                                 <constraint firstAttribute="trailing" secondItem="T8f-Os-3oC" secondAttribute="trailing" id="pGd-Oi-kXn"/>
                                 <constraint firstAttribute="height" constant="44" id="ueP-DZ-Dp0"/>
+                                <constraint firstAttribute="trailing" secondItem="pAq-qO-aHE" secondAttribute="trailing" id="z1u-Ji-Ku0"/>
                             </constraints>
                         </view>
                     </subviews>

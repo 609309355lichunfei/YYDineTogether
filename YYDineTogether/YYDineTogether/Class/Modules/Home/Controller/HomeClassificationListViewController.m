@@ -23,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 
+@property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
+
 @property (strong, nonatomic) NSMutableArray *dataArray;
 
 @property (strong, nonatomic) NSMutableArray *shopArray;
@@ -61,6 +64,7 @@
             [model updateHeightWithActivity];
             [self.shopArray addObject:model];
         }
+        self.tableView.mj_footer.hidden = shopsArray.count < 20 ? YES : NO;
         self.dataArray = self.shopArray;
         [self.tableView reloadData];
     } Failed:^(NSError *error) {
@@ -77,6 +81,26 @@
 }
 
 - (void)registUI {
+    self.shoppingCartCountLabel.layer.cornerRadius = 9;
+    if ([ShoppingCartManager sharedManager].count == 0) {
+        self.shoppingCartCountLabel.hidden = YES;
+        self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
+    } else {
+        self.shoppingCartCountLabel.hidden = NO;
+        self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].count];
+        self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
+    }
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"JSYHShoppingCartCountChanged" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        if ([ShoppingCartManager sharedManager].count == 0) {
+            self.shoppingCartCountLabel.hidden = YES;
+            self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
+        } else {
+            self.shoppingCartCountLabel.hidden = NO;
+            self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].count];
+            self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
+        }
+        
+    }];
     _isShops = YES;
     MJWeakSelf;
     self.tableView.mj_header  = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -120,13 +144,13 @@
 }
 
 - (IBAction)changeTityle:(UISegmentedControl *)sender {
-    if (sender.selectedSegmentIndex == 0) {
-        _isShops = YES;
-    } else {
-        _isShops = NO;
-        
-    }
-    [self.tableView reloadData];
+//    if (sender.selectedSegmentIndex == 0) {
+//        _isShops = YES;
+//    } else {
+//        _isShops = NO;
+//        
+//    }
+//    [self.tableView reloadData];
 }
 
 - (IBAction)clearShoppingCartAction:(id)sender {
@@ -135,18 +159,18 @@
 }
 
 - (IBAction)shoppingCartAction:(id)sender {
-    if (_shoppingView == nil) {
-        self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
-            [_shoppingView removeShoppingCartView];
-            _shoppingView = nil;
-        }];
-        [_shoppingView addGestureRecognizer:tap];
-        [_shoppingView showShoppingCartView];
-    } else {
-        [_shoppingView removeShoppingCartView];
-        _shoppingView = nil;
-    }
+//    if (_shoppingView == nil) {
+//        self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
+//            [_shoppingView removeShoppingCartView];
+//            _shoppingView = nil;
+//        }];
+//        [_shoppingView addGestureRecognizer:tap];
+//        [_shoppingView showShoppingCartView];
+//    } else {
+//        [_shoppingView removeShoppingCartView];
+//        _shoppingView = nil;
+//    }
 }
 
 

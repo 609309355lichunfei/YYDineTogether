@@ -47,7 +47,9 @@
 }
 
 - (void)getConnect{
+    [MBProgressHUD showMessage:@"加载中..."];
     [[JSRequestManager sharedManager] comboWithSuccess:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSDictionary *dataDic = responseObject[@"data"];
         NSArray *combs = dataDic[@"combs"];
         for (NSInteger i = 0; i < combs.count; i ++) {

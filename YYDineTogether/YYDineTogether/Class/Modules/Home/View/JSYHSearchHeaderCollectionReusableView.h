@@ -12,4 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *removeBT;
 
+@property (copy, nonatomic)  void (^removeBlock)();
+
 @end

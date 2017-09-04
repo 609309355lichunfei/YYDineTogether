@@ -10,12 +10,17 @@
 #import "IndentTableViewCell.h"
 #import "IndentConfirmViewController.h"
 #import "IndentDetailViewController.h"
+#import "JSYHOrderModel.h"
 
-@interface IndentViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface IndentViewController ()<UITableViewDataSource, UITableViewDelegate>{
+    NSInteger _pageIndex;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *completeBT;
 @property (weak, nonatomic) IBOutlet UIButton *unpaidBT;
 @property (weak, nonatomic) IBOutlet UIButton *refundBT;
+
+@property (strong, nonatomic) NSMutableArray *dataArray;
 
 @property (strong, nonatomic) UIButton *currentBT;
 
@@ -34,6 +39,41 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"IndentTableViewCell" bundle:nil] forCellReuseIdentifier:@"IndentTableViewCell"];
+    MJWeakSelf;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf getConnectWithType:DataLoadTypeNone];
+    }];
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        [weakSelf getConnectWithType:DataLoadTypeMore];
+    }];
+    [self.tableView.mj_header beginRefreshing];
+}
+
+- (void)getConnectWithType:(DataLoadType)dataloadType {
+    _pageIndex = dataloadType == DataLoadTypeNone ? 0 : _pageIndex + 1;
+    [[JSRequestManager sharedManager] getOrdersWithPage:[NSString stringWithFormat:@"%ld",_pageIndex] Success:^(id responseObject) {
+        if (dataloadType == DataLoadTypeNone) {
+            [self.dataArray removeAllObjects];
+        }
+        NSDictionary *dataDic = responseObject[@"data"];
+        NSArray *orderDicArray = dataDic[@"orders"];
+        for (NSDictionary *orderDic in orderDicArray) {
+            JSYHOrderModel *model = [[JSYHOrderModel alloc] init];
+            [model setValuesForKeysWithDictionary:orderDic];
+            [model updateOrderHeight];
+            [self.dataArray addObject:model];
+        }
+        if (dataloadType == DataLoadTypeNone) {
+            
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
+        self.tableView.mj_footer.hidden = orderDicArray.count < 20 ? YES : NO;
+        [self.tableView reloadData];
+    } Failed:^(NSError *error) {
+        
+    }];
 }
 
 - (IBAction)completeAction:(id)sender {
@@ -66,7 +106,8 @@
 
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 368;
+    JSYHOrderModel *model = self.dataArray[indexPath.row];
+    return model.height;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -74,15 +115,19 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     IndentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IndentTableViewCell" forIndexPath:indexPath];
+    JSYHOrderModel *model = self.dataArray[indexPath.row];
+    cell.orderModel = model;
     MJWeakSelf
-    cell.againblock = ^(){
-        IndentConfirmViewController *confirmVC = [[IndentConfirmViewController alloc]init];
-        [weakSelf.tabBarController.navigationController pushViewController:confirmVC animated:YES];
+    cell.firstBlock = ^(JSYHOrderModel *model){
+        
+    };
+    cell.secondBlock = ^(JSYHOrderModel *model){
+        
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -91,7 +136,17 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     IndentDetailViewController *detailVC = [[IndentDetailViewController alloc] init];
+    JSYHOrderModel *model = self.dataArray[indexPath.row];
+    detailVC.order_no = model.order_no;
     [self.tabBarController.navigationController pushViewController:detailVC animated:YES];
+}
+
+#pragma mark - 懒加载
+- (NSMutableArray *)dataArray {
+    if (_dataArray == nil) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
 }
 
 - (void)didReceiveMemoryWarning {

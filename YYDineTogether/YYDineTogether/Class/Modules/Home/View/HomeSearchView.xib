@@ -21,13 +21,13 @@
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTE-Rh-OBq">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g6y-cz-cmt">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g6y-cz-cmt">
                             <rect key="frame" x="0.0" y="16" width="375" height="607"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </tableView>
@@ -40,70 +40,16 @@
                         <constraint firstItem="g6y-cz-cmt" firstAttribute="leading" secondItem="GTE-Rh-OBq" secondAttribute="leading" id="hSh-Ga-TW8"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fiB-CQ-GCC">
-                    <rect key="frame" x="0.0" y="622" width="375" height="45"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xpi-xG-spJ">
-                            <rect key="frame" x="255" y="0.0" width="120" height="45"/>
-                            <color key="backgroundColor" red="0.99215686270000003" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="120" id="oRq-DP-cW7"/>
-                            </constraints>
-                            <state key="normal" title="结算">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                        </button>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPJ-Nd-yfJ">
-                            <rect key="frame" x="0.0" y="0.0" width="254" height="45"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LM-8H-cFr">
-                                    <rect key="frame" x="135" y="15" width="13" height="15"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03u-6Q-5Ue">
-                                    <rect key="frame" x="120" y="15" width="15" height="15"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <gestureRecognizers/>
-                            <constraints>
-                                <constraint firstItem="5LM-8H-cFr" firstAttribute="leading" secondItem="03u-6Q-5Ue" secondAttribute="trailing" id="9lu-dq-ye7"/>
-                                <constraint firstItem="03u-6Q-5Ue" firstAttribute="centerY" secondItem="5LM-8H-cFr" secondAttribute="centerY" id="WWv-JI-ebT"/>
-                                <constraint firstItem="03u-6Q-5Ue" firstAttribute="centerX" secondItem="dPJ-Nd-yfJ" secondAttribute="centerX" id="Z9x-Je-sp0"/>
-                                <constraint firstItem="5LM-8H-cFr" firstAttribute="centerY" secondItem="dPJ-Nd-yfJ" secondAttribute="centerY" id="dNK-Vd-ceb"/>
-                            </constraints>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" red="0.88719951919999995" green="0.88719951919999995" blue="0.88719951919999995" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="45" id="Do1-jS-8Td"/>
-                        <constraint firstAttribute="bottom" secondItem="dPJ-Nd-yfJ" secondAttribute="bottom" id="Iz1-KX-pmE"/>
-                        <constraint firstItem="Xpi-xG-spJ" firstAttribute="leading" secondItem="dPJ-Nd-yfJ" secondAttribute="trailing" constant="1" id="KNx-mq-F1C"/>
-                        <constraint firstItem="dPJ-Nd-yfJ" firstAttribute="leading" secondItem="fiB-CQ-GCC" secondAttribute="leading" id="Xlo-Tm-x3g"/>
-                        <constraint firstItem="Xpi-xG-spJ" firstAttribute="top" secondItem="fiB-CQ-GCC" secondAttribute="top" id="ZV1-v1-eFX"/>
-                        <constraint firstItem="dPJ-Nd-yfJ" firstAttribute="top" secondItem="fiB-CQ-GCC" secondAttribute="top" id="bEP-sY-2Lv"/>
-                        <constraint firstAttribute="bottom" secondItem="Xpi-xG-spJ" secondAttribute="bottom" id="eiy-0d-ywb"/>
-                        <constraint firstAttribute="trailing" secondItem="Xpi-xG-spJ" secondAttribute="trailing" id="fco-2X-mDZ"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="GTE-Rh-OBq" secondAttribute="trailing" id="2Iw-E9-YiZ"/>
                 <constraint firstAttribute="bottom" secondItem="GTE-Rh-OBq" secondAttribute="bottom" constant="44" id="2kH-Av-3f5"/>
-                <constraint firstItem="fiB-CQ-GCC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Qv-0H-fD7"/>
                 <constraint firstItem="GTE-Rh-OBq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="EHS-Ay-gqz"/>
                 <constraint firstAttribute="trailing" secondItem="1Gf-FM-iVx" secondAttribute="trailing" constant="16" id="GK3-Mj-rLi"/>
                 <constraint firstItem="1Gf-FM-iVx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Olb-Oy-CZn"/>
                 <constraint firstItem="GTE-Rh-OBq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="P7K-G1-m7t"/>
                 <constraint firstItem="1Gf-FM-iVx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="TgP-OE-8C6"/>
-                <constraint firstAttribute="trailing" secondItem="fiB-CQ-GCC" secondAttribute="trailing" id="dSk-fp-oLy"/>
-                <constraint firstAttribute="bottom" secondItem="fiB-CQ-GCC" secondAttribute="bottom" id="kkq-bx-6Uw"/>
                 <constraint firstAttribute="bottom" secondItem="1Gf-FM-iVx" secondAttribute="bottom" id="koY-Vm-xe7"/>
             </constraints>
             <connections>

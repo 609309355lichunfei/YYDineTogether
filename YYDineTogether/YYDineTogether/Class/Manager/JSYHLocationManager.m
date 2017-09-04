@@ -7,6 +7,7 @@
 //
 
 #import "JSYHLocationManager.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
 
 static JSYHLocationManager *manager;
 
@@ -59,17 +60,21 @@ static const double pi = 3.14159265358979324;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     CLLocationCoordinate2D mylocation;
-    //判断是不是属于国内范围lng:@"122.34321" lat:@"32.2222"
-    if (![self isLocationOutOfChina:[newLocation coordinate]]) {
-        //转换后的coord
-        mylocation = [self transformFromWGSToGCJ:[newLocation coordinate]];
-    } else {
-        mylocation = newLocation.coordinate;
-    }
-    self.lng = [NSString stringWithFormat:@"%f",mylocation.longitude];
+    //判断是不是属于国内范围
+//    if (![self isLocationOutOfChina:[newLocation coordinate]]) {
+//        //转换后的coord
+//        mylocation = [self transformFromWGSToGCJ:[newLocation coordinate]];
+//    } else {
+//        mylocation = newLocation.coordinate;
+//    }
+    mylocation = AMapCoordinateConvert(CLLocationCoordinate2DMake(newLocation.coordinate.latitude,newLocation.coordinate.longitude), AMapCoordinateTypeGPS);
+    self.lngdouble = mylocation.longitude;
+    self.latdouble = mylocation.latitude;
+    NSNumber *lngNumber = [NSNumber numberWithDouble:self.lngdouble];
+    self.lng = [lngNumber stringValue];
     [[NSUserDefaults standardUserDefaults] setValue:self.lng forKey:@"JSYHLng"];
-    
-    self.lat = [NSString stringWithFormat:@"%f",mylocation.latitude];
+    NSNumber *latNumber = [NSNumber numberWithDouble:self.latdouble];
+    self.lat = [latNumber stringValue];
     [[NSUserDefaults standardUserDefaults] setValue:self.lat forKey:@"JSYHLat"];
 }
 

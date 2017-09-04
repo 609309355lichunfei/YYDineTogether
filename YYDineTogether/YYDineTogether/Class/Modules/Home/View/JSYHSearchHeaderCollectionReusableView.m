@@ -9,6 +9,9 @@
 #import "JSYHSearchHeaderCollectionReusableView.h"
 
 @implementation JSYHSearchHeaderCollectionReusableView
+- (IBAction)removeAction:(id)sender {
+    self.removeBlock();
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];

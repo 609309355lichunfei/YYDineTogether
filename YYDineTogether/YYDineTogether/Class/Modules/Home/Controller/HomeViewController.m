@@ -24,7 +24,7 @@
 #import "JSYHShopModel.h"
 #import "HomeDishTableViewCell.h"
 
-@interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate ,UIGestureRecognizerDelegate, CLLocationManagerDelegate>{
+@interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate ,UIGestureRecognizerDelegate, CLLocationManagerDelegate, SDCycleScrollViewDelegate>{
     BOOL _isStoreDataSource;
     NSInteger _cellHeight;
     NSInteger _shoppageIndex;
@@ -36,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cancelBTWidth;
 @property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
+@property (weak, nonatomic) IBOutlet UIView *shoppingcartBGView;
 
 @property (strong, nonatomic) SDCycleScrollView *bannerScrollView;
 
@@ -64,11 +65,11 @@
     for (JSYHDishModel *model in self.dishArray) {
         [[ShoppingCartManager sharedManager] updateCountWithModel:model];
     }
-    if ([ShoppingCartManager sharedManager].shoppingCartDataArray.count == 0) {
+    if ([ShoppingCartManager sharedManager].count == 0) {
         self.shoppingCartCountLabel.hidden = YES;
     } else {
         self.shoppingCartCountLabel.hidden = NO;
-        self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].shoppingCartDataArray.count];
+        self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].count];
     }
     [self.tableView reloadData];
 }
@@ -106,11 +107,11 @@
     }];
     [self.tableView.mj_header beginRefreshing];
     [[NSNotificationCenter defaultCenter] addObserverForName:@"JSYHShoppingCartCountChanged" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-        if ([ShoppingCartManager sharedManager].shoppingCartDataArray.count == 0) {
+        if ([ShoppingCartManager sharedManager].count == 0) {
             self.shoppingCartCountLabel.hidden = YES;
         } else {
             self.shoppingCartCountLabel.hidden = NO;
-            self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].shoppingCartDataArray.count];
+            self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].count];
         }
         
     }];
@@ -199,6 +200,7 @@
 
 - (IBAction)cancelAction:(id)sender {
     [self.searchBar resignFirstResponder];
+    self.barView.backgroundColor = [UIColor clearColor];
     [_homeSearchView removeFromSuperview];
     self.cancelBTWidth.constant = 1;
 }
@@ -288,16 +290,16 @@
             [weakSelf cateAction:nil];
         };
         cell.drinkBlock = ^(){
-            [weakSelf drinkAction:nil];
+           // [weakSelf drinkAction:nil];
         };
         cell.comboBlock = ^(){
             [weakSelf comboAction:nil];
         };
         cell.fruitBlock = ^(){
-            [weakSelf fruitAction:nil];
+           // [weakSelf fruitAction:nil];
         };
         cell.supermarketBlock = ^(){
-            [weakSelf supermarketAction:nil];
+           // [weakSelf supermarketAction:nil];
         };
         cell.activity = ^(){
             [weakSelf activityAction];
@@ -327,7 +329,8 @@
             }
         };
         if (self.bannerScrollView == nil) {
-            self.bannerScrollView = [SDCycleScrollView cycleScrollViewWithFrame:cell.activityView.bounds imageURLStringsGroup:self.bannerImageUrlArray];
+            self.bannerScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, KScreenWidth, 128) imageURLStringsGroup:self.bannerImageUrlArray];
+            self.bannerScrollView.delegate = self;
             [cell.activityView addSubview:self.bannerScrollView];
         } else {
             self.bannerScrollView.imageURLStringsGroup = self.bannerImageUrlArray;
@@ -366,7 +369,8 @@
     } else {
         HomeFoodDetailViewController *controller = [[HomeFoodDetailViewController alloc]init];
         JSYHDishModel *model = self.dishArray[indexPath.row];
-        NSString *dishId = [model.dishid stringValue];
+//        NSString *dishId = [model.dishid stringValue];
+        controller.dishModel = model;
         [self.tabBarController.navigationController pushViewController:controller animated:YES];
     }
 }
@@ -376,26 +380,33 @@
     if (self.homeSearchView == nil) {
         self.homeSearchView = [[[NSBundle mainBundle] loadNibNamed:@"HomeSearchView" owner:self options:nil] lastObject];
     }
-    _homeSearchView.frame = CGRectMake(0, 64, KScreenWidth, kScreenHeight - 108);
+    _homeSearchView.frame = CGRectMake(0, 64, KScreenWidth, kScreenHeight - 64);
     [self.view addSubview:_homeSearchView];
     self.barView.backgroundColor = [UIColor whiteColor];
     self.cancelBTWidth.constant = 46;
     _homeSearchView.type = SearchViewTypeSearch;
+    __weak HomeSearchView *weakSearchView = _homeSearchView;
+    _homeSearchView.didSelectBlock = ^(NSString *keyword){
+        [searchBar resignFirstResponder];
+        weakSearchView.type = SearchViewTypeResult;
+        [weakSearchView getConnectWithSearchKeyWord:keyword];
+        searchBar.text = keyword;
+    };
+    [self.view bringSubviewToFront:self.shoppingcartBGView];
     return YES;
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-//    [searchBar resignFirstResponder];
-//    [_homeSearchView removeFromSuperview];
-//    _tableView.scrollEnabled = YES;
-//    _tableView.bounces = YES;
-//    if (_tableView.contentOffset.y > 450) {
-//        self.barView.backgroundColor = [UIColor whiteColor];
-//    } else {
-//        self.barView.backgroundColor = [UIColor clearColor];
-//    }
     [searchBar resignFirstResponder];
     self.homeSearchView.type = SearchViewTypeResult;
+    [self.homeSearchView getConnectWithSearchKeyWord:searchBar.text];
+}
+
+#pragma mark - SDCycleScrollViewDelegate
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
+    JSYHHomeStoreActivityViewController *activityVC = [[JSYHHomeStoreActivityViewController alloc] init];
+    activityVC.type = [NSString stringWithFormat:@"%ld",index + 1];
+    [self.tabBarController.navigationController pushViewController:activityVC animated:YES];
 }
 
 #pragma mark - 懒加载

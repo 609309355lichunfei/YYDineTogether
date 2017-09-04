@@ -19,4 +19,8 @@
 // 腾讯
 #define kAppKey_Tencent          @"1104810843"
 
+const static NSString *APIKey = @"";
+
+const static NSString *TableID = @"";
+
 #endif /* ThirdMacros_h */

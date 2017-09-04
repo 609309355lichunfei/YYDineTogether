@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@class JSYHDishModel;
+@class JSYHDishModel, JSYHComboModel;
 
 @interface ShoppingCartManager : NSObject
 + (ShoppingCartManager *)sharedManager;
+
+@property (strong, nonatomic) NSMutableArray *shoppingCartComboArray;
 
 @property (strong, nonatomic) NSMutableArray *shoppingCartDataArray;
 
@@ -21,9 +23,19 @@
 
 - (void)addToShoppingCartWithDish:(JSYHDishModel *)dishModel;
 
+- (void)addToShoppingCartWitComb:(JSYHComboModel *)combModel;
+
 - (void)removeFromeShoppingCartWithDish:(JSYHDishModel *)dishModel;
 
+- (void)removeFromeShoppingCartWithComb:(JSYHComboModel *)combModel;
+
 - (void)updateCountWithModel:(JSYHDishModel *)dishModel;
+
+- (void)updateComboCountWithModel:(JSYHComboModel *)combModel;
+
+- (void)cleanShoppingcart;
+
+@property (assign, nonatomic, readonly) NSInteger count;
 
 //按照商店分类
 - (void)clearUpDataArrayWithShop;

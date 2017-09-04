@@ -28,7 +28,7 @@
 #if DevelopSever
 
 /**开发服务器*/
-#define URL_main @"http://api.calleat.cn"
+#define URL_main @"https://api.calleat.cn"
 //#define URL_main @"http://192.168.11.122:8090" //展鹏
 
 #elif TestSever
@@ -57,7 +57,7 @@
 //登出接口
 #define URL_Logout [NSString stringWithFormat:@"%@/v1/logout/", URL_main]
 //banner
-#define URL_Banner [NSString stringWithFormat:@"%@/v1/banners/", URL_main]
+#define URL_Banner [NSString stringWithFormat:@"%@/v1/banner/", URL_main]
 //首页商店
 #define URL_HomePageShop [NSString stringWithFormat:@"%@/v1/homepage/shop/", URL_main]
 //首页菜品
@@ -73,12 +73,27 @@
 //获取 美食tag信息
 #define URL_Tags [NSString stringWithFormat:@"%@/v1/shops/tags/", URL_main]
 //提交预订单
-#define URL_Order [NSString stringWithFormat:@"%@/v1/order/", URL_main]
+#define URL_Order [NSString stringWithFormat:@"%@/v1/member/preorder/", URL_main]
 //成员地址
 #define URL_Member_address [NSString stringWithFormat:@"%@/v1/member/address/", URL_main]
 //成员信息
 #define URL_Member_info [NSString stringWithFormat:@"%@/v1/member/info/", URL_main]
-
+//根据地址计算配送费
+#define URL_Postcost [NSString stringWithFormat:@"%@/v1/member/postcost/", URL_main]
+//下单请求
+#define URL_Member_takeorder [NSString stringWithFormat:@"%@/v1/member/takeorder/", URL_main]
+//支付请求
+#define URL_Member_pay [NSString stringWithFormat:@"%@/v1/member/pay/", URL_main]
+//查单个订单
+#define URL_Member_order [NSString stringWithFormat:@"%@/v1/member/order/", URL_main]
+//差多个订单
+#define URL_Member_orders [NSString stringWithFormat:@"%@/v1/member/orders/", URL_main]
+//搜索
+#define URL_Search [NSString stringWithFormat:@"%@/v1/search/", URL_main]
+//用户反馈
+#define URL_Feedback [NSString stringWithFormat:@"%@/v1/feedback/", URL_main]
+//红包
+#define URL_coupon [NSString stringWithFormat:@"%@/v1/coupon/", URL_main]
 
 
 

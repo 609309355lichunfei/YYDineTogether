@@ -58,6 +58,7 @@
 - (void)fillData {
     self.nickNameTF.text = [JSYHUserModel defaultModel].nickname;
     self.sexTF.text = [JSYHUserModel defaultModel].sex == 0 ? @"男" : @"女";
+    self.dateTF.text = [AppManager birthTimestanpSwitchTime:[JSYHUserModel defaultModel].birthday];
     [self.logoImageView setImageWithURL:[NSURL URLWithString:[JSYHUserModel defaultModel].logo] placeholder:nil];
 }
 
@@ -95,9 +96,10 @@
     [okBT addBlockForControlEvents:(UIControlEventTouchUpInside) block:^(id  _Nonnull sender) {
         NSDate *date = _myDatePicker.date;
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateFormat = @"MM-dd";
+        formatter.dateFormat = @"YYYY-MM-dd";
         NSString *dateStr = [formatter stringFromDate:date];
         self.dateTF.text = dateStr;
+        [JSYHUserModel defaultModel].changeBirthday = self.dateTF.text;
         [backGroundView removeFromSuperview];
     }];
     [okBT setTitle:@"确定" forState:(UIControlStateNormal)];
@@ -131,7 +133,8 @@
         [dataDic setValue:[NSString stringWithFormat:@"%ld",[JSYHUserModel defaultModel].sex] forKey:@"sex"];
     }
     if ([JSYHUserModel defaultModel].changeBirthday != nil) {
-        [dataDic setValue:[JSYHUserModel defaultModel].changeBirthday forKey:@"birthday"];
+        [dataDic setValue:[NSString stringWithFormat:@"%ld", [AppManager birthTimeSwitchTimestamp:[JSYHUserModel defaultModel].changeBirthday]] forKey:@"birthday"];
+        
     } else {
         [dataDic setValue:[NSString stringWithFormat:@"%ld",[JSYHUserModel defaultModel].birthday] forKey:@"birthday"];
     }
@@ -184,7 +187,6 @@
                 break;
         }
 
-        NSLog(@"生日---------%@",selectedValue);
         
         
     } cancelBlock:^(ActionSheetStringPicker *picker) {

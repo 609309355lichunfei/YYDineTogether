@@ -311,7 +311,7 @@ static AFHTTPSessionManager *_sessionManager;
     //    }];
     NSURLSessionTask *sessionTask = [_sessionManager PUT:URL parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         if (data != nil) {
-            [formData appendPartWithFormData:data name:@"logo"];
+            [formData appendPartWithFileData:data name:@"logo.png" fileName:@"log.png" mimeType:@"image/png"];
         }
         
     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class JSYHDishModel;
+
 @interface HomeFoodDetailViewController : UIViewController
-@property (strong, nonatomic) NSString *dishid;
+@property (strong, nonatomic) JSYHDishModel *dishModel;
 @end

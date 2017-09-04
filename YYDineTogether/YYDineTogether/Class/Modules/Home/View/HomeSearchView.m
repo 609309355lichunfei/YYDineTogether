@@ -12,14 +12,25 @@
 #import "JSSHSearchCollectionViewCell.h"
 #import "HomeTableViewCell.h"
 #import "HomeFoodDetailViewController.h"
+#import "JSYHShopModel.h"
+#import "JSYHDishModel.h"
+#import "HomeStoreViewController.h"
+#import "DB_Helper.h"
 
-
-@interface HomeSearchView ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource>
+@interface HomeSearchView ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource>{
+    NSInteger _pageindex;
+}
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (weak, nonatomic) IBOutlet UIView *searchResultView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSMutableArray *keywordArray;
+
+@property (strong, nonatomic) NSMutableArray *dataArray;
+
+@property (strong, nonatomic) NSString *keyword;
 
 
 @end
@@ -45,6 +56,8 @@
 //    _textView.scrollIndicatorInsets = _textView.contentInset;
 //    [_recommendView addSubview:_textView];
     
+    self.keywordArray = [[[DB_Helper defaultHelper] getKeywordArray] mutableCopy];
+    
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView registerNib:[UINib nibWithNibName:@"JSSHSearchCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"JSSHSearchCollectionViewCell"];
@@ -54,9 +67,61 @@
     self.tableView.dataSource = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"searchViewTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"HomSearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomSearchTableViewCell"];
-    
-    
+    MJWeakSelf;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf getConnectWithDataLoadType:DataLoadTypeNone];
+    }];
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        [weakSelf getConnectWithDataLoadType:DataLoadTypeMore];
+    }];
 }
+
+- (void)getConnectWithSearchKeyWord:(NSString *)keyword {
+    self.keyword = keyword;
+    [self.keywordArray addObject:keyword];
+    [[DB_Helper defaultHelper] updateSearchKeywordWithArray:self.keywordArray];
+    [self.collectionView reloadData];
+    [self.tableView.mj_header beginRefreshing];
+}
+
+- (void)getConnectWithDataLoadType:(DataLoadType)dataLoadType {
+    _pageindex = dataLoadType == DataLoadTypeNone ? 0 : _pageindex + 1;
+    [[JSRequestManager sharedManager] getSearchWithKey:self.keyword page:[NSString stringWithFormat:@"%ld",_pageindex] Success:^(id responseObject) {
+        if (dataLoadType == DataLoadTypeNone) {
+            [self.dataArray removeAllObjects];
+        }
+        NSDictionary *dataDic = responseObject[@"data"];
+        NSArray *shopDicArray = dataDic[@"shops"];
+        self.tableView.mj_footer.hidden = shopDicArray.count < 20 ? YES : NO;
+        for (NSDictionary *shopDic in shopDicArray) {
+            JSYHShopModel *model = [[JSYHShopModel alloc] init];
+            [model setValuesForKeysWithDictionary:shopDic];
+            [model updateHeightWithSearchView];
+            for (JSYHDishModel *dishModel in model.dishs) {
+                dishModel.shopid = [model.shopid integerValue];
+                dishModel.shoplogo = model.logo;
+                dishModel.shopname = model.name;
+                [[ShoppingCartManager sharedManager] updateCountWithModel:dishModel];
+            }
+            [self.dataArray addObject:model];
+        }
+        if (dataLoadType == DataLoadTypeNone) {
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
+        [self.tableView reloadData];
+    } Failed:^(NSError *error) {
+        if (dataLoadType == DataLoadTypeNone) {
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
+        [self.dataArray removeAllObjects];
+        [self.tableView reloadData];
+    }];
+}
+
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -64,6 +129,9 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if (section == 1) {
+        return self.keywordArray.count;
+    }
     return 10;
 }
 
@@ -72,6 +140,10 @@
 //}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1) {
+        NSString *keyword = self.keywordArray[indexPath.row];
+        return CGSizeMake([keyword widthForFont:[UIFont systemFontOfSize:12]] + 16, 20);
+    }
     return CGSizeMake(40, 20);
 }
 
@@ -96,18 +168,27 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     JSSHSearchCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"JSSHSearchCollectionViewCell" forIndexPath:indexPath];
+    if (indexPath.section == 1) {
+        cell.titleLabel.text = self.keywordArray[indexPath.row];
+    } else {
+        cell.titleLabel.text = @"牛蛙";
+    }
     return cell;
 }
 
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1) {
+        self.didSelectBlock(self.keywordArray[indexPath.row]);
+    }
     
 }
 
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 230;
+    JSYHShopModel *model = self.dataArray[indexPath.row];
+    return model.searchHeigh;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -115,25 +196,24 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomSearchTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    JSYHShopModel *model = self.dataArray[indexPath.row];
+    cell.shopModel = model;
 //    cell.type = ViewControllerTypeTypeFood;
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (_isStoreDataSource) {
-//        HomeStoreViewController *storeVC = [[HomeStoreViewController alloc] init];
-//        [self.tabBarController.navigationController pushViewController:storeVC animated:YES];
-//    } else {
-        HomeFoodDetailViewController *controller = [[HomeFoodDetailViewController alloc]init];
-        [self.viewController.tabBarController.navigationController pushViewController:controller animated:YES];
-//    }
+    HomeStoreViewController *storeVC = [[HomeStoreViewController alloc] init];
+    JSYHShopModel *model = self.dataArray[indexPath.row];
+    storeVC.shopid = [model.shopid stringValue];
+    [self.viewController.tabBarController.navigationController pushViewController:storeVC animated:YES];
 }
 
 - (void)setType:(SearchViewType)type {
@@ -146,7 +226,13 @@
     }
 }
 
-
+#pragma mark -懒加载
+- (NSMutableArray *)dataArray {
+    if (_dataArray == nil) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
 
 
 //- (void)createTagLabelWithTagsArray:(NSArray *)tagsArray withTextView:(YYTextView *)textView{

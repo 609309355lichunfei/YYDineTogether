@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="407" height="96"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="407" height="95.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="407" height="95"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="fc6-gV-JLJ">
@@ -42,13 +42,13 @@
                         <rect key="frame" x="83" y="32" width="324" height="62"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvI-ne-P4d">
-                                <rect key="frame" x="219" y="32" width="93" height="20"/>
+                                <rect key="frame" x="192" y="22" width="120" height="40"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ElD-IT-lcy">
-                                        <rect key="frame" x="15" y="0.5" width="19" height="19"/>
+                                        <rect key="frame" x="2" y="2.5" width="44" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="19" id="GMQ-mw-QW6"/>
-                                            <constraint firstAttribute="height" constant="19" id="vDH-W7-4HL"/>
+                                            <constraint firstAttribute="width" constant="44" id="GMQ-mw-QW6"/>
+                                            <constraint firstAttribute="height" constant="35" id="vDH-W7-4HL"/>
                                         </constraints>
                                         <state key="normal" image="home_-"/>
                                         <connections>
@@ -56,7 +56,7 @@
                                         </connections>
                                     </button>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAb-7g-sKM">
-                                        <rect key="frame" x="39" y="4" width="30" height="12"/>
+                                        <rect key="frame" x="46" y="14" width="30" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="uAl-8V-bU5"/>
                                         </constraints>
@@ -65,10 +65,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aL-b3-E8e">
-                                        <rect key="frame" x="74" y="1" width="19" height="19"/>
+                                        <rect key="frame" x="76" y="3" width="44" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="19" id="2wx-xt-AHx"/>
-                                            <constraint firstAttribute="height" constant="19" id="R66-Yg-YKp"/>
+                                            <constraint firstAttribute="width" constant="44" id="2wx-xt-AHx"/>
+                                            <constraint firstAttribute="height" constant="35" id="R66-Yg-YKp"/>
                                         </constraints>
                                         <state key="normal" image="home_+"/>
                                         <connections>
@@ -79,12 +79,12 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="pAb-7g-sKM" firstAttribute="centerY" secondItem="4aL-b3-E8e" secondAttribute="centerY" id="J91-V7-CtL"/>
-                                    <constraint firstItem="pAb-7g-sKM" firstAttribute="leading" secondItem="ElD-IT-lcy" secondAttribute="trailing" constant="5" id="Q4C-7c-RNp"/>
-                                    <constraint firstItem="4aL-b3-E8e" firstAttribute="leading" secondItem="pAb-7g-sKM" secondAttribute="trailing" constant="5" id="TxL-jA-gCC"/>
-                                    <constraint firstAttribute="width" constant="93" id="Wel-fH-Kzk"/>
+                                    <constraint firstItem="pAb-7g-sKM" firstAttribute="leading" secondItem="ElD-IT-lcy" secondAttribute="trailing" id="Q4C-7c-RNp"/>
+                                    <constraint firstItem="4aL-b3-E8e" firstAttribute="leading" secondItem="pAb-7g-sKM" secondAttribute="trailing" id="TxL-jA-gCC"/>
                                     <constraint firstItem="4aL-b3-E8e" firstAttribute="centerY" secondItem="hvI-ne-P4d" secondAttribute="centerY" id="fBf-92-zTc"/>
-                                    <constraint firstAttribute="height" constant="20" id="fSD-dN-ToQ"/>
+                                    <constraint firstAttribute="height" constant="40" id="fSD-dN-ToQ"/>
                                     <constraint firstAttribute="trailing" secondItem="4aL-b3-E8e" secondAttribute="trailing" id="hCZ-SI-hg7"/>
+                                    <constraint firstItem="ElD-IT-lcy" firstAttribute="leading" secondItem="hvI-ne-P4d" secondAttribute="leading" constant="2" id="lqL-Qb-dH3"/>
                                     <constraint firstItem="ElD-IT-lcy" firstAttribute="centerY" secondItem="hvI-ne-P4d" secondAttribute="centerY" id="rDq-56-1TD"/>
                                 </constraints>
                             </view>

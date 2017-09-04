@@ -17,4 +17,7 @@
 @property (strong, nonatomic) NSString *info;
 @property (strong, nonatomic) NSMutableArray *dishs;
 @property (strong, nonatomic) NSMutableArray *imgs;
+
+#pragma mark 自加属性
+@property (assign, nonatomic) NSInteger count;
 @end

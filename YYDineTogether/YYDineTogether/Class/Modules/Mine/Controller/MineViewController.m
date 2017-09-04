@@ -15,6 +15,8 @@
 #import "MineTableViewCell.h"
 #import "MsgViewController.h"
 #import "JSYHUserModel.h"
+#import "JSYHFeedbackViewController.h"
+#import "JSYHCouponViewController.h"
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *iconimage;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
@@ -40,7 +42,12 @@
     }else {
         self.userNameLabel.text = [JSRequestManager sharedManager].userName;
     }
-    [self.iconimage setImageWithURL:[NSURL URLWithString:[JSYHUserModel defaultModel].logo] placeholder:nil];
+    [[JSRequestManager sharedManager] getMemberInfoSuccess:^(id responseObject) {
+        [[JSYHUserModel defaultModel] setValuesForKeysWithDictionary:responseObject[@"data"]];
+        [self.iconimage setImageWithURL:[NSURL URLWithString:[JSYHUserModel defaultModel].logo] placeholder:nil];
+    } Failed:^(NSError *error) {
+        
+    }];
 }
 
 - (IBAction)userTapAction:(id)sender {
@@ -58,7 +65,7 @@
 - (UITableView *)tableview {
     
     if (!_tableview) {
-        _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 200, KScreenWidth, KScreenHeight) style:UITableViewStyleGrouped];
+        _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 200, KScreenWidth, KScreenHeight - 264) style:UITableViewStyleGrouped];
         _tableview.delegate = self;
         _tableview.dataSource= self;
         [_tableview registerNib:[UINib nibWithNibName:@"MineTableViewCell" bundle:nil] forCellReuseIdentifier:@"MineTableViewCell"];
@@ -133,7 +140,9 @@
             [self.tabBarController.navigationController pushViewController:ship animated:YES];
 
         }else if (indexPath.row == 2){
-            
+            JSYHCouponViewController *couponVC = [[JSYHCouponViewController alloc] init];
+            couponVC.chooseCoupon = nil;
+            [self.tabBarController.navigationController pushViewController:couponVC animated:YES];
         }else{
             
         }
@@ -142,7 +151,8 @@
         if (indexPath.row == 0) {
           
         }else{
-            
+            JSYHFeedbackViewController *feedbackVC = [[JSYHFeedbackViewController alloc] init];
+            [self.tabBarController.navigationController pushViewController:feedbackVC animated:YES];
         }
     }else if (indexPath.section == 2){
         

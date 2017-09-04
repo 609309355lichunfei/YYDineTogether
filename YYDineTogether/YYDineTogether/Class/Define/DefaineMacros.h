@@ -18,4 +18,6 @@ typedef NS_ENUM(NSInteger, DataLoadType) {
     DataLoadTypeNone,
     DataLoadTypeMore
 };
+
+#define App_FamilyFontName @"PingFang SC"
 #endif /* DefaineMacros_h */

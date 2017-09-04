@@ -8,6 +8,7 @@
 
 #import "ShoppingCartManager.h"
 #import "JSYHDishModel.h"
+#import "JSYHComboModel.h"
 #import "JSYHShopModel.h"
 #import "DB_Helper.h"
 
@@ -22,7 +23,9 @@ static ShoppingCartManager *_shoppingCartManager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _shoppingCartManager = [[ShoppingCartManager alloc]init];
-        _shoppingCartManager.shoppingCartDataArray = [[[DB_Helper defaultHelper] getShoppingCart] mutableCopy];
+        NSDictionary *dic = [[DB_Helper defaultHelper] getShoppingCart];
+        _shoppingCartManager.shoppingCartDataArray = [dic[@"dishs"] mutableCopy];
+        _shoppingCartManager.shoppingCartComboArray = [dic[@"combs"] mutableCopy];
         _shoppingCartManager.shoppingCartDataShopArray = [NSMutableArray array];
     });
     return _shoppingCartManager;
@@ -32,9 +35,8 @@ static ShoppingCartManager *_shoppingCartManager;
     for (JSYHDishModel *model in self.shoppingCartDataArray) {
         if ([dishModel.dishid isEqualToNumber:model.dishid]) {
             model.count ++;
-            if ([dishModel.iscomb isEqualToString:@"1"]) {
-                model.iscomb = @"1";
-            }
+            [self shoppingCartCountChanged];
+            [[DB_Helper defaultHelper] updateShoppingCart];
             return;
         }
     }
@@ -45,17 +47,52 @@ static ShoppingCartManager *_shoppingCartManager;
     [[DB_Helper defaultHelper] updateShoppingCart];
 }
 
+- (void)addToShoppingCartWitComb:(JSYHComboModel *)combModel {
+    for (JSYHComboModel *model in self.shoppingCartComboArray) {
+        if ([model.combid isEqualToNumber:combModel.combid]) {
+            model.count ++;
+            [self shoppingCartCountChanged];
+            [[DB_Helper defaultHelper] updateShoppingCart];
+            return;
+        }
+    }
+    JSYHComboModel *model = [JSYHComboModel new];
+    model.combid = combModel.combid;
+    model.originalprice = combModel.originalprice;
+    model.name = combModel.name;
+    model.count = 1;
+    [self.shoppingCartComboArray addObject:model];
+    [self shoppingCartCountChanged];
+    [[DB_Helper defaultHelper] updateShoppingCart];
+}
+
 - (void)removeFromeShoppingCartWithDish:(JSYHDishModel *)dishModel {
     for (JSYHDishModel *model in self.shoppingCartDataArray) {
         if ([dishModel.dishid isEqualToNumber: model.dishid]) {
             model.count = model.count - 1;
             if (model.count == 0) {
                 [self.shoppingCartDataArray removeObject:model];
-                [self shoppingCartCountChanged];
+                
             }
             break;
         }
     }
+    [self shoppingCartCountChanged];
+    [[DB_Helper defaultHelper] updateShoppingCart];
+}
+
+- (void)removeFromeShoppingCartWithComb:(JSYHComboModel *)combModel {
+    for (JSYHComboModel *model in self.shoppingCartComboArray) {
+        if ([model.combid isEqualToNumber:combModel.combid]) {
+            model.count --;
+            if (model.count == 0) {
+                [self.shoppingCartComboArray removeObject:model];
+            }
+            
+            break;
+        }
+    }
+    [self shoppingCartCountChanged];
     [[DB_Helper defaultHelper] updateShoppingCart];
 }
 
@@ -71,6 +108,16 @@ static ShoppingCartManager *_shoppingCartManager;
         }
     }
     dishModel.count = 0;
+}
+
+- (void)updateComboCountWithModel:(JSYHComboModel *)combModel {
+    for (JSYHComboModel *model in self.shoppingCartComboArray) {
+        if ([combModel.combid isEqualToNumber:model.combid]) {
+            combModel.count = model.count;
+            return;
+        }
+    }
+    combModel.count = 0;
 }
 
 - (void)clearUpDataArrayWithShop {
@@ -95,12 +142,26 @@ static ShoppingCartManager *_shoppingCartManager;
     }
 }
 
+- (void)cleanShoppingcart {
+    [self.shoppingCartDataArray removeAllObjects];
+    [self.shoppingCartComboArray removeAllObjects];
+    [[DB_Helper defaultHelper] updateShoppingCart];
+    [self shoppingCartCountChanged];
+}
+
 - (NSString *)totalPrice {
     NSInteger total = 0;
     for (JSYHDishModel *model in self.shoppingCartDataArray) {
         total += model.count * [model.price integerValue];
     }
+    for (JSYHComboModel *model in self.shoppingCartComboArray) {
+        total += model.count *[model.originalprice integerValue];
+    }
     return [NSString stringWithFormat:@"%ld",total];
+}
+
+- (NSInteger)count {
+    return self.shoppingCartDataArray.count + self.shoppingCartComboArray.count;
 }
 
 

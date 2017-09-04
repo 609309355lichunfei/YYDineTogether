@@ -6,6 +6,7 @@
 //  Copyright © 2017年 lichunfei. All rights reserved.
 //
 
+
 #import "UserManager.h"
 
 @interface UserManager ()
@@ -21,4 +22,5 @@ static UserManager *_userManager;
     });
     return _userManager;
 }
+
 @end

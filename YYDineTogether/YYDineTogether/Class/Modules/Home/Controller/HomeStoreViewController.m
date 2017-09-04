@@ -72,21 +72,21 @@
 
 - (void)registUI {
     self.shoppingCartCountLabel.layer.cornerRadius = 9;
-    if ([ShoppingCartManager sharedManager].shoppingCartDataArray.count == 0) {
+    if ([ShoppingCartManager sharedManager].count == 0) {
         self.shoppingCartCountLabel.hidden = YES;
         self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
     } else {
         self.shoppingCartCountLabel.hidden = NO;
-        self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].shoppingCartDataArray.count];
+        self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].count];
         self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
     }
     [[NSNotificationCenter defaultCenter] addObserverForName:@"JSYHShoppingCartCountChanged" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-        if ([ShoppingCartManager sharedManager].shoppingCartDataArray.count == 0) {
+        if ([ShoppingCartManager sharedManager].count == 0) {
             self.shoppingCartCountLabel.hidden = YES;
             self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
         } else {
             self.shoppingCartCountLabel.hidden = NO;
-            self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].shoppingCartDataArray.count];
+            self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].count];
             self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
         }
         

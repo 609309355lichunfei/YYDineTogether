@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface JSYHHomeStoreActivityViewController : UIViewController
-
+@property (strong, nonatomic) NSString *type;
 @end

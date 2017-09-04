@@ -13,6 +13,9 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) NSString *lng;
 @property (strong, nonatomic) NSString *lat;
+
+@property (assign, nonatomic) double lngdouble;
+@property (assign, nonatomic) double latdouble;
 + (JSYHLocationManager *)sharedManager;
 
 @end

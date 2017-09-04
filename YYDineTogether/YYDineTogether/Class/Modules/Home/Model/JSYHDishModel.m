@@ -32,7 +32,6 @@
     model.combid = self.combid;
     model.iscomb = self.iscomb;
     return model;
-    
 }
 
 @end

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class JSYHShopModel;
 @interface HomSearchTableViewCell : UITableViewCell
+
+@property (strong, nonatomic) JSYHShopModel *shopModel;
 
 @end

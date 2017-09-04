@@ -53,7 +53,6 @@
         [self.storeView addSubview:view];
         [view setActivityModel:model];
     }
-    
 }
 
 @end

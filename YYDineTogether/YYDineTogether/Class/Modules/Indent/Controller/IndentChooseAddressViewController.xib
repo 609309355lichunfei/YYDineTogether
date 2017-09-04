@@ -44,12 +44,6 @@
                                     </connections>
                                 </button>
                             </barButtonItem>
-                            <barButtonItem key="rightBarButtonItem" image="home_share" id="Vfl-rs-bo6">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="chooseAction:" destination="-1" id="o08-Wb-HAB"/>
-                                </connections>
-                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
@@ -72,6 +66,9 @@
                                     <state key="normal" title="   新增地址" image="indent_add">
                                         <color key="titleColor" red="0.99215686270000003" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="addAddressAction:" destination="-1" eventType="touchUpInside" id="JvI-La-gtB"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -108,7 +105,6 @@
     </objects>
     <resources>
         <image name="back" width="32" height="32"/>
-        <image name="home_share" width="25" height="25"/>
         <image name="indent_add" width="21" height="21"/>
     </resources>
 </document>

@@ -30,6 +30,8 @@ PropertyNSMutableArray(VCS);//tabbar root VC
     
     //添加子控制器
     [self setUpAllChildViewController];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payResult:) name:@"JSZPpayResult" object:nil];
 
 }
 
@@ -137,6 +139,11 @@ PropertyNSMutableArray(VCS);//tabbar root VC
 - (void)tabBar:(TabBar *)tabBarView didSelectedItemFrom:(NSInteger)from to:(NSInteger)to {
     
     self.selectedIndex = to;
+}
+
+- (void)payResult:(NSNotification *)resultCode {
+    NSLog(@"result= %@",resultCode.object);
+    self.selectedIndex = 2;
 }
 
 - (void)didReceiveMemoryWarning {

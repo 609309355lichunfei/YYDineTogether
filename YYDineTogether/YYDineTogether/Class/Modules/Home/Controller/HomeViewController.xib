@@ -16,6 +16,7 @@
                 <outlet property="cityLabel" destination="7KY-nk-wEs" id="22M-Sd-4Xx"/>
                 <outlet property="searchBar" destination="RPn-PJ-ba9" id="gYU-ff-EY7"/>
                 <outlet property="shoppingCartCountLabel" destination="2Bj-Oa-el3" id="3X3-EH-oc7"/>
+                <outlet property="shoppingcartBGView" destination="YiR-bq-lMX" id="TgM-DO-W76"/>
                 <outlet property="tableView" destination="D9L-ag-ik3" id="Ssg-eS-GZN"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Bn8-f1-H9r"/>
             </connections>
