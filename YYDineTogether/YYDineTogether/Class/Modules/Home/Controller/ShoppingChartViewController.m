@@ -32,6 +32,17 @@
     [self registUI];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[ShoppingCartManager sharedManager] clearUpDataArrayWithShop];
+    for (JSYHShopModel *model in [ShoppingCartManager sharedManager].shoppingCartDataShopArray) {
+        [model updateHeightWithDish];
+    }
+    self.shopsArray = [ShoppingCartManager sharedManager].shoppingCartDataShopArray;
+    self.combsArray = [ShoppingCartManager sharedManager].shoppingCartComboArray;
+    [self.tableView reloadData];
+}
+
 - (void)registUI {
     self.shoppingCartCountLabel.layer.cornerRadius = 9;
     if ([ShoppingCartManager sharedManager].count == 0) {
@@ -68,6 +79,9 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)payAction:(id)sender {
+    if ([ShoppingCartManager sharedManager].shoppingCartDataArray.count + [ShoppingCartManager sharedManager].shoppingCartComboArray.count == 0) {
+        return;
+    }
     
     CGFloat lng = [[JSYHLocationManager sharedManager].lng doubleValue];
     CGFloat lat = [[JSYHLocationManager sharedManager].lat doubleValue] ;
@@ -107,8 +121,8 @@
     MAMapPoint p1 = MAMapPointForCoordinate(loc1);
     if(MAPolygonContainsPoint(p1, polygon.points, 10)) {
         [[JSRequestManager sharedManager] getMemberAddressSuccess:^(id responseObject) {
-            NSArray *addressDicArray = responseObject[@"data"][@"addressed"];
-            if (addressDicArray.count == 0) {
+            NSArray *addressDicArray = responseObject[@"data"][@"addresses"];
+            if (addressDicArray.count > 0) {
                 IndentConfirmViewController *confirmVC = [[IndentConfirmViewController alloc]init];
                 [self.navigationController pushViewController:confirmVC animated:YES];
             } else {
@@ -121,8 +135,8 @@
     } else {
         [AppManager showToastWithMsg:@"抱歉,你不在配送范围内"];
     }
-    
-
+//    IndentConfirmViewController *confirmVC = [[IndentConfirmViewController alloc]init];
+//    [self.navigationController pushViewController:confirmVC animated:YES];
 }
 
 #pragma mark - UITableViewDataSource

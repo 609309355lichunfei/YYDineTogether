@@ -161,6 +161,11 @@
         view.removeBT.hidden = YES;
     } else {
         view.titleLabel.text = @"历史搜索";
+        view.removeBlock = ^(){
+            [self.keywordArray removeAllObjects];
+            [[DB_Helper defaultHelper] updateSearchKeywordWithArray:self.keywordArray];
+            [self.collectionView reloadData];
+        };
         view.removeBT.hidden = NO;
     }
     return view;

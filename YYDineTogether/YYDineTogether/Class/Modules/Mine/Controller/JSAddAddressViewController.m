@@ -7,12 +7,14 @@
 //
 
 #import "JSAddAddressViewController.h"
+#import "JSYHAddressMapViewController.h"
 
 @interface JSAddAddressViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *doneBT;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *addressTextField;
+@property (weak, nonatomic) IBOutlet UITextField *firstAddressTF;
 
 @end
 
@@ -44,7 +46,7 @@
         [AppManager showToastWithMsg:@"请填写地址"];
         return;
     }
-    NSMutableDictionary *addressDic = [@{@"address":self.addressTextField.text,@"username":self.nameTextField.text,@"phone":self.phoneTextField.text,@"addressid":@"0"} mutableCopy];
+    NSMutableDictionary *addressDic = [@{@"address":[NSString stringWithFormat:@"%@%@",self.firstAddressTF.text, self.addressTextField.text],@"username":self.nameTextField.text,@"phone":self.phoneTextField.text,@"addressid":@"0"} mutableCopy];
     [addressDic setValue:@"0" forKey:@"lng"];
     [addressDic setValue:@"0" forKey:@"lat"];
     [[JSRequestManager sharedManager] postMemberAddressWithDic:addressDic Success:^(id responseObject) {
@@ -54,6 +56,13 @@
     }];
 }
 
+- (IBAction)addressTapAction:(id)sender {
+    JSYHAddressMapViewController *mapVC = [[JSYHAddressMapViewController alloc] init];
+    mapVC.chooseAddressBlock = ^(NSString *address){
+        self.firstAddressTF.text = address;
+    };
+    [self.navigationController pushViewController:mapVC animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

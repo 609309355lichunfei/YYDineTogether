@@ -19,7 +19,7 @@
 // 腾讯
 #define kAppKey_Tencent          @"1104810843"
 
-const static NSString *APIKey = @"";
+const static NSString *APIKey = @"5b625b8f41e6a788f82f3b7a4d3184ad";
 
 const static NSString *TableID = @"";
 

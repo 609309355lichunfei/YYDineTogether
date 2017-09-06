@@ -9,6 +9,7 @@
 #import "AppDelegate+AppService.h"
 #import "MainTabBarController.h"
 #import "LCPanNavigationController.h"
+#import "JSYHGuideViewController.h"
 @implementation AppDelegate (AppService)
 
 #pragma  mark -----------  初始化window--------
@@ -17,12 +18,22 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = KWhiteColor;
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.backgroundColor = KWhiteColor;
     self.mainTabBar = [MainTabBarController new];
     self.mainNavi = [[LCPanNavigationController alloc]initWithRootViewController:self.mainTabBar];
     self.mainNavi.navigationBar.hidden = YES;
-    self.window.rootViewController = self.mainNavi;
+    
+    
+    
+    if (CurrentSystemVersion != [[NSUserDefaults standardUserDefaults] doubleForKey:@"JSZPAPP_Version"]) {
+        JSYHGuideViewController *guideVC = [[JSYHGuideViewController alloc] init];
+        guideVC.changeRootBlock = ^(){
+            self.window.rootViewController = self.mainNavi;
+        };
+        self.window.rootViewController = guideVC;
+    } else {
+        self.window.rootViewController = self.mainNavi;
+    }
+    [[NSUserDefaults standardUserDefaults] setDouble:CurrentSystemVersion forKey:@"JSZPAPP_Version"];
     [self.window makeKeyAndVisible];
     
     [[UIButton appearance] setExclusiveTouch:YES];

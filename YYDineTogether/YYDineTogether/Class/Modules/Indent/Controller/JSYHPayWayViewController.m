@@ -28,18 +28,18 @@
 
 
 - (IBAction)payAction:(id)sender {
+    [MBProgressHUD showMessage:@"提交订单中"];
     [[JSRequestManager sharedManager] payWithPaytype:@"2" Orderno:self.order_no Success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSString *schemes = @"JSZPeiApp";
         [[AlipaySDK defaultService] payOrder:responseObject[@"data"][@"prepayparam"] fromScheme:schemes callback:^(NSDictionary *resultDic) {
             NSLog(@"reslut = %@",resultDic);
             if ([resultDic[@"resultStatus"] isEqualToString:@"6001"]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"JSZPpayResult" object:@"6001"];
                 [AppManager showToastWithMsg:@"支付失败"];
-                [[ShoppingCartManager sharedManager] cleanShoppingcart];
                 [self.navigationController popToRootViewControllerAnimated:YES];
             } else {
                 [AppManager showToastWithMsg:@"支付成功"];
-                [[ShoppingCartManager sharedManager] cleanShoppingcart];
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }
         }];

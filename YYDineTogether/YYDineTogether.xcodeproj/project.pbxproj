@@ -157,6 +157,10 @@
 		9C8C095E1F5D030000A75954 /* JSYHCouponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C095C1F5D030000A75954 /* JSYHCouponTableViewCell.m */; };
 		9C8C095F1F5D030000A75954 /* JSYHCouponTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8C095D1F5D030000A75954 /* JSYHCouponTableViewCell.xib */; };
 		9C8C09621F5D063A00A75954 /* JSYHCouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C09611F5D063A00A75954 /* JSYHCouponModel.m */; };
+		9C8C096A1F5D44D800A75954 /* JSYHAddressMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C09681F5D44D800A75954 /* JSYHAddressMapViewController.m */; };
+		9C8C096B1F5D44D800A75954 /* JSYHAddressMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8C09691F5D44D800A75954 /* JSYHAddressMapViewController.xib */; };
+		9C8C09731F5E92C800A75954 /* JSYHGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C09711F5E92C800A75954 /* JSYHGuideViewController.m */; };
+		9C8C09741F5E92C800A75954 /* JSYHGuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8C09721F5E92C800A75954 /* JSYHGuideViewController.xib */; };
 		9CA011691F5BAA3800867F64 /* JSYHComboTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA011671F5BAA3800867F64 /* JSYHComboTableViewCell.m */; };
 		9CA0116A1F5BAA3800867F64 /* JSYHComboTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CA011681F5BAA3800867F64 /* JSYHComboTableViewCell.xib */; };
 		9CB799E71F03D54100597B6A /* ShoppingCartManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799E61F03D54100597B6A /* ShoppingCartManager.m */; };
@@ -543,6 +547,12 @@
 		9C8C095D1F5D030000A75954 /* JSYHCouponTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSYHCouponTableViewCell.xib; sourceTree = "<group>"; };
 		9C8C09601F5D063A00A75954 /* JSYHCouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSYHCouponModel.h; sourceTree = "<group>"; };
 		9C8C09611F5D063A00A75954 /* JSYHCouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSYHCouponModel.m; sourceTree = "<group>"; };
+		9C8C09671F5D44D800A75954 /* JSYHAddressMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSYHAddressMapViewController.h; sourceTree = "<group>"; };
+		9C8C09681F5D44D800A75954 /* JSYHAddressMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSYHAddressMapViewController.m; sourceTree = "<group>"; };
+		9C8C09691F5D44D800A75954 /* JSYHAddressMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSYHAddressMapViewController.xib; sourceTree = "<group>"; };
+		9C8C09701F5E92C800A75954 /* JSYHGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSYHGuideViewController.h; sourceTree = "<group>"; };
+		9C8C09711F5E92C800A75954 /* JSYHGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSYHGuideViewController.m; sourceTree = "<group>"; };
+		9C8C09721F5E92C800A75954 /* JSYHGuideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSYHGuideViewController.xib; sourceTree = "<group>"; };
 		9CA011661F5BAA3800867F64 /* JSYHComboTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSYHComboTableViewCell.h; sourceTree = "<group>"; };
 		9CA011671F5BAA3800867F64 /* JSYHComboTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSYHComboTableViewCell.m; sourceTree = "<group>"; };
 		9CA011681F5BAA3800867F64 /* JSYHComboTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSYHComboTableViewCell.xib; sourceTree = "<group>"; };
@@ -1135,6 +1145,9 @@
 				9C628FAF1F4F0E0C0014E828 /* JSAddAddressViewController.h */,
 				9C628FB01F4F0E0C0014E828 /* JSAddAddressViewController.m */,
 				9C628FB11F4F0E0C0014E828 /* JSAddAddressViewController.xib */,
+				9C8C09671F5D44D800A75954 /* JSYHAddressMapViewController.h */,
+				9C8C09681F5D44D800A75954 /* JSYHAddressMapViewController.m */,
+				9C8C09691F5D44D800A75954 /* JSYHAddressMapViewController.xib */,
 				9C8C09471F5BE79300A75954 /* JSYHFeedbackViewController.h */,
 				9C8C09481F5BE79300A75954 /* JSYHFeedbackViewController.m */,
 				9C8C09491F5BE79300A75954 /* JSYHFeedbackViewController.xib */,
@@ -1422,6 +1435,9 @@
 				B3DA47EF1EE50650006B6942 /* Login */,
 				B3DA47F81EE50650006B6942 /* Message */,
 				B38940781EE69CEA00407E45 /* Mine */,
+				9C8C09701F5E92C800A75954 /* JSYHGuideViewController.h */,
+				9C8C09711F5E92C800A75954 /* JSYHGuideViewController.m */,
+				9C8C09721F5E92C800A75954 /* JSYHGuideViewController.xib */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1946,6 +1962,7 @@
 				9C8C094B1F5BE79300A75954 /* JSYHFeedbackViewController.xib in Resources */,
 				B3DA48631EE50650006B6942 /* icon_tabbar_nearby_selected.png in Resources */,
 				9C8995D11EE658CE0097AF38 /* HomeShoppingCartView.xib in Resources */,
+				9C8C096B1F5D44D800A75954 /* JSYHAddressMapViewController.xib in Resources */,
 				B38940751EE69B3100407E45 /* IQKeyboardManager.bundle in Resources */,
 				9C8996011EEE3D9D0097AF38 /* HomeFoodDetailViewController.xib in Resources */,
 				9C85D7FF1F4A754C00622EBF /* MsgDetailTableViewCell.xib in Resources */,
@@ -1999,6 +2016,7 @@
 				B38940931EE69CEA00407E45 /* inforViewController.xib in Resources */,
 				B3DA48611EE50650006B6942 /* icon_tabbar_misc_selected@2x.png in Resources */,
 				B3DA48561EE50650006B6942 /* icon_tabbar_merchant_normal.png in Resources */,
+				9C8C09741F5E92C800A75954 /* JSYHGuideViewController.xib in Resources */,
 				9CDB2EA61F176FA90072DBF6 /* HomeStandardCollectionViewCell.xib in Resources */,
 				B3DA48501EE50650006B6942 /* icon_tabbar_discovery.png in Resources */,
 				B3DA48601EE50650006B6942 /* icon_tabbar_misc_selected.png in Resources */,
@@ -2227,6 +2245,7 @@
 				B3DA478E1EE50174006B6942 /* YYDineTogether.xcdatamodeld in Sources */,
 				9C628FCC1F5568810014E828 /* JSYHOrderModel.m in Sources */,
 				B389405D1EE69B3000407E45 /* AbstractActionSheetPicker.m in Sources */,
+				9C8C096A1F5D44D800A75954 /* JSYHAddressMapViewController.m in Sources */,
 				B38940621EE69B3000407E45 /* ActionSheetMultipleStringPicker.m in Sources */,
 				B3DA48451EE50650006B6942 /* RootWebViewController.m in Sources */,
 				B3DA484A1EE50650006B6942 /* IndentViewController.m in Sources */,
@@ -2259,6 +2278,7 @@
 				9C89955A1EE57DA10097AF38 /* LCPanNavigationController.m in Sources */,
 				9C628FAB1F4ED6280014E828 /* FMResultSet.m in Sources */,
 				9C8C094A1F5BE79300A75954 /* JSYHFeedbackViewController.m in Sources */,
+				9C8C09731F5E92C800A75954 /* JSYHGuideViewController.m in Sources */,
 				9C8996191EEE676F0097AF38 /* ShoppingChartTableViewCell.m in Sources */,
 				9C8996401EF2CA310097AF38 /* TNCustomSegment.m in Sources */,
 				9C628F6D1F4BFD340014E828 /* TAAnimatedDotView.m in Sources */,

@@ -59,6 +59,7 @@
 }
 
 - (void)getConnectOrder {
+    [MBProgressHUD showMessage:@"预制订单中"];
     NSArray *dishs = [ShoppingCartManager sharedManager].shoppingCartDataArray;
     NSArray *combs = [ShoppingCartManager sharedManager].shoppingCartComboArray;
     NSMutableArray *dishsArray = [NSMutableArray array];
@@ -119,6 +120,7 @@
         JSYHShopModel *model = [self.dataArray firstObject];
         self.mapView.centerCoordinate = CLLocationCoordinate2DMake([model.lat doubleValue], [model.lng doubleValue]);
         [self.tableView reloadData];
+        [MBProgressHUD hideHUD];
     } Failed:^(NSError *error) {
         
     }];
@@ -196,6 +198,7 @@
     [[JSRequestManager sharedManager] takeorderWithOrderno:self.orderModel.order_no couponid:self.couponid remarks:@[@{@"shopid":@"1", @"remark":@"remarks"}] addressid:[model.addressid stringValue]  Success:^(id responseObject) {
         
         
+        [[ShoppingCartManager sharedManager] cleanShoppingcart];
         JSYHPayWayViewController *payVC = [[JSYHPayWayViewController alloc] init];
         payVC.order_no = responseObject[@"data"][@"order_no"];
         payVC.price = self.resultPriceLabel.text;
