@@ -63,7 +63,8 @@
 }
 
 - (void)updateHeightWithOrder {
-    self.orderHeight = 75 + self.dishs.count * 44;
+    CGFloat remarksHeight = [self.remarks heightForFont:[UIFont fontWithName:App_FamilyFontName size:12] width:KScreenWidth - 90];
+    self.orderHeight = 75 + self.dishs.count * 44 + remarksHeight - 10;
 }
 
 - (void)updateHeightWithSearchView {

@@ -63,7 +63,7 @@
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jn3-Te-gC0">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JSZPLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Jn3-Te-gC0">
                             <rect key="frame" x="30" y="5" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="Rlc-Ed-mEB"/>
@@ -159,6 +159,7 @@
         </view>
     </objects>
     <resources>
+        <image name="JSZPLogo" width="40" height="40"/>
         <image name="back" width="32" height="32"/>
         <image name="friends_choose" width="20" height="20"/>
         <image name="indent_alipay" width="40" height="40"/>

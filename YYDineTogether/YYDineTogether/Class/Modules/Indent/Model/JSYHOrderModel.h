@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class JSYHAddressModel;
 @interface JSYHOrderModel : NSObject
 @property (strong, nonatomic) NSNumber *postcost;
 @property (assign, nonatomic) NSInteger cut;
@@ -20,6 +21,7 @@
 @property (strong, nonatomic) NSNumber *price;
 @property (strong, nonatomic) NSMutableArray *shops;
 @property (strong, nonatomic) NSArray *sortedshops;
+@property (strong, nonatomic) JSYHAddressModel *addressModel;
 
 
 @property (strong, nonatomic) NSNumber *riderlng;

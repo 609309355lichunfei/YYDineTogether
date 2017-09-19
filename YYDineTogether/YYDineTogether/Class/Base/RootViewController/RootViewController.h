@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MJRefresh.h>
+#import <MJRefresh/MJRefresh.h>
 /**
  VC 基类
  */

@@ -73,7 +73,7 @@
         }
         [self fillData];
     } Failed:^(NSError *error) {
-        
+        [MBProgressHUD hideHUD];
     }];
 }
 

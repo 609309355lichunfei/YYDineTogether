@@ -38,7 +38,7 @@ static DB_Helper *helper;
     [self.dataBase executeUpdate:@"create table if not exists getSearchKeyword(userName text primary key,dataArray blob)"];
 }
 
-- (void)updateShoppingCart {
+- (void)updateShoppingCartWithUserName:(NSString *)userName {
     NSArray *dishArray = [ShoppingCartManager sharedManager].shoppingCartDataArray;
     NSMutableArray *dishJsonArray = [NSMutableArray array];
     for (JSYHDishModel *model in dishArray) {
@@ -53,14 +53,22 @@ static DB_Helper *helper;
     }
     NSDictionary *jsonDic = @{@"dishs":dishJsonArray,@"combs":comboJsonArray};
     
-    NSString *userName = [JSRequestManager sharedManager].userName;
     NSData *data = [NSJSONSerialization dataWithJSONObject:jsonDic options:0 error:nil];
     [self.dataBase executeUpdateWithFormat:@"INSERT Or Replace INTO getShoppingCart(userName, dataDic) VALUES (%@,%@)", userName, data];
     [self.dataBase close];
 }
 
-- (NSDictionary *)getShoppingCart {
-    FMResultSet *set = [self.dataBase executeQueryWithFormat:@"SELECT * from getShoppingCart where userName = %@",[JSRequestManager sharedManager].userName];
+- (void)cleanAdminShoppingCart {
+    NSDictionary *jsonDic = @{@"dishs":@[],@"combs":@[]};
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:jsonDic options:0 error:nil];
+    [self.dataBase executeUpdateWithFormat:@"INSERT Or Replace INTO getShoppingCart(userName, dataDic) VALUES (%@,%@)", @"admin", data];
+    [self.dataBase close];
+}
+
+- (NSDictionary *)getShoppingCartWithUserName:(NSString *)userName {
+
+    FMResultSet *set = [self.dataBase executeQueryWithFormat:@"SELECT * from getShoppingCart where userName = %@",userName];
     NSData *data = nil;
     while ([set next]) {
         data = [set dataForColumn:@"dataDic"];
@@ -92,12 +100,20 @@ static DB_Helper *helper;
 - (void)updateAddress:(JSYHAddressModel *)addressModel {
     NSString *jsonStr = [addressModel modelToJSONString];
     NSString *userName = [JSRequestManager sharedManager].userName;
+    if (userName == nil || userName.length == 0) {
+        userName = @"admin";
+    }
+
     [self.dataBase executeUpdateWithFormat:@"INSERT Or Replace INTO getAddress(userName, dataJsonStr) VALUES (%@,%@)", userName, jsonStr];
     [self.dataBase close];
 }
 
 - (JSYHAddressModel *)getAddressModel {
-    FMResultSet *set = [self.dataBase executeQueryWithFormat:@"SELECT * from getAddress where userName = %@",[JSRequestManager sharedManager].userName];
+    NSString *userName = [JSRequestManager sharedManager].userName;
+    if (userName == nil || userName.length == 0) {
+        userName = @"admin";
+    }
+    FMResultSet *set = [self.dataBase executeQueryWithFormat:@"SELECT * from getAddress where userName = %@",userName];
     NSString *jsonStr = nil;
     while ([set next]) {
         jsonStr = [set stringForColumn:@"dataJsonStr"];
@@ -113,6 +129,9 @@ static DB_Helper *helper;
 - (void)updateSearchKeywordWithArray:(NSArray *)keywordArray {
     
     NSString *userName = [JSRequestManager sharedManager].userName;
+    if (userName == nil || userName.length == 0) {
+        userName = @"admin";
+    }
     NSData *data = [NSJSONSerialization dataWithJSONObject:keywordArray options:0 error:nil];
     [self.dataBase executeUpdateWithFormat:@"INSERT Or Replace INTO getSearchKeyword(userName, dataArray) VALUES (%@,%@)", userName, data];
     [self.dataBase close];
@@ -120,7 +139,11 @@ static DB_Helper *helper;
 
 //获得搜索关键字
 - (NSArray *)getKeywordArray {
-    FMResultSet *set = [self.dataBase executeQueryWithFormat:@"SELECT * from getSearchKeyword where userName = %@",[JSRequestManager sharedManager].userName];
+    NSString *userName = [JSRequestManager sharedManager].userName;
+    if (userName == nil || userName.length == 0) {
+        userName = @"admin";
+    }
+    FMResultSet *set = [self.dataBase executeQueryWithFormat:@"SELECT * from getSearchKeyword where userName = %@",userName];
     NSData *data = nil;
     while ([set next]) {
         data = [set dataForColumn:@"dataArray"];

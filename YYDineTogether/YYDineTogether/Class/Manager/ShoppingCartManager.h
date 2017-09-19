@@ -21,6 +21,10 @@
 
 @property (strong, nonatomic) NSString *totalPrice;
 
+- (void)shoppingCartReloadData;
+
+- (void)addWithAdmin;
+
 - (void)addToShoppingCartWithDish:(JSYHDishModel *)dishModel;
 
 - (void)addToShoppingCartWitComb:(JSYHComboModel *)combModel;

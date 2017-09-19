@@ -57,7 +57,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5TA-dF-d00">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5TA-dF-d00">
                     <rect key="frame" x="0.0" y="235" width="375" height="200"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加图片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XT-gm-dNy">
@@ -117,6 +117,7 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="QU5-Nu-wI1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="83z-UC-vQe"/>
                 <constraint firstAttribute="trailing" secondItem="5TA-dF-d00" secondAttribute="trailing" id="9HP-lu-pic"/>
@@ -130,8 +131,16 @@
                 <constraint firstAttribute="trailing" secondItem="oy7-Cx-Oh4" secondAttribute="trailing" constant="7" id="tEA-ti-mi4"/>
                 <constraint firstItem="5TA-dF-d00" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tQA-ro-UkT"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="uYA-3Q-QI7" appends="YES" id="sPL-dX-Zwa"/>
+            </connections>
             <point key="canvasLocation" x="32.5" y="102.5"/>
         </view>
+        <tapGestureRecognizer id="uYA-3Q-QI7" userLabel="hidenKeyboard">
+            <connections>
+                <action selector="hidenKeyboardAction:" destination="-1" id="ICf-EJ-arG"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="Navigation_left" width="32" height="32"/>

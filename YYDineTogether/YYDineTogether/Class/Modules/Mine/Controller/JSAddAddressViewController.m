@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *addressTextField;
 @property (weak, nonatomic) IBOutlet UITextField *firstAddressTF;
 
+@property (assign, nonatomic) CGFloat lat;
+@property (assign, nonatomic) CGFloat lng;
+
 @end
 
 @implementation JSAddAddressViewController
@@ -24,6 +27,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.doneBT.layer.cornerRadius = 2;
+    _lng = 0.0;
+    _lat = 0.0;
 }
 
 - (IBAction)backAction:(id)sender {
@@ -46,20 +51,27 @@
         [AppManager showToastWithMsg:@"请填写地址"];
         return;
     }
+    NSString *firstAddressStr = [_firstAddressTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (firstAddressStr.length == 0 || firstAddressStr == nil) {
+        [AppManager showToastWithMsg:@"请填写地址"];
+        return;
+    }
     NSMutableDictionary *addressDic = [@{@"address":[NSString stringWithFormat:@"%@%@",self.firstAddressTF.text, self.addressTextField.text],@"username":self.nameTextField.text,@"phone":self.phoneTextField.text,@"addressid":@"0"} mutableCopy];
-    [addressDic setValue:@"0" forKey:@"lng"];
-    [addressDic setValue:@"0" forKey:@"lat"];
+    [addressDic setValue:[NSNumber numberWithFloat:_lng] forKey:@"lng"];
+    [addressDic setValue:[NSNumber numberWithFloat:_lat] forKey:@"lat"];
     [[JSRequestManager sharedManager] postMemberAddressWithDic:addressDic Success:^(id responseObject) {
         [self.navigationController popViewControllerAnimated:YES];
     } Failed:^(NSError *error) {
-        
+        [AppManager showToastWithMsg:@"添加地址失败"];
     }];
 }
 
 - (IBAction)addressTapAction:(id)sender {
     JSYHAddressMapViewController *mapVC = [[JSYHAddressMapViewController alloc] init];
-    mapVC.chooseAddressBlock = ^(NSString *address){
+    mapVC.chooseAddressBlock = ^(NSString *address , CGFloat lat, CGFloat lng){
         self.firstAddressTF.text = address;
+        _lat = lat;
+        _lng = lng;
     };
     [self.navigationController pushViewController:mapVC animated:YES];
 }

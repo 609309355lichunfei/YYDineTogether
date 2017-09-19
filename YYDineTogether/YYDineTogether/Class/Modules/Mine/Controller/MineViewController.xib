@@ -61,7 +61,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKU-Zm-8tf">
                             <rect key="frame" x="122.5" y="57" width="130" height="128"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_defaultHead" translatesAutoresizingMaskIntoConstraints="NO" id="ZfO-xf-IbA">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_user" translatesAutoresizingMaskIntoConstraints="NO" id="ZfO-xf-IbA">
                                     <rect key="frame" x="24.5" y="0.0" width="80" height="80"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="80" id="QCO-Y8-jV4"/>
@@ -122,8 +122,8 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="default_user" width="80" height="80"/>
         <image name="mine_background" width="375" height="216"/>
-        <image name="mine_defaultHead" width="80" height="80"/>
         <image name="mine_information" width="17" height="18"/>
         <image name="mine_setting" width="18" height="18"/>
     </resources>

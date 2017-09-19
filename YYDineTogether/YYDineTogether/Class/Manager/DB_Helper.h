@@ -15,10 +15,13 @@
 
 
 //更新购物车本地数据
-- (void)updateShoppingCart;
+- (void)updateShoppingCartWithUserName:(NSString *)userName;
 
 //获得购物车本地数据
-- (NSDictionary *)getShoppingCart;
+- (NSDictionary *)getShoppingCartWithUserName:(NSString *)userName;
+
+//清空游客购物车
+- (void)cleanAdminShoppingCart;
 
 //更新首选地址
 - (void)updateAddress:(JSYHAddressModel *)addressModel;

@@ -78,8 +78,11 @@
 
 - (void)getConnectWithSearchKeyWord:(NSString *)keyword {
     self.keyword = keyword;
-    [self.keywordArray addObject:keyword];
-    [[DB_Helper defaultHelper] updateSearchKeywordWithArray:self.keywordArray];
+    if (![self.keywordArray containsObject:keyword]) {
+        [self.keywordArray addObject:keyword];
+        [[DB_Helper defaultHelper] updateSearchKeywordWithArray:self.keywordArray];
+    }
+    
     [self.collectionView reloadData];
     [self.tableView.mj_header beginRefreshing];
 }
@@ -132,7 +135,7 @@
     if (section == 1) {
         return self.keywordArray.count;
     }
-    return 10;
+    return 0;
 }
 
 //- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -218,7 +221,7 @@
     HomeStoreViewController *storeVC = [[HomeStoreViewController alloc] init];
     JSYHShopModel *model = self.dataArray[indexPath.row];
     storeVC.shopid = [model.shopid stringValue];
-    [self.viewController.tabBarController.navigationController pushViewController:storeVC animated:YES];
+    [self.viewController.navigationController pushViewController:storeVC animated:YES];
 }
 
 - (void)setType:(SearchViewType)type {

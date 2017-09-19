@@ -10,11 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="151" id="KGk-i7-Jjw" customClass="JSYHPreOrderTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="355" height="151"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="275" id="KGk-i7-Jjw" customClass="JSYHPreOrderTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="275"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="355" height="150"/>
+                <rect key="frame" x="0.0" y="0.0" width="355" height="274.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mfk-as-VSk">
@@ -26,7 +26,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hw1-Rz-p2u">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hw1-Rz-p2u">
                                 <rect key="frame" x="7" y="8" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="IU2-p8-ZDQ"/>
@@ -54,11 +54,11 @@
                         </constraints>
                     </view>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y1t-rt-9Jm">
-                        <rect key="frame" x="7" y="40" width="341" height="75.5"/>
+                        <rect key="frame" x="7" y="40" width="341" height="199.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tableView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sYr-LL-1FM">
-                        <rect key="frame" x="0.0" y="115.5" width="355" height="35"/>
+                        <rect key="frame" x="0.0" y="239.5" width="355" height="35"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户备注" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vaV-pC-Wdq">
                                 <rect key="frame" x="7" y="8" width="65" height="20"/>
@@ -69,7 +69,7 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无备注说明" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNw-rk-PWB">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无备注说明" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNw-rk-PWB">
                                 <rect key="frame" x="80" y="8" width="267" height="17"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -85,7 +85,6 @@
                             <constraint firstItem="vaV-pC-Wdq" firstAttribute="top" secondItem="sYr-LL-1FM" secondAttribute="top" constant="8" id="lxd-Qc-Ftw"/>
                             <constraint firstAttribute="bottom" secondItem="UNw-rk-PWB" secondAttribute="bottom" constant="10" id="p3s-mG-64h"/>
                             <constraint firstItem="UNw-rk-PWB" firstAttribute="top" secondItem="vaV-pC-Wdq" secondAttribute="top" id="rhl-Oe-XT4"/>
-                            <constraint firstAttribute="height" constant="35" id="zGe-u3-51i"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -108,7 +107,7 @@
                 <outlet property="remarkLabel" destination="UNw-rk-PWB" id="voN-pT-W99"/>
                 <outlet property="shopNameLabel" destination="hZq-9c-nAO" id="Lg4-sD-9mn"/>
             </connections>
-            <point key="canvasLocation" x="46.5" y="123.5"/>
+            <point key="canvasLocation" x="46.5" y="185.5"/>
         </tableViewCell>
     </objects>
     <resources>

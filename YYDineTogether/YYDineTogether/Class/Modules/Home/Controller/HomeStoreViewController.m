@@ -59,14 +59,16 @@
 }
 
 - (void)getConnectShopDetail {
+    [MBProgressHUD showMessage:@"进入店铺"];
     [[JSRequestManager sharedManager] shopDetailWithShopid:self.shopid Success:^(id responseObject) {
         NSDictionary *dataDic = responseObject[@"data"];
         NSDictionary *shop = dataDic[@"shop"];
         self.shopModel = [[JSYHShopModel alloc] init];
         [self.shopModel setValuesForKeysWithDictionary:shop];
         [self fillData];
+        [MBProgressHUD hideHUD];
     } Failed:^(NSError *error) {
-        
+        [MBProgressHUD hideHUD];
     }];
 }
 
@@ -135,6 +137,7 @@
     }
     [self.leftTableView reloadData];
     if (_shopModel.cates.count > 0) {
+        [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:(UITableViewScrollPositionTop)];
         JSYHCateModel *cateModel = [_shopModel.cates firstObject];
         self.dishsArray = cateModel.dishs;
         [self.rightTableView reloadData];
@@ -228,7 +231,6 @@
         JSYHCateModel *model = self.catesArray[indexPath.row];
         
         cell.backgroundColor = [UIColor whiteColor];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.textColor = [UIColor lightGrayColor];
         cell.textLabel.text = model.catename;
         cell.textLabel.font = [UIFont systemFontOfSize:16];
@@ -253,6 +255,8 @@
             [self.navigationController pushViewController:comboVC animated:YES];
         } else {
             HomeFoodDetailViewController *foodDetailVC = [[HomeFoodDetailViewController alloc] init];
+            JSYHDishModel *dishModel = self.dishsArray[indexPath.row];
+            foodDetailVC.dishModel = dishModel;
             [self.navigationController pushViewController:foodDetailVC animated:YES];
         }
     } else {

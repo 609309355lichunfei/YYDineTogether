@@ -23,12 +23,14 @@
 #import "JSYHDishModel.h"
 #import "JSYHShopModel.h"
 #import "HomeDishTableViewCell.h"
+#import "JSYHDrinkViewController.h"
 
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate ,UIGestureRecognizerDelegate, CLLocationManagerDelegate, SDCycleScrollViewDelegate>{
     BOOL _isStoreDataSource;
     NSInteger _cellHeight;
     NSInteger _shoppageIndex;
     NSInteger _dishpageIndex;
+    CGFloat _lastOffSideY;
 }
 @property (weak, nonatomic) IBOutlet UIView *barView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -58,6 +60,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self registUI];
+    NSNumber *a = @(1.50);
+    NSLog(@"====%@",a);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -75,14 +79,15 @@
 }
 
 - (void)registUI {
-//    if ([JSRequestManager sharedManager].token == nil || [JSRequestManager sharedManager].token.length == 0) {
-//        
-//    }
+    _lastOffSideY = 0;
+    if ([JSRequestManager sharedManager].token == nil || [JSRequestManager sharedManager].token.length == 0) {
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        [self.tabBarController presentViewController:loginVC animated:YES completion:^{
+            
+        }];
+    }
     [JSYHLocationManager sharedManager];
-    LoginViewController *loginVC = [[LoginViewController alloc] init];
-    [self.tabBarController presentViewController:loginVC animated:YES completion:^{
-        
-    }];
+    
     self.shoppingCartCountLabel.layer.cornerRadius = 9;
     _isStoreDataSource = YES;
     _cellHeight = 150;
@@ -206,9 +211,9 @@
 }
 
 - (IBAction)locationAction:(id)sender {
-    HomeCityViewController *cityVC = [[HomeCityViewController alloc]init];
-    cityVC.cityLabel = self.cityLabel;
-    [self presentViewController:cityVC animated:YES completion:nil];
+//    HomeCityViewController *cityVC = [[HomeCityViewController alloc]init];
+//    cityVC.cityLabel = self.cityLabel;
+//    [self presentViewController:cityVC animated:YES completion:nil];
 }
 - (IBAction)shoppingCartTapAction:(id)sender {
     [self shoppingCartAction:nil];
@@ -226,19 +231,25 @@
 }
 
 - (void)drinkAction:(id)sender {
-    HomeStoreViewController *controller = [[HomeStoreViewController alloc]init];
+    JSYHDrinkViewController *controller = [[JSYHDrinkViewController alloc]init];
+    controller.tagId = @"2";
+    controller.titleStr = @"饮料";
     [self.tabBarController.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)fruitAction:(id)sender {
     
-    HomeActivityViewController *controller = [[HomeActivityViewController alloc]init];
+    JSYHDrinkViewController *controller = [[JSYHDrinkViewController alloc]init];
+    controller.tagId = @"3";
+    controller.titleStr = @"水果";
     [self.tabBarController.navigationController pushViewController:controller animated:YES];
     
 }
 - (void)supermarketAction:(id)sender {
     
-    HomeActivityViewController *controller = [[HomeActivityViewController alloc]init];
+    JSYHDrinkViewController *controller = [[JSYHDrinkViewController alloc]init];
+    controller.tagId = @"4";
+    controller.titleStr = @"超市";
     [self.tabBarController.navigationController pushViewController:controller animated:YES];
     
 }
@@ -250,7 +261,6 @@
 
 - (IBAction)comboActivityAction:(id)sender {
     HomeComboRecomendViewController *comboVC = [[HomeComboRecomendViewController alloc]init];
-    comboVC.type = ViewControllerTypeTypeStore;
     [self.tabBarController.navigationController pushViewController:comboVC animated:YES];
 }
 - (IBAction)comboAction:(id)sender {
@@ -261,7 +271,7 @@
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 475;
+        return 355 + KScreenWidth * 188 / 750;
     }
     if (_isStoreDataSource) {
         JSYHShopModel *model = self.shopArray[indexPath.row];
@@ -290,16 +300,16 @@
             [weakSelf cateAction:nil];
         };
         cell.drinkBlock = ^(){
-           // [weakSelf drinkAction:nil];
+            [weakSelf drinkAction:nil];
         };
         cell.comboBlock = ^(){
             [weakSelf comboAction:nil];
         };
         cell.fruitBlock = ^(){
-           // [weakSelf fruitAction:nil];
+            [weakSelf fruitAction:nil];
         };
         cell.supermarketBlock = ^(){
-           // [weakSelf supermarketAction:nil];
+            [weakSelf supermarketAction:nil];
         };
         cell.activity = ^(){
             [weakSelf activityAction];
@@ -329,7 +339,7 @@
             }
         };
         if (self.bannerScrollView == nil) {
-            self.bannerScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, KScreenWidth, 128) imageURLStringsGroup:self.bannerImageUrlArray];
+            self.bannerScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenWidth * 188 / 750) imageURLStringsGroup:self.bannerImageUrlArray];
             self.bannerScrollView.delegate = self;
             [cell.activityView addSubview:self.bannerScrollView];
         } else {
@@ -404,9 +414,29 @@
 
 #pragma mark - SDCycleScrollViewDelegate
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
-    JSYHHomeStoreActivityViewController *activityVC = [[JSYHHomeStoreActivityViewController alloc] init];
-    activityVC.type = [NSString stringWithFormat:@"%ld",index + 1];
-    [self.tabBarController.navigationController pushViewController:activityVC animated:YES];
+    if (index == 0) {
+        JSYHHomeStoreActivityViewController *activityVC = [[JSYHHomeStoreActivityViewController alloc] init];
+        activityVC.type = [NSString stringWithFormat:@"%ld",index + 1];
+        [self.tabBarController.navigationController pushViewController:activityVC animated:YES];
+    } else if (index == 1) {
+        HomeComboRecomendViewController *combVC = [[HomeComboRecomendViewController alloc] init];
+        [self.tabBarController.navigationController pushViewController:combVC animated:YES];
+    }
+    
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.contentOffset.y > _lastOffSideY && scrollView.contentOffset.y > 30) {
+        self.barView.hidden = YES;
+    } else {
+        self.barView.hidden = NO;
+        if (scrollView.contentOffset.y > 100) {
+            self.barView.backgroundColor = [UIColor whiteColor];
+        } else {
+            self.barView.backgroundColor = [UIColor clearColor];
+        }
+    }
+    _lastOffSideY = scrollView.contentOffset.y;
 }
 
 #pragma mark - 懒加载

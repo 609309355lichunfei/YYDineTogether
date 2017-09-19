@@ -19,16 +19,22 @@
 }
 
 @property (strong, nonatomic) HomeShoppingCartView *shoppingView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shopCartBTBottom;
-@property (weak, nonatomic) IBOutlet UIImageView *firstImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *secondImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *thirdImageVIew;
-@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
+//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shopCartBTBottom;
+//@property (weak, nonatomic) IBOutlet UIImageView *firstImageView;
+//@property (weak, nonatomic) IBOutlet UIImageView *secondImageView;
+//@property (weak, nonatomic) IBOutlet UIImageView *thirdImageVIew;
+//@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
+@property (weak, nonatomic) IBOutlet UIView *tableViewBGView;
+@property (weak, nonatomic) IBOutlet UILabel *discoutpriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UIView *pricecoverView;
+@property (weak, nonatomic) IBOutlet UIButton *orderBT;
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
 
@@ -49,6 +55,8 @@
 }
 
 - (void)registUI {
+    self.tableViewBGView.layer.cornerRadius = 5;
+    self.orderBT.layer.cornerRadius = 2;
     self.shoppingCartCountLabel.layer.cornerRadius = 9;
     if ([ShoppingCartManager sharedManager].count == 0) {
         self.shoppingCartCountLabel.hidden = YES;
@@ -87,27 +95,35 @@
 }
 
 - (void)fillData {
-    self.infoLabel.text = self.model.info;
-    for (NSInteger i = 0; i < self.model.imgs.count; i ++) {
-        NSString *imgUrlStr = self.model.imgs[i];
-        switch (i) {
-            case 0:
-                [self.firstImageView setImageWithURL:[NSURL URLWithString:imgUrlStr] placeholder:nil];
-                break;
-            case 1:
-                [self.secondImageView setImageWithURL:[NSURL URLWithString:imgUrlStr] placeholder:nil];
-                break;
-            case 2:
-                [self.thirdImageVIew setImageWithURL:[NSURL URLWithString:imgUrlStr] placeholder:nil];
-                break;
-                
-            default:
-                break;
-        }
-    }
+//    self.infoLabel.text = self.model.info;
+//    for (NSInteger i = 0; i < self.model.imgs.count; i ++) {
+//        NSString *imgUrlStr = self.model.imgs[i];
+//        switch (i) {
+//            case 0:
+//                [self.firstImageView setImageWithURL:[NSURL URLWithString:imgUrlStr] placeholder:nil];
+//                break;
+//            case 1:
+//                [self.secondImageView setImageWithURL:[NSURL URLWithString:imgUrlStr] placeholder:nil];
+//                break;
+//            case 2:
+//                [self.thirdImageVIew setImageWithURL:[NSURL URLWithString:imgUrlStr] placeholder:nil];
+//                break;
+//                
+//            default:
+//                break;
+//        }
+//    }
     self.dataArray = self.model.dishs;
-    self.tableViewHeight.constant = 128 * self.dataArray.count;
+    //self.tableViewHeight.constant = 128 * self.dataArray.count;
     [self.tableView reloadData];
+    self.discoutpriceLabel.text = [NSString stringWithFormat:@"%@",self.model.price];
+    self.priceLabel.text = [NSString stringWithFormat:@"%@",self.model.originalprice];
+    if ([self.model.originalprice isEqualToNumber:self.model.price]) {
+        self.priceLabel.text = @"";
+        self.pricecoverView.hidden = YES;
+    }
+    
+    self.titleLabel.text = self.model.name;
 }
 - (IBAction)orderAction:(id)sender {
     [[ShoppingCartManager sharedManager] addToShoppingCartWitComb:self.model];

@@ -91,7 +91,7 @@
         [model setValuesForKeysWithDictionary:orderDic];
         self.orderModel = model;
         
-        self.resultPriceLabel.text = [self.orderModel.lastprice stringValue];
+        self.resultPriceLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.lastprice];
         self.activityLabel.text = [NSString stringWithFormat:@"%ld",self.orderModel.cut];
         self.postcost.text = [self.orderModel.postcost stringValue];
         self.redLabel.text = [self.orderModel.couponvalue stringValue];
@@ -114,7 +114,8 @@
         [self.tableView reloadData];
         
     } Failed:^(NSError *error) {
-        
+        [AppManager showToastWithMsg:@"查看订单失败"];
+        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 
@@ -142,6 +143,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     JSYHPreOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IndentDetailTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.remarkLabel.userInteractionEnabled = NO;
     JSYHShopModel *model = self.dataArray[indexPath.row];
     cell.shopModel = model;
     return cell;

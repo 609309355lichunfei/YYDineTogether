@@ -8,21 +8,19 @@
 
 #import "HomeComboRecomendViewController.h"
 #import "HomeTableViewCell.h"
+#import "JSYHCombListTableViewCell.h"
+#import "JSYHComboModel.h"
+#import "JSYHCombListHeaderTableViewCell.h"
 
-@interface HomeComboRecomendViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>{
-    CGFloat _mainScrollViewLastContentOffSetY;
-    CGFloat _tableViewLastContentOffSetY;
-}
-@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *titleImageView;
+@interface HomeComboRecomendViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+
 @property (strong, nonatomic) HomeShoppingCartView *shoppingView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *shoppingCartBTBottom;
 @property (weak, nonatomic) IBOutlet UIView *shoppingCartView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainScrollViewToBottom;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightToMainVIewHeight;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSMutableArray *dataArray;
+
 
 @end
 
@@ -35,24 +33,12 @@
 }
 
 - (void)registUI {
-    if (_type == ViewControllerTypeTypeStore) {
-        _shoppingCartView.hidden = YES;
-        _tableViewHeightToMainVIewHeight.constant = -75;
-        _mainScrollViewToBottom.constant = 0;
-    } else {
-        _shoppingView.hidden = NO;
-        _tableViewHeightToMainVIewHeight.constant = -115;
-        _mainScrollViewToBottom.constant = 70;
-    }
-    [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeComboRecomendTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"JSYHCombListTableViewCell" bundle:nil] forCellReuseIdentifier:@"JSYHCombListTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"JSYHCombListHeaderTableViewCell" bundle:nil] forCellReuseIdentifier:@"JSYHCombListHeaderTableViewCell"];
 }
 
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (IBAction)orderAction:(id)sender {
-    
 }
 
 - (IBAction)clearShoppingCartAction:(id)sender {
@@ -77,19 +63,33 @@
 
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 128;
+    if (indexPath.section == 0) {
+        
+        return KScreenWidth * 188 / 750 + 60;
+    }
+    return 220;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 0) {
+        return 1;
+    }
     return 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeComboRecomendTableViewCell" forIndexPath:indexPath];
+    if (indexPath.section == 0) {
+        JSYHCombListHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSYHCombListHeaderTableViewCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
+    JSYHCombListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSYHCombListTableViewCell" forIndexPath:indexPath];
+//    JSYHComboModel *combModel = self.dataArray[indexPath.row];
+//    cell.combModel = combModel;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -99,32 +99,11 @@
     
 }
 
-#pragma mark - UIScrollViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView == _mainScrollView) {
-        if (scrollView.contentOffset.y > 260) {
-            if (scrollView.contentOffset.y > _mainScrollViewLastContentOffSetY) {
-                [scrollView scrollToBottomAnimated:NO];
-                scrollView.scrollEnabled = NO;
-                _tableView.scrollEnabled = YES;
-                _tableView.bounces = YES;
-            }
-        }
-        
-        _mainScrollViewLastContentOffSetY = scrollView.contentOffset.y;
+- (NSMutableArray *)dataArray {
+    if (_dataArray == nil) {
+        _dataArray = [NSMutableArray array];
     }
-    
-    if (scrollView == _tableView) {
-        if (scrollView.contentOffset.y < 10) {
-            if (scrollView.contentOffset.y < _tableViewLastContentOffSetY) {
-                [scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-                scrollView.scrollEnabled = NO;
-                _mainScrollView.scrollEnabled = YES;
-                _mainScrollView.bounces = YES;
-            }
-        }
-        _tableViewLastContentOffSetY = scrollView.contentOffset.y;
-    }
+    return _dataArray;
 }
 
 - (void)didReceiveMemoryWarning {

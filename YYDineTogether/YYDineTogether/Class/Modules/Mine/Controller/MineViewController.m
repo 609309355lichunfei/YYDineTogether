@@ -38,16 +38,18 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([JSRequestManager sharedManager].userName == nil || [JSRequestManager sharedManager].userName.length == 0) {
-        
+        self.userNameLabel.text = @"登录/注册";
+        [self.iconimage setImage:[UIImage imageNamed:@"default_user"]];
     }else {
-        self.userNameLabel.text = [JSRequestManager sharedManager].userName;
+        [[JSRequestManager sharedManager] getMemberInfoSuccess:^(id responseObject) {
+            [[JSYHUserModel defaultModel] setValuesForKeysWithDictionary:responseObject[@"data"]];
+            [self.iconimage setImageWithURL:[NSURL URLWithString:[JSYHUserModel defaultModel].logo] placeholder:nil];
+            self.userNameLabel.text = [JSYHUserModel defaultModel].nickname;
+        } Failed:^(NSError *error) {
+            
+        }];
     }
-    [[JSRequestManager sharedManager] getMemberInfoSuccess:^(id responseObject) {
-        [[JSYHUserModel defaultModel] setValuesForKeysWithDictionary:responseObject[@"data"]];
-        [self.iconimage setImageWithURL:[NSURL URLWithString:[JSYHUserModel defaultModel].logo] placeholder:nil];
-    } Failed:^(NSError *error) {
-        
-    }];
+    
 }
 
 - (IBAction)userTapAction:(id)sender {
@@ -132,9 +134,10 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            MsgViewController *msgVC = [[MsgViewController alloc] init];
-            msgVC.isMine = YES;
-            [self.tabBarController.navigationController pushViewController:msgVC animated:YES];
+//            MsgViewController *msgVC = [[MsgViewController alloc] init];
+//            msgVC.isMine = YES;
+//            [self.tabBarController.navigationController pushViewController:msgVC animated:YES];
+            [AppManager showToastWithMsg:@"开发中,敬请期待"];
         }else if (indexPath.row == 1){
             shippingViewController * ship = [shippingViewController new];
             [self.tabBarController.navigationController pushViewController:ship animated:YES];
@@ -147,9 +150,16 @@
             
         }
     }else if (indexPath.section == 1){
-        
         if (indexPath.row == 0) {
-          
+            UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"是否要联系客服?" message:@"010-23355623" preferredStyle:(UIAlertControllerStyleAlert)];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+                NSString *allString = [NSString stringWithFormat:@"tel:010-23355623"];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:allString]];
+            }];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
+            [alerVC addAction:action];
+            [alerVC addAction:cancelAction];
+            [self.navigationController presentViewController:alerVC animated:YES completion:nil];
         }else{
             JSYHFeedbackViewController *feedbackVC = [[JSYHFeedbackViewController alloc] init];
             [self.tabBarController.navigationController pushViewController:feedbackVC animated:YES];

@@ -35,8 +35,8 @@
     } else {
         _numberLabel.text =  [NSString stringWithFormat:@"%ld",[_numberLabel.text integerValue] + 1];
     }
-    HomeStandardChooseView *view = [[[NSBundle mainBundle] loadNibNamed:@"HomeStandardChooseView" owner:self options:nil] firstObject];
-    [view showView];
+//    HomeStandardChooseView *view = [[[NSBundle mainBundle] loadNibNamed:@"HomeStandardChooseView" owner:self options:nil] firstObject];
+//    [view showView];
     _dishModel.count = [_numberLabel.text integerValue];
     _dishModel.shopname = _shopname;
     _dishModel.shoplogo = _shoplogo;

@@ -23,7 +23,11 @@ static ShoppingCartManager *_shoppingCartManager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _shoppingCartManager = [[ShoppingCartManager alloc]init];
-        NSDictionary *dic = [[DB_Helper defaultHelper] getShoppingCart];
+        NSString *userName = [JSRequestManager sharedManager].userName;
+        if (userName == nil || userName.length == 0) {
+            userName = @"admin";
+        }
+        NSDictionary *dic = [[DB_Helper defaultHelper] getShoppingCartWithUserName:userName];
         _shoppingCartManager.shoppingCartDataArray = [dic[@"dishs"] mutableCopy];
         _shoppingCartManager.shoppingCartComboArray = [dic[@"combs"] mutableCopy];
         _shoppingCartManager.shoppingCartDataShopArray = [NSMutableArray array];
@@ -31,12 +35,61 @@ static ShoppingCartManager *_shoppingCartManager;
     return _shoppingCartManager;
 }
 
+- (void)addWithAdmin {
+    NSDictionary *dic = [[DB_Helper defaultHelper] getShoppingCartWithUserName:@"admin"];
+    NSArray *dishArray = dic[@"dishs"];
+    NSArray *combArray = dic[@"combs"];
+    for (JSYHDishModel *dishModel in dishArray) {
+        BOOL isExsit = NO;
+        for (JSYHDishModel *model in self.shoppingCartDataArray) {
+            if ([dishModel.dishid isEqualToNumber:model.dishid]) {
+                isExsit = YES;
+                model.count = model.count + dishModel.count;
+            }
+        }
+        if (isExsit == NO) {
+            [self.shoppingCartDataArray addObject:dishModel];
+        }
+        
+    }
+    for (JSYHComboModel *combModel in combArray) {
+        BOOL isExsit = NO;
+        for (JSYHComboModel *model in self.shoppingCartComboArray) {
+            if ([combModel.combid isEqualToNumber:model.combid]) {
+                isExsit = YES;
+                model.count = model.count + combModel.count;
+            }
+        }
+        if (isExsit == NO) {
+            [self.shoppingCartComboArray addObject:combModel];
+        }
+    }
+    [[DB_Helper defaultHelper] cleanAdminShoppingCart];
+    [self shoppingCartCountChanged];
+}
+
+- (void)shoppingCartReloadData {
+    NSString *userName = [JSRequestManager sharedManager].userName;
+    if (userName == nil || userName.length == 0) {
+        userName = @"admin";
+    }
+    NSDictionary *dic = [[DB_Helper defaultHelper] getShoppingCartWithUserName:userName];
+    self.shoppingCartDataArray = [dic[@"dishs"] mutableCopy];
+    self.shoppingCartComboArray = [dic[@"combs"] mutableCopy];
+    self.shoppingCartDataShopArray = [NSMutableArray array];
+    [self shoppingCartCountChanged];
+}
+
 - (void)addToShoppingCartWithDish:(JSYHDishModel *)dishModel {
     for (JSYHDishModel *model in self.shoppingCartDataArray) {
         if ([dishModel.dishid isEqualToNumber:model.dishid]) {
             model.count ++;
             [self shoppingCartCountChanged];
-            [[DB_Helper defaultHelper] updateShoppingCart];
+            NSString *userName = [JSRequestManager sharedManager].userName;
+            if (userName == nil || userName.length == 0) {
+                userName = @"admin";
+            }
+            [[DB_Helper defaultHelper] updateShoppingCartWithUserName:userName];
             return;
         }
     }
@@ -44,7 +97,11 @@ static ShoppingCartManager *_shoppingCartManager;
     model.count = 1;
     [self.shoppingCartDataArray addObject:model];
     [self shoppingCartCountChanged];
-    [[DB_Helper defaultHelper] updateShoppingCart];
+    NSString *userName = [JSRequestManager sharedManager].userName;
+    if (userName == nil || userName.length == 0) {
+        userName = @"admin";
+    }
+    [[DB_Helper defaultHelper] updateShoppingCartWithUserName:userName];
 }
 
 - (void)addToShoppingCartWitComb:(JSYHComboModel *)combModel {
@@ -52,7 +109,11 @@ static ShoppingCartManager *_shoppingCartManager;
         if ([model.combid isEqualToNumber:combModel.combid]) {
             model.count ++;
             [self shoppingCartCountChanged];
-            [[DB_Helper defaultHelper] updateShoppingCart];
+            NSString *userName = [JSRequestManager sharedManager].userName;
+            if (userName == nil || userName.length == 0) {
+                userName = @"admin";
+            }
+            [[DB_Helper defaultHelper] updateShoppingCartWithUserName:userName];
             return;
         }
     }
@@ -63,7 +124,11 @@ static ShoppingCartManager *_shoppingCartManager;
     model.count = 1;
     [self.shoppingCartComboArray addObject:model];
     [self shoppingCartCountChanged];
-    [[DB_Helper defaultHelper] updateShoppingCart];
+    NSString *userName = [JSRequestManager sharedManager].userName;
+    if (userName == nil || userName.length == 0) {
+        userName = @"admin";
+    }
+    [[DB_Helper defaultHelper] updateShoppingCartWithUserName:userName];
 }
 
 - (void)removeFromeShoppingCartWithDish:(JSYHDishModel *)dishModel {
@@ -78,7 +143,11 @@ static ShoppingCartManager *_shoppingCartManager;
         }
     }
     [self shoppingCartCountChanged];
-    [[DB_Helper defaultHelper] updateShoppingCart];
+    NSString *userName = [JSRequestManager sharedManager].userName;
+    if (userName == nil || userName.length == 0) {
+        userName = @"admin";
+    }
+    [[DB_Helper defaultHelper] updateShoppingCartWithUserName:userName];
 }
 
 - (void)removeFromeShoppingCartWithComb:(JSYHComboModel *)combModel {
@@ -93,7 +162,11 @@ static ShoppingCartManager *_shoppingCartManager;
         }
     }
     [self shoppingCartCountChanged];
-    [[DB_Helper defaultHelper] updateShoppingCart];
+    NSString *userName = [JSRequestManager sharedManager].userName;
+    if (userName == nil || userName.length == 0) {
+        userName = @"admin";
+    }
+    [[DB_Helper defaultHelper] updateShoppingCartWithUserName:userName];
 }
 
 - (void)shoppingCartCountChanged{
@@ -145,7 +218,11 @@ static ShoppingCartManager *_shoppingCartManager;
 - (void)cleanShoppingcart {
     [self.shoppingCartDataArray removeAllObjects];
     [self.shoppingCartComboArray removeAllObjects];
-    [[DB_Helper defaultHelper] updateShoppingCart];
+    NSString *userName = [JSRequestManager sharedManager].userName;
+    if (userName == nil || userName.length == 0) {
+        userName = @"admin";
+    }
+    [[DB_Helper defaultHelper] updateShoppingCartWithUserName:userName];
     [self shoppingCartCountChanged];
 }
 
@@ -161,7 +238,15 @@ static ShoppingCartManager *_shoppingCartManager;
 }
 
 - (NSInteger)count {
-    return self.shoppingCartDataArray.count + self.shoppingCartComboArray.count;
+    NSInteger count = 0;
+    for (JSYHDishModel *dishModel in self.shoppingCartDataArray) {
+        count = dishModel.count + count;
+    }
+    for (JSYHComboModel *comboModel in self.shoppingCartComboArray) {
+        count = comboModel.count + count;
+    }
+    
+    return count;
 }
 
 

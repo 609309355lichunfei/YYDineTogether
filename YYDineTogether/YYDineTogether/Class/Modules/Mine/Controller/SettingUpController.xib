@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingUpController">
             <connections>
+                <outlet property="locationBT" destination="pS0-pA-VxH" id="ohX-k4-4Zw"/>
+                <outlet property="logOutBT" destination="PaZ-Is-QnG" id="3cC-Ax-saq"/>
+                <outlet property="messageBT" destination="197-Xp-pdg" id="bli-rU-gWM"/>
                 <outlet property="view" destination="iN0-l3-epB" id="rUJ-c7-12P"/>
             </connections>
         </placeholder>
@@ -23,7 +26,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="o5b-Jt-YvT"/>
                     </constraints>
-                    <color key="barTintColor" red="0.85882352939999995" green="0.32156862749999998" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" red="0.97254901959999995" green="0.23137254900000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,7 +46,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jdw-wG-cdi">
                     <rect key="frame" x="0.0" y="64" width="375" height="50"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码修改" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEG-VS-wQ8">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="修改密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEG-VS-wQ8">
                             <rect key="frame" x="12" y="14.5" width="64" height="22.5"/>
                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -68,7 +71,7 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCM-B9-y2K">
-                    <rect key="frame" x="0.0" y="115" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="217" width="375" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="清理缓存" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O13-27-VoO">
                             <rect key="frame" x="12" y="14.5" width="64" height="22.5"/>
@@ -88,19 +91,98 @@
                         <outletCollection property="gestureRecognizers" destination="tAq-8S-3sX" appends="YES" id="1dC-EP-pWp"/>
                     </connections>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YRw-YG-SBg">
+                    <rect key="frame" x="0.0" y="166" width="375" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="获取地理位置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccT-J9-ie1">
+                            <rect key="frame" x="12" y="14.5" width="96" height="22.5"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="right" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pS0-pA-VxH">
+                            <rect key="frame" x="305" y="10" width="70" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="5n7-hL-OK4"/>
+                                <constraint firstAttribute="width" constant="70" id="7UM-Nf-LaC"/>
+                            </constraints>
+                            <state key="normal" image="mine_switchOn"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="pS0-pA-VxH" firstAttribute="centerY" secondItem="YRw-YG-SBg" secondAttribute="centerY" id="Arp-5a-Y69"/>
+                        <constraint firstItem="ccT-J9-ie1" firstAttribute="centerY" secondItem="YRw-YG-SBg" secondAttribute="centerY" id="HHw-5o-Qkx"/>
+                        <constraint firstAttribute="height" constant="50" id="I0Z-5F-sYH"/>
+                        <constraint firstItem="ccT-J9-ie1" firstAttribute="leading" secondItem="YRw-YG-SBg" secondAttribute="leading" constant="12" id="jxu-4d-fza"/>
+                        <constraint firstAttribute="trailing" secondItem="pS0-pA-VxH" secondAttribute="trailing" id="yfC-ji-wLT"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoC-n3-3Wl">
+                    <rect key="frame" x="0.0" y="115" width="375" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消息通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AcZ-Ts-1Ju">
+                            <rect key="frame" x="12" y="14.5" width="64" height="22.5"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="right" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="197-Xp-pdg">
+                            <rect key="frame" x="305" y="10" width="70" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="YKf-XM-rY5"/>
+                                <constraint firstAttribute="width" constant="70" id="ghU-f6-YxS"/>
+                            </constraints>
+                            <state key="normal" image="mine_switchOff"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="AcZ-Ts-1Ju" firstAttribute="centerY" secondItem="eoC-n3-3Wl" secondAttribute="centerY" id="3Vu-U9-NiA"/>
+                        <constraint firstItem="AcZ-Ts-1Ju" firstAttribute="leading" secondItem="eoC-n3-3Wl" secondAttribute="leading" constant="12" id="DPO-a5-GQ5"/>
+                        <constraint firstItem="197-Xp-pdg" firstAttribute="centerY" secondItem="eoC-n3-3Wl" secondAttribute="centerY" id="XBO-mS-Arm"/>
+                        <constraint firstAttribute="height" constant="50" id="fQj-pS-3pM"/>
+                        <constraint firstAttribute="trailing" secondItem="197-Xp-pdg" secondAttribute="trailing" id="nBJ-34-Cd0"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaZ-Is-QnG">
+                    <rect key="frame" x="37" y="307" width="300" height="45"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="PBb-Re-k6v"/>
+                        <constraint firstAttribute="height" constant="45" id="ega-yV-0xg"/>
+                    </constraints>
+                    <state key="normal" title="退出登录">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="logOutAction:" destination="-1" eventType="touchUpInside" id="7cb-MR-gLr"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="0.88719951919999995" green="0.88719951919999995" blue="0.88719951919999995" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="PaZ-Is-QnG" firstAttribute="top" secondItem="RCM-B9-y2K" secondAttribute="bottom" constant="40" id="141-sW-drD"/>
                 <constraint firstAttribute="trailing" secondItem="qiT-4R-6gv" secondAttribute="trailing" id="3YA-IG-I6m"/>
                 <constraint firstItem="RCM-B9-y2K" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6wp-v6-d5Y"/>
-                <constraint firstItem="RCM-B9-y2K" firstAttribute="top" secondItem="Jdw-wG-cdi" secondAttribute="bottom" constant="1" id="MI9-ds-3ul"/>
                 <constraint firstAttribute="trailing" secondItem="Jdw-wG-cdi" secondAttribute="trailing" id="NyL-5Y-x5V"/>
+                <constraint firstItem="YRw-YG-SBg" firstAttribute="top" secondItem="eoC-n3-3Wl" secondAttribute="bottom" constant="1" id="POh-Kt-TvE"/>
+                <constraint firstItem="eoC-n3-3Wl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="TVJ-aA-CvC"/>
+                <constraint firstAttribute="trailing" secondItem="YRw-YG-SBg" secondAttribute="trailing" id="UE2-kb-Xdw"/>
+                <constraint firstItem="eoC-n3-3Wl" firstAttribute="top" secondItem="Jdw-wG-cdi" secondAttribute="bottom" constant="1" id="UfL-0T-Tnh"/>
                 <constraint firstItem="qiT-4R-6gv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Vwv-5K-mKu"/>
+                <constraint firstItem="YRw-YG-SBg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aAR-OG-lAD"/>
                 <constraint firstItem="Jdw-wG-cdi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aXM-hr-5fu"/>
                 <constraint firstItem="Jdw-wG-cdi" firstAttribute="top" secondItem="qiT-4R-6gv" secondAttribute="bottom" id="bNY-Sg-cyU"/>
                 <constraint firstAttribute="trailing" secondItem="RCM-B9-y2K" secondAttribute="trailing" id="bWs-be-IMz"/>
+                <constraint firstItem="PaZ-Is-QnG" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="eZP-R1-hzY"/>
                 <constraint firstItem="qiT-4R-6gv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="flW-rw-M6W"/>
+                <constraint firstItem="RCM-B9-y2K" firstAttribute="top" secondItem="YRw-YG-SBg" secondAttribute="bottom" constant="1" id="hHJ-iP-7V8"/>
+                <constraint firstAttribute="trailing" secondItem="eoC-n3-3Wl" secondAttribute="trailing" id="rqd-at-bIW"/>
             </constraints>
+            <point key="canvasLocation" x="32.5" y="57.5"/>
         </view>
         <tapGestureRecognizer id="uOF-Pf-grx" userLabel="changePasswordTap">
             <connections>
@@ -116,5 +198,7 @@
     <resources>
         <image name="back" width="32" height="32"/>
         <image name="mine_rightArrow" width="8" height="15"/>
+        <image name="mine_switchOff" width="37" height="19"/>
+        <image name="mine_switchOn" width="38" height="19"/>
     </resources>
 </document>

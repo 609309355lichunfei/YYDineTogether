@@ -14,27 +14,27 @@
 #import "HomeDishTableViewCell.h"
 #import "JSYHShopModel.h"
 #import "JSYHDishModel.h"
+#import "JSYHMSShopViewController.h"
+#import "JSYHMSDishViewController.h"
+#import "JSYHMSSearchViewController.h"
 
-@interface HomeClassificationListViewController ()<UITableViewDelegate, UITableViewDataSource, HomeFilterViewDelegate>{
+@interface HomeClassificationListViewController ()<HomeFilterViewDelegate>{
     BOOL _isShops;
     NSInteger _shoppageIndex;
     NSInteger _dishpageIndex;
 }
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 
 @property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
 
-@property (strong, nonatomic) NSMutableArray *dataArray;
-
-@property (strong, nonatomic) NSMutableArray *shopArray;
-
-@property (strong, nonatomic) NSMutableArray *dishArray;
-
 @property (strong, nonatomic) HomeShoppingCartView *shoppingView;
 
 @property (strong, nonatomic)  HomeFilterView *filterView;
+
+
+@property (strong, nonatomic) JSYHMSShopViewController *shopVC;
+@property (strong, nonatomic) JSYHMSDishViewController *dishVC;
 
 
 @end
@@ -45,39 +45,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self registUI];
-}
-
-- (void)getConnectWithShops:(DataLoadType)dataLoadType {
-    _shoppageIndex = dataLoadType == DataLoadTypeNone ? 0 : _shoppageIndex + 1;
-    [[JSRequestManager sharedManager] shopsWithPage:NSStringFormat(@"%ld",(long)_shoppageIndex) lng:[JSYHLocationManager sharedManager].lng lat:[JSYHLocationManager sharedManager].lat tagid:@"0" Success:^(id responseObject) {
-        NSDictionary *dataDic = responseObject[@"data"];
-        NSArray *shopsArray = dataDic[@"shops"];
-        if (dataLoadType == DataLoadTypeNone) {
-            [self.tableView.mj_header endRefreshing];
-            [self.shopArray removeAllObjects];
-        } else {
-            [self.tableView.mj_footer endRefreshing];
-        }
-        for (NSDictionary *shopDic in shopsArray) {
-            JSYHShopModel *model = [[JSYHShopModel alloc] init];
-            [model setValuesForKeysWithDictionary:shopDic];
-            [model updateHeightWithActivity];
-            [self.shopArray addObject:model];
-        }
-        self.tableView.mj_footer.hidden = shopsArray.count < 20 ? YES : NO;
-        self.dataArray = self.shopArray;
-        [self.tableView reloadData];
-    } Failed:^(NSError *error) {
-        if (dataLoadType == DataLoadTypeNone) {
-            [self.tableView.mj_header endRefreshing];
-        } else {
-            [self.tableView.mj_footer endRefreshing];
-        }
-    }];
-}
-
-- (void)getConnectWithDish:(DataLoadType)dataloadType {
-    _dishpageIndex = dataloadType == DataLoadTypeNone ? 0 : _dishpageIndex + 1;
 }
 
 - (void)registUI {
@@ -102,26 +69,13 @@
         
     }];
     _isShops = YES;
-    MJWeakSelf;
-    self.tableView.mj_header  = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        if (_isShops) {
-            [weakSelf getConnectWithShops:DataLoadTypeNone];
-        } else {
-            
-        }
-    }];
     
-    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
-        if (_isShops) {
-            [weakSelf getConnectWithShops:DataLoadTypeMore];
-        } else {
-            
-        }
-    }];
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeClassificationTableViewCell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"HomeDishTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeClassificationDishTableViewCell"];
-    [self.tableView.mj_header beginRefreshing];
+    self.shopVC = [[JSYHMSShopViewController alloc] init];
+    self.shopVC.view.frame = self.mainView.bounds;
+    self.shopVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self addChildViewController:self.shopVC];
+    [self.mainView addSubview:self.shopVC.view];
 }
 
 - (IBAction)backAction:(id)sender {
@@ -129,7 +83,8 @@
 }
 
 - (IBAction)searchAction:(id)sender {
-    
+    JSYHMSSearchViewController *searchVC = [[JSYHMSSearchViewController alloc] init];
+    [self.navigationController pushViewController:searchVC animated:YES];
 }
 
 - (IBAction)filterAction:(id)sender {
@@ -144,13 +99,28 @@
 }
 
 - (IBAction)changeTityle:(UISegmentedControl *)sender {
-//    if (sender.selectedSegmentIndex == 0) {
-//        _isShops = YES;
-//    } else {
-//        _isShops = NO;
-//        
-//    }
-//    [self.tableView reloadData];
+    if (sender.selectedSegmentIndex == 0) {
+        [self.dishVC.view removeFromSuperview];
+        [self.dishVC willMoveToParentViewController:nil];
+        [self.dishVC removeFromParentViewController];
+        [self.dishVC didMoveToParentViewController:nil];
+        [self addChildViewController:self.shopVC];
+        self.shopVC.view.frame = self.mainView.bounds;
+        self.shopVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self.mainView addSubview:self.shopVC.view];
+    } else {
+        if (self.dishVC == nil) {
+            self.dishVC = [[JSYHMSDishViewController alloc] init];
+        }
+        [self.shopVC.view removeFromSuperview];
+        [self.shopVC willMoveToParentViewController:nil];
+        [self.shopVC removeFromParentViewController];
+        [self.shopVC didMoveToParentViewController:nil];
+        [self addChildViewController:self.dishVC];
+        self.dishVC.view.frame = self.mainView.bounds;
+        self.dishVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self.mainView addSubview:self.dishVC.view];
+    }
 }
 
 - (IBAction)clearShoppingCartAction:(id)sender {
@@ -173,69 +143,12 @@
 //    }
 }
 
-
-#pragma mark - UITableViewDataSource
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    JSYHShopModel *model = self.dataArray[indexPath.row];
-    return model.height;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataArray.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (_isShops) {
-        HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeClassificationTableViewCell" forIndexPath:indexPath];
-        JSYHShopModel *model = self.shopArray[indexPath.row];
-        cell.shopModel = model;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-    } else {
-        HomeDishTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeClassificationDishTableViewCell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-    }
-}
-
-#pragma mark - UITableViewDelegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeStoreViewController *storeVC = [[HomeStoreViewController alloc] init];
-    JSYHShopModel *model = self.dataArray[indexPath.row];
-    storeVC.shopid = [model.shopid stringValue];
-    [self.navigationController pushViewController:storeVC animated:YES];
-}
-
 #pragma mark - HomeFilterViewDelegate
 - (void)homeFilterViewSelectedString:(NSString *)string {
     
 }
 
-#pragma makr - 懒加载
-- (NSMutableArray *)dataArray {
-    if (_dataArray == nil) {
-        _dataArray = [NSMutableArray array];
-    }
-    return _dataArray;
-}
 
-- (NSMutableArray *)shopArray {
-    if (_shopArray == nil) {
-        _shopArray = [NSMutableArray array];
-    }
-    return _shopArray;
-}
-
-- (NSMutableArray *)dishArray {
-    if (_dishArray == nil) {
-        _dishArray = [NSMutableArray array];
-    }
-    return _dishArray;
-}
 
 
 - (void)didReceiveMemoryWarning {

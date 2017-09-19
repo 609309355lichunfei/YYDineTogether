@@ -12,5 +12,6 @@
 @class JSYHShopModel;
 @interface HomeTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (strong, nonatomic) JSYHShopModel *shopModel;
 @end

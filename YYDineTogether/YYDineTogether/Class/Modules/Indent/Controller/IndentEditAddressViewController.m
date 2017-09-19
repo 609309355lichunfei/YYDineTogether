@@ -8,12 +8,17 @@
 
 #import "IndentEditAddressViewController.h"
 #import "JSYHAddressModel.h"
+#import "JSYHAddressMapViewController.h"
 
 @interface IndentEditAddressViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameTF;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
 @property (weak, nonatomic) IBOutlet UITextField *addressTF;
 @property (weak, nonatomic) IBOutlet UIButton *doneBT;
+@property (weak, nonatomic) IBOutlet UILabel *firstAddressLB;
+
+@property (assign, nonatomic) CGFloat lng;
+@property (assign, nonatomic) CGFloat lat;
 
 @end
 
@@ -26,6 +31,8 @@
 }
 
 - (void)registUI {
+    self.lng = 0.0;
+    self.lat = 0.0;
     self.doneBT.layer.cornerRadius = 2;
     self.nameTF.text = _addressModel.username;
     self.phoneTF.text = _addressModel.phone;
@@ -52,15 +59,30 @@
         [AppManager showToastWithMsg:@"请填写地址"];
         return;
     }
-    NSMutableDictionary *addressDic = [@{@"address":self.addressTF.text,@"username":self.nameTF.text,@"phone":self.phoneTF.text,@"addressid":_addressModel.addressid} mutableCopy];
-    [addressDic setValue:@"0" forKey:@"lng"];
-    [addressDic setValue:@"0" forKey:@"lat"];
+    NSMutableDictionary *addressDic = [@{@"address":[NSString stringWithFormat:@"%@%@",self.firstAddressLB.text,self.addressTF.text],@"username":self.nameTF.text,@"phone":self.phoneTF.text,@"addressid":_addressModel.addressid} mutableCopy];
+    [addressDic setValue:[NSNumber numberWithFloat:self.lng] forKey:@"lng"];
+    [addressDic setValue:[NSNumber numberWithFloat:self.lat] forKey:@"lat"];
+    [MBProgressHUD showMessage:@"修改中"];
     [[JSRequestManager sharedManager] putMemberAddressWithDic:addressDic Success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         [self.navigationController popViewControllerAnimated:YES];
     } Failed:^(NSError *error) {
-        
+        [MBProgressHUD hideHUD];
+        [AppManager showToastWithMsg:@"加载失败"];
     }];
 }
+
+- (IBAction)EditTapAction:(id)sender {
+    JSYHAddressMapViewController *mapVC = [[JSYHAddressMapViewController alloc] init];
+    mapVC.chooseAddressBlock = ^(NSString *address , CGFloat lat, CGFloat lng){
+        self.firstAddressLB.text = address;
+        _lat = lat;
+        _lng = lng;
+    };
+    [self.navigationController pushViewController:mapVC animated:YES];
+}
+
+
 
 - (IBAction)locationAction:(id)sender {
 }

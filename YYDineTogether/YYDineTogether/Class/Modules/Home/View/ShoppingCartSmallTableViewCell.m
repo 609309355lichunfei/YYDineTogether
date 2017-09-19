@@ -34,7 +34,7 @@
     } else {
         _numberLabel.text =  [NSString stringWithFormat:@"%ld",[_numberLabel.text integerValue] + 1];
     }
-    _dishModel.count = [_numberLabel.text integerValue];
+//    _dishModel.count = [_numberLabel.text integerValue];
     [[ShoppingCartManager sharedManager] addToShoppingCartWithDish:_dishModel];
 }
 

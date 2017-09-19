@@ -11,4 +11,5 @@
 @class JSYHShopModel;
 @interface JSYHPreOrderTableViewCell : UITableViewCell
 @property (strong, nonatomic) JSYHShopModel *shopModel;
+@property (weak, nonatomic) IBOutlet UILabel *remarkLabel;
 @end

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeComboRecomendViewController : UIViewController
-@property (assign, nonatomic) ViewControllerType type;
+
 @end

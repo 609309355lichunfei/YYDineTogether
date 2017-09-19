@@ -10,12 +10,13 @@
 #import "JSYHPreOrderDishTableViewCell.h"
 #import "JSYHShopModel.h"
 #import "JSYHDishModel.h"
+#import "JSYHEditRemarksViewController.h"
 
 @interface JSYHPreOrderTableViewCell ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *shopNameLabel;
 @property (weak, nonatomic) IBOutlet UITableView *dishsTableView;
-@property (weak, nonatomic) IBOutlet UILabel *remarkLabel;
+
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
 
@@ -34,6 +35,13 @@
     self.dishsTableView.delegate = self;
     self.dishsTableView.dataSource = self;
     [self.dishsTableView registerNib:[UINib nibWithNibName:@"JSYHPreOrderDishTableViewCell" bundle:nil] forCellReuseIdentifier:@"JSYHPreOrderDishTableViewCell"];
+    MJWeakSelf;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        JSYHEditRemarksViewController *remarksVC = [[JSYHEditRemarksViewController alloc] init];
+        remarksVC.shopModel = weakSelf.shopModel;
+        [weakSelf.viewController.navigationController pushViewController:remarksVC animated:YES];
+    }];
+    [self.remarkLabel addGestureRecognizer:tap];
 }
 
 - (IBAction)shopDetailTapAction:(id)sender {
@@ -64,6 +72,11 @@
     _shopModel = shopModel;
     [self.logoImageView setImageWithURL:[NSURL URLWithString:_shopModel.logo] placeholder:nil];
     self.shopNameLabel.text = _shopModel.name;
+    if (_shopModel.remarks == nil || _shopModel.remarks.length == 0) {
+        self.remarkLabel.text = @"用户无备注说明";
+    } else {
+        self.remarkLabel.text = _shopModel.remarks;
+    }
     self.dataArray = _shopModel.dishs;
     [self.dishsTableView reloadData];
 }

@@ -6,11 +6,12 @@
 //  Copyright © 2017年 lichunfei. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "PPNetworkHelper.h"
 
 @interface JSRequestManager : NSObject
 
+@property (assign, nonatomic) BOOL jpushLogin;
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *token;
 
@@ -19,6 +20,14 @@
 - (void)loginWithUserName:(NSString *)userName
                   Passord:(NSString *)password
                   Success:(PPHttpRequestSuccess)success
+                   Failed:(PPHttpRequestFailed)failed;
+
+
+/**
+ 退出登录
+
+ */
+- (void)logoutWithSuccess:(PPHttpRequestSuccess)success
                    Failed:(PPHttpRequestFailed)failed;
 
 

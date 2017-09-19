@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *shopStarLabel;
 @property (weak, nonatomic) IBOutlet UILabel *shopSalesCountLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *backView;
 
 
 @property (weak, nonatomic) IBOutlet UIView *storeView;
@@ -30,6 +31,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.backView.layer.cornerRadius = 5;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -40,7 +42,7 @@
 
 - (void)setShopModel:(JSYHShopModel *)shopModel {
     _shopModel = shopModel;
-    [self.logoImageView setImageWithURL:[NSURL URLWithString:_shopModel.logo] placeholder:nil];
+    [self.logoImageView setImageWithURL:[NSURL URLWithString:_shopModel.logo] placeholder:[UIImage imageNamed:@"default_shop"]];
     self.nameLabel.text = _shopModel.name;
     self.shopStarLabel.text = [NSString stringWithFormat:@"%ld单",(long)_shopModel.star];
     self.shopSalesCountLabel.text = [NSString stringWithFormat:@"%ld单",(long)_shopModel.salescount];

@@ -15,6 +15,19 @@
     }
 }
 
+- (void)setValue:(id)value forKey:(NSString *)key {
+    [super setValue:value forKey:key];
+    if ([key isEqualToString:@"price"]) {
+        NSNumber *priceNumber = value;
+        float price = priceNumber.integerValue / 100.0;
+        self.price = [NSNumber numberWithFloat:price];
+    } else if ([key isEqualToString:@"discountprice"]) {
+        NSNumber *priceNumber = value;
+        float price = priceNumber.integerValue / 100.0;
+        self.discountprice = [NSNumber numberWithFloat:price];
+    }
+}
+
 - (id)copyWithZone:(NSZone *)zone {
     JSYHDishModel *model = [JSYHDishModel allocWithZone:zone];
     model.cateid = self.cateid;

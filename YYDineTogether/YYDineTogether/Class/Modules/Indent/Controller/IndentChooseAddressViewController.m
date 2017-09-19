@@ -18,6 +18,8 @@
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
 
+@property (strong, nonatomic) JSYHAddressModel *selectAddressModel;
+
 @end
 
 @implementation IndentChooseAddressViewController
@@ -26,6 +28,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self registUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)registUI {
@@ -41,6 +48,7 @@
     [[JSRequestManager sharedManager] getMemberAddressSuccess:^(id responseObject) {
         [self.tableView.mj_header endRefreshing];
         [self.dataArray removeAllObjects];
+        self.selectAddressModel = nil;
         NSDictionary *dataDic = responseObject[@"data"];
         NSArray *addressDicArray = dataDic[@"addresses"];
         for (NSDictionary *addressDic in addressDicArray) {
@@ -60,6 +68,22 @@
 }
 
 - (IBAction)backAction:(id)sender {
+    if (self.selectAddressModel == nil) {
+        [AppManager showToastWithMsg:@"请选择地址"];
+        return;
+    }
+    [[DB_Helper defaultHelper] updateAddress:self.selectAddressModel];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"JSYHAddressChange" object:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)doneAction:(id)sender {
+    if (self.selectAddressModel == nil) {
+        [AppManager showToastWithMsg:@"请选择地址"];
+        return;
+    }
+    [[DB_Helper defaultHelper] updateAddress:self.selectAddressModel];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"JSYHAddressChange" object:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -92,10 +116,12 @@
 {
     JSYHAddressModel *model = self.dataArray[indexPath.row];
     NSDictionary *dataDic = @{@"addressid":[model.addressid stringValue],@"lng":model.lng,@"lat":model.lat,@"address":model.address,@"username":model.username,@"phone":model.phone};
+    [MBProgressHUD showMessage:@"删除中"];
     [[JSRequestManager sharedManager] deleteMemeberAddressWithDic:dataDic Success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         [self.tableView.mj_header beginRefreshing];
     } Failed:^(NSError *error) {
-        
+        [MBProgressHUD hideHUD];
     }];
 }
 
@@ -110,14 +136,12 @@
         [weakSelf.navigationController pushViewController:editAddressVC animated:YES];
     };
     cell.addressModel = model;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     JSYHAddressModel *model = self.dataArray[indexPath.row];
-    [[DB_Helper defaultHelper] updateAddress:model];
-    [self.navigationController popViewControllerAnimated:YES];
+    self.selectAddressModel = model;
 }
 
 - (NSMutableArray *)dataArray {

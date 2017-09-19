@@ -39,6 +39,6 @@
 /**
  * @第三方
  */
-#import <YYKit.h>
+#import <YYKit/YYKit.h>
 #import "MBProgressHUD+HH.h"
 #endif /* PrefixHeader_h */

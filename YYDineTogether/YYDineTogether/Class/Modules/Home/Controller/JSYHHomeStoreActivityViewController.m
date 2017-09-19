@@ -14,6 +14,8 @@
 #import "JSYHShopModel.h"
 #import "JSYHDishModel.h"
 #import "JSYHComboModel.h"
+#import "HomeStoreViewController.h"
+#import "JSYHSharedView.h"
 
 @interface JSYHHomeStoreActivityViewController ()<UITableViewDelegate, UITableViewDataSource>{
     NSInteger _pageIndex;
@@ -22,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
 
@@ -37,6 +40,7 @@
 }
 
 - (void)registUI {
+    self.automaticallyAdjustsScrollViewInsets = NO;
     _typeIndex = [_type integerValue];
     self.shoppingCartCountLabel.layer.cornerRadius = 9;
     if ([ShoppingCartManager sharedManager].count == 0) {
@@ -92,6 +96,11 @@
                 [model updateHeightWithActivity];
                 [self.dataArray addObject:model];
             }
+            CGFloat tableViewHeight = 0;
+            for (JSYHShopModel *shopModel in self.dataArray) {
+                tableViewHeight += shopModel.height;
+            }
+            self.tableViewHeight.constant = tableViewHeight;
         } else if ([self.type isEqualToString:@"2"]) {
             NSArray *dishDicArray = dataDic[@"dishs"];
             self.tableView.mj_footer.hidden = dishDicArray.count < 20 ? YES : NO;
@@ -121,13 +130,26 @@
         [self.tableView.mj_header endRefreshing];
         [self.tableView reloadData];
     } Failed:^(NSError *error) {
-        
+        if (dataloadType == DataLoadTypeNone) {
+            
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
     }];
 }
 
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (IBAction)sharedAction:(id)sender {
+    JSYHSharedView *sharedView = [[[NSBundle mainBundle] loadNibNamed:@"JSYHSharedView" owner:self options:nil] firstObject];
+    sharedView.frame = kScreen_Bounds;
+    [kAppWindow addSubview:sharedView];
+}
+
+
 - (IBAction)shoppingcartAction:(id)sender {
     ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
     [self.navigationController pushViewController:shoppingCartVC animated:YES];
@@ -135,51 +157,45 @@
 
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return 230;
-    } else {
-        switch (_typeIndex) {
-            case 1:
-            {
-                JSYHShopModel *model = self.dataArray[indexPath.row];
+    switch (_typeIndex) {
+        case 1:
+        {
+            JSYHShopModel *model = self.dataArray[indexPath.row];
                 return model.height;
-            }
-                break;
-            case 2:
-            {
-                return 100;
-            }
+        }
+            break;
+        case 2:
+        {
+            return 100;
+        }
                 
             default:
-            {
-                return 50;
-            }
-                break;
+        {
+            return 50;
         }
-    }
+            break;
+        }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return 1;
-    }
+//    if (section == 0) {
+//        return 1;
+//    }
     return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        JSYHStoreActivityHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSYHStoreActivityHeaderTableViewCell" forIndexPath:indexPath];
-        return cell;
-    } else {
         switch (_typeIndex) {
             case 1:
             {
                 HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StoreActivitTableViewCell" forIndexPath:indexPath];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.backgroundColor = [UIColor clearColor];
+                cell.bottomView.hidden = YES;
                 JSYHShopModel *model = self.dataArray[indexPath.row];
                 cell.shopModel = model;
                 return cell;
@@ -205,12 +221,17 @@
             }
                 break;
         }
-    }
+    
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (_typeIndex == 1 ) {
+        HomeStoreViewController *storeVC = [[HomeStoreViewController alloc] init];
+        JSYHShopModel *model = self.dataArray[indexPath.row];
+        storeVC.shopid = [model.shopid stringValue];
+        [self.navigationController pushViewController:storeVC animated:YES];
+    }
 }
 
 #pragma mark - 懒加载

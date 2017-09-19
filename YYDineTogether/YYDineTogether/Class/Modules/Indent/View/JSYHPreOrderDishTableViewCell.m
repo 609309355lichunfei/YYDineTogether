@@ -27,7 +27,7 @@
     _dishModel = dishModel;
     self.nameLabel.text = _dishModel.name;
     self.countLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.count];
-    self.priceLabel.text = [_dishModel.price stringValue];
+    self.priceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.price];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

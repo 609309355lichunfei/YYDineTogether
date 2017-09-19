@@ -30,6 +30,17 @@
         }
         self.dishs = dishs;
     }
+    if ([key isEqualToString:@"originalprice"]) {
+        NSNumber *originalprice = value;
+        float price = originalprice.integerValue / 100.0;
+        self.originalprice = [NSNumber numberWithFloat:price];
+    }
+    if ([key isEqualToString:@"price"]) {
+        NSNumber *originalprice = value;
+        float price = originalprice.integerValue / 100.0;
+        self.price = [NSNumber numberWithFloat:price];
+    }
+    
 }
 
 

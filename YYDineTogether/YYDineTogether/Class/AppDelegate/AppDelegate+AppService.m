@@ -30,6 +30,8 @@
             self.window.rootViewController = self.mainNavi;
         };
         self.window.rootViewController = guideVC;
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"JSZPAPP_Dish"];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"JSZPAPP_Comb"];
     } else {
         self.window.rootViewController = self.mainNavi;
     }

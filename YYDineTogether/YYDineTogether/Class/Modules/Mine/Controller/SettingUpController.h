@@ -8,6 +8,6 @@
 
 #import "RootViewController.h"
 
-@interface SettingUpController : RootViewController
+@interface SettingUpController : UIViewController
 
 @end

@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *shopNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *discountPriceLabel;
+@property (weak, nonatomic) IBOutlet UIView *discountDiscoverView;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *subtractButton;
@@ -57,12 +58,14 @@
 
 - (void)setDishModel:(JSYHDishModel *)dishModel {
     _dishModel = dishModel;
-    [self.logoImageView setImageWithURL:[NSURL URLWithString:_dishModel.logo] placeholder:nil];
+    [self.logoImageView setImageWithURL:[NSURL URLWithString:_dishModel.logo] placeholder:[UIImage imageNamed:@"default_dish"]];
     self.nameLabel.text = _dishModel.name;
     self.shopNameLabel.text = [NSString stringWithFormat:@"(%@)",_dishModel.shopname];
     self.dishDistanceLabel.text = _dishModel.distance;
     self.dishSalesCountLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.salescount];
     self.dishStarLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.star];
+    self.discountPriceLabel.hidden = [_dishModel.discountprice isEqualToNumber:_dishModel.price] ? YES : NO;
+    self.discountDiscoverView.hidden = self.discountPriceLabel.isHidden;
     self.discountPriceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.discountprice];
     self.priceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.price];
     if (_dishModel.count > 0) {

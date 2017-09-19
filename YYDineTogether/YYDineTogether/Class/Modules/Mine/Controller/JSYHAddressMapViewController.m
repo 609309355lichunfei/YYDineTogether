@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic) MAMapView *mapView;
 @property (strong, nonatomic) AMapSearchAPI *search;
+@property (strong, nonatomic) AMapPOI *poi;
 
 @property (strong, nonatomic) NSArray<AMapPOI *> *poiArray;
 @end
@@ -57,7 +58,7 @@
 }
 
 - (IBAction)doneAction:(id)sender {
-    self.chooseAddressBlock([NSString stringWithFormat:@"%@%@",self.addressDetailLabel.text,self.addressTitleLabel.text]);
+    self.chooseAddressBlock([NSString stringWithFormat:@"%@%@",self.addressDetailLabel.text,self.addressTitleLabel.text], self.poi.location.latitude , self.poi.location.longitude);
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -81,9 +82,9 @@
         //解析response获取地址描述，具体解析见 Demo
         NSLog(@"=========%@",response.regeocode.pois.firstObject);
         self.poiArray = response.regeocode.pois;
-        AMapPOI *poi = response.regeocode.pois.firstObject;
-        self.addressTitleLabel.text = poi.name;
-        self.addressDetailLabel.text = poi.address;
+        self.poi = response.regeocode.pois.firstObject;
+        self.addressTitleLabel.text = _poi.name;
+        self.addressDetailLabel.text = _poi.address;
     }
 }
 

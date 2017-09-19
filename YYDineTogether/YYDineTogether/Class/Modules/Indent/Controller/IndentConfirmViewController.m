@@ -37,6 +37,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *resultPriceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postcost;
 @property (strong, nonatomic) MAMapView *mapView;
+@property (strong, nonatomic) MAPointAnnotation *userAnnotation;
+@property (strong, nonatomic) MAPolyline *commonPolyline;
 @property (strong, nonatomic) JSYHOrderModel *orderModel;
 @property (strong, nonatomic) JSYHAddressModel *addressModel;
 @property (strong, nonatomic) NSString *couponid;
@@ -56,6 +58,12 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self getAddress];
+    CGFloat tableViewHeight = 0;
+    for (JSYHShopModel *model in self.orderModel.shops) {
+        tableViewHeight += model.orderHeight;
+    }
+    self.tableViewHeight.constant = tableViewHeight;
+    [self.tableView reloadData];
 }
 
 - (void)getConnectOrder {
@@ -103,7 +111,7 @@
             }
         }
         NSInteger shopCount = self.orderModel.sortedshops.count;
-        CLLocationCoordinate2D *commonPolylineCoords = malloc(sizeof(CLLocationCoordinate2D) * shopCount);
+        CLLocationCoordinate2D *commonPolylineCoords = malloc(sizeof(CLLocationCoordinate2D) * shopCount + 1);
         for (NSInteger i = 0; i < shopCount; i ++) {
             JSYHShopModel *model = self.dataArray[i];
             CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.lat doubleValue], [model.lng doubleValue]);
@@ -114,15 +122,23 @@
             commonPolylineCoords[i] = coordinate;
         }
         
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([self.orderModel.addressModel.lat doubleValue], [self.orderModel.addressModel.lng doubleValue]);
+        self.userAnnotation = [[MAPointAnnotation alloc] init];
+        self.userAnnotation.coordinate = coordinate;
+        self.userAnnotation.title = @"用户";
+        [self.mapView addAnnotation:self.userAnnotation];
+        commonPolylineCoords[shopCount] = coordinate;
+        
         //构造折线对象
-        MAPolyline *commonPolyline = [MAPolyline polylineWithCoordinates:commonPolylineCoords count:shopCount];
-        [self.mapView addOverlay:commonPolyline];
+        self.commonPolyline = [MAPolyline polylineWithCoordinates:commonPolylineCoords count:shopCount + 1];
+        [self.mapView addOverlay:self.commonPolyline];
         JSYHShopModel *model = [self.dataArray firstObject];
         self.mapView.centerCoordinate = CLLocationCoordinate2DMake([model.lat doubleValue], [model.lng doubleValue]);
         [self.tableView reloadData];
         [MBProgressHUD hideHUD];
     } Failed:^(NSError *error) {
-        
+        [MBProgressHUD hideHUD];
+        [AppManager showToastWithMsg:@"预定订单失败"];
     }];
 }
 
@@ -130,7 +146,6 @@
     if (self.orderModel == nil) {
         return;
     }
-    
     JSYHAddressModel *addressModel = [[DB_Helper defaultHelper] getAddressModel];
     if (addressModel == nil) {
         [[JSRequestManager sharedManager] getMemberAddressSuccess:^(id responseObject) {
@@ -146,6 +161,8 @@
             self.addressLabel.text = self.addressModel.address;
             [[JSRequestManager sharedManager] getPostcostWithAddressid:[self.addressModel.addressid stringValue] orderNo:self.orderModel.order_no Success:^(id responseObject) {
                 NSNumber *postcost = responseObject[@"data"][@"postcost"];
+                float price = postcost.integerValue / 100.0;
+                postcost = [NSNumber numberWithFloat:price];
                 self.postcost.text = [postcost stringValue];
                 self.resultPriceLabel.text = [NSString stringWithFormat:@"%ld",[self.orderModel.lastprice integerValue] - [self.redLabel.text integerValue] + [self.postcost.text integerValue]];
             } Failed:^(NSError *error) {
@@ -158,8 +175,13 @@
         self.nameLabel.text = self.addressModel.username;
         self.numberLabel.text = self.addressModel.phone;
         self.addressLabel.text = self.addressModel.address;
+        
+        CLLocationCoordinate2D coordenate = CLLocationCoordinate2DMake([self.addressModel.lat doubleValue], [self.addressModel.lng doubleValue]);
+        self.userAnnotation.coordinate = coordenate;
         [[JSRequestManager sharedManager] getPostcostWithAddressid:[self.addressModel.addressid stringValue] orderNo:self.orderModel.order_no Success:^(id responseObject) {
             NSNumber *postcost = responseObject[@"data"][@"postcost"];
+            float price = postcost.integerValue / 100.0;
+            postcost = [NSNumber numberWithFloat:price];
             self.postcost.text = [postcost stringValue];
             self.resultPriceLabel.text = [NSString stringWithFormat:@"%ld",[self.orderModel.lastprice integerValue] - [self.redLabel.text integerValue] + [self.postcost.text integerValue]];
         } Failed:^(NSError *error) {
@@ -169,6 +191,9 @@
 }
 
 - (void)registUI {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addressChange) name:@"JSYHAddressChange" object:nil];
+    
     self.couponid = @"0";
     
     self.mapView = [[MAMapView alloc] initWithFrame:self.mapBackGroundView.bounds];
@@ -177,8 +202,7 @@
     self.mapView.delegate = self;
     self.mapView.showsScale = NO;
     self.mapView.showsCompass = NO;
-    self.mapView.showsUserLocation = YES;
-    self.mapView.userTrackingMode = MAUserTrackingModeFollow;
+    self.mapView.showsUserLocation = NO;
     self.mapView.zoomLevel = 12.5;
     [self.mapBackGroundView addSubview:self.mapView];
     
@@ -194,8 +218,15 @@
     [self.navigationController pushViewController:chooseAddressVC animated:YES];
 }
 - (IBAction)payAction:(id)sender {
+    NSMutableArray *remarksArray = [NSMutableArray array];
+    for (JSYHShopModel *shopModel in self.orderModel.shops) {
+        if (shopModel.remarks.length > 0) {
+            NSDictionary *dic = @{@"shopid":[shopModel.shopid stringValue], @"remark":shopModel.remarks};
+            [remarksArray addObject:dic];
+        }
+    }
     JSYHAddressModel *model = [[DB_Helper defaultHelper] getAddressModel];
-    [[JSRequestManager sharedManager] takeorderWithOrderno:self.orderModel.order_no couponid:self.couponid remarks:@[@{@"shopid":@"1", @"remark":@"remarks"}] addressid:[model.addressid stringValue]  Success:^(id responseObject) {
+    [[JSRequestManager sharedManager] takeorderWithOrderno:self.orderModel.order_no couponid:self.couponid remarks:remarksArray addressid:[model.addressid stringValue]  Success:^(id responseObject) {
         
         
         [[ShoppingCartManager sharedManager] cleanShoppingcart];
@@ -215,6 +246,33 @@
         self.resultPriceLabel.text = [NSString stringWithFormat:@"%ld",[self.orderModel.lastprice integerValue] - [self.redLabel.text integerValue] + [self.postcost.text integerValue]];
     };
     [self.navigationController pushViewController:couponVC animated:YES];
+}
+
+- (void)addressChange {
+    [self.mapView removeOverlay:self.commonPolyline];
+    NSInteger shopCount = self.orderModel.sortedshops.count;
+    CLLocationCoordinate2D *commonPolylineCoords = malloc(sizeof(CLLocationCoordinate2D) * shopCount + 1);
+    for (NSInteger i = 0; i < shopCount; i ++) {
+        JSYHShopModel *model = self.dataArray[i];
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.lat doubleValue], [model.lng doubleValue]);
+        MAPointAnnotation *annotation = [[MAPointAnnotation alloc] init];
+        annotation.coordinate = coordinate;
+        annotation.title = model.name;
+        [self.mapView addAnnotation:annotation];
+        commonPolylineCoords[i] = coordinate;
+    }
+    JSYHAddressModel *addressModel = [[DB_Helper defaultHelper] getAddressModel];
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([addressModel.lat doubleValue], [addressModel.lng doubleValue]);
+    [self.mapView removeAnnotation:self.userAnnotation];
+    self.userAnnotation = [[MAPointAnnotation alloc] init];
+    self.userAnnotation.coordinate = coordinate;
+    self.userAnnotation.title = @"用户";
+    [self.mapView addAnnotation:self.userAnnotation];
+    commonPolylineCoords[shopCount] = coordinate;
+    
+    //构造折线对象
+    self.commonPolyline = [MAPolyline polylineWithCoordinates:commonPolylineCoords count:shopCount + 1];
+    [self.mapView addOverlay:self.commonPolyline];
 }
 
 #pragma mark - UITableViewDataSource
@@ -269,14 +327,18 @@
     if ([annotation isKindOfClass:[MAPointAnnotation class]])
     {
         static NSString *pointReuseIndentifier = @"pointReuseIndentifier";
-        MAPinAnnotationView*annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndentifier];
+        MAPinAnnotationView *annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndentifier];
         if (annotationView == nil)
         {
             annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndentifier];
         }
         annotationView.canShowCallout= YES;       //设置气泡可以弹出，默认为NO
         annotationView.animatesDrop = YES;        //设置标注动画显示，默认为NO
-        annotationView.image = [UIImage imageNamed:@"indent_shop1"];
+        if ([[annotation title] isEqualToString:@"用户"]) {
+            annotationView.image = [UIImage imageNamed:@"indent_userLocation"];
+        } else {
+            annotationView.image = [UIImage imageNamed:@"indent_shop1"];
+        }
         return annotationView;
     }
     return nil;

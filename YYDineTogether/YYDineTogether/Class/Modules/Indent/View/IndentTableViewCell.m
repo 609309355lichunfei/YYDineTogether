@@ -55,7 +55,7 @@
         self.firstBT.hidden = YES;
         self.secondBT.hidden = YES;
     }
-    self.totalPriceLabel.text = [_orderModel.lastprice stringValue];
+    self.totalPriceLabel.text = [NSString stringWithFormat:@"%@",_orderModel.lastprice];
     self.dataArray = _orderModel.shops;
     [self.tableView reloadData];
 }
@@ -69,7 +69,7 @@
 //    self.secondBlock(self.orderModel);
     JSYHPayWayViewController *paywayVC = [[JSYHPayWayViewController alloc] init];
     paywayVC.order_no = self.orderModel.order_no;
-    paywayVC.price = [self.orderModel.lastprice stringValue];
+    paywayVC.price = [NSString stringWithFormat:@"%@",self.orderModel.lastprice];
     [self.viewController.tabBarController.navigationController pushViewController:paywayVC animated:YES];
 }
 

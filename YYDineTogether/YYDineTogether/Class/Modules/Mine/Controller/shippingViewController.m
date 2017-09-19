@@ -88,10 +88,13 @@
 {
     JSYHAddressModel *model = self.dataArray[indexPath.row];
     NSDictionary *dataDic = @{@"addressid":[model.addressid stringValue],@"lng":model.lng,@"lat":model.lat,@"address":model.address,@"username":model.username,@"phone":model.phone};
+    [MBProgressHUD showMessage:@"删除中"];
     [[JSRequestManager sharedManager] deleteMemeberAddressWithDic:dataDic Success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         [self.tableView.mj_header beginRefreshing];
     } Failed:^(NSError *error) {
-        
+        [MBProgressHUD hideHUD];
+        [AppManager showToastWithMsg:@"删除失败"];
     }];
 }
 

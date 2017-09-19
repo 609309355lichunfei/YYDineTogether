@@ -13,11 +13,13 @@
 #import "JSYHComboModel.h"
 #import "JSYHShoppingCartCombTableViewCell.h"
 #import <MAMapKit/MAMapKit.h>
+#import "CBAutoScrollLabel.h"
 
 @interface ShoppingChartViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
+@property (weak, nonatomic) IBOutlet CBAutoScrollLabel *scrollLabel;
 
 @property (strong, nonatomic) NSMutableArray *shopsArray;
 @property (strong, nonatomic) NSMutableArray *combsArray;
@@ -43,7 +45,32 @@
     [self.tableView reloadData];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"JSZPAPP_Comb"]) {
+        UIView *guideView = [[UIView alloc] initWithFrame:kScreen_Bounds];
+        guideView.backgroundColor = [UIColor blackColor];
+        guideView.alpha = 0.5;
+        [kAppWindow addSubview:guideView];
+        UIImageView *guideImageView = [[UIImageView alloc] initWithFrame:kScreen_Bounds];
+        [guideImageView setImage:[UIImage imageNamed:@"Home_combGuide"]];
+        guideImageView.contentMode = UIViewContentModeCenter;
+        [guideView addSubview:guideImageView];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc ] initWithActionBlock:^(id  _Nonnull sender) {
+            [guideView removeFromSuperview];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"JSZPAPP_Comb"];
+        }];
+        [guideView addGestureRecognizer:tap];
+    }
+}
+
 - (void)registUI {
+    self.scrollLabel.text = @"                   首次跨店下单立减15元，跨店满30减5，满50减10，满100减20";
+    self.scrollLabel.font = [UIFont fontWithName:App_FamilyFontName size:11];
+    self.scrollLabel.textColor = UIColorFromRGB(0xFE4337);
+    self.scrollLabel.backgroundColor = UIColorFromRGB(0xFDDEAA);
+    self.scrollLabel.pauseInterval = 0;
+    [self.scrollLabel scrollLabelIfNeeded];
     self.shoppingCartCountLabel.layer.cornerRadius = 9;
     if ([ShoppingCartManager sharedManager].count == 0) {
         self.shoppingCartCountLabel.hidden = YES;
@@ -112,15 +139,22 @@
     
     coordinates[8].latitude = 29.88004377212325;
     coordinates[8].longitude = 121.6467873752117;
-    
-    coordinates[9].latitude = 29.874286425127963;
-    coordinates[9].longitude = 121.6252264380455;
-    MAPolygon *polygon = [MAPolygon polygonWithCoordinates:coordinates count:10];
+    MAPolygon *polygon = [MAPolygon polygonWithCoordinates:coordinates count:9];
     
     CLLocationCoordinate2D loc1 = CLLocationCoordinate2DMake(lat, lng);
     MAMapPoint p1 = MAMapPointForCoordinate(loc1);
+    [MBProgressHUD showMessage:@"预订单中"];
+    if ([JSRequestManager sharedManager].token == nil || [JSRequestManager sharedManager].token.length == 0) {
+        [MBProgressHUD hideHUD];
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        [self presentViewController:loginVC animated:YES completion:^{
+            
+        }];
+        return;
+    }
     if(MAPolygonContainsPoint(p1, polygon.points, 10)) {
         [[JSRequestManager sharedManager] getMemberAddressSuccess:^(id responseObject) {
+            [MBProgressHUD hideHUD];
             NSArray *addressDicArray = responseObject[@"data"][@"addresses"];
             if (addressDicArray.count > 0) {
                 IndentConfirmViewController *confirmVC = [[IndentConfirmViewController alloc]init];
@@ -129,10 +163,12 @@
                 [AppManager showToastWithMsg:@"请先添加配送地址"];
             }
         } Failed:^(NSError *error) {
+            [MBProgressHUD hideHUD];
             [AppManager showToastWithMsg:@"请先添加配送地址"];
         }];
         
     } else {
+        [MBProgressHUD hideHUD];
         [AppManager showToastWithMsg:@"抱歉,你不在配送范围内"];
     }
 //    IndentConfirmViewController *confirmVC = [[IndentConfirmViewController alloc]init];

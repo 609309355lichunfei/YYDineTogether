@@ -35,6 +35,8 @@
 
 @property (strong, nonatomic) NSMutableArray *dishs;
 
+@property (strong, nonatomic) NSString *remarks;
+
 //首页根据活动获得高度
 - (void)updateHeightWithActivity;
 

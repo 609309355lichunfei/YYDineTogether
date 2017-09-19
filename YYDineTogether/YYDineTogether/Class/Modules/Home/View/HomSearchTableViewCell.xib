@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="368" height="230"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="LJu-g2-ayf">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="LJu-g2-ayf">
                         <rect key="frame" x="12" y="12" width="71" height="71"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="71" id="fV8-dB-8GX"/>

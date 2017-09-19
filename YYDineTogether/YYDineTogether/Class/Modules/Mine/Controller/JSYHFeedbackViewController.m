@@ -33,6 +33,9 @@
     [self.collectionView registerNib:[UINib nibWithNibName:@"JSYHFeedbackCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"JSYHFeedbackCollectionViewCell"];
     [self.collectionView reloadData];
 }
+- (IBAction)hidenKeyboardAction:(id)sender {
+    [self.view endEditing:YES];
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (self.dataArray.count == 3) {
@@ -76,7 +79,7 @@
         [AppManager showToastWithMsg:@"提交成功"];
         [self.navigationController popViewControllerAnimated:YES];
     } Failed:^(NSError *error) {
-        
+        [AppManager showToastWithMsg:@"提交失败"];
     }];
 }
 

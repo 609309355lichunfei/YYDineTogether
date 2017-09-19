@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShoppingChartViewController">
             <connections>
+                <outlet property="scrollLabel" destination="uLV-Eu-J8C" id="ruS-ds-xre"/>
                 <outlet property="shoppingCartCountLabel" destination="IZD-AY-SiL" id="jqN-KK-EWr"/>
                 <outlet property="tableView" destination="Rdj-2h-XCi" id="rsh-LA-quw"/>
                 <outlet property="totalPriceLabel" destination="FXv-lp-j9S" id="QGR-bP-ebe"/>
@@ -51,13 +52,19 @@
                     </items>
                 </navigationBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rdj-2h-XCi">
-                    <rect key="frame" x="0.0" y="72" width="375" height="549"/>
+                    <rect key="frame" x="0.0" y="72" width="375" height="520"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="CJK-1A-kKq"/>
                         <outlet property="delegate" destination="-1" id="fse-Ta-Whr"/>
                     </connections>
                 </tableView>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uLV-Eu-J8C" customClass="CBAutoScrollLabel">
+                    <rect key="frame" x="0.0" y="592" width="375" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="ajE-Rf-rU0"/>
+                    </constraints>
+                </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y6J-L2-0mw">
                     <rect key="frame" x="0.0" y="622" width="375" height="45"/>
                     <subviews>
@@ -102,7 +109,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXv-lp-j9S">
                                     <rect key="frame" x="83.5" y="12" width="17" height="20"/>
                                     <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
-                                    <color key="textColor" red="0.99215686270000003" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.99215686274509807" green="0.2627450980392157" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -148,13 +155,16 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Y6J-L2-0mw" secondAttribute="trailing" id="7yF-i8-MGx"/>
                 <constraint firstAttribute="trailing" secondItem="Rdj-2h-XCi" secondAttribute="trailing" id="Cml-RK-9rN"/>
-                <constraint firstItem="Y6J-L2-0mw" firstAttribute="top" secondItem="Rdj-2h-XCi" secondAttribute="bottom" constant="1" id="FKS-tv-GZn"/>
+                <constraint firstItem="Y6J-L2-0mw" firstAttribute="top" secondItem="Rdj-2h-XCi" secondAttribute="bottom" constant="30" id="FKS-tv-GZn"/>
                 <constraint firstItem="Y6J-L2-0mw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="On6-cU-rRA"/>
+                <constraint firstItem="Y6J-L2-0mw" firstAttribute="top" secondItem="uLV-Eu-J8C" secondAttribute="bottom" id="QBY-LI-QRZ"/>
                 <constraint firstItem="LnK-0S-DuB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QfC-8h-3Y3"/>
                 <constraint firstItem="Rdj-2h-XCi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XNj-vW-LF7"/>
                 <constraint firstItem="LnK-0S-DuB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ikq-FM-wtn"/>
                 <constraint firstAttribute="trailing" secondItem="LnK-0S-DuB" secondAttribute="trailing" id="j9F-RK-Ref"/>
+                <constraint firstItem="uLV-Eu-J8C" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lFd-g2-z6U"/>
                 <constraint firstAttribute="bottom" secondItem="Y6J-L2-0mw" secondAttribute="bottom" id="t5N-cH-m8x"/>
+                <constraint firstAttribute="trailing" secondItem="uLV-Eu-J8C" secondAttribute="trailing" id="uP4-hG-rD3"/>
                 <constraint firstItem="Rdj-2h-XCi" firstAttribute="top" secondItem="LnK-0S-DuB" secondAttribute="bottom" constant="8" id="vcv-1K-Mrc"/>
             </constraints>
             <point key="canvasLocation" x="103.5" y="85.5"/>

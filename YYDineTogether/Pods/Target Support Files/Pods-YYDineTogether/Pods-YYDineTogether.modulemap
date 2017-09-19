@@ -1,0 +1,6 @@
+framework module Pods_YYDineTogether {
+  umbrella header "Pods-YYDineTogether-umbrella.h"
+
+  export *
+  module * { export * }
+}

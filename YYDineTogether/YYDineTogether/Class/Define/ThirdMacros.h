@@ -23,4 +23,7 @@ const static NSString *APIKey = @"5b625b8f41e6a788f82f3b7a4d3184ad";
 
 const static NSString *TableID = @"";
 
+static NSString *JPushAppKey = @"558afc09e087c70ff05e25fa";
+static NSString *JPushChannel = @"Publish channel";
+
 #endif /* ThirdMacros_h */

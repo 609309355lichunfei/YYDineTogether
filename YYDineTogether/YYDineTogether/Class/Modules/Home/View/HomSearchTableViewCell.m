@@ -91,7 +91,7 @@
     HomeFoodDetailViewController *controller = [[HomeFoodDetailViewController alloc]init];
     JSYHDishModel *model = self.dataArray[indexPath.row];
     controller.dishModel = model;
-    [self.viewController.tabBarController.navigationController pushViewController:controller animated:YES];
+    [self.viewController.navigationController pushViewController:controller animated:YES];
 }
 #pragma mark - 懒加载
 -(NSMutableArray *)dataArray {

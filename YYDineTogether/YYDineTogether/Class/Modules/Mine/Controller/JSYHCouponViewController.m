@@ -63,7 +63,11 @@
         }
         [self.tableView reloadData];
     } Failed:^(NSError *error) {
-        
+        if (dataLoadType == DataLoadTypeNone) {
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
     }];
 }
 

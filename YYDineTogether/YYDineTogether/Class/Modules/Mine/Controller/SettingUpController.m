@@ -8,8 +8,12 @@
 
 #import "SettingUpController.h"
 #import "PassWordViewController.h"
+#import <JPUSHService.h>
 
 @interface SettingUpController ()
+@property (weak, nonatomic) IBOutlet UIButton *logOutBT;
+@property (weak, nonatomic) IBOutlet UIButton *messageBT;
+@property (weak, nonatomic) IBOutlet UIButton *locationBT;
 
 @end
 
@@ -17,6 +21,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self registUI];
+}
+
+- (void)registUI {
+    self.logOutBT.layer.cornerRadius = 2;
+    if ([JSRequestManager sharedManager].token == nil || [JSRequestManager sharedManager].token.length == 0) {
+        self.logOutBT.hidden = YES;
+    }
 }
 
 - (IBAction)backAction:(id)sender {
@@ -32,5 +44,17 @@
     
 }
 
+- (IBAction)logOutAction:(id)sender {
+    [MBProgressHUD showMessage:@"退出中"];
+    [[JSRequestManager sharedManager] logoutWithSuccess:^(id responseObject) {
+        [MBProgressHUD hideHUD];
+        
+        [AppManager showToastWithMsg:@"已退出"];
+        [[ShoppingCartManager sharedManager] shoppingCartReloadData];
+        self.logOutBT.hidden = YES;
+    } Failed:^(NSError *error) {
+        [MBProgressHUD hideHUD];
+    }];
+}
 
 @end

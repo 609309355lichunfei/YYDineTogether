@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface JSYHAddressMapViewController : UIViewController
-@property (copy, nonatomic) void(^chooseAddressBlock)(NSString *address);
+@property (copy, nonatomic) void(^chooseAddressBlock)(NSString *address, CGFloat lat, CGFloat lng);
 @end

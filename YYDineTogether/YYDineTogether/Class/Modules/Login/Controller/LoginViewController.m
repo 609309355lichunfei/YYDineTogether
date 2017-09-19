@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import <JPUSHService.h>
 
 @interface LoginViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *numberTF;
@@ -43,7 +44,13 @@
         return;
     }
     [[JSRequestManager sharedManager] loginWithUserName:_numberTF.text Passord:_verificationTF.text Success:^(id responseObject) {
+        [[ShoppingCartManager sharedManager] shoppingCartReloadData];
+        [[ShoppingCartManager sharedManager] addWithAdmin];
+        [JPUSHService setAlias:_numberTF.text completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+            
+        } seq:1];
         [self dismissViewControllerAnimated:YES completion:^{
+            
         }];
     } Failed:^(NSError *error) {
         [AppManager showToastWithMsg:@"账号密码错误"];

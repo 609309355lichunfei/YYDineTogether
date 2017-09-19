@@ -44,6 +44,12 @@
                                     </connections>
                                 </button>
                             </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" title="完成" id="njE-2H-Xb3">
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="doneAction:" destination="-1" id="euc-66-lt5"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
