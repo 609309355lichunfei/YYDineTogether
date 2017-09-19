@@ -47,7 +47,15 @@
     UIImage *image = [UIImage imageNamed:self.dataArray[indexPath.row]];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:kScreen_Bounds];
     imageView.image = image;
+    
     [cell.contentView addSubview:imageView];
+    if (indexPath.row == 2) {
+        UIImageView *buttonImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LaunchBT"]];
+        buttonImageView.frame = CGRectMake(0, 0, 100, 100);
+        buttonImageView.contentMode = UIViewContentModeCenter;
+        buttonImageView.center = CGPointMake(KScreenWidth / 2, KScreenHeight - 50);
+        [cell.contentView addSubview:buttonImageView];
+    }
     return cell;
 }
 
