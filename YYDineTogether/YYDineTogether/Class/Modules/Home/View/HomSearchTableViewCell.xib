@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水煮鱼(湘菜馆)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3C-3J-X0F">
-                        <rect key="frame" x="93" y="12" width="87" height="18.5"/>
+                        <rect key="frame" x="93" y="12" width="263" height="19"/>
                         <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="13"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -111,6 +111,7 @@
                     <constraint firstItem="LJu-g2-ayf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Ykv-Mf-eZ4"/>
                     <constraint firstItem="udE-aY-1co" firstAttribute="leading" secondItem="0z5-Mx-xKn" secondAttribute="trailing" constant="8" id="f5O-ip-Gph"/>
                     <constraint firstAttribute="bottom" secondItem="8Ef-Fc-deX" secondAttribute="bottom" id="fof-qN-oN0"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="f3C-3J-X0F" secondAttribute="trailing" constant="4" id="geW-zS-rV5"/>
                     <constraint firstItem="f3C-3J-X0F" firstAttribute="top" secondItem="LJu-g2-ayf" secondAttribute="top" id="hrL-JK-KgG"/>
                     <constraint firstItem="LJu-g2-ayf" firstAttribute="width" secondItem="LJu-g2-ayf" secondAttribute="height" id="rKu-JB-BFG"/>
                     <constraint firstItem="2tc-zA-PnA" firstAttribute="leading" secondItem="0z5-Mx-xKn" secondAttribute="leading" id="uOB-zu-fDZ"/>

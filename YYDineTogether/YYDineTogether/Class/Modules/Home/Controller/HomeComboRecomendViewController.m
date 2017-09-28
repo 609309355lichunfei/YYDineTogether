@@ -12,12 +12,16 @@
 #import "JSYHComboModel.h"
 #import "JSYHCombListHeaderTableViewCell.h"
 
-@interface HomeComboRecomendViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface HomeComboRecomendViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>{
+    NSInteger _pageIndex;
+}
 
 @property (strong, nonatomic) HomeShoppingCartView *shoppingView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *shoppingCartBTBottom;
 @property (weak, nonatomic) IBOutlet UIView *shoppingCartView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
 
@@ -33,8 +37,67 @@
 }
 
 - (void)registUI {
+    self.shoppingCartCountLabel.layer.cornerRadius = 9;
+    if ([ShoppingCartManager sharedManager].count == 0) {
+        self.shoppingCartCountLabel.hidden = YES;
+        self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
+    } else {
+        self.shoppingCartCountLabel.hidden = NO;
+        self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].count];
+        self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
+    }
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"JSYHShoppingCartCountChanged" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        if ([ShoppingCartManager sharedManager].count == 0) {
+            self.shoppingCartCountLabel.hidden = YES;
+            self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
+        } else {
+            self.shoppingCartCountLabel.hidden = NO;
+            self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].count];
+            self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
+        }
+        
+    }];
     [self.tableView registerNib:[UINib nibWithNibName:@"JSYHCombListTableViewCell" bundle:nil] forCellReuseIdentifier:@"JSYHCombListTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"JSYHCombListHeaderTableViewCell" bundle:nil] forCellReuseIdentifier:@"JSYHCombListHeaderTableViewCell"];
+    MJWeakSelf;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf getConnectWithDataLoadType:DataLoadTypeNone];
+    }];
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        [weakSelf getConnectWithDataLoadType:DataLoadTypeMore];
+    }];
+    [self.tableView.mj_header beginRefreshing];
+}
+
+- (void)getConnectWithDataLoadType:(DataLoadType)dataLoadType {
+    _pageIndex = dataLoadType == DataLoadTypeNone ? 0 : _pageIndex + 1;
+    [[JSRequestManager sharedManager] getBannerWithPage:[NSString stringWithFormat:@"%ld",_pageIndex] type:@"3" lng:[JSYHLocationManager sharedManager].lng lat:[JSYHLocationManager sharedManager].lat Success:^(id responseObject) {
+        NSDictionary *dataDic = responseObject[@"data"];
+        NSArray *combsArray = dataDic[@"combs"];
+        if (combsArray.count < 20) {
+            self.tableView.mj_footer.hidden = YES;
+        } else {
+            self.tableView.mj_footer.hidden = NO;
+        }
+        if (dataLoadType == DataLoadTypeNone) {
+            [self.dataArray removeAllObjects];
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
+        for (NSDictionary *combDic in combsArray) {
+            JSYHComboModel *model = [[JSYHComboModel alloc] init];
+            [model setValuesForKeysWithDictionary:combDic];
+            [self.dataArray addObject:model];
+        }
+        [self.tableView reloadData];
+    } Failed:^(NSError *error) {
+        if (dataLoadType == DataLoadTypeNone) {
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
+    }];
 }
 
 - (IBAction)backAction:(id)sender {
@@ -78,7 +141,7 @@
     if (section == 0) {
         return 1;
     }
-    return 20;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -88,8 +151,8 @@
         return cell;
     }
     JSYHCombListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSYHCombListTableViewCell" forIndexPath:indexPath];
-//    JSYHComboModel *combModel = self.dataArray[indexPath.row];
-//    cell.combModel = combModel;
+    JSYHComboModel *combModel = self.dataArray[indexPath.row];
+    cell.combModel = combModel;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

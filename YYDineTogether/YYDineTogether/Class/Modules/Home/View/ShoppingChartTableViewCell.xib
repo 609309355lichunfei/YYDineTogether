@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -38,13 +38,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tableView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="麦当劳" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5E9-D2-Axz">
-                        <rect key="frame" x="50" y="8" width="45" height="21"/>
+                        <rect key="frame" x="50" y="8" width="262" height="21"/>
                         <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="15"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYu-9y-N7e">
-                        <rect key="frame" x="99" y="18.5" width="0.0" height="0.0"/>
+                        <rect key="frame" x="316" y="18.5" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="14"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -52,6 +52,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="n2t-x3-1XL" secondAttribute="bottom" constant="8" id="0fq-DK-wSx"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="5E9-D2-Axz" secondAttribute="trailing" id="2bc-JN-L93"/>
                     <constraint firstItem="5E9-D2-Axz" firstAttribute="top" secondItem="aku-FS-Ujc" secondAttribute="top" id="5gS-ld-k40"/>
                     <constraint firstItem="ZYu-9y-N7e" firstAttribute="centerY" secondItem="5E9-D2-Axz" secondAttribute="centerY" id="G97-pQ-tm8"/>
                     <constraint firstItem="aku-FS-Ujc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Hx7-4J-jIc"/>

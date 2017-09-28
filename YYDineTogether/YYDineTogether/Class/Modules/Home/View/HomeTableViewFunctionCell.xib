@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fny-r7-D34">
-                        <rect key="frame" x="0.0" y="2" width="468" height="477.5"/>
+                        <rect key="frame" x="0.0" y="2" width="468" height="478"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_titleImage" translatesAutoresizingMaskIntoConstraints="NO" id="j0U-JM-GUD">
                                 <rect key="frame" x="0.0" y="0.0" width="468" height="230"/>
@@ -70,7 +70,7 @@
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_combo" translatesAutoresizingMaskIntoConstraints="NO" id="Nry-jR-jEq">
-                                                <rect key="frame" x="35" y="5.5" width="58" height="65"/>
+                                                <rect key="frame" x="35" y="6" width="58" height="65"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="65" id="aN1-8x-Riw"/>
                                                 </constraints>
@@ -154,7 +154,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="go4-OT-aQm">
-                                <rect key="frame" x="0.0" y="325" width="468" height="117.5"/>
+                                <rect key="frame" x="0.0" y="325" width="468" height="118"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -162,7 +162,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4s-sg-hZN">
-                                <rect key="frame" x="0.0" y="442.5" width="234" height="30"/>
+                                <rect key="frame" x="0.0" y="443" width="234" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ANu-5d-BgT"/>
@@ -175,7 +175,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oh-v9-ydX">
-                                <rect key="frame" x="234" y="442.5" width="234" height="30"/>
+                                <rect key="frame" x="234" y="443" width="234" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="TL7-Tp-0ob"/>
@@ -188,7 +188,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xV4-ZW-Utz">
-                                <rect key="frame" x="0.0" y="472.5" width="234" height="1"/>
+                                <rect key="frame" x="0.0" y="473" width="234" height="1"/>
                                 <color key="backgroundColor" red="0.99215686270000003" green="0.34901960780000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="12c-36-Gd3"/>
@@ -240,11 +240,11 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="home_cate" width="41" height="63"/>
+        <image name="home_cate" width="41" height="61"/>
         <image name="home_combo" width="67" height="74"/>
-        <image name="home_drink" width="27" height="64"/>
-        <image name="home_fruit" width="36" height="63"/>
-        <image name="home_superMarket" width="43" height="64"/>
+        <image name="home_drink" width="43" height="61"/>
+        <image name="home_fruit" width="41" height="61"/>
+        <image name="home_superMarket" width="41" height="61"/>
         <image name="home_titleImage" width="375" height="231"/>
     </resources>
 </document>

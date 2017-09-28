@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,14 +27,8 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水煮鱼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2i-OJ-d50">
-                        <rect key="frame" x="97" y="12" width="42" height="20"/>
+                        <rect key="frame" x="97" y="12" width="252" height="20"/>
                         <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="14"/>
-                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(xx店)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qC-X4-NoB">
-                        <rect key="frame" x="143" y="13" width="36" height="18.5"/>
-                        <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="13"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -181,15 +175,14 @@
                 <constraints>
                     <constraint firstItem="2ml-Qw-tzp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="0cV-6k-9fl"/>
                     <constraint firstAttribute="trailingMargin" secondItem="B9n-el-5VS" secondAttribute="trailing" constant="0.5" id="5Yt-Ac-x5R"/>
-                    <constraint firstItem="2qC-X4-NoB" firstAttribute="leading" secondItem="I2i-OJ-d50" secondAttribute="trailing" constant="4" id="7xk-EL-NfW"/>
                     <constraint firstItem="dWE-BE-PF1" firstAttribute="top" secondItem="I2i-OJ-d50" secondAttribute="bottom" id="8wn-J4-7TW"/>
                     <constraint firstAttribute="trailing" secondItem="dWE-BE-PF1" secondAttribute="trailing" id="DxG-UG-uUq"/>
-                    <constraint firstItem="B9n-el-5VS" firstAttribute="centerY" secondItem="2qC-X4-NoB" secondAttribute="centerY" id="FLR-nD-bvc"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="I2i-OJ-d50" secondAttribute="trailing" constant="50" id="Jy0-FQ-sVB"/>
                     <constraint firstItem="fc6-gV-JLJ" firstAttribute="width" secondItem="fc6-gV-JLJ" secondAttribute="height" id="K3P-wz-Cab"/>
-                    <constraint firstItem="2qC-X4-NoB" firstAttribute="centerY" secondItem="I2i-OJ-d50" secondAttribute="centerY" id="THA-CT-cbl"/>
                     <constraint firstItem="fc6-gV-JLJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="d0s-Sc-r1X"/>
                     <constraint firstAttribute="trailing" secondItem="2ml-Qw-tzp" secondAttribute="trailing" id="jsb-SK-Qs1"/>
                     <constraint firstItem="fc6-gV-JLJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="lgV-il-C4H"/>
+                    <constraint firstItem="B9n-el-5VS" firstAttribute="centerY" secondItem="I2i-OJ-d50" secondAttribute="centerY" id="o2J-3r-nCD"/>
                     <constraint firstItem="I2i-OJ-d50" firstAttribute="leading" secondItem="fc6-gV-JLJ" secondAttribute="trailing" constant="14" id="sAC-9D-cXO"/>
                     <constraint firstAttribute="bottom" secondItem="2ml-Qw-tzp" secondAttribute="bottom" id="sdy-vL-lr4"/>
                     <constraint firstItem="I2i-OJ-d50" firstAttribute="top" secondItem="fc6-gV-JLJ" secondAttribute="top" id="xEW-bT-uNL"/>
@@ -206,7 +199,6 @@
                 <outlet property="nameLabel" destination="I2i-OJ-d50" id="WZV-X5-b0y"/>
                 <outlet property="numberLabel" destination="pAb-7g-sKM" id="fF2-kP-PP5"/>
                 <outlet property="priceLabel" destination="kBE-Fb-rnA" id="KA6-On-oRX"/>
-                <outlet property="shopNameLabel" destination="2qC-X4-NoB" id="LQr-yb-haL"/>
                 <outlet property="subtractButton" destination="ElD-IT-lcy" id="Mb4-hM-JR2"/>
             </connections>
             <point key="canvasLocation" x="119.5" y="114"/>

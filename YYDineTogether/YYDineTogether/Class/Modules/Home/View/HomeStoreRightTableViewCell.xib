@@ -58,7 +58,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水煮鱼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14h-aa-QF1">
-                        <rect key="frame" x="64" y="15" width="42" height="20"/>
+                        <rect key="frame" x="64" y="15" width="248" height="20"/>
                         <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="14"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -121,6 +121,7 @@
                     <constraint firstItem="04D-Xo-WVc" firstAttribute="centerY" secondItem="53H-XO-5eN" secondAttribute="centerY" id="I3e-P5-n1k"/>
                     <constraint firstItem="IMT-n8-vi2" firstAttribute="leading" secondItem="tYx-tx-KrK" secondAttribute="trailing" id="I6Y-Vf-OHX"/>
                     <constraint firstItem="XVr-rJ-2Z3" firstAttribute="centerY" secondItem="xVb-Sa-wYV" secondAttribute="centerY" id="NaK-A2-aK5"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="14h-aa-QF1" secondAttribute="trailing" id="PSW-WB-1ST"/>
                     <constraint firstItem="XVr-rJ-2Z3" firstAttribute="leading" secondItem="xVb-Sa-wYV" secondAttribute="trailing" constant="1" id="Vu5-Aa-HDP"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Gi2-46-R0j" secondAttribute="trailing" constant="8" id="eKk-6e-RoI"/>
                     <constraint firstItem="Gi2-46-R0j" firstAttribute="top" secondItem="14h-aa-QF1" secondAttribute="bottom" constant="3" id="eWe-3P-weH"/>
