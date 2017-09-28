@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *salesCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 
 @end
 
@@ -58,11 +59,12 @@
 
 - (void)setDishModel:(JSYHDishModel *)dishModel {
     _dishModel = dishModel;
-    [self.logoImageView setImageWithURL:[NSURL URLWithString:_dishModel.logo] placeholder:nil];
+    [self.logoImageView setImageWithURL:[NSURL URLWithString:_dishModel.logo] placeholder:[UIImage imageNamed:@"default_dish"]];
     self.nameLabel.text = _dishModel.name;
     self.salesCountLabel.text = [NSString stringWithFormat:@"%d",_dishModel.salescount];
     self.starLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.star];
     self.priceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.price];
+    self.infoLabel.textColor = _dishModel.info;
     if (_dishModel.count > 0) {
         _numberLabel.hidden = NO;
         _subtractButton.hidden = NO;

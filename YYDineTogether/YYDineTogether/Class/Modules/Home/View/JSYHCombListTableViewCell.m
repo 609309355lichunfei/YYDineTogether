@@ -42,6 +42,16 @@
 
 - (void)setCombModel:(JSYHComboModel *)combModel {
     _combModel = combModel;
+    self.titleLabel.text = _combModel.name;
+    self.discountpriceLabel.text = [NSString stringWithFormat:@"%@",_combModel.price];
+    self.priceLabel.text = [NSString stringWithFormat:@"%@",_combModel.originalprice];
+    if ([_combModel.price isEqualToNumber:_combModel.originalprice]) {
+        self.priceLabel.hidden = YES;
+        self.priceCoverView.hidden = YES;
+    } else {
+        self.priceLabel.hidden = NO;
+        self.priceCoverView.hidden = NO;
+    }
     self.dataArray = _combModel.dishs;
 }
 
@@ -66,7 +76,7 @@
 }
 
 - (IBAction)orderAction:(id)sender {
-    
+    [[ShoppingCartManager sharedManager] addToShoppingCartWitComb:self.combModel];
 }
 
 - (IBAction)starAction:(id)sender {

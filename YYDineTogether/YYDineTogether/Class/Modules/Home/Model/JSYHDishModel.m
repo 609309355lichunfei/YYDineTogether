@@ -25,6 +25,10 @@
         NSNumber *priceNumber = value;
         float price = priceNumber.integerValue / 100.0;
         self.discountprice = [NSNumber numberWithFloat:price];
+    } else if ([key isEqualToString:@"totalprice"]) {
+        NSNumber *priceNumber = value;
+        float price = priceNumber.integerValue / 100.0;
+        self.totalprice = [NSNumber numberWithFloat:price];
     }
 }
 

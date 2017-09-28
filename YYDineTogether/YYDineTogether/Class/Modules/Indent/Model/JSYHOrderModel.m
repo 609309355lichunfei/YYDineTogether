@@ -44,6 +44,14 @@
         NSNumber *priceNumber = value;
         float price = priceNumber.integerValue / 100.0;
         self.postcost = [NSNumber numberWithFloat:price];
+    } else if ([key isEqualToString:@"discountprice"]) {
+        NSNumber *priceNumber = value;
+        float price = priceNumber.integerValue / 100.0;
+        self.discountprice = [NSNumber numberWithFloat:price];
+    } else if ([key isEqualToString:@"cut"]) {
+        NSNumber *priceNumber = value;
+        float price = priceNumber.integerValue / 100.0;
+        self.cut = [NSNumber numberWithFloat:price];
     }
 }
 

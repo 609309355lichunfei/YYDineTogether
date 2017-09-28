@@ -57,6 +57,9 @@
     }];
     
 }
+- (IBAction)hidenKeyboardAction:(id)sender {
+    [self.view endEditing:YES];
+}
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     return YES;

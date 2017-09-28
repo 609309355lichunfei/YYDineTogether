@@ -13,5 +13,7 @@
 
 @property (strong, nonatomic) JSYHCouponModel *couponModel;
 
+@property (assign, nonatomic) NSUInteger timerinterval;//服务器时间与系统时间差值
+
 + (UserManager *)sharedManager;
 @end

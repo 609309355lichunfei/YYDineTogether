@@ -62,6 +62,8 @@
 #define URL_HomePageShop [NSString stringWithFormat:@"%@/v1/homepage/shop/", URL_main]
 //首页菜品
 #define URL_HomePageDish [NSString stringWithFormat:@"%@/v1/homepage/dish/", URL_main]
+//首页套餐
+#define URL_HomePageComb [NSString stringWithFormat:@"%@/v1/homepage/comb/", URL_main]
 //套餐列表
 #define URL_Combo [NSString stringWithFormat:@"%@/v1/comb/", URL_main]
 //套餐详情
@@ -88,6 +90,8 @@
 #define URL_Member_order [NSString stringWithFormat:@"%@/v1/member/order/", URL_main]
 //差多个订单
 #define URL_Member_orders [NSString stringWithFormat:@"%@/v1/member/orders/", URL_main]
+//取消订单
+#define URL_Member_cancelorder [NSString stringWithFormat:@"%@/v1/member/cancelorder/", URL_main]
 //搜索
 #define URL_Search [NSString stringWithFormat:@"%@/v1/search/", URL_main]
 //用户反馈

@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSNumber *price;
 @property (strong, nonatomic) NSString *shoplogo;
 @property (strong, nonatomic) NSNumber *discountprice;
+@property (strong, nonatomic) NSNumber *totalprice;
 @property (strong, nonatomic) NSString *distance;
 @property (assign, nonatomic) NSInteger star;
 @property (assign, nonatomic) int salescount;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) NSString *logo;
 @property (strong, nonatomic) NSNumber *dishid;
 @property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *dishname;
 @property (strong, nonatomic) NSString *combid;
 @property (strong, nonatomic) NSString *iscomb;
 

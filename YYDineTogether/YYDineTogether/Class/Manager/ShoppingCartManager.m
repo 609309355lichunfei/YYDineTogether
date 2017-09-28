@@ -120,6 +120,7 @@ static ShoppingCartManager *_shoppingCartManager;
     JSYHComboModel *model = [JSYHComboModel new];
     model.combid = combModel.combid;
     model.originalprice = combModel.originalprice;
+    model.price = combModel.price;
     model.name = combModel.name;
     model.count = 1;
     [self.shoppingCartComboArray addObject:model];
@@ -227,14 +228,15 @@ static ShoppingCartManager *_shoppingCartManager;
 }
 
 - (NSString *)totalPrice {
-    NSInteger total = 0;
+    CGFloat total = 0.0;
     for (JSYHDishModel *model in self.shoppingCartDataArray) {
-        total += model.count * [model.price integerValue];
+        total += model.count * [model.discountprice floatValue];
     }
     for (JSYHComboModel *model in self.shoppingCartComboArray) {
-        total += model.count *[model.originalprice integerValue];
+        total += model.count * [model.price floatValue];
     }
-    return [NSString stringWithFormat:@"%ld",total];
+    NSNumber *price = [NSNumber numberWithFloat:total];
+    return [NSString stringWithFormat:@"%@",price];
 }
 
 - (NSInteger)count {

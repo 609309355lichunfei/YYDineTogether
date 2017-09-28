@@ -23,4 +23,5 @@
 @property (strong, nonatomic) NSString *changeNickName;
 @property (strong, nonatomic) NSString *changeSex;
 @property (strong, nonatomic) NSString *changeBirthday;
+@property (assign, nonatomic) NSInteger is_first;
 @end

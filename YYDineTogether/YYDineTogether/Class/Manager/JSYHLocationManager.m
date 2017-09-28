@@ -50,7 +50,7 @@ static const double pi = 3.14159265358979324;
     }
     // 5.iOS9新特性：将允许出现这种场景：同一app中多个location manager：一些只能在前台定位，另一些可在后台定位（并可随时禁止其后台定位）。
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9) {
-        _locationManager.allowsBackgroundLocationUpdates = YES;
+//        _locationManager.allowsBackgroundLocationUpdates = YES;
     }
     
     self.locationManager.distanceFilter = 5;

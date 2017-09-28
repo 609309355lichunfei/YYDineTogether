@@ -120,6 +120,7 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="1dZ-4c-uZh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0as-3S-n7j"/>
                 <constraint firstItem="qRg-SY-1xB" firstAttribute="top" secondItem="jc7-pK-VDF" secondAttribute="bottom" constant="14" id="1aG-uJ-hfD"/>
@@ -145,8 +146,16 @@
                 <constraint firstItem="fcw-Bd-bpU" firstAttribute="leading" secondItem="Aqz-WC-5Mf" secondAttribute="leading" id="wKb-6m-HOj"/>
                 <constraint firstItem="jc7-pK-VDF" firstAttribute="centerY" secondItem="fcw-Bd-bpU" secondAttribute="centerY" id="yya-74-2T4"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="sGF-AS-gSw" appends="YES" id="yYG-YE-pRe"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
+        <tapGestureRecognizer id="sGF-AS-gSw" userLabel="hidenKeyboardTap">
+            <connections>
+                <action selector="hidenKeyboardAction:" destination="-1" id="Li9-Wf-V8U"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="home_close2" width="13" height="13"/>

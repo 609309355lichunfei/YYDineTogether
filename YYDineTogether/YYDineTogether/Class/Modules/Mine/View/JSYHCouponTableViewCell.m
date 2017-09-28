@@ -28,7 +28,7 @@
 
 - (void)setCouponModel:(JSYHCouponModel *)couponModel {
     _couponModel = couponModel;
-    self.priceLabe.text = [NSString stringWithFormat:@"¥ %ld",_couponModel.value];
+    self.priceLabe.text = [NSString stringWithFormat:@"¥ %@",_couponModel.value];
     self.timeLabel.text = [NSString stringWithFormat:@"%@ - %@",[AppManager couponTimestampSwitchTime:_couponModel.starttime], [AppManager couponTimestampSwitchTime:_couponModel.endtime]];
     self.dueImageView.hidden = !_couponModel.overdue;
     if (_couponModel.overdue == 0) {

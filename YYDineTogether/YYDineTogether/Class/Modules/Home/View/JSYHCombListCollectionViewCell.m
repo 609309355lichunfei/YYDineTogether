@@ -27,7 +27,7 @@
 - (void)setDishModel:(JSYHDishModel *)dishModel {
     _dishModel = dishModel;
     [self.dishImageView setImageWithURL:[NSURL URLWithString:_dishModel.logo] placeholder:nil];
-    self.dishNameLabel.text = _dishModel.name;
+    self.dishNameLabel.text = _dishModel.dishname;
     self.dishPriceLabel.text = [NSString stringWithFormat:@"¥ %@",_dishModel.price];
 }
 

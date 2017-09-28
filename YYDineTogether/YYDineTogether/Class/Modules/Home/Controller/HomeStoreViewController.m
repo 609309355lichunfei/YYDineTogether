@@ -190,8 +190,8 @@
 }
 
 - (IBAction)storeDetailAction:(id)sender {
-    HomeStoreDetailViewController *detailVC = [[HomeStoreDetailViewController alloc]init];
-    [self.navigationController pushViewController:detailVC animated:YES];
+//    HomeStoreDetailViewController *detailVC = [[HomeStoreDetailViewController alloc]init];
+//    [self.navigationController pushViewController:detailVC animated:YES];
 }
 - (IBAction)activityAction:(id)sender {
     if (self.activityViewHeight.constant == 46) {
@@ -233,8 +233,9 @@
         cell.backgroundColor = [UIColor whiteColor];
         cell.textLabel.textColor = [UIColor lightGrayColor];
         cell.textLabel.text = model.catename;
-        cell.textLabel.font = [UIFont systemFontOfSize:16];
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        cell.textLabel.numberOfLines = 0;
         return cell;
     } else {
         HomeStoreRightTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeStoreRightTableViewCell" forIndexPath:indexPath];
@@ -261,8 +262,17 @@
         }
     } else {
         JSYHCateModel *model = self.catesArray[indexPath.row];
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.textLabel.textColor = [UIColor redColor];
         self.dishsArray = model.dishs;
         [self.rightTableView reloadData];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == _leftTableView) {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.textLabel.textColor = [UIColor lightGrayColor];
     }
 }
 

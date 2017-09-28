@@ -13,7 +13,7 @@
 @property (assign, nonatomic) NSInteger endtime;
 @property (assign, nonatomic) NSInteger status;
 @property (strong, nonatomic) NSNumber *coupon_id;
-@property (assign, nonatomic) NSInteger value;
+@property (strong, nonatomic) NSNumber *value;
 @property (assign, nonatomic) NSInteger is_first;
 @property (assign, nonatomic) NSInteger overdue;
 @end

@@ -51,7 +51,7 @@
 - (void)setCombModel:(JSYHComboModel *)combModel {
     _combModel = combModel;
     self.combNameLabel.text = _combModel.name;
-    self.priceLabel.text = [NSString stringWithFormat:@"%@",_combModel.originalprice];
+    self.priceLabel.text = [NSString stringWithFormat:@"%@",_combModel.price];
     self.numberLabel.text = [NSString stringWithFormat:@"%ld",_combModel.count];
     if (_combModel.count > 0) {
         _numberLabel.hidden = NO;

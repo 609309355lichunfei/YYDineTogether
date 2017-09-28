@@ -16,4 +16,13 @@
     }
 }
 
+- (void)setValue:(id)value forKey:(NSString *)key {
+    [super setValue:value forKey:key];
+    if ([key isEqualToString:@"value"]) {
+        NSNumber *priceNumber = value;
+        float price = priceNumber.integerValue / 100.0;
+        self.value = [NSNumber numberWithFloat:price];
+    }
+}
+
 @end

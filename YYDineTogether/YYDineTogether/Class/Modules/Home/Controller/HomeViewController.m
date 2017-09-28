@@ -22,14 +22,17 @@
 #import "SDCycleScrollView.h"
 #import "JSYHDishModel.h"
 #import "JSYHShopModel.h"
+#import "JSYHComboModel.h"
 #import "HomeDishTableViewCell.h"
 #import "JSYHDrinkViewController.h"
+#import "JSYHCombListTableViewCell.h"
 
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate ,UIGestureRecognizerDelegate, CLLocationManagerDelegate, SDCycleScrollViewDelegate>{
     BOOL _isStoreDataSource;
     NSInteger _cellHeight;
     NSInteger _shoppageIndex;
     NSInteger _dishpageIndex;
+    NSInteger _combpageIndex;
     CGFloat _lastOffSideY;
 }
 @property (weak, nonatomic) IBOutlet UIView *barView;
@@ -47,6 +50,8 @@
 @property (strong, nonatomic) NSMutableArray *shopArray;
 
 @property (strong, nonatomic) NSMutableArray *dishArray;
+
+@property (strong, nonatomic) NSMutableArray *combArray;
 
 @property (strong, nonatomic) NSMutableArray *bannerImageUrlArray;
 
@@ -94,18 +99,19 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewFunctionCell" bundle:nil] forCellReuseIdentifier:@"HomeTableViewFunctionCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeDishTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeDishTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"JSYHCombListTableViewCell" bundle:nil] forCellReuseIdentifier:@"JSYHHomePageCombListTableViewCell"];
     self.automaticallyAdjustsScrollViewInsets = NO;
     MJWeakSelf;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         if (_isStoreDataSource) {
-            [weakSelf getConnectHomePageShop:DataLoadTypeNone];
+            [weakSelf getConnectHomePageComb:DataLoadTypeNone];
         } else {
             [weakSelf getConnectHomePageDish:DataLoadTypeNone];
         }
     }];
     self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
         if (_isStoreDataSource) {
-            [weakSelf getConnectHomePageShop:DataLoadTypeMore];
+            [weakSelf getConnectHomePageComb:DataLoadTypeMore];
         } else {
             [weakSelf getConnectHomePageDish:DataLoadTypeMore];
         }
@@ -203,6 +209,43 @@
     }];
 }
 
+- (void)getConnectHomePageComb:(DataLoadType)dataloadType {
+    _combpageIndex = dataloadType == DataLoadTypeNone ? 0 : _combpageIndex + 1;
+    [[JSRequestManager sharedManager] homepageCombWithPage:[NSString stringWithFormat:@"%ld",_combpageIndex] lng:[JSYHLocationManager sharedManager].lng lat:[JSYHLocationManager sharedManager].lat Success:^(id responseObject) {
+        NSDictionary *dataDic = responseObject[@"data"];
+        NSArray *combsArray = dataDic[@"combs"];
+        if (combsArray.count < 20) {
+            self.tableView.mj_footer.hidden = YES;
+        } else {
+            self.tableView.mj_footer.hidden = NO;
+        }
+        if (dataloadType == DataLoadTypeNone) {
+            [self.combArray removeAllObjects];
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
+        for (NSDictionary *combDic in combsArray) {
+            JSYHComboModel *model = [[JSYHComboModel alloc] init];
+            [model setValuesForKeysWithDictionary:combDic];
+            [self.combArray addObject:model];
+        }
+        self.dataArray = self.combArray;
+        NSArray *bannersArray = dataDic[@"banners"];
+        [self.bannerImageUrlArray removeAllObjects];
+        for (NSDictionary *bannerDic in bannersArray) {
+            [self.bannerImageUrlArray addObject:bannerDic[@"logo"]];
+        }
+        [self.tableView reloadData];
+    } Failed:^(NSError *error) {
+        if (dataloadType == DataLoadTypeNone) {
+            [self.tableView.mj_header endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshing];
+        }
+    }];
+}
+
 - (IBAction)cancelAction:(id)sender {
     [self.searchBar resignFirstResponder];
     self.barView.backgroundColor = [UIColor clearColor];
@@ -274,8 +317,8 @@
         return 355 + KScreenWidth * 188 / 750;
     }
     if (_isStoreDataSource) {
-        JSYHShopModel *model = self.shopArray[indexPath.row];
-        return model.height;
+//        JSYHShopModel *model = self.shopArray[indexPath.row];
+        return 220;
     }
     return _cellHeight;
 }
@@ -321,7 +364,7 @@
                 [weakCell.dishesBt setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
                 _isStoreDataSource = YES;
                 _cellHeight = 150;
-                self.dataArray = self.shopArray;
+                self.dataArray = self.combArray;
                 [self.tableView reloadSection:1 withRowAnimation:(UITableViewRowAnimationNone)];
             }
         };
@@ -348,10 +391,15 @@
         return cell;
     }
     if (_isStoreDataSource) {
-        HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableViewCell" forIndexPath:indexPath];
+//        HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableViewCell" forIndexPath:indexPath];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        JSYHShopModel *model = self.shopArray[indexPath.row];
+//        cell.shopModel = model;
+//        return cell;
+        JSYHCombListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSYHHomePageCombListTableViewCell" forIndexPath:indexPath];
+        JSYHComboModel *combModel = self.dataArray[indexPath.row];
+        cell.combModel = combModel;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        JSYHShopModel *model = self.shopArray[indexPath.row];
-        cell.shopModel = model;
         return cell;
     } else {
         HomeDishTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeDishTableViewCell" forIndexPath:indexPath];
@@ -372,10 +420,14 @@
         return;
     }
     if (_isStoreDataSource) {
-        HomeStoreViewController *storeVC = [[HomeStoreViewController alloc] init];
-        JSYHShopModel *model = self.shopArray[indexPath.row];
-        storeVC.shopid = [model.shopid stringValue];
-        [self.tabBarController.navigationController pushViewController:storeVC animated:YES];
+//        HomeStoreViewController *storeVC = [[HomeStoreViewController alloc] init];
+//        JSYHShopModel *model = self.shopArray[indexPath.row];
+//        storeVC.shopid = [model.shopid stringValue];
+//        [self.tabBarController.navigationController pushViewController:storeVC animated:YES];
+        HomeActivityViewController *combVC = [[HomeActivityViewController alloc] init];
+        JSYHComboModel *model = self.dataArray[indexPath.row];
+        combVC.combId = model.combid.stringValue;
+        [self.tabBarController.navigationController pushViewController:combVC animated:YES];
     } else {
         HomeFoodDetailViewController *controller = [[HomeFoodDetailViewController alloc]init];
         JSYHDishModel *model = self.dishArray[indexPath.row];
@@ -459,6 +511,13 @@
         _dishArray = [NSMutableArray array];
     }
     return _dishArray;
+}
+
+- (NSMutableArray *)combArray {
+    if (_combArray == nil) {
+        _combArray = [NSMutableArray array];
+    }
+    return _combArray;
 }
 
 - (NSMutableArray *)bannerImageUrlArray {

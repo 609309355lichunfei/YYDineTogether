@@ -41,7 +41,9 @@
 @property (strong, nonatomic) MAPolyline *commonPolyline;
 @property (strong, nonatomic) JSYHOrderModel *orderModel;
 @property (strong, nonatomic) JSYHAddressModel *addressModel;
+@property (strong, nonatomic) JSYHCouponModel *couponModel;
 @property (strong, nonatomic) NSString *couponid;
+@property (assign, nonatomic) NSInteger is_first;//是否是新人红包
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
 
@@ -93,8 +95,9 @@
         [addressModel setValuesForKeysWithDictionary:address];
         [[DB_Helper defaultHelper] updateAddress:addressModel];
         [self getAddress];
-        self.resultPriceLabel.text = [NSString stringWithFormat:@"%ld",[self.orderModel.lastprice integerValue] - [self.redLabel.text integerValue] + [self.postcost.text integerValue]];
-        self.activityLabel.text = [NSString stringWithFormat:@"%ld",self.orderModel.cut];
+        self.resultPriceLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.lastprice];
+//        [NSString stringWithFormat:@"%ld",[self.orderModel.lastprice integerValue] - [self.redLabel.text integerValue] + [self.postcost.text integerValue]];
+        self.activityLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.cut];
         self.distanceLabel.text = self.orderModel.distance;
         CGFloat tableViewHeight = 0;
         for (JSYHShopModel *model in self.orderModel.shops) {
@@ -164,7 +167,13 @@
                 float price = postcost.integerValue / 100.0;
                 postcost = [NSNumber numberWithFloat:price];
                 self.postcost.text = [postcost stringValue];
-                self.resultPriceLabel.text = [NSString stringWithFormat:@"%ld",[self.orderModel.lastprice integerValue] - [self.redLabel.text integerValue] + [self.postcost.text integerValue]];
+                NSNumber *lastprice = responseObject[@"data"][@"lastprice"];
+                CGFloat lastpriceFloat = lastprice.integerValue / 100.0 - [self.redLabel.text floatValue];
+                if (_is_first == 1) {
+                    lastpriceFloat = lastpriceFloat + [self.orderModel.cut floatValue];
+                }
+                lastprice = [NSNumber numberWithFloat:lastpriceFloat];
+                self.resultPriceLabel.text = [NSString stringWithFormat:@"%@",lastprice];
             } Failed:^(NSError *error) {
                 
             }];
@@ -183,7 +192,14 @@
             float price = postcost.integerValue / 100.0;
             postcost = [NSNumber numberWithFloat:price];
             self.postcost.text = [postcost stringValue];
-            self.resultPriceLabel.text = [NSString stringWithFormat:@"%ld",[self.orderModel.lastprice integerValue] - [self.redLabel.text integerValue] + [self.postcost.text integerValue]];
+            NSNumber *lastprice = responseObject[@"data"][@"lastprice"];
+            CGFloat lastpriceFloat = lastprice.integerValue / 100.0 - [self.redLabel.text floatValue];
+            if (_is_first == 1) {
+                lastpriceFloat = lastpriceFloat + [self.orderModel.cut floatValue];
+            }
+            lastprice = [NSNumber numberWithFloat:lastpriceFloat];
+            self.resultPriceLabel.text = [NSString stringWithFormat:@"%@",lastprice];
+            
         } Failed:^(NSError *error) {
             
         }];
@@ -241,9 +257,15 @@
 - (IBAction)couponTapAction:(id)sender {
     JSYHCouponViewController *couponVC = [[JSYHCouponViewController alloc] init];
     couponVC.chooseCoupon = ^(JSYHCouponModel *model) {
-        self.redLabel.text = [NSString stringWithFormat:@"%ld",model.value];
+        self.redLabel.text = [NSString stringWithFormat:@"%@",model.value];
+        _is_first = model.is_first;
         self.couponid = [model.coupon_id stringValue];
-        self.resultPriceLabel.text = [NSString stringWithFormat:@"%ld",[self.orderModel.lastprice integerValue] - [self.redLabel.text integerValue] + [self.postcost.text integerValue]];
+        CGFloat priceFloat = [self.orderModel.lastprice floatValue] - [self.redLabel.text integerValue];
+        if (_is_first == 1) {
+            priceFloat = priceFloat + [self.orderModel.cut floatValue];
+        }
+        NSNumber *price = [NSNumber numberWithFloat:priceFloat];
+        self.resultPriceLabel.text = [NSString stringWithFormat:@"%@",price];
     };
     [self.navigationController pushViewController:couponVC animated:YES];
 }

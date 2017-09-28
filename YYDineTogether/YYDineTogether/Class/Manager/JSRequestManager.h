@@ -60,6 +60,20 @@
 
 
 /**
+ 获取首页套餐
+
+ @param page 页数
+ @param lng 经度
+ @param lat 维度
+ */
+- (void)homepageCombWithPage:(NSString *)page
+                         lng:(NSString *)lng
+                         lat:(NSString *)lat
+                     Success:(PPHttpRequestSuccess)success
+                      Failed:(PPHttpRequestFailed)failed;
+
+
+/**
  活动页
 
  @param page 页数
@@ -260,6 +274,16 @@
 - (void)getOrdersWithPage:(NSString *)page
                   Success:(PPHttpRequestSuccess)success
                    Failed:(PPHttpRequestFailed)failed;
+
+
+/**
+ 取消订单
+
+ @param orderno 订单号
+ */
+- (void)cancelorderWithOrderNO:(NSString *)orderno
+                       Success:(PPHttpRequestSuccess)success
+                        Failed:(PPHttpRequestFailed)failed;
 
 
 /**

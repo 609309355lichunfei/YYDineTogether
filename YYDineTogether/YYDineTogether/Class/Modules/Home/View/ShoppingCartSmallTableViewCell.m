@@ -59,7 +59,7 @@
     _dishModel = dishModel;
     self.combImageView.hidden = [_dishModel.iscomb isEqualToString:@"1"] ? NO : YES;
     self.dishNameLabel.text = _dishModel.name;
-    self.priceLabel.text = [NSString stringWithFormat:@"%@", _dishModel.price];
+    self.priceLabel.text = [NSString stringWithFormat:@"%@", _dishModel.discountprice];
     if (_dishModel.count > 0) {
         _numberLabel.hidden = NO;
         _subtractButton.hidden = NO;

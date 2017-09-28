@@ -114,6 +114,19 @@
     }];
 }
 
+- (void)homepageCombWithPage:(NSString *)page
+                         lng:(NSString *)lng
+                         lat:(NSString *)lat
+                     Success:(PPHttpRequestSuccess)success
+                      Failed:(PPHttpRequestFailed)failed {
+    [self setHeaderToken];
+    [PPNetworkHelper GET:URL_HomePageComb parameters:@{@"page":page,@"areaid":@"1",@"lng":lng,@"lat":lat} success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        failed(error);
+    }];
+}
+
 - (void)getBannerWithPage:(NSString *)page
                      type:(NSString *)type
                       lng:(NSString *)lng
@@ -254,7 +267,7 @@
         success(responseObject);
     } failure:^(NSError *error) {
         failed(error);
-    }] ;
+    }];
 }
 
 - (void)postMemberInfoWithDic:(NSDictionary *)dic data:(NSData *)data Success:(PPHttpRequestSuccess)success Failed:(PPHttpRequestFailed)failed {
@@ -322,6 +335,18 @@
     [self setHeaderToken];
     NSDictionary *dic = @{ @"page":page};
     [PPNetworkHelper GET:URL_Member_orders parameters:dic success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        failed(error);
+    }];
+}
+
+- (void)cancelorderWithOrderNO:(NSString *)orderno
+                       Success:(PPHttpRequestSuccess)success
+                        Failed:(PPHttpRequestFailed)failed {
+    [self setHeaderToken];
+    NSDictionary *dic = @{@"order_no":orderno};
+    [PPNetworkHelper POST:URL_Member_cancelorder parameters:dic success:^(id responseObject) {
         success(responseObject);
     } failure:^(NSError *error) {
         failed(error);

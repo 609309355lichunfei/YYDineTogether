@@ -46,6 +46,10 @@
     self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
         [weakSelf getConnectWithType:DataLoadTypeMore];
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self.tableView.mj_header beginRefreshing];
 }
 
@@ -60,6 +64,7 @@
         for (NSDictionary *orderDic in orderDicArray) {
             JSYHOrderModel *model = [[JSYHOrderModel alloc] init];
             [model setValuesForKeysWithDictionary:orderDic];
+            [UserManager sharedManager].timerinterval = model.nowtime - [AppManager getNowTimestamp];
             [model updateOrderHeight];
             [self.dataArray addObject:model];
         }
@@ -126,6 +131,9 @@
     IndentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IndentTableViewCell" forIndexPath:indexPath];
     JSYHOrderModel *model = self.dataArray[indexPath.row];
     cell.orderModel = model;
+    cell.firstBlock = ^(JSYHOrderModel *model){
+        [self.tableView.mj_header beginRefreshing];
+    };
     MJWeakSelf
     cell.firstBlock = ^(JSYHOrderModel *model){
         
