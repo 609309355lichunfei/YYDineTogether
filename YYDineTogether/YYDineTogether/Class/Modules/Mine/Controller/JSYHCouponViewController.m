@@ -31,6 +31,7 @@
 }
 
 - (void)registUI {
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self.tableView registerNib:[UINib nibWithNibName:@"JSYHCouponTableViewCell" bundle:nil] forCellReuseIdentifier:@"JSYHCouponTableViewCell"];
     MJWeakSelf;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

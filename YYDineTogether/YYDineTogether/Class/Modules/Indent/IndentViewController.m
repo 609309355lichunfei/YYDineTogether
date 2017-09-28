@@ -35,6 +35,7 @@
 }
 
 - (void)registUI {
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.currentBT = _completeBT;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

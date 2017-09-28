@@ -55,6 +55,7 @@
 }
 
 - (void)registUI {
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableViewBGView.layer.cornerRadius = 5;
     self.orderBT.layer.cornerRadius = 2;
     self.shoppingCartCountLabel.layer.cornerRadius = 9;

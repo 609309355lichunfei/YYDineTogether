@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,34 +23,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9S5-fP-sHe">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="64" id="Jac-mZ-MZh"/>
-                    </constraints>
-                    <color key="barTintColor" red="0.97254901959999995" green="0.23137254900000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
-                    <textAttributes key="titleTextAttributes">
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </textAttributes>
-                    <items>
-                        <navigationItem title="送货地址编辑" id="4dF-aI-2Gl">
-                            <barButtonItem key="leftBarButtonItem" id="wRy-1S-AY2">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZNS-IV-nTU">
-                                    <rect key="frame" x="16" y="26" width="32" height="32"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="back">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="backAction:" destination="-1" eventType="touchUpInside" id="HwM-8d-3yD"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L15-Yr-ZdM">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
@@ -203,20 +175,54 @@
                         <constraint firstItem="s5m-kL-8sa" firstAttribute="leading" secondItem="L15-Yr-ZdM" secondAttribute="leading" constant="4" id="yFN-Ca-m0C"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eeh-uJ-i0f">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="送货地址编辑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHg-8P-x5P">
+                            <rect key="frame" x="133.5" y="30.5" width="108.5" height="25.5"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="18"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8c4-kX-wsj">
+                            <rect key="frame" x="0.0" y="20" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="Ins-VD-gri"/>
+                                <constraint firstAttribute="width" constant="44" id="btj-LS-bQc"/>
+                            </constraints>
+                            <state key="normal" image="back"/>
+                            <connections>
+                                <action selector="backAction:" destination="-1" eventType="touchUpInside" id="plq-fW-HtQ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.97254901959999995" green="0.23137254900000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="8c4-kX-wsj" firstAttribute="leading" secondItem="Eeh-uJ-i0f" secondAttribute="leading" id="4m2-3h-APW"/>
+                        <constraint firstAttribute="bottom" secondItem="8c4-kX-wsj" secondAttribute="bottom" id="F9e-tO-QJW"/>
+                        <constraint firstAttribute="height" constant="64" id="O5v-6b-e2f"/>
+                        <constraint firstItem="yHg-8P-x5P" firstAttribute="centerX" secondItem="Eeh-uJ-i0f" secondAttribute="centerX" id="ezO-bW-NbJ"/>
+                        <constraint firstAttribute="bottom" secondItem="yHg-8P-x5P" secondAttribute="bottom" constant="8" id="kJN-Me-NPg"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="9S5-fP-sHe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3N7-LY-di7"/>
-                <constraint firstItem="9S5-fP-sHe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4Mk-bq-4Ui"/>
                 <constraint firstAttribute="bottom" secondItem="L15-Yr-ZdM" secondAttribute="bottom" id="6Ev-nd-RM7"/>
-                <constraint firstItem="L15-Yr-ZdM" firstAttribute="top" secondItem="9S5-fP-sHe" secondAttribute="bottom" id="DkJ-E0-kgF"/>
+                <constraint firstAttribute="trailing" secondItem="Eeh-uJ-i0f" secondAttribute="trailing" id="FZl-EH-BVF"/>
                 <constraint firstItem="L15-Yr-ZdM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aRW-wd-oyH"/>
-                <constraint firstAttribute="trailing" secondItem="9S5-fP-sHe" secondAttribute="trailing" id="bap-Rc-hXP"/>
+                <constraint firstItem="L15-Yr-ZdM" firstAttribute="top" secondItem="Eeh-uJ-i0f" secondAttribute="bottom" id="j3V-mw-3UC"/>
+                <constraint firstItem="Eeh-uJ-i0f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nnK-aJ-2sC"/>
                 <constraint firstAttribute="trailing" secondItem="L15-Yr-ZdM" secondAttribute="trailing" id="sdO-gP-lY2"/>
+                <constraint firstItem="Eeh-uJ-i0f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vre-W2-Oz3"/>
             </constraints>
             <point key="canvasLocation" x="62.5" y="85.5"/>
         </view>
-        <tapGestureRecognizer id="vvo-W9-QK8"/>
+        <tapGestureRecognizer id="vvo-W9-QK8">
+            <connections>
+                <action selector="EditTapAction:" destination="-1" id="oVO-ji-BEU"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="back" width="32" height="32"/>

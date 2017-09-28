@@ -207,7 +207,7 @@
 }
 
 - (void)registUI {
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addressChange) name:@"JSYHAddressChange" object:nil];
     
     self.couponid = @"0";

@@ -35,6 +35,7 @@
 }
 
 - (void)registUI {
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.doneBT.layer.cornerRadius = 20;
     self.addressBGView.layer.cornerRadius = 20;
     

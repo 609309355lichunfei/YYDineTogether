@@ -30,6 +30,7 @@
 }
 
 - (void)registUI {
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self.tableView registerNib:[UINib nibWithNibName:@"IndentChooseAddressTableViewCell" bundle:nil] forCellReuseIdentifier:@"shippTableViewCell"];
     MJWeakSelf;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

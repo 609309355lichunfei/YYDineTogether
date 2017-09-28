@@ -78,6 +78,7 @@
 
 
 - (void)registUI {
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self.tableView registerNib:[UINib nibWithNibName:@"JSYHPreOrderTableViewCell" bundle:nil] forCellReuseIdentifier:@"IndentDetailTableViewCell"];
      [self getConnect];
 }

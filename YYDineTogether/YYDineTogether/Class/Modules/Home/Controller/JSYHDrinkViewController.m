@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
-@property (weak, nonatomic) IBOutlet UINavigationItem *myNavigationItem;
+@property (weak, nonatomic) IBOutlet UILabel *myTitleLabel;
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
 @end
@@ -31,7 +31,8 @@
 }
 
 - (void)registUI {
-    self.myNavigationItem.title = self.titleStr;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.myTitleLabel.text = self.titleStr;
     self.shoppingCartCountLabel.layer.cornerRadius = 9;
     if ([ShoppingCartManager sharedManager].count == 0) {
         self.shoppingCartCountLabel.hidden = YES;

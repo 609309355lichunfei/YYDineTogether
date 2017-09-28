@@ -65,6 +65,7 @@
 }
 
 - (void)registUI {
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.scrollLabel.text = @"                   首次跨店下单立减15元，跨店满30减5，满50减10，满100减20";
     self.scrollLabel.font = [UIFont fontWithName:App_FamilyFontName size:11];
     self.scrollLabel.textColor = UIColorFromRGB(0xFE4337);

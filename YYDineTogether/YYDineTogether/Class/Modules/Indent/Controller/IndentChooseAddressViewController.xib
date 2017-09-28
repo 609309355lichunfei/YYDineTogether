@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,40 +19,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rh-vP-fM2">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="64" id="VgN-Et-baJ"/>
-                    </constraints>
-                    <color key="barTintColor" red="0.99215686270000003" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <textAttributes key="titleTextAttributes">
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </textAttributes>
-                    <items>
-                        <navigationItem title="收货地址" id="e3X-ng-F9y">
-                            <barButtonItem key="leftBarButtonItem" id="1nr-z1-9qh">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="r5c-5C-Mdn">
-                                    <rect key="frame" x="16" y="26" width="32" height="32"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="back">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="backAction:" destination="-1" eventType="touchUpInside" id="pCx-gk-UBR"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                            <barButtonItem key="rightBarButtonItem" title="完成" id="njE-2H-Xb3">
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="doneAction:" destination="-1" id="euc-66-lt5"/>
-                                </connections>
-                            </barButtonItem>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3g-5S-Ysg">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
@@ -96,15 +62,60 @@
                         <constraint firstAttribute="bottom" secondItem="ose-Bg-OrF" secondAttribute="bottom" id="gyc-MW-hoO"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lw0-0s-FF3">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收货地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eip-N8-Rgu">
+                            <rect key="frame" x="151.5" y="30.5" width="72.5" height="25.5"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="18"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vng-zT-qx1">
+                            <rect key="frame" x="0.0" y="20" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="21m-Rw-YY5"/>
+                                <constraint firstAttribute="width" constant="44" id="n3i-hz-iVU"/>
+                            </constraints>
+                            <state key="normal" image="back"/>
+                            <connections>
+                                <action selector="backAction:" destination="-1" eventType="touchUpInside" id="1pd-Zd-xh9"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SvI-kr-tpg">
+                            <rect key="frame" x="311" y="20" width="64" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="a36-Xr-6cP"/>
+                                <constraint firstAttribute="width" constant="64" id="i2j-6y-dxA"/>
+                            </constraints>
+                            <state key="normal" title="完成">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="doneAction:" destination="-1" eventType="touchUpInside" id="IDH-LT-EC3"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.97254901959999995" green="0.23137254900000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="vng-zT-qx1" firstAttribute="leading" secondItem="lw0-0s-FF3" secondAttribute="leading" id="4il-WO-WQZ"/>
+                        <constraint firstAttribute="bottom" secondItem="Eip-N8-Rgu" secondAttribute="bottom" constant="8" id="6dT-hi-OZD"/>
+                        <constraint firstAttribute="bottom" secondItem="SvI-kr-tpg" secondAttribute="bottom" id="9NG-ac-aRJ"/>
+                        <constraint firstAttribute="trailing" secondItem="SvI-kr-tpg" secondAttribute="trailing" id="kgd-pG-n0t"/>
+                        <constraint firstItem="Eip-N8-Rgu" firstAttribute="centerX" secondItem="lw0-0s-FF3" secondAttribute="centerX" id="lWa-mn-Twl"/>
+                        <constraint firstAttribute="height" constant="64" id="swk-w9-OFI"/>
+                        <constraint firstAttribute="bottom" secondItem="vng-zT-qx1" secondAttribute="bottom" id="xFK-c2-ojw"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="4rh-vP-fM2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5Oq-0Z-DJh"/>
+                <constraint firstItem="n3g-5S-Ysg" firstAttribute="top" secondItem="lw0-0s-FF3" secondAttribute="bottom" id="2oo-Gb-zCJ"/>
+                <constraint firstItem="lw0-0s-FF3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="D3V-nX-414"/>
                 <constraint firstAttribute="trailing" secondItem="n3g-5S-Ysg" secondAttribute="trailing" id="OgG-2X-kVX"/>
                 <constraint firstItem="n3g-5S-Ysg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PAp-3P-CfX"/>
-                <constraint firstItem="4rh-vP-fM2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XP2-WG-YcY"/>
-                <constraint firstAttribute="trailing" secondItem="4rh-vP-fM2" secondAttribute="trailing" id="dG9-31-BFQ"/>
-                <constraint firstItem="n3g-5S-Ysg" firstAttribute="top" secondItem="4rh-vP-fM2" secondAttribute="bottom" id="jlu-LC-hWV"/>
+                <constraint firstAttribute="trailing" secondItem="lw0-0s-FF3" secondAttribute="trailing" id="U4z-0t-QyZ"/>
+                <constraint firstItem="lw0-0s-FF3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hwa-0c-fN8"/>
                 <constraint firstAttribute="bottom" secondItem="n3g-5S-Ysg" secondAttribute="bottom" id="tKC-96-DzO"/>
             </constraints>
         </view>

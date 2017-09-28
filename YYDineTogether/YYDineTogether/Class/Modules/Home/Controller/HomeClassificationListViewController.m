@@ -48,6 +48,7 @@
 }
 
 - (void)registUI {
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.shoppingCartCountLabel.layer.cornerRadius = 9;
     if ([ShoppingCartManager sharedManager].count == 0) {
         self.shoppingCartCountLabel.hidden = YES;
