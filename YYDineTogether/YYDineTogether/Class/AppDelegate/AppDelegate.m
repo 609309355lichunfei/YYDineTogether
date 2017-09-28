@@ -78,6 +78,12 @@
    //初始化Window
     [self initWindow];
     
+    if (@available(iOS 11.0, *)) {
+        [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        // Fallback on earlier versions
+    }
+    
     //网络监听
     [AppManager monitorNetworkStatus];
     

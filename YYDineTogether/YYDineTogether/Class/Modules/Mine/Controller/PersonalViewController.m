@@ -164,7 +164,17 @@
         [JSYHUserModel defaultModel].ischangelogo = @"1";
         self.logoImageView.image = image;
         self.imageData = iamgeData;
+        if (@available(iOS 11.0, *)) {
+            [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            // Fallback on earlier versions
+        }
     } cancelBlock:^{
+        if (@available(iOS 11.0, *)) {
+            [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            // Fallback on earlier versions
+        }
     }];
 }
 

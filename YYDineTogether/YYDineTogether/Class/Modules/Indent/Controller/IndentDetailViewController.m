@@ -83,6 +83,11 @@
      [self getConnect];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.timer invalidate];
+}
+
 - (void)getConnect {
     [MBProgressHUD showMessage:@"进入订单详情"];
     if (self.timer) {

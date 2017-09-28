@@ -116,6 +116,13 @@
         
         //打开的多媒体类型
         imagePC.mediaTypes = array;
+        if (@available(iOS 11.0, *)) {
+            [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAlways;
+        } else {
+                // Fallback on earlier versions
+        }
+        
+        
         [self.fromController presentViewController:imagePC animated:YES completion:^{
             
             NSLog(@"进入相册页面");

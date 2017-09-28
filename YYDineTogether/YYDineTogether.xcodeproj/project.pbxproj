@@ -1180,7 +1180,6 @@
 			children = (
 				B38940791EE69CEA00407E45 /* Controller */,
 				B38940891EE69CEA00407E45 /* Model */,
-				B389408A1EE69CEA00407E45 /* Resource */,
 				B389408B1EE69CEA00407E45 /* Service */,
 				B389408E1EE69CEA00407E45 /* View */,
 			);
@@ -1241,13 +1240,6 @@
 				9C8C09611F5D063A00A75954 /* JSYHCouponModel.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		B389408A1EE69CEA00407E45 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resource;
 			sourceTree = "<group>";
 		};
 		B389408B1EE69CEA00407E45 /* Service */ = {
@@ -1520,8 +1512,6 @@
 			children = (
 				B3DA47E41EE50650006B6942 /* Controller */,
 				B3DA47E71EE50650006B6942 /* Model */,
-				B3DA47E81EE50650006B6942 /* Resource */,
-				B3DA47E91EE50650006B6942 /* Service */,
 				B3DA47EA1EE50650006B6942 /* View */,
 			);
 			path = Home;
@@ -1596,20 +1586,6 @@
 				9C8C09801F61359600A75954 /* JSYHTagModel.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		B3DA47E81EE50650006B6942 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
-		B3DA47E91EE50650006B6942 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		B3DA47EA1EE50650006B6942 /* View */ = {
@@ -1714,10 +1690,6 @@
 			isa = PBXGroup;
 			children = (
 				B3DA47F01EE50650006B6942 /* Controller */,
-				B3DA47F41EE50650006B6942 /* Model */,
-				B3DA47F51EE50650006B6942 /* Resource */,
-				B3DA47F61EE50650006B6942 /* Service */,
-				B3DA47F71EE50650006B6942 /* View */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1732,41 +1704,10 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		B3DA47F41EE50650006B6942 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		B3DA47F51EE50650006B6942 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
-		B3DA47F61EE50650006B6942 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		B3DA47F71EE50650006B6942 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		B3DA47F81EE50650006B6942 /* Message */ = {
 			isa = PBXGroup;
 			children = (
 				B3DA47F91EE50650006B6942 /* Controller */,
-				B3DA47FC1EE50650006B6942 /* Model */,
-				B3DA47FD1EE50650006B6942 /* Resource */,
-				B3DA47FE1EE50650006B6942 /* Service */,
 				B3DA47FF1EE50650006B6942 /* View */,
 			);
 			path = Message;
@@ -1789,27 +1730,6 @@
 				9C85D8071F4A7DEF00622EBF /* MsgChooseIndentViewController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		B3DA47FC1EE50650006B6942 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		B3DA47FD1EE50650006B6942 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
-		B3DA47FE1EE50650006B6942 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		B3DA47FF1EE50650006B6942 /* View */ = {
@@ -1880,16 +1800,8 @@
 				B389401C1EE69B3000407E45 /* ActionSheetPicker-3.0 */,
 				B38940341EE69B3000407E45 /* IQKeyboardManager */,
 				9C8995511EE57DA10097AF38 /* LCPanNavigationController */,
-				B3DA48221EE50650006B6942 /* UIKit */,
 			);
 			path = ThridParty;
-			sourceTree = "<group>";
-		};
-		B3DA48221EE50650006B6942 /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UIKit;
 			sourceTree = "<group>";
 		};
 		B3DA48231EE50650006B6942 /* Utils */ = {
@@ -2605,7 +2517,7 @@
 				INFOPLIST_FILE = YYDineTogether/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JuShan.YYDineTogether;
+				PRODUCT_BUNDLE_IDENTIFIER = ychz.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2640,7 +2552,7 @@
 				INFOPLIST_FILE = YYDineTogether/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JuShan.YYDineTogether;
+				PRODUCT_BUNDLE_IDENTIFIER = ychz.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
