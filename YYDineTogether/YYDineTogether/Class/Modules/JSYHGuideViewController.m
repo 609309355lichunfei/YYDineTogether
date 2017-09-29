@@ -46,6 +46,7 @@
     [cell.contentView removeAllSubviews];
     UIImage *image = [UIImage imageNamed:self.dataArray[indexPath.row]];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:kScreen_Bounds];
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.image = image;
     
     [cell.contentView addSubview:imageView];

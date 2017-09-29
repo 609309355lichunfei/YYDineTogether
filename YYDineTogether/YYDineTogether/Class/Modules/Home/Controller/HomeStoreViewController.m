@@ -125,8 +125,8 @@
     self.noticeLabel.text = _shopModel.notice_info;
     self.statusLabel.hidden = _shopModel.status == 1 ? NO : YES;
     self.catesArray = self.shopModel.cates;
-    [self.logoImageView setImageWithURL:[NSURL URLWithString:self.shopModel.logo] placeholder:nil];
-    [self.backgroundImageView setImageWithURL:[NSURL URLWithString:self.shopModel.logo] placeholder:nil];
+    [self.logoImageView setImageWithURL:[NSURL URLWithString:self.shopModel.logo] placeholder:[UIImage imageNamed:@"icon"]];
+    [self.backgroundImageView setImageWithURL:[NSURL URLWithString:self.shopModel.logo] placeholder:[UIImage imageNamed:@"icon"]];
     [self.activityButton setTitle:[NSString stringWithFormat:@"%ld个活动",_shopModel.activites.count] forState:(UIControlStateNormal)];
     for (NSInteger i = 0; i < _shopModel.activites.count; i ++){
         JSYHActivityModel *model = _shopModel.activites[i];
