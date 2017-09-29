@@ -1,12 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Regular</string>
+            <string>PingFangSC-Semibold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
@@ -45,10 +52,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jc7-pK-VDF">
-                    <rect key="frame" x="103" y="272.5" width="150" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="150" id="LTj-h0-eqU"/>
-                    </constraints>
+                    <rect key="frame" x="103" y="272.5" width="152" height="20"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -60,7 +64,6 @@
                     <rect key="frame" x="37.5" y="337.5" width="300" height="45"/>
                     <color key="backgroundColor" red="0.99215686274509807" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="300" id="0IV-MX-5RG"/>
                         <constraint firstAttribute="height" constant="45" id="hmM-pv-LDZ"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
@@ -104,7 +107,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3y-at-hs2">
-                    <rect key="frame" x="263" y="270.5" width="70" height="24"/>
+                    <rect key="frame" x="265" y="270.5" width="70" height="24"/>
                     <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="01X-57-jxY"/>
@@ -124,12 +127,15 @@
             <constraints>
                 <constraint firstItem="1dZ-4c-uZh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0as-3S-n7j"/>
                 <constraint firstItem="qRg-SY-1xB" firstAttribute="top" secondItem="jc7-pK-VDF" secondAttribute="bottom" constant="14" id="1aG-uJ-hfD"/>
+                <constraint firstItem="t3y-at-hs2" firstAttribute="trailing" secondItem="34H-uz-SY4" secondAttribute="trailing" id="2ym-b4-feV"/>
                 <constraint firstItem="kvG-TH-qOe" firstAttribute="leading" secondItem="Aqz-WC-5Mf" secondAttribute="leading" id="3bn-9Y-Q5j"/>
                 <constraint firstItem="qRg-SY-1xB" firstAttribute="width" secondItem="kvG-TH-qOe" secondAttribute="width" id="5YS-Er-OA2"/>
                 <constraint firstAttribute="trailing" secondItem="34H-uz-SY4" secondAttribute="trailing" constant="40" id="7pr-16-UOM"/>
+                <constraint firstAttribute="trailing" secondItem="hrK-en-T1l" secondAttribute="trailing" constant="37.5" id="DLL-3F-KPh"/>
                 <constraint firstItem="34H-uz-SY4" firstAttribute="top" secondItem="1dZ-4c-uZh" secondAttribute="bottom" constant="44" id="Dr0-fm-py4"/>
                 <constraint firstItem="qRg-SY-1xB" firstAttribute="leading" secondItem="kvG-TH-qOe" secondAttribute="leading" id="Fdv-BF-6g8"/>
                 <constraint firstItem="Aqz-WC-5Mf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="43" id="GEO-Fk-wjC"/>
+                <constraint firstItem="hrK-en-T1l" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="37.5" id="HKj-N1-10R"/>
                 <constraint firstItem="DO9-3J-S4W" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Nqb-7u-0ef"/>
                 <constraint firstItem="34H-uz-SY4" firstAttribute="leading" secondItem="Aqz-WC-5Mf" secondAttribute="trailing" constant="12" id="YW2-Rj-KpU"/>
                 <constraint firstItem="DO9-3J-S4W" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZhY-TY-LPL"/>

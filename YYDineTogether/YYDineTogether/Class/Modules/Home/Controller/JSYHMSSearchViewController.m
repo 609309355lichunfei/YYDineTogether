@@ -25,6 +25,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self registUI];
 }
 
@@ -54,7 +59,7 @@
     if (self.homeSearchView == nil) {
         self.homeSearchView = [[[NSBundle mainBundle] loadNibNamed:@"HomeSearchView" owner:self options:nil] lastObject];
     }
-    _homeSearchView.frame = CGRectMake(0, 0, KScreenWidth, kScreenHeight - 64);
+    _homeSearchView.frame = self.mainView.bounds;
     [self.mainView addSubview:_homeSearchView];
     _homeSearchView.type = SearchViewTypeSearch;
     __weak HomeSearchView *weakSearchView = _homeSearchView;
