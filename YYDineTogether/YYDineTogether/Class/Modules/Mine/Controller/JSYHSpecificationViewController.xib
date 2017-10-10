@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Medium</string>
+            <string>PingFangSC-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JSYHSpecificationViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="915"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vRb-Xg-XuF">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优惠规则" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KcI-t4-T0R">
+                            <rect key="frame" x="152" y="10.5" width="72.5" height="25.5"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="18"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJs-fp-UcH">
+                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="Nc1-Kx-BUg"/>
+                                <constraint firstAttribute="width" constant="44" id="RNP-pp-9WJ"/>
+                            </constraints>
+                            <state key="normal" image="Navigation_left"/>
+                            <connections>
+                                <action selector="backAction:" destination="-1" eventType="touchUpInside" id="D5Y-gV-lg8"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="4rQ-eg-3BT"/>
+                        <constraint firstAttribute="bottom" secondItem="KcI-t4-T0R" secondAttribute="bottom" constant="8" id="7ys-6y-h7N"/>
+                        <constraint firstItem="KcI-t4-T0R" firstAttribute="centerX" secondItem="vRb-Xg-XuF" secondAttribute="centerX" id="RWE-yc-QEa"/>
+                        <constraint firstAttribute="bottom" secondItem="MJs-fp-UcH" secondAttribute="bottom" id="ReW-FI-I0j"/>
+                        <constraint firstItem="MJs-fp-UcH" firstAttribute="leading" secondItem="vRb-Xg-XuF" secondAttribute="leading" id="VbM-BM-Xqm"/>
+                    </constraints>
+                </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EmH-ks-xUG">
+                    <rect key="frame" x="0.0" y="64" width="375" height="851"/>
+                    <subviews>
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1E-J0-Pd3">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q1：我是新用户，为什么不能享受新用户首单跨店红包？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcI-rT-vbH">
+                                    <rect key="frame" x="15" y="10" width="345" height="18.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.新用户是指您的手机号第一次在聚膳宅配平台使用" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qw0-XQ-7lX">
+                                    <rect key="frame" x="15" y="36" width="345" height="18.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.首单跨店是指您在平台上首次体验跨店下单即店家数大于1时使用，当订单金额小于15元时，以0.01元作为最终支付金额，确保支付渠道的判定成功" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axA-y2-5bl">
+                                    <rect key="frame" x="15" y="55" width="345" height="55"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.首单跨店红包与跨店满减活动不能同时使用" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60e-4v-YYx">
+                                    <rect key="frame" x="15" y="110" width="345" height="18.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q2：首单未跨店，第二单体验跨店时还能享受新用户首单跨店红包吗？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzC-6v-fza">
+                                    <rect key="frame" x="15" y="139" width="345" height="36.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="能，首单跨店红包指的是第一次体验跨店下单时使用的红包" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XM1-iY-P3p">
+                                    <rect key="frame" x="15" y="184" width="345" height="18.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q3：首单被取消，再次下单还能享受新用户首单跨店红包吗？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Pb-oV-1kw">
+                                    <rect key="frame" x="15" y="212.5" width="345" height="36.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前系统暂不支持在已生成订单中使用过的红包返还，具体情况可以联系客服处理。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8VJ-eF-75V">
+                                    <rect key="frame" x="15" y="259" width="345" height="36.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q4: 我明明点了多家店，为什么不能享受跨店满减优惠？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7T-PV-FoW">
+                                    <rect key="frame" x="15" y="305.5" width="345" height="18.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.单店下单金额大于等于5元才能作为进入跨店活动中的一家店" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAE-sX-Yhj">
+                                    <rect key="frame" x="15" y="334" width="345" height="36.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.满足跨店活动店家的下单金额满足跨店金额" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAE-O4-qf0">
+                                    <rect key="frame" x="15" y="370.5" width="345" height="18.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q5：你们平台这么多活动，哪些活动是能一起用的？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRu-cD-Hlc">
+                                    <rect key="frame" x="15" y="399" width="345" height="18.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.新人红包与跨店满减不兼容，有且满足新人红包条件时用户可以择优选择使用红包，不参与跨店满减。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Uk-DL-E3K">
+                                    <rect key="frame" x="15" y="427.5" width="345" height="36.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.新人红包与套餐推荐不冲突。使用场景为第一单点了一个推荐套餐后，依然能使用新人红包。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bo-6e-apA">
+                                    <rect key="frame" x="15" y="464" width="345" height="36.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.新人红包与无门槛红包不兼容，一次只能使用一个红包。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYQ-6G-cyL">
+                                    <rect key="frame" x="15" y="500.5" width="345" height="18.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.无门槛红包与其他非红包性质的活动都兼容。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eB3-I0-gmN">
+                                    <rect key="frame" x="15" y="519" width="345" height="18.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.特价套餐和跨店满减不兼容。即特价套餐不计入跨店满减的判定中。但是含特价套餐的订单中除特价套餐部分，可计入跨店满减的判定中去。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgh-w3-pTO">
+                                    <rect key="frame" x="15" y="537.5" width="345" height="55"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.常规套餐(未设置特价的套餐)可参与跨店满减活动" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ur-oQ-X8v">
+                                    <rect key="frame" x="15" y="592.5" width="345" height="18.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q6：在线支付订单取消后，钱怎么返还？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYR-yb-uA9">
+                                    <rect key="frame" x="15" y="621" width="345" height="18.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用第三方支付订单无效后，支付款项将于1-3个工作日内返还到您的第三方支付账户" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbs-ll-UuQ">
+                                    <rect key="frame" x="15" y="650" width="345" height="36.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="聚膳宅配平台所有活动最终解释权归宁波聚善网络科技公司所有" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wqm-MZ-YnB">
+                                    <rect key="frame" x="15" y="697" width="345" height="36.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="7ur-oQ-X8v" secondAttribute="trailing" constant="15" id="0oe-aG-kCh"/>
+                                <constraint firstItem="axA-y2-5bl" firstAttribute="top" secondItem="qw0-XQ-7lX" secondAttribute="bottom" id="3fH-Ii-Pqv"/>
+                                <constraint firstAttribute="trailing" secondItem="axA-y2-5bl" secondAttribute="trailing" constant="15" id="3v3-gX-DQl"/>
+                                <constraint firstItem="wgh-w3-pTO" firstAttribute="top" secondItem="eB3-I0-gmN" secondAttribute="bottom" id="5Cd-Ug-59h"/>
+                                <constraint firstAttribute="trailing" secondItem="ZRu-cD-Hlc" secondAttribute="trailing" constant="15" id="5rQ-Ek-Eek"/>
+                                <constraint firstItem="7ur-oQ-X8v" firstAttribute="top" secondItem="wgh-w3-pTO" secondAttribute="bottom" id="683-cK-yTD"/>
+                                <constraint firstItem="8Uk-DL-E3K" firstAttribute="top" secondItem="ZRu-cD-Hlc" secondAttribute="bottom" constant="10" id="9tp-jD-5Vb"/>
+                                <constraint firstItem="OAE-sX-Yhj" firstAttribute="top" secondItem="o7T-PV-FoW" secondAttribute="bottom" constant="10" id="ATS-rp-z6U"/>
+                                <constraint firstAttribute="trailing" secondItem="IAE-O4-qf0" secondAttribute="trailing" constant="15" id="AvG-1Z-Au3"/>
+                                <constraint firstItem="9Pb-oV-1kw" firstAttribute="top" secondItem="XM1-iY-P3p" secondAttribute="bottom" constant="10" id="DV2-h6-c5L"/>
+                                <constraint firstItem="1bo-6e-apA" firstAttribute="top" secondItem="8Uk-DL-E3K" secondAttribute="bottom" id="Eoy-65-ru7"/>
+                                <constraint firstItem="IAE-O4-qf0" firstAttribute="top" secondItem="OAE-sX-Yhj" secondAttribute="bottom" id="IkB-28-9Zk"/>
+                                <constraint firstItem="dYQ-6G-cyL" firstAttribute="top" secondItem="1bo-6e-apA" secondAttribute="bottom" id="KS8-Fe-AN6"/>
+                                <constraint firstItem="XM1-iY-P3p" firstAttribute="top" secondItem="qzC-6v-fza" secondAttribute="bottom" constant="8" id="KgH-NG-dLM"/>
+                                <constraint firstItem="7ur-oQ-X8v" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="OFc-1d-sSu"/>
+                                <constraint firstItem="qw0-XQ-7lX" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="Oog-sN-CF7"/>
+                                <constraint firstItem="ZcI-rT-vbH" firstAttribute="top" secondItem="J1E-J0-Pd3" secondAttribute="top" constant="10" id="P2h-69-svT"/>
+                                <constraint firstAttribute="trailing" secondItem="IYR-yb-uA9" secondAttribute="trailing" constant="15" id="Pex-f9-iV0"/>
+                                <constraint firstItem="qw0-XQ-7lX" firstAttribute="top" secondItem="ZcI-rT-vbH" secondAttribute="bottom" constant="8" id="Q28-Th-Ief"/>
+                                <constraint firstAttribute="trailing" secondItem="XM1-iY-P3p" secondAttribute="trailing" constant="15" id="SRL-LU-QtT"/>
+                                <constraint firstItem="8Uk-DL-E3K" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="Szt-Mp-Ybr"/>
+                                <constraint firstAttribute="trailing" secondItem="OAE-sX-Yhj" secondAttribute="trailing" constant="15" id="Tbf-AW-iw8"/>
+                                <constraint firstItem="ZcI-rT-vbH" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="U8F-8X-HXQ"/>
+                                <constraint firstAttribute="trailing" secondItem="ZcI-rT-vbH" secondAttribute="trailing" constant="15" id="Ufj-SN-QRy"/>
+                                <constraint firstItem="ZRu-cD-Hlc" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="WyQ-Xy-gny"/>
+                                <constraint firstItem="8VJ-eF-75V" firstAttribute="top" secondItem="9Pb-oV-1kw" secondAttribute="bottom" constant="10" id="XBz-CK-YhD"/>
+                                <constraint firstItem="eB3-I0-gmN" firstAttribute="top" secondItem="dYQ-6G-cyL" secondAttribute="bottom" id="XvF-5e-EyE"/>
+                                <constraint firstItem="Wqm-MZ-YnB" firstAttribute="top" secondItem="Jbs-ll-UuQ" secondAttribute="bottom" constant="10" id="ZEm-rx-Ao2"/>
+                                <constraint firstAttribute="trailing" secondItem="8VJ-eF-75V" secondAttribute="trailing" constant="15" id="Zvc-pu-pkz"/>
+                                <constraint firstItem="9Pb-oV-1kw" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="bgF-LW-hHP"/>
+                                <constraint firstItem="dYQ-6G-cyL" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="bud-wX-Qzl"/>
+                                <constraint firstItem="60e-4v-YYx" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="bwh-7k-ejd"/>
+                                <constraint firstItem="OAE-sX-Yhj" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="cGJ-iZ-4Gq"/>
+                                <constraint firstAttribute="trailing" secondItem="qw0-XQ-7lX" secondAttribute="trailing" constant="15" id="ccj-0a-HFg"/>
+                                <constraint firstAttribute="trailing" secondItem="dYQ-6G-cyL" secondAttribute="trailing" constant="15" id="dLk-kX-1HL"/>
+                                <constraint firstItem="qzC-6v-fza" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="dyT-Js-NWC"/>
+                                <constraint firstItem="XM1-iY-P3p" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="e8W-CK-Xrs"/>
+                                <constraint firstItem="Wqm-MZ-YnB" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="eUR-Sg-0DN"/>
+                                <constraint firstItem="1bo-6e-apA" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="f2P-mg-O10"/>
+                                <constraint firstAttribute="trailing" secondItem="60e-4v-YYx" secondAttribute="trailing" constant="15" id="fJF-Xe-ggf"/>
+                                <constraint firstItem="eB3-I0-gmN" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="gDm-zI-zEB"/>
+                                <constraint firstItem="o7T-PV-FoW" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="gGH-HJ-16m"/>
+                                <constraint firstItem="Jbs-ll-UuQ" firstAttribute="top" secondItem="IYR-yb-uA9" secondAttribute="bottom" constant="10" id="hgk-8p-zyE"/>
+                                <constraint firstAttribute="trailing" secondItem="Wqm-MZ-YnB" secondAttribute="trailing" constant="15" id="hpk-PC-Amo"/>
+                                <constraint firstAttribute="trailing" secondItem="8Uk-DL-E3K" secondAttribute="trailing" constant="15" id="ixA-NH-l2b"/>
+                                <constraint firstItem="60e-4v-YYx" firstAttribute="top" secondItem="axA-y2-5bl" secondAttribute="bottom" id="jJL-A2-vFx"/>
+                                <constraint firstItem="o7T-PV-FoW" firstAttribute="top" secondItem="8VJ-eF-75V" secondAttribute="bottom" constant="10" id="k9g-Bx-sNz"/>
+                                <constraint firstAttribute="trailing" secondItem="eB3-I0-gmN" secondAttribute="trailing" constant="15" id="kmv-Dg-e5d"/>
+                                <constraint firstItem="ZRu-cD-Hlc" firstAttribute="top" secondItem="IAE-O4-qf0" secondAttribute="bottom" constant="10" id="lqA-77-5uf"/>
+                                <constraint firstItem="IYR-yb-uA9" firstAttribute="top" secondItem="7ur-oQ-X8v" secondAttribute="bottom" constant="10" id="mAN-4e-pdi"/>
+                                <constraint firstItem="IYR-yb-uA9" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="nFw-ug-hxe"/>
+                                <constraint firstAttribute="trailing" secondItem="Jbs-ll-UuQ" secondAttribute="trailing" constant="15" id="oRW-jP-H9H"/>
+                                <constraint firstAttribute="trailing" secondItem="o7T-PV-FoW" secondAttribute="trailing" constant="15" id="oUP-zk-OdT"/>
+                                <constraint firstItem="axA-y2-5bl" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="oms-C6-lIh"/>
+                                <constraint firstAttribute="trailing" secondItem="9Pb-oV-1kw" secondAttribute="trailing" constant="15" id="rBY-s4-hXf"/>
+                                <constraint firstItem="qzC-6v-fza" firstAttribute="top" secondItem="60e-4v-YYx" secondAttribute="bottom" constant="10" id="rMi-h4-LpH"/>
+                                <constraint firstItem="Jbs-ll-UuQ" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="tAm-2s-8aR"/>
+                                <constraint firstItem="8VJ-eF-75V" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="ujZ-GG-y1B"/>
+                                <constraint firstItem="wgh-w3-pTO" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="wgJ-Ct-RVw"/>
+                                <constraint firstItem="IAE-O4-qf0" firstAttribute="leading" secondItem="J1E-J0-Pd3" secondAttribute="leading" constant="15" id="wjn-ER-FT0"/>
+                                <constraint firstAttribute="trailing" secondItem="wgh-w3-pTO" secondAttribute="trailing" constant="15" id="xeb-6u-d57"/>
+                                <constraint firstAttribute="height" constant="800" id="xxn-Ie-tNs"/>
+                                <constraint firstAttribute="trailing" secondItem="qzC-6v-fza" secondAttribute="trailing" constant="15" id="zRp-RI-r5d"/>
+                                <constraint firstAttribute="trailing" secondItem="1bo-6e-apA" secondAttribute="trailing" constant="15" id="zUI-gJ-Ir1"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="J1E-J0-Pd3" firstAttribute="leading" secondItem="EmH-ks-xUG" secondAttribute="leading" id="5e3-No-fgP"/>
+                        <constraint firstAttribute="trailing" secondItem="J1E-J0-Pd3" secondAttribute="trailing" id="QFa-O8-agn"/>
+                        <constraint firstItem="J1E-J0-Pd3" firstAttribute="centerX" secondItem="EmH-ks-xUG" secondAttribute="centerX" id="W5L-e2-WTe"/>
+                        <constraint firstItem="J1E-J0-Pd3" firstAttribute="top" secondItem="EmH-ks-xUG" secondAttribute="top" id="Wof-lN-xlz"/>
+                        <constraint firstAttribute="bottom" secondItem="J1E-J0-Pd3" secondAttribute="bottom" id="km9-g6-68f"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="EmH-ks-xUG" secondAttribute="trailing" id="1b0-34-ASA"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="EmH-ks-xUG" secondAttribute="bottom" id="FbS-at-1Ja"/>
+                <constraint firstItem="vRb-Xg-XuF" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="Ivn-i4-yk6"/>
+                <constraint firstItem="vRb-Xg-XuF" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="WG6-qw-tFP"/>
+                <constraint firstItem="vRb-Xg-XuF" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="cKD-VN-jW3"/>
+                <constraint firstItem="EmH-ks-xUG" firstAttribute="top" secondItem="vRb-Xg-XuF" secondAttribute="bottom" id="xpW-lq-EEE"/>
+                <constraint firstItem="EmH-ks-xUG" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="yh7-fS-wuA"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="49.5" y="202.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Navigation_left" width="32" height="32"/>
+    </resources>
+</document>

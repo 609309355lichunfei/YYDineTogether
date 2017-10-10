@@ -15,6 +15,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
+@property (weak, nonatomic) IBOutlet UIView *shopcartBGView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shopcartBGViewHeight;
 
 @property (strong, nonatomic) HomeSearchView *homeSearchView;
 
@@ -67,6 +69,7 @@
     _homeSearchView.didSelectBlock = ^(NSString *keyword){
         [weakSelf.mySearchBar resignFirstResponder];
         weakSearchView.type = SearchViewTypeResult;
+        weakSelf.shopcartBGViewHeight.constant = 45;
         [weakSearchView getConnectWithSearchKeyWord:keyword];
         weakSelf.mySearchBar.text = keyword;
     };
@@ -80,12 +83,14 @@
 #pragma mark - UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
     _homeSearchView.type = SearchViewTypeSearch;
+    self.shopcartBGViewHeight.constant = 0;
     return YES;
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
     self.homeSearchView.type = SearchViewTypeResult;
+    self.shopcartBGViewHeight.constant = 45;
     [self.homeSearchView getConnectWithSearchKeyWord:searchBar.text];
 }
 

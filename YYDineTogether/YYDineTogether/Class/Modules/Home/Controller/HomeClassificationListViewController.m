@@ -26,9 +26,9 @@
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 
 @property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
+@property (weak, nonatomic) IBOutlet UIView *shoppingcartBGView;
 
-@property (strong, nonatomic) HomeShoppingCartView *shoppingView;
+
 
 @property (strong, nonatomic)  HomeFilterView *filterView;
 
@@ -48,27 +48,8 @@
 }
 
 - (void)registUI {
-    self.automaticallyAdjustsScrollViewInsets = NO;
     self.shoppingCartCountLabel.layer.cornerRadius = 9;
-    if ([ShoppingCartManager sharedManager].count == 0) {
-        self.shoppingCartCountLabel.hidden = YES;
-        self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
-    } else {
-        self.shoppingCartCountLabel.hidden = NO;
-        self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].count];
-        self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
-    }
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"JSYHShoppingCartCountChanged" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-        if ([ShoppingCartManager sharedManager].count == 0) {
-            self.shoppingCartCountLabel.hidden = YES;
-            self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
-        } else {
-            self.shoppingCartCountLabel.hidden = NO;
-            self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].count];
-            self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
-        }
-        
-    }];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     _isShops = YES;
     
     
@@ -77,6 +58,16 @@
     self.shopVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addChildViewController:self.shopVC];
     [self.mainView addSubview:self.shopVC.view];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([ShoppingCartManager sharedManager].count == 0) {
+        self.shoppingCartCountLabel.hidden = YES;
+    } else {
+        self.shoppingCartCountLabel.hidden = NO;
+        self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].count];
+    }
 }
 
 - (IBAction)backAction:(id)sender {
@@ -127,21 +118,6 @@
 - (IBAction)clearShoppingCartAction:(id)sender {
     ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
     [self.navigationController pushViewController:shoppingCartVC animated:YES];
-}
-
-- (IBAction)shoppingCartAction:(id)sender {
-//    if (_shoppingView == nil) {
-//        self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
-//            [_shoppingView removeShoppingCartView];
-//            _shoppingView = nil;
-//        }];
-//        [_shoppingView addGestureRecognizer:tap];
-//        [_shoppingView showShoppingCartView];
-//    } else {
-//        [_shoppingView removeShoppingCartView];
-//        _shoppingView = nil;
-//    }
 }
 
 #pragma mark - HomeFilterViewDelegate

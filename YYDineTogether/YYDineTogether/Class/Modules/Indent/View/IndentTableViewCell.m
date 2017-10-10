@@ -68,7 +68,7 @@
     switch (_orderModel.status) {
         case 1:{
             self.statusLabel.text = @"待支付";
-            if (600 > _orderModel.nowtime - _orderModel.ordertime) {
+            if (600 > ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) && ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) > 0) {
                 _time = 600 - ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) + 10;
                 NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
                 if (_time % 60 > 9) {
@@ -80,6 +80,9 @@
                 }
                     self.timer = [NSTimer timerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
                         _time --;
+                        if (_time == 0) {
+                            [_timer invalidate];
+                        }
                         NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
                         if (_time % 60 > 9) {
                             NSString *second = [NSString stringWithFormat:@"%ld",_time % 60];
@@ -94,6 +97,8 @@
                     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:(NSRunLoopCommonModes)];
                 
                 
+            } else {
+                self.timerLabel.text = @"00:00";
             }
             self.timerImageView.hidden = NO;
             self.timerLabel.hidden = NO;
@@ -102,7 +107,7 @@
             break;}
         case 2:{
             self.statusLabel.text = @"等待商家接单 (0/5)";
-            if (300 > _orderModel.nowtime - _orderModel.ordertime) {
+            if (300 > ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) && ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) > 0) {
                 _time = 300 - ([AppManager getNowTimestamp] - _orderModel.paytime) + [UserManager sharedManager].timerinterval + 10;
                 NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
                 if (_time % 60 > 9) {
@@ -115,6 +120,9 @@
                 if (self.timer == nil) {
                     self.timer = [NSTimer timerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
                         _time --;
+                        if (_time == 0) {
+                            [self.timer invalidate];
+                        }
                         NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
                         if (_time % 60 > 9) {
                             NSString *second = [NSString stringWithFormat:@"%ld",_time % 60];
@@ -127,6 +135,8 @@
                     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:(NSRunLoopCommonModes)];
                 }
                 
+            } else {
+                self.timerLabel.text = @"00:00";
             }
             self.timerImageView.hidden = NO;
             self.timerLabel.hidden = NO;

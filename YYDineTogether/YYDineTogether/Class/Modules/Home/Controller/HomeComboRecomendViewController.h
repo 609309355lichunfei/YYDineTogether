@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeComboRecomendViewController : UIViewController
-
+@property (strong, nonatomic) NSString *tagid;
 @end

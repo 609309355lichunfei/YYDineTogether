@@ -41,7 +41,6 @@
 }
 
 - (IBAction)clearCacheAction:(id)sender {
-    
 }
 
 - (IBAction)logOutAction:(id)sender {
@@ -49,9 +48,12 @@
     [[JSRequestManager sharedManager] logoutWithSuccess:^(id responseObject) {
         [MBProgressHUD hideHUD];
         
+        
         [AppManager showToastWithMsg:@"已退出"];
         [[ShoppingCartManager sharedManager] shoppingCartReloadData];
         self.logOutBT.hidden = YES;
+        [[AppDelegate shareAppDelegate].mainTabBar setSelectedIndex:0];
+        [self.navigationController popViewControllerAnimated:YES];
     } Failed:^(NSError *error) {
         [MBProgressHUD hideHUD];
     }];

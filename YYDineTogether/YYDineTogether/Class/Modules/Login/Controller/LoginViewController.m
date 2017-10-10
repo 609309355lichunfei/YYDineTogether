@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import <JPUSHService.h>
+#import "JSYHFirstCouponView.h"
 
 @interface LoginViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *numberTF;
@@ -23,6 +24,7 @@
 }
 
 - (IBAction)backAction:(id)sender {
+    [[AppDelegate shareAppDelegate].mainTabBar setSelectedIndex:0];
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
@@ -44,14 +46,29 @@
         return;
     }
     [[JSRequestManager sharedManager] loginWithUserName:_numberTF.text Passord:_verificationTF.text Success:^(id responseObject) {
-        [[ShoppingCartManager sharedManager] shoppingCartReloadData];
-        [[ShoppingCartManager sharedManager] addWithAdmin];
-        [JPUSHService setAlias:_numberTF.text completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
-            
-        } seq:1];
-        [self dismissViewControllerAnimated:YES completion:^{
-            
-        }];
+        NSNumber *errorCode = responseObject[@"errorCode"];
+        if ([errorCode isEqualToNumber:@0]) {
+            [[ShoppingCartManager sharedManager] shoppingCartReloadData];
+            [[ShoppingCartManager sharedManager] addWithAdmin];
+            [JPUSHService setAlias:_numberTF.text completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+                
+            } seq:1];
+            [self dismissViewControllerAnimated:YES completion:^{
+                [[JSRequestManager sharedManager] getMemberInfoSuccess:^(id responseObject) {
+                    NSNumber *is_first = responseObject[@"data"][@"is_first"];
+                    if ([is_first isEqualToNumber:@1]) {
+                        JSYHFirstCouponView *firstView = [[NSBundle mainBundle] loadNibNamed:@"JSYHFirstCouponView" owner:nil options:nil].lastObject;
+                        firstView.bounds = kScreen_Bounds;
+                        [[AppDelegate shareAppDelegate].mainNavi.view addSubview:firstView];
+                    }
+                } Failed:^(NSError *error) {
+                    
+                }];
+            }];
+        } else {
+            [AppManager showToastWithMsg:responseObject[@"message"]];
+        }
+        
     } Failed:^(NSError *error) {
         [AppManager showToastWithMsg:@"账号密码错误"];
     }];

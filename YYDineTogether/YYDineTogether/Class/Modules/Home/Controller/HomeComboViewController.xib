@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeComboViewController">
             <connections>
@@ -41,15 +47,6 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eSd-CZ-N5X">
                     <rect key="frame" x="0.0" y="164" width="375" height="167.5"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="烤肉套餐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8BR-C2-YxZ">
-                            <rect key="frame" x="141" y="59" width="92" height="32.5"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="23"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                 </view>
@@ -59,23 +56,15 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZI-Qv-21h">
                             <rect key="frame" x="0.0" y="0.0" width="187.5" height="168"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_breadCombo" translatesAutoresizingMaskIntoConstraints="NO" id="qGD-Wu-mm3">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qGD-Wu-mm3">
                                     <rect key="frame" x="8" y="0.0" width="175.5" height="168"/>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="面包套餐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9y-vi-uRp">
-                                    <rect key="frame" x="50" y="67.5" width="92" height="33"/>
-                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="23"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="qGD-Wu-mm3" firstAttribute="top" secondItem="pZI-Qv-21h" secondAttribute="top" id="1Yb-H1-6GG"/>
-                                <constraint firstItem="c9y-vi-uRp" firstAttribute="centerY" secondItem="qGD-Wu-mm3" secondAttribute="centerY" id="2qe-GR-GtR"/>
                                 <constraint firstItem="qGD-Wu-mm3" firstAttribute="leading" secondItem="pZI-Qv-21h" secondAttribute="leading" constant="8" id="CL1-c0-IuT"/>
                                 <constraint firstAttribute="trailing" secondItem="qGD-Wu-mm3" secondAttribute="trailing" constant="4" id="VMq-WC-Vz0"/>
                                 <constraint firstAttribute="bottom" secondItem="qGD-Wu-mm3" secondAttribute="bottom" id="hal-Yo-dut"/>
-                                <constraint firstItem="c9y-vi-uRp" firstAttribute="centerX" secondItem="qGD-Wu-mm3" secondAttribute="centerX" id="wNs-6I-j3b"/>
                             </constraints>
                             <connections>
                                 <outletCollection property="gestureRecognizers" destination="BKY-uL-EIb" appends="YES" id="Y55-m4-eGg"/>
@@ -84,22 +73,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9O-p1-XYJ">
                             <rect key="frame" x="187.5" y="0.0" width="187.5" height="168"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_breadCombo" translatesAutoresizingMaskIntoConstraints="NO" id="Z3U-Rm-eBe">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z3U-Rm-eBe">
                                     <rect key="frame" x="4" y="0.0" width="175.5" height="168"/>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="面包套餐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qG0-Bh-LSp">
-                                    <rect key="frame" x="46.5" y="67.5" width="92" height="33"/>
-                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="23"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="Z3U-Rm-eBe" secondAttribute="trailing" constant="8" id="2c7-ee-coO"/>
                                 <constraint firstItem="Z3U-Rm-eBe" firstAttribute="leading" secondItem="A9O-p1-XYJ" secondAttribute="leading" constant="4" id="6hw-QU-6vP"/>
-                                <constraint firstItem="qG0-Bh-LSp" firstAttribute="centerX" secondItem="Z3U-Rm-eBe" secondAttribute="centerX" id="axR-Pf-rqk"/>
                                 <constraint firstAttribute="bottom" secondItem="Z3U-Rm-eBe" secondAttribute="bottom" id="dgg-H6-Rpd"/>
-                                <constraint firstItem="qG0-Bh-LSp" firstAttribute="centerY" secondItem="Z3U-Rm-eBe" secondAttribute="centerY" id="t6G-cr-HfA"/>
                                 <constraint firstItem="Z3U-Rm-eBe" firstAttribute="top" secondItem="A9O-p1-XYJ" secondAttribute="top" id="yj4-fk-e1Z"/>
                             </constraints>
                             <connections>
@@ -124,19 +105,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NiE-m3-RSM">
                     <rect key="frame" x="0.0" y="499.5" width="375" height="167.5"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_pizzaCombo" translatesAutoresizingMaskIntoConstraints="NO" id="6ro-cg-xBf">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6ro-cg-xBf">
                             <rect key="frame" x="8" y="0.0" width="359" height="167.5"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="披萨套餐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ahn-mV-uaz">
-                            <rect key="frame" x="142" y="68" width="92" height="33"/>
-                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="23"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="Ahn-mV-uaz" firstAttribute="centerY" secondItem="6ro-cg-xBf" secondAttribute="centerY" id="9mB-a0-wzf"/>
-                        <constraint firstItem="Ahn-mV-uaz" firstAttribute="centerX" secondItem="6ro-cg-xBf" secondAttribute="centerX" id="Fnb-1v-2bz"/>
                         <constraint firstItem="6ro-cg-xBf" firstAttribute="top" secondItem="NiE-m3-RSM" secondAttribute="top" id="GmZ-pu-3Ef"/>
                         <constraint firstAttribute="bottom" secondItem="6ro-cg-xBf" secondAttribute="bottom" id="bPb-e8-XVl"/>
                         <constraint firstAttribute="trailing" secondItem="6ro-cg-xBf" secondAttribute="trailing" constant="8" id="gKM-NA-yIi"/>
@@ -218,8 +191,6 @@
     </objects>
     <resources>
         <image name="Navigation_left" width="32" height="32"/>
-        <image name="home_breadCombo" width="169" height="144"/>
         <image name="home_combobanner" width="375" height="130"/>
-        <image name="home_pizzaCombo" width="351" height="144"/>
     </resources>
 </document>

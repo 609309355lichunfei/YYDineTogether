@@ -11,12 +11,12 @@
 #import "JSYHCombListTableViewCell.h"
 #import "JSYHComboModel.h"
 #import "JSYHCombListHeaderTableViewCell.h"
+#import "HomeActivityViewController.h"
 
 @interface HomeComboRecomendViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>{
     NSInteger _pageIndex;
 }
 
-@property (strong, nonatomic) HomeShoppingCartView *shoppingView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *shoppingCartBTBottom;
 @property (weak, nonatomic) IBOutlet UIView *shoppingCartView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -72,33 +72,64 @@
 
 - (void)getConnectWithDataLoadType:(DataLoadType)dataLoadType {
     _pageIndex = dataLoadType == DataLoadTypeNone ? 0 : _pageIndex + 1;
-    [[JSRequestManager sharedManager] getBannerWithPage:[NSString stringWithFormat:@"%ld",_pageIndex] type:@"3" lng:[JSYHLocationManager sharedManager].lng lat:[JSYHLocationManager sharedManager].lat Success:^(id responseObject) {
-        NSDictionary *dataDic = responseObject[@"data"];
-        NSArray *combsArray = dataDic[@"combs"];
-        if (combsArray.count < 20) {
-            self.tableView.mj_footer.hidden = YES;
-        } else {
-            self.tableView.mj_footer.hidden = NO;
-        }
-        if (dataLoadType == DataLoadTypeNone) {
-            [self.dataArray removeAllObjects];
-            [self.tableView.mj_header endRefreshing];
-        } else {
-            [self.tableView.mj_footer endRefreshing];
-        }
-        for (NSDictionary *combDic in combsArray) {
-            JSYHComboModel *model = [[JSYHComboModel alloc] init];
-            [model setValuesForKeysWithDictionary:combDic];
-            [self.dataArray addObject:model];
-        }
-        [self.tableView reloadData];
-    } Failed:^(NSError *error) {
-        if (dataLoadType == DataLoadTypeNone) {
-            [self.tableView.mj_header endRefreshing];
-        } else {
-            [self.tableView.mj_footer endRefreshing];
-        }
-    }];
+    if (_tagid == nil) {
+        [[JSRequestManager sharedManager] getBannerWithPage:[NSString stringWithFormat:@"%ld",_pageIndex] type:@"3" lng:[JSYHLocationManager sharedManager].lng lat:[JSYHLocationManager sharedManager].lat Success:^(id responseObject) {
+            NSDictionary *dataDic = responseObject[@"data"];
+            NSArray *combsArray = dataDic[@"combs"];
+            if (combsArray.count < 20) {
+                self.tableView.mj_footer.hidden = YES;
+            } else {
+                self.tableView.mj_footer.hidden = NO;
+            }
+            if (dataLoadType == DataLoadTypeNone) {
+                [self.dataArray removeAllObjects];
+                [self.tableView.mj_header endRefreshing];
+            } else {
+                [self.tableView.mj_footer endRefreshing];
+            }
+            for (NSDictionary *combDic in combsArray) {
+                JSYHComboModel *model = [[JSYHComboModel alloc] init];
+                [model setValuesForKeysWithDictionary:combDic];
+                [self.dataArray addObject:model];
+            }
+            [self.tableView reloadData];
+        } Failed:^(NSError *error) {
+            if (dataLoadType == DataLoadTypeNone) {
+                [self.tableView.mj_header endRefreshing];
+            } else {
+                [self.tableView.mj_footer endRefreshing];
+            }
+        }];
+    } else {
+        [[JSRequestManager sharedManager] getCombsWithTagid:_tagid page:nil Success:^(id responseObject) {
+            NSDictionary *dataDic = responseObject[@"data"];
+            NSArray *combsArray = dataDic[@"combs"];
+            if (combsArray.count < 20) {
+                self.tableView.mj_footer.hidden = YES;
+            } else {
+                self.tableView.mj_footer.hidden = NO;
+            }
+            if (dataLoadType == DataLoadTypeNone) {
+                [self.dataArray removeAllObjects];
+                [self.tableView.mj_header endRefreshing];
+            } else {
+                [self.tableView.mj_footer endRefreshing];
+            }
+            for (NSDictionary *combDic in combsArray) {
+                JSYHComboModel *model = [[JSYHComboModel alloc] init];
+                [model setValuesForKeysWithDictionary:combDic];
+                [self.dataArray addObject:model];
+            }
+            [self.tableView reloadData];
+        } Failed:^(NSError *error) {
+            if (dataLoadType == DataLoadTypeNone) {
+                [self.tableView.mj_header endRefreshing];
+            } else {
+                [self.tableView.mj_footer endRefreshing];
+            }
+        }];
+    }
+    
 }
 
 - (IBAction)backAction:(id)sender {
@@ -108,21 +139,6 @@
 - (IBAction)clearShoppingCartAction:(id)sender {
     ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
     [self.navigationController pushViewController:shoppingCartVC animated:YES];
-}
-
-- (IBAction)shoppingCartAction:(id)sender {
-    if (_shoppingView == nil) {
-        self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
-            [_shoppingView removeShoppingCartView];
-            _shoppingView = nil;
-        }];
-        [_shoppingView addGestureRecognizer:tap];
-        [_shoppingView showShoppingCartView];
-    } else {
-        [_shoppingView removeShoppingCartView];
-        _shoppingView = nil;
-    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -160,7 +176,10 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    HomeActivityViewController *combVC = [[HomeActivityViewController alloc] init];
+    JSYHComboModel *model = self.dataArray[indexPath.row];
+    combVC.combId = model.combid.stringValue;
+    [self.navigationController pushViewController:combVC animated:YES];
 }
 
 - (NSMutableArray *)dataArray {

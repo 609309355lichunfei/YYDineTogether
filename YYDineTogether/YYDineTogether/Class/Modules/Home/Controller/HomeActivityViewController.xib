@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Medium</string>
+            <string>PingFangSC-Regular</string>
+            <string>PingFangSC-Semibold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeActivityViewController">
             <connections>
@@ -275,9 +283,6 @@
                                 <constraint firstItem="quP-dX-mx9" firstAttribute="centerY" secondItem="p6B-x4-r4G" secondAttribute="centerY" id="Qhn-da-PF0"/>
                                 <constraint firstItem="quP-dX-mx9" firstAttribute="leading" secondItem="vGe-wG-M4b" secondAttribute="trailing" id="yhN-UX-If2"/>
                             </constraints>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="K72-ng-iem" appends="YES" id="bom-2Y-hvp"/>
-                            </connections>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NXQ-36-U7n">
                             <rect key="frame" x="12" y="0.0" width="44" height="44"/>
@@ -348,24 +353,11 @@
                                 <action selector="backAction:" destination="-1" eventType="touchUpInside" id="3Se-8x-CLI"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pM9-Y3-pQy">
-                            <rect key="frame" x="323" y="20" width="44" height="44"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="fyB-0g-TT4"/>
-                                <constraint firstAttribute="width" constant="44" id="mbO-Em-kYa"/>
-                            </constraints>
-                            <state key="normal" image="home_shared"/>
-                            <connections>
-                                <action selector="sharedAction:" destination="-1" eventType="touchUpInside" id="ofz-zh-djT"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="H70-2b-7pi" firstAttribute="leading" secondItem="shw-8a-3jw" secondAttribute="leading" id="7GV-Ci-XBP"/>
                         <constraint firstAttribute="height" constant="64" id="7xA-y4-H5H"/>
-                        <constraint firstAttribute="trailing" secondItem="pM9-Y3-pQy" secondAttribute="trailing" constant="8" id="Mh8-FQ-Gy2"/>
-                        <constraint firstAttribute="bottom" secondItem="pM9-Y3-pQy" secondAttribute="bottom" id="UyC-Wc-6Mc"/>
                         <constraint firstAttribute="bottom" secondItem="QaD-cU-EJ6" secondAttribute="bottom" constant="8" id="g6v-Uj-TC7"/>
                         <constraint firstItem="QaD-cU-EJ6" firstAttribute="centerX" secondItem="shw-8a-3jw" secondAttribute="centerX" id="nQ3-Bk-bK3"/>
                         <constraint firstAttribute="bottom" secondItem="H70-2b-7pi" secondAttribute="bottom" id="yVr-sO-Xg6"/>
@@ -387,18 +379,12 @@
             </constraints>
             <point key="canvasLocation" x="49.5" y="103.5"/>
         </view>
-        <tapGestureRecognizer id="K72-ng-iem">
-            <connections>
-                <action selector="shoppingCartAction:" destination="-1" id="oPh-do-zvC"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="Navigation_left" width="32" height="32"/>
         <image name="home_comb_background" width="375" height="601"/>
         <image name="home_salesCount" width="11" height="13"/>
         <image name="home_sc_black" width="14" height="12"/>
-        <image name="home_shared" width="15" height="15"/>
         <image name="shoppingCart" width="57" height="57"/>
     </resources>
 </document>

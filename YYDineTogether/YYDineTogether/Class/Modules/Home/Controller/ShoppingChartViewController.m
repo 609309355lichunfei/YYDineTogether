@@ -153,7 +153,7 @@
         }];
         return;
     }
-    if(MAPolygonContainsPoint(p1, polygon.points, 10)) {
+//    if(MAPolygonContainsPoint(p1, polygon.points, 10)) {
         [[JSRequestManager sharedManager] getMemberAddressSuccess:^(id responseObject) {
             [MBProgressHUD hideHUD];
             NSArray *addressDicArray = responseObject[@"data"][@"addresses"];
@@ -168,12 +168,24 @@
             [AppManager showToastWithMsg:@"请先添加配送地址"];
         }];
         
-    } else {
-        [MBProgressHUD hideHUD];
-        [AppManager showToastWithMsg:@"抱歉,你不在配送范围内"];
-    }
+//    } else {
+//        [MBProgressHUD hideHUD];
+//        [AppManager showToastWithMsg:@"抱歉,你不在配送范围内"];
+//    }
 //    IndentConfirmViewController *confirmVC = [[IndentConfirmViewController alloc]init];
 //    [self.navigationController pushViewController:confirmVC animated:YES];
+}
+
+- (IBAction)clearShopcartAction:(id)sender {
+    UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"是否要清空购物车?" message:@"" preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        [[ShoppingCartManager sharedManager] cleanShoppingcart];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
+    [alerVC addAction:action];
+    [alerVC addAction:cancelAction];
+    [self.navigationController presentViewController:alerVC animated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDataSource

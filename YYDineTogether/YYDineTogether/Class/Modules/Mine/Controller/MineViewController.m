@@ -13,10 +13,11 @@
 #import "SettingUpController.h"
 #import "DisCountViewController.h"
 #import "MineTableViewCell.h"
-#import "MsgViewController.h"
+//#import "MsgViewController.h"
 #import "JSYHUserModel.h"
 #import "JSYHFeedbackViewController.h"
 #import "JSYHCouponViewController.h"
+#import "JSYHAboutUsViewController.h"
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *iconimage;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
@@ -38,8 +39,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([JSRequestManager sharedManager].userName == nil || [JSRequestManager sharedManager].userName.length == 0) {
-        self.userNameLabel.text = @"登录/注册";
-        [self.iconimage setImage:[UIImage imageNamed:@"default_user"]];
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        [self.tabBarController presentViewController:loginVC animated:YES completion:nil];
     }else {
         [[JSRequestManager sharedManager] getMemberInfoSuccess:^(id responseObject) {
             [[JSYHUserModel defaultModel] setValuesForKeysWithDictionary:responseObject[@"data"]];
@@ -81,7 +82,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (section == 0) return 4;
+    if (section == 0) return 2;
     if (section == 1) return 2;
 
     return 1;
@@ -96,16 +97,26 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (indexPath.section == 0) {
+//        if (indexPath.row == 0) {
+//            cell.myLabel.text = @"我的吃货";
+//            cell.myImageView.image = [UIImage imageNamed:@"mine_eat"];
+//        }else if (indexPath.row == 1){
+//            cell.myLabel.text = @"收货地址";
+//            cell.myImageView.image = [UIImage imageNamed:@"mine_address"];
+//        }else if (indexPath.row == 2){
+//            cell.myLabel.text = @"我的红包";
+//            cell.myImageView.image = [UIImage imageNamed:@"mine_redBag"];
+//        }else{
+//            cell.myLabel.text = @"我的收藏";
+//            cell.myImageView.image = [UIImage imageNamed:@"mine_record"];
+//        }
         if (indexPath.row == 0) {
-            cell.myLabel.text = @"我的吃货";
-            cell.myImageView.image = [UIImage imageNamed:@"mine_eat"];
-        }else if (indexPath.row == 1){
             cell.myLabel.text = @"收货地址";
             cell.myImageView.image = [UIImage imageNamed:@"mine_address"];
-        }else if (indexPath.row == 2){
+        }else if (indexPath.row == 1){
             cell.myLabel.text = @"我的红包";
             cell.myImageView.image = [UIImage imageNamed:@"mine_redBag"];
-        }else{
+        }else if (indexPath.row == 2){
             cell.myLabel.text = @"我的收藏";
             cell.myImageView.image = [UIImage imageNamed:@"mine_record"];
         }
@@ -133,19 +144,30 @@
     
     
     if (indexPath.section == 0) {
+//        if (indexPath.row == 0) {
+////            MsgViewController *msgVC = [[MsgViewController alloc] init];
+////            msgVC.isMine = YES;
+////            [self.tabBarController.navigationController pushViewController:msgVC animated:YES];
+//            [AppManager showToastWithMsg:@"开发中,敬请期待"];
+//        }else if (indexPath.row == 1){
+//            shippingViewController * ship = [shippingViewController new];
+//            [self.tabBarController.navigationController pushViewController:ship animated:YES];
+//
+//        }else if (indexPath.row == 2){
+//            JSYHCouponViewController *couponVC = [[JSYHCouponViewController alloc] init];
+//            couponVC.chooseCoupon = nil;
+//            [self.tabBarController.navigationController pushViewController:couponVC animated:YES];
+//        }else{
+//
+//        }
         if (indexPath.row == 0) {
-//            MsgViewController *msgVC = [[MsgViewController alloc] init];
-//            msgVC.isMine = YES;
-//            [self.tabBarController.navigationController pushViewController:msgVC animated:YES];
-            [AppManager showToastWithMsg:@"开发中,敬请期待"];
-        }else if (indexPath.row == 1){
             shippingViewController * ship = [shippingViewController new];
             [self.tabBarController.navigationController pushViewController:ship animated:YES];
-
-        }else if (indexPath.row == 2){
+        }else if (indexPath.row == 1){
             JSYHCouponViewController *couponVC = [[JSYHCouponViewController alloc] init];
             couponVC.chooseCoupon = nil;
             [self.tabBarController.navigationController pushViewController:couponVC animated:YES];
+            
         }else{
             
         }
@@ -167,14 +189,12 @@
     }else if (indexPath.section == 2){
         
         if (indexPath.row == 0) {
-            
+            JSYHAboutUsViewController *vc = [[JSYHAboutUsViewController alloc] init];
+            [self.tabBarController.navigationController pushViewController:vc animated:YES];
                    }else{
           
         }
     }
-    
-    
-   
 }
 
 //消息通知
@@ -186,7 +206,7 @@ inforViewController * infor = [inforViewController new];
 //设置
 - (IBAction)settingUp:(id)sender {
 SettingUpController * setting = [SettingUpController new];
-[self.navigationController pushViewController:setting animated:YES];
+[self.tabBarController.navigationController pushViewController:setting animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

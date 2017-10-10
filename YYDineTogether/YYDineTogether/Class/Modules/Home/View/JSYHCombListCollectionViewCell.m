@@ -22,6 +22,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.contentView.layer.borderWidth = 0.4;
+    self.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
 }
 
 - (void)setDishModel:(JSYHDishModel *)dishModel {

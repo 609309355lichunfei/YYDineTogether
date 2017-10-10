@@ -26,6 +26,7 @@
 #import "HomeDishTableViewCell.h"
 #import "JSYHDrinkViewController.h"
 #import "JSYHCombListTableViewCell.h"
+#import "JSYHMSSearchViewController.h"
 
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate ,UIGestureRecognizerDelegate, CLLocationManagerDelegate, SDCycleScrollViewDelegate>{
     BOOL _isStoreDataSource;
@@ -439,30 +440,32 @@
 
 #pragma mark - UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-    if (self.homeSearchView == nil) {
-        self.homeSearchView = [[[NSBundle mainBundle] loadNibNamed:@"HomeSearchView" owner:self options:nil] lastObject];
-    }
-    _homeSearchView.frame = CGRectMake(0, 64, KScreenWidth, kScreenHeight - 64);
-    [self.view addSubview:_homeSearchView];
-    self.barView.backgroundColor = [UIColor whiteColor];
-    self.cancelBTWidth.constant = 46;
-    _homeSearchView.type = SearchViewTypeSearch;
-    __weak HomeSearchView *weakSearchView = _homeSearchView;
-    _homeSearchView.didSelectBlock = ^(NSString *keyword){
-        [searchBar resignFirstResponder];
-        weakSearchView.type = SearchViewTypeResult;
-        [weakSearchView getConnectWithSearchKeyWord:keyword];
-        searchBar.text = keyword;
-    };
-    [self.view bringSubviewToFront:self.shoppingcartBGView];
-    return YES;
+//    if (self.homeSearchView == nil) {
+//        self.homeSearchView = [[[NSBundle mainBundle] loadNibNamed:@"HomeSearchView" owner:self options:nil] lastObject];
+//    }
+//    _homeSearchView.frame = CGRectMake(0, 64, KScreenWidth, kScreenHeight - 64);
+//    [self.view addSubview:_homeSearchView];
+//    self.barView.backgroundColor = [UIColor whiteColor];
+//    self.cancelBTWidth.constant = 46;
+//    _homeSearchView.type = SearchViewTypeSearch;
+//    __weak HomeSearchView *weakSearchView = _homeSearchView;
+//    _homeSearchView.didSelectBlock = ^(NSString *keyword){
+//        [searchBar resignFirstResponder];
+//        weakSearchView.type = SearchViewTypeResult;
+//        [weakSearchView getConnectWithSearchKeyWord:keyword];
+//        searchBar.text = keyword;
+//    };
+//    [self.view bringSubviewToFront:self.shoppingcartBGView];
+    JSYHMSSearchViewController *searchVC = [[JSYHMSSearchViewController alloc] init];
+    [self.tabBarController.navigationController pushViewController:searchVC animated:YES];
+    return NO;
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [searchBar resignFirstResponder];
-    self.homeSearchView.type = SearchViewTypeResult;
-    [self.homeSearchView getConnectWithSearchKeyWord:searchBar.text];
-}
+//- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+//    [searchBar resignFirstResponder];
+//    self.homeSearchView.type = SearchViewTypeResult;
+//    [self.homeSearchView getConnectWithSearchKeyWord:searchBar.text];
+//}
 
 #pragma mark - SDCycleScrollViewDelegate
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {

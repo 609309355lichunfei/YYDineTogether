@@ -8,7 +8,6 @@
 
 #import "HomeStoreViewController.h"
 #import "HomeStoreRightTableViewCell.h"
-#import "HomeStoreDetailViewController.h"
 #import "HomeFoodDetailViewController.h"
 #import "HomeActivityViewController.h"
 #import "HomeStandardChooseView.h"
@@ -26,7 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *comboButton;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomLineLeading;
-@property (strong, nonatomic) HomeShoppingCartView *shoppingView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *shoppingCartBTBottom;
 @property (weak, nonatomic) IBOutlet UIView *activityView;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
@@ -34,7 +32,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *shopNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noticeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIButton *activityButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *activityViewHeight;
 @property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
@@ -123,7 +120,6 @@
 - (void)fillData {
     self.shopNameLabel.text = _shopModel.name;
     self.noticeLabel.text = _shopModel.notice_info;
-    self.statusLabel.hidden = _shopModel.status == 1 ? NO : YES;
     self.catesArray = self.shopModel.cates;
     [self.logoImageView setImageWithURL:[NSURL URLWithString:self.shopModel.logo] placeholder:[UIImage imageNamed:@"icon"]];
     [self.backgroundImageView setImageWithURL:[NSURL URLWithString:self.shopModel.logo] placeholder:[UIImage imageNamed:@"icon"]];
@@ -138,6 +134,7 @@
     [self.leftTableView reloadData];
     if (_shopModel.cates.count > 0) {
         [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:(UITableViewScrollPositionTop)];
+        [self tableView:self.leftTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         JSYHCateModel *cateModel = [_shopModel.cates firstObject];
         self.dishsArray = cateModel.dishs;
         [self.rightTableView reloadData];
@@ -154,21 +151,6 @@
 - (IBAction)clearShoppingCartAction:(id)sender {
     ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
     [self.navigationController pushViewController:shoppingCartVC animated:YES];
-}
-
-- (IBAction)shoppingCartAction:(id)sender {
-    if (_shoppingView == nil) {
-        self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
-            [_shoppingView removeShoppingCartView];
-            _shoppingView = nil;
-        }];
-        [_shoppingView addGestureRecognizer:tap];
-        [_shoppingView showShoppingCartView];
-    } else {
-        [_shoppingView removeShoppingCartView];
-        _shoppingView = nil;
-    }
 }
 
 - (IBAction)foodAction:(id)sender {
@@ -189,10 +171,6 @@
     }
 }
 
-- (IBAction)storeDetailAction:(id)sender {
-//    HomeStoreDetailViewController *detailVC = [[HomeStoreDetailViewController alloc]init];
-//    [self.navigationController pushViewController:detailVC animated:YES];
-}
 - (IBAction)activityAction:(id)sender {
     if (self.activityViewHeight.constant == 46) {
         self.activityViewHeight.constant = 23 * _shopModel.activites.count;
@@ -209,7 +187,7 @@
     if (tableView == _leftTableView) {
         return 30;
     } else {
-        return 100;
+        return 65;
     }
 }
 
@@ -233,7 +211,7 @@
         cell.backgroundColor = [UIColor whiteColor];
         cell.textLabel.textColor = [UIColor lightGrayColor];
         cell.textLabel.text = model.catename;
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.textLabel.font = [UIFont systemFontOfSize:11];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
         cell.textLabel.numberOfLines = 0;
         return cell;

@@ -10,7 +10,7 @@
 #import "MainTabBarController.h"
 #import "LCPanNavigationController.h"
 #import "HomeViewController.h"
-#import "MsgViewController.h"
+//#import "MsgViewController.h"
 #import "MineViewController.h"
 #import "TabBarItem.h"
 #import "IndentViewController.h"
@@ -60,9 +60,9 @@ PropertyNSMutableArray(VCS);//tabbar root VC
     [self setupChildViewController:homeVC title:@"首页" imageName:@"homebar" seleceImageName:@"homebar_color"];
     
     
-    MsgViewController *msgVC = [[MsgViewController alloc]init];
-    msgVC.isMine = NO;
-    [self setupChildViewController:msgVC title:@"吃货" imageName:@"eatbar" seleceImageName:@"eatbar_color"];
+//    MsgViewController *msgVC = [[MsgViewController alloc]init];
+//    msgVC.isMine = NO;
+//    [self setupChildViewController:msgVC title:@"吃货" imageName:@"eatbar" seleceImageName:@"eatbar_color"];
     
     IndentViewController * indent = [[IndentViewController alloc] init];
     [self setupChildViewController:indent title:@"订单" imageName:@"orderbar" seleceImageName:@"orderbar_color"];
@@ -84,7 +84,6 @@ PropertyNSMutableArray(VCS);//tabbar root VC
     controller.title = title;
     nav.navigationBar.hidden = YES;
     [_VCS addObject:nav];
-    
 }
 
 #pragma mark ————— 统一设置tabBarItem属性并添加到TabBar —————
@@ -113,7 +112,6 @@ PropertyNSMutableArray(VCS);//tabbar root VC
 
 #pragma mark ————— 选中某个tab —————
 - (void)setSelectedIndex:(NSUInteger)selectedIndex {
-    
     [super setSelectedIndex:selectedIndex];
     
     self.TabBar.selectedItem.selected = NO;

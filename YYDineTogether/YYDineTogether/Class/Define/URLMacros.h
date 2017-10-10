@@ -68,6 +68,10 @@
 #define URL_Combo [NSString stringWithFormat:@"%@/v1/comb/", URL_main]
 //套餐详情
 #define URL_ComboDetail [NSString stringWithFormat:@"%@/v1/comb/detail/", URL_main]
+//套餐列表
+#define URL_ComboTags [NSString stringWithFormat:@"%@/v1/comb/tags/", URL_main]
+//套餐列表
+#define URL_Combos [NSString stringWithFormat:@"%@/v1/combs/", URL_main]
 //商店详情
 #define URL_ShopDetail [NSString stringWithFormat:@"%@/v1/shop/", URL_main]
 //美食店分类

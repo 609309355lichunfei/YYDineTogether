@@ -89,13 +89,13 @@
 }
 
 - (void)getConnect {
-    [MBProgressHUD showMessage:@"进入订单详情"];
+//    [MBProgressHUD showMessage:@"进入订单详情"];
     if (self.timer) {
         [self.timer invalidate];
         self.timer = nil;
     }
     [[JSRequestManager sharedManager] getorderWithOrderNo:self.order_no Success:^(id responseObject) {
-        [MBProgressHUD hideHUD];
+//        [MBProgressHUD hideHUD];
         NSDictionary *orderDic = responseObject[@"data"][@"order"];
         JSYHOrderModel *model = [[JSYHOrderModel alloc] init];
         [model setValuesForKeysWithDictionary:orderDic];
@@ -148,21 +148,8 @@
                     [self.secondBT setTitle:@"继续支付" forState:(UIControlStateNormal)];
                     self.secondBT.hidden = NO;
                     self.timerBGHeight.constant = 30;
-                    _time = 600 - ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) + 10;
-                    NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
-                    if (_time % 60 > 9) {
-                        NSString *second = [NSString stringWithFormat:@"%ld",_time % 60];
-                        self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
-                    } else {
-                        NSString *second = [NSString stringWithFormat:@"0%ld",_time % 60];
-                        self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
-                    }
-                    self.timer = [NSTimer timerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
-                        _time --;
-                        if (timer == 0) {
-                            [AppManager showToastWithMsg:@"支付超时"];
-                            [self.navigationController popViewControllerAnimated:YES];
-                        }
+                    if (600 > ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) && ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) > 0) {
+                        _time = 600 - ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) + 10;
                         NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
                         if (_time % 60 > 9) {
                             NSString *second = [NSString stringWithFormat:@"%ld",_time % 60];
@@ -171,13 +158,32 @@
                             NSString *second = [NSString stringWithFormat:@"0%ld",_time % 60];
                             self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                         }
-                        
-                        
-                    } repeats:YES];
-                    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:(NSRunLoopCommonModes)];
+                        self.timer = [NSTimer timerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
+                            _time --;
+                            if (timer == 0) {
+                                [AppManager showToastWithMsg:@"支付超时"];
+                                [self.navigationController popViewControllerAnimated:YES];
+                            }
+                            NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
+                            if (_time % 60 > 9) {
+                                NSString *second = [NSString stringWithFormat:@"%ld",_time % 60];
+                                self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
+                            } else {
+                                NSString *second = [NSString stringWithFormat:@"0%ld",_time % 60];
+                                self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
+                            }
+                            
+                            
+                        } repeats:YES];
+                        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:(NSRunLoopCommonModes)];
+                    } else {
+                        self.timerLabel.text = @"00:00";
+                    }
+                    
                     break;}
                 case 10:
                     self.statusLabel.text = @"已完成";
+                    self.messageLabel.text = @"订单已完成";
                     self.secondBT.hidden = YES;
                     break;
                 case 11:
@@ -187,10 +193,12 @@
                     break;
                 case 12:
                     self.statusLabel.text = @"已取消";
+                    self.messageLabel.text = @"订单已取消";
                     self.secondBT.hidden = YES;
                     break;
                 case 13:
                     self.statusLabel.text = @"已退款";
+                    self.messageLabel.text = @"订单退款成功";
                     self.secondBT.hidden = YES;
                     break;
                 case 14:
@@ -200,6 +208,7 @@
                     break;
                 case 15:
                     self.statusLabel.text = @"配送超时";
+                    self.messageLabel.text = @"配送超时,请耐心等候";
                     self.secondBT.hidden = YES;
                     break;
                     
@@ -241,13 +250,12 @@
         
         if ((_orderModel.status > 1 && _orderModel.status < 5) || _orderModel.status == 9) {
         NSInteger shopCount = self.orderModel.sortedshops.count;
-        CLLocationCoordinate2D *commonPolylineCoords = malloc(sizeof(CLLocationCoordinate2D) * shopCount + 2);
+//        CLLocationCoordinate2D *commonPolylineCoords = malloc(sizeof(CLLocationCoordinate2D) * shopCount + 1);
         CLLocationCoordinate2D ridercoordinate = CLLocationCoordinate2DMake([self.orderModel.riderlat doubleValue], [self.orderModel.riderlng doubleValue]);
         self.riderAnnotation = [[MAPointAnnotation alloc] init];
         self.riderAnnotation.coordinate = ridercoordinate;
         self.riderAnnotation.title = @"骑手";
         [self.mapView addAnnotation:self.riderAnnotation];
-        commonPolylineCoords[shopCount + 1] = ridercoordinate;
         for (NSInteger i = 0; i < shopCount; i ++) {
             JSYHShopModel *model = self.dataArray[i];
             CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.lat doubleValue], [model.lng doubleValue]);
@@ -255,7 +263,7 @@
             annotation.coordinate = coordinate;
             annotation.title = model.name;
             [self.mapView addAnnotation:annotation];
-            commonPolylineCoords[i + 1] = coordinate;
+//            commonPolylineCoords[i] = coordinate;
         }
         
         CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([self.orderModel.lat doubleValue], [self.orderModel.lng doubleValue]);
@@ -263,13 +271,13 @@
         self.userAnnotation.coordinate = coordinate;
         self.userAnnotation.title = @"用户";
         [self.mapView addAnnotation:self.userAnnotation];
-        commonPolylineCoords[shopCount + 2] = coordinate;
+//        commonPolylineCoords[shopCount + 1] = coordinate;
         
        
         
         //构造折线对象
-        self.commonPolyline = [MAPolyline polylineWithCoordinates:commonPolylineCoords count:shopCount + 1];
-        [self.mapView addOverlay:self.commonPolyline];
+//        self.commonPolyline = [MAPolyline polylineWithCoordinates:commonPolylineCoords count:shopCount + 1];
+       // [self.mapView addOverlay:self.commonPolyline];
             self.mapView.centerCoordinate = CLLocationCoordinate2DMake([self.orderModel.riderlat doubleValue], [self.orderModel.riderlng doubleValue]);
         
         }
@@ -292,10 +300,10 @@
         [self.navigationController pushViewController:payVC animated:YES];
     } else if (self.orderModel.status == 2) {
         [[JSRequestManager sharedManager] cancelorderWithOrderNO:self.orderModel.order_no Success:^(id responseObject) {
-            [MBProgressHUD hideHUD];
+//            [MBProgressHUD hideHUD];
             [self.navigationController popViewControllerAnimated:YES];
         } Failed:^(NSError *error) {
-            [MBProgressHUD hideHUD];
+//            [MBProgressHUD hideHUD];
             [AppManager showToastWithMsg:@"取消成功"];
         }];
     }

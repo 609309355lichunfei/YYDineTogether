@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C0A7FF61F8C75BE00684168 /* JSYHSpecificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0A7FF41F8C75BE00684168 /* JSYHSpecificationViewController.m */; };
+		9C0A7FF71F8C75BE00684168 /* JSYHSpecificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0A7FF51F8C75BE00684168 /* JSYHSpecificationViewController.xib */; };
+		9C0A7FFB1F8C927E00684168 /* JSYHAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0A7FF91F8C927E00684168 /* JSYHAboutUsViewController.m */; };
+		9C0A7FFC1F8C927E00684168 /* JSYHAboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0A7FFA1F8C927E00684168 /* JSYHAboutUsViewController.xib */; };
+		9C0A7FFF1F8C99E800684168 /* JSYHFirstCouponView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0A7FFE1F8C99E800684168 /* JSYHFirstCouponView.m */; };
+		9C0A80011F8C99FB00684168 /* JSYHFirstCouponView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0A80001F8C99FB00684168 /* JSYHFirstCouponView.xib */; };
 		9C2AEE1B1F6F8A330045E3F1 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2AEE1A1F6F8A330045E3F1 /* libsqlite3.0.tbd */; };
 		9C2AEE1D1F6F9B570045E3F1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2AEE1C1F6F9B570045E3F1 /* UserNotifications.framework */; };
 		9C628F6C1F4BFD340014E828 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C628F5F1F4BFD340014E828 /* TAAbstractDotView.m */; };
@@ -64,18 +70,6 @@
 		9C85D7F51F46881400622EBF /* JSYHStoreActivityHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C85D7F31F46881400622EBF /* JSYHStoreActivityHeaderTableViewCell.xib */; };
 		9C85D7F81F46DD1C00622EBF /* JSYHSharedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85D7F71F46DD1C00622EBF /* JSYHSharedView.m */; };
 		9C85D7FA1F46DD2B00622EBF /* JSYHSharedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C85D7F91F46DD2B00622EBF /* JSYHSharedView.xib */; };
-		9C85D7FE1F4A754C00622EBF /* MsgDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85D7FC1F4A754C00622EBF /* MsgDetailTableViewCell.m */; };
-		9C85D7FF1F4A754C00622EBF /* MsgDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C85D7FD1F4A754C00622EBF /* MsgDetailTableViewCell.xib */; };
-		9C85D8031F4A7B6E00622EBF /* MsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85D8011F4A7B6E00622EBF /* MsgDetailViewController.m */; };
-		9C85D8041F4A7B6E00622EBF /* MsgDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C85D8021F4A7B6E00622EBF /* MsgDetailViewController.xib */; };
-		9C85D8081F4A7DEF00622EBF /* MsgChooseIndentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85D8061F4A7DEF00622EBF /* MsgChooseIndentViewController.m */; };
-		9C85D8091F4A7DEF00622EBF /* MsgChooseIndentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C85D8071F4A7DEF00622EBF /* MsgChooseIndentViewController.xib */; };
-		9C85D80D1F4A94BE00622EBF /* MsgChooseIndentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85D80C1F4A94BE00622EBF /* MsgChooseIndentHeaderView.m */; };
-		9C85D80F1F4A94CD00622EBF /* MsgChooseIndentHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C85D80E1F4A94CD00622EBF /* MsgChooseIndentHeaderView.xib */; };
-		9C85D8131F4A9A8700622EBF /* MsgChooseIndentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85D8111F4A9A8700622EBF /* MsgChooseIndentTableViewCell.m */; };
-		9C85D8141F4A9A8700622EBF /* MsgChooseIndentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C85D8121F4A9A8700622EBF /* MsgChooseIndentTableViewCell.xib */; };
-		9C85D8221F4ADF2E00622EBF /* MsgChooseIdentCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85D8201F4ADF2E00622EBF /* MsgChooseIdentCellTableViewCell.m */; };
-		9C85D8231F4ADF2E00622EBF /* MsgChooseIdentCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C85D8211F4ADF2E00622EBF /* MsgChooseIdentCellTableViewCell.xib */; };
 		9C8995461EE52CE40097AF38 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995451EE52CE40097AF38 /* HomeViewController.xib */; };
 		9C8995591EE57DA10097AF38 /* LCPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995541EE57DA10097AF38 /* LCPanGestureRecognizer.m */; };
 		9C89955A1EE57DA10097AF38 /* LCPanNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995561EE57DA10097AF38 /* LCPanNavigationController.m */; };
@@ -86,10 +80,6 @@
 		9C8995CA1EE6589B0097AF38 /* HomeSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995C51EE6589B0097AF38 /* HomeSearchView.xib */; };
 		9C8995CB1EE6589B0097AF38 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995C71EE6589B0097AF38 /* HomeTableViewCell.m */; };
 		9C8995CC1EE6589B0097AF38 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995C81EE6589B0097AF38 /* HomeTableViewCell.xib */; };
-		9C8995CF1EE658BD0097AF38 /* HomeShoppingCartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995CE1EE658BD0097AF38 /* HomeShoppingCartView.m */; };
-		9C8995D11EE658CE0097AF38 /* HomeShoppingCartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995D01EE658CE0097AF38 /* HomeShoppingCartView.xib */; };
-		9C8995D51EE65A250097AF38 /* HomeShoppingCartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995D31EE65A250097AF38 /* HomeShoppingCartTableViewCell.m */; };
-		9C8995D61EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995D41EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib */; };
 		9C8995DA1EE691500097AF38 /* HomeComboRecomendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995D81EE691500097AF38 /* HomeComboRecomendViewController.m */; };
 		9C8995DB1EE691500097AF38 /* HomeComboRecomendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995D91EE691500097AF38 /* HomeComboRecomendViewController.xib */; };
 		9C8995E31EE996DB0097AF38 /* BorderLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995E21EE996DB0097AF38 /* BorderLineButton.m */; };
@@ -105,8 +95,6 @@
 		9C8995FC1EED7B6A0097AF38 /* HomeStoreRightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995FA1EED7B6A0097AF38 /* HomeStoreRightTableViewCell.xib */; };
 		9C8996001EEE3D9D0097AF38 /* HomeFoodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8995FE1EEE3D9D0097AF38 /* HomeFoodDetailViewController.m */; };
 		9C8996011EEE3D9D0097AF38 /* HomeFoodDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8995FF1EEE3D9D0097AF38 /* HomeFoodDetailViewController.xib */; };
-		9C8996051EEE431F0097AF38 /* HomeStoreDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996031EEE431F0097AF38 /* HomeStoreDetailViewController.m */; };
-		9C8996061EEE431F0097AF38 /* HomeStoreDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996041EEE431F0097AF38 /* HomeStoreDetailViewController.xib */; };
 		9C89960A1EEE4C970097AF38 /* HomeComboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996081EEE4C970097AF38 /* HomeComboViewController.m */; };
 		9C89960B1EEE4C970097AF38 /* HomeComboViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996091EEE4C970097AF38 /* HomeComboViewController.xib */; };
 		9C89960F1EEE617A0097AF38 /* HomSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89960D1EEE617A0097AF38 /* HomSearchTableViewCell.m */; };
@@ -136,13 +124,6 @@
 		9C8996561EF2DCD90097AF38 /* IndentEditAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996541EF2DCD90097AF38 /* IndentEditAddressViewController.xib */; };
 		9C89965A1EF2E28C0097AF38 /* IndentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996581EF2E28C0097AF38 /* IndentDetailViewController.m */; };
 		9C89965B1EF2E28C0097AF38 /* IndentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996591EF2E28C0097AF38 /* IndentDetailViewController.xib */; };
-		9C89965D1EF519280097AF38 /* MsgViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C89965C1EF519280097AF38 /* MsgViewController.xib */; };
-		9C8996611EF51A640097AF38 /* MsgTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89965F1EF51A640097AF38 /* MsgTableViewCell.m */; };
-		9C8996621EF51A640097AF38 /* MsgTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996601EF51A640097AF38 /* MsgTableViewCell.xib */; };
-		9C8996651EF51DA90097AF38 /* MsgTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996641EF51DA90097AF38 /* MsgTableHeaderView.m */; };
-		9C8996671EF51DBA0097AF38 /* MsgTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996661EF51DBA0097AF38 /* MsgTableHeaderView.xib */; };
-		9C89966B1EF52A780097AF38 /* MsgEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996691EF52A780097AF38 /* MsgEditViewController.m */; };
-		9C89966C1EF52A780097AF38 /* MsgEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C89966A1EF52A780097AF38 /* MsgEditViewController.xib */; };
 		9C89966F1EF5461E0097AF38 /* citydata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C89966E1EF5461E0097AF38 /* citydata.plist */; };
 		9C8996731EF7B3440097AF38 /* HomeCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8996711EF7B3440097AF38 /* HomeCityViewController.m */; };
 		9C8996741EF7B3440097AF38 /* HomeCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8996721EF7B3440097AF38 /* HomeCityViewController.xib */; };
@@ -284,7 +265,6 @@
 		B3DA484B1EE50650006B6942 /* IndentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3DA47EE1EE50650006B6942 /* IndentViewController.xib */; };
 		B3DA484C1EE50650006B6942 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DA47F21EE50650006B6942 /* LoginViewController.m */; };
 		B3DA484D1EE50650006B6942 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3DA47F31EE50650006B6942 /* LoginViewController.xib */; };
-		B3DA484E1EE50650006B6942 /* MsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DA47FB1EE50650006B6942 /* MsgViewController.m */; };
 		B3DA48501EE50650006B6942 /* icon_tabbar_discovery.png in Resources */ = {isa = PBXBuildFile; fileRef = B3DA48091EE50650006B6942 /* icon_tabbar_discovery.png */; };
 		B3DA48511EE50650006B6942 /* icon_tabbar_discovery_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = B3DA480A1EE50650006B6942 /* icon_tabbar_discovery_selected.png */; };
 		B3DA48521EE50650006B6942 /* icon_tabbar_homepage.png in Resources */ = {isa = PBXBuildFile; fileRef = B3DA480B1EE50650006B6942 /* icon_tabbar_homepage.png */; };
@@ -337,6 +317,15 @@
 /* Begin PBXFileReference section */
 		00ABD77171EA03E326A38570 /* Pods-YYDineTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYDineTogether.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YYDineTogether/Pods-YYDineTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		5547863895558573680B5D19 /* Pods_YYDineTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YYDineTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C0A7FF31F8C75BE00684168 /* JSYHSpecificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSYHSpecificationViewController.h; sourceTree = "<group>"; };
+		9C0A7FF41F8C75BE00684168 /* JSYHSpecificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSYHSpecificationViewController.m; sourceTree = "<group>"; };
+		9C0A7FF51F8C75BE00684168 /* JSYHSpecificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JSYHSpecificationViewController.xib; sourceTree = "<group>"; };
+		9C0A7FF81F8C927E00684168 /* JSYHAboutUsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSYHAboutUsViewController.h; sourceTree = "<group>"; };
+		9C0A7FF91F8C927E00684168 /* JSYHAboutUsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSYHAboutUsViewController.m; sourceTree = "<group>"; };
+		9C0A7FFA1F8C927E00684168 /* JSYHAboutUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JSYHAboutUsViewController.xib; sourceTree = "<group>"; };
+		9C0A7FFD1F8C99E800684168 /* JSYHFirstCouponView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSYHFirstCouponView.h; sourceTree = "<group>"; };
+		9C0A7FFE1F8C99E800684168 /* JSYHFirstCouponView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSYHFirstCouponView.m; sourceTree = "<group>"; };
+		9C0A80001F8C99FB00684168 /* JSYHFirstCouponView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JSYHFirstCouponView.xib; sourceTree = "<group>"; };
 		9C2AEE1A1F6F8A330045E3F1 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		9C2AEE1C1F6F9B570045E3F1 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		9C2AEE1E1F6F9C2B0045E3F1 /* YYDineTogether.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YYDineTogether.entitlements; sourceTree = "<group>"; };
@@ -427,24 +416,6 @@
 		9C85D7F61F46DD1C00622EBF /* JSYHSharedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSYHSharedView.h; sourceTree = "<group>"; };
 		9C85D7F71F46DD1C00622EBF /* JSYHSharedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSYHSharedView.m; sourceTree = "<group>"; };
 		9C85D7F91F46DD2B00622EBF /* JSYHSharedView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSYHSharedView.xib; sourceTree = "<group>"; };
-		9C85D7FB1F4A754C00622EBF /* MsgDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgDetailTableViewCell.h; sourceTree = "<group>"; };
-		9C85D7FC1F4A754C00622EBF /* MsgDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgDetailTableViewCell.m; sourceTree = "<group>"; };
-		9C85D7FD1F4A754C00622EBF /* MsgDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgDetailTableViewCell.xib; sourceTree = "<group>"; };
-		9C85D8001F4A7B6E00622EBF /* MsgDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgDetailViewController.h; sourceTree = "<group>"; };
-		9C85D8011F4A7B6E00622EBF /* MsgDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgDetailViewController.m; sourceTree = "<group>"; };
-		9C85D8021F4A7B6E00622EBF /* MsgDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgDetailViewController.xib; sourceTree = "<group>"; };
-		9C85D8051F4A7DEF00622EBF /* MsgChooseIndentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgChooseIndentViewController.h; sourceTree = "<group>"; };
-		9C85D8061F4A7DEF00622EBF /* MsgChooseIndentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgChooseIndentViewController.m; sourceTree = "<group>"; };
-		9C85D8071F4A7DEF00622EBF /* MsgChooseIndentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgChooseIndentViewController.xib; sourceTree = "<group>"; };
-		9C85D80B1F4A94BE00622EBF /* MsgChooseIndentHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgChooseIndentHeaderView.h; sourceTree = "<group>"; };
-		9C85D80C1F4A94BE00622EBF /* MsgChooseIndentHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgChooseIndentHeaderView.m; sourceTree = "<group>"; };
-		9C85D80E1F4A94CD00622EBF /* MsgChooseIndentHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgChooseIndentHeaderView.xib; sourceTree = "<group>"; };
-		9C85D8101F4A9A8700622EBF /* MsgChooseIndentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgChooseIndentTableViewCell.h; sourceTree = "<group>"; };
-		9C85D8111F4A9A8700622EBF /* MsgChooseIndentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgChooseIndentTableViewCell.m; sourceTree = "<group>"; };
-		9C85D8121F4A9A8700622EBF /* MsgChooseIndentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgChooseIndentTableViewCell.xib; sourceTree = "<group>"; };
-		9C85D81F1F4ADF2E00622EBF /* MsgChooseIdentCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgChooseIdentCellTableViewCell.h; sourceTree = "<group>"; };
-		9C85D8201F4ADF2E00622EBF /* MsgChooseIdentCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgChooseIdentCellTableViewCell.m; sourceTree = "<group>"; };
-		9C85D8211F4ADF2E00622EBF /* MsgChooseIdentCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgChooseIdentCellTableViewCell.xib; sourceTree = "<group>"; };
 		9C8995451EE52CE40097AF38 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		9C8995521EE57DA10097AF38 /* LCPanBackDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCPanBackDelegate.h; sourceTree = "<group>"; };
 		9C8995531EE57DA10097AF38 /* LCPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCPanGestureRecognizer.h; sourceTree = "<group>"; };
@@ -462,12 +433,6 @@
 		9C8995C61EE6589B0097AF38 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
 		9C8995C71EE6589B0097AF38 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
 		9C8995C81EE6589B0097AF38 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
-		9C8995CD1EE658BD0097AF38 /* HomeShoppingCartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeShoppingCartView.h; sourceTree = "<group>"; };
-		9C8995CE1EE658BD0097AF38 /* HomeShoppingCartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeShoppingCartView.m; sourceTree = "<group>"; };
-		9C8995D01EE658CE0097AF38 /* HomeShoppingCartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeShoppingCartView.xib; sourceTree = "<group>"; };
-		9C8995D21EE65A250097AF38 /* HomeShoppingCartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeShoppingCartTableViewCell.h; sourceTree = "<group>"; };
-		9C8995D31EE65A250097AF38 /* HomeShoppingCartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeShoppingCartTableViewCell.m; sourceTree = "<group>"; };
-		9C8995D41EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeShoppingCartTableViewCell.xib; sourceTree = "<group>"; };
 		9C8995D71EE691500097AF38 /* HomeComboRecomendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeComboRecomendViewController.h; sourceTree = "<group>"; };
 		9C8995D81EE691500097AF38 /* HomeComboRecomendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeComboRecomendViewController.m; sourceTree = "<group>"; };
 		9C8995D91EE691500097AF38 /* HomeComboRecomendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeComboRecomendViewController.xib; sourceTree = "<group>"; };
@@ -491,9 +456,6 @@
 		9C8995FD1EEE3D9D0097AF38 /* HomeFoodDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeFoodDetailViewController.h; sourceTree = "<group>"; };
 		9C8995FE1EEE3D9D0097AF38 /* HomeFoodDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeFoodDetailViewController.m; sourceTree = "<group>"; };
 		9C8995FF1EEE3D9D0097AF38 /* HomeFoodDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeFoodDetailViewController.xib; sourceTree = "<group>"; };
-		9C8996021EEE431F0097AF38 /* HomeStoreDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeStoreDetailViewController.h; sourceTree = "<group>"; };
-		9C8996031EEE431F0097AF38 /* HomeStoreDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeStoreDetailViewController.m; sourceTree = "<group>"; };
-		9C8996041EEE431F0097AF38 /* HomeStoreDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeStoreDetailViewController.xib; sourceTree = "<group>"; };
 		9C8996071EEE4C970097AF38 /* HomeComboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeComboViewController.h; sourceTree = "<group>"; };
 		9C8996081EEE4C970097AF38 /* HomeComboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeComboViewController.m; sourceTree = "<group>"; };
 		9C8996091EEE4C970097AF38 /* HomeComboViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeComboViewController.xib; sourceTree = "<group>"; };
@@ -538,16 +500,6 @@
 		9C8996571EF2E28C0097AF38 /* IndentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndentDetailViewController.h; sourceTree = "<group>"; };
 		9C8996581EF2E28C0097AF38 /* IndentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndentDetailViewController.m; sourceTree = "<group>"; };
 		9C8996591EF2E28C0097AF38 /* IndentDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndentDetailViewController.xib; sourceTree = "<group>"; };
-		9C89965C1EF519280097AF38 /* MsgViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgViewController.xib; sourceTree = "<group>"; };
-		9C89965E1EF51A640097AF38 /* MsgTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgTableViewCell.h; sourceTree = "<group>"; };
-		9C89965F1EF51A640097AF38 /* MsgTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgTableViewCell.m; sourceTree = "<group>"; };
-		9C8996601EF51A640097AF38 /* MsgTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgTableViewCell.xib; sourceTree = "<group>"; };
-		9C8996631EF51DA90097AF38 /* MsgTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgTableHeaderView.h; sourceTree = "<group>"; };
-		9C8996641EF51DA90097AF38 /* MsgTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgTableHeaderView.m; sourceTree = "<group>"; };
-		9C8996661EF51DBA0097AF38 /* MsgTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgTableHeaderView.xib; sourceTree = "<group>"; };
-		9C8996681EF52A780097AF38 /* MsgEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgEditViewController.h; sourceTree = "<group>"; };
-		9C8996691EF52A780097AF38 /* MsgEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgEditViewController.m; sourceTree = "<group>"; };
-		9C89966A1EF52A780097AF38 /* MsgEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgEditViewController.xib; sourceTree = "<group>"; };
 		9C89966D1EF537BC0097AF38 /* DefaineMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaineMacros.h; sourceTree = "<group>"; };
 		9C89966E1EF5461E0097AF38 /* citydata.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = citydata.plist; sourceTree = "<group>"; };
 		9C8996701EF7B3440097AF38 /* HomeCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCityViewController.h; sourceTree = "<group>"; };
@@ -796,8 +748,6 @@
 		B3DA47F11EE50650006B6942 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B3DA47F21EE50650006B6942 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B3DA47F31EE50650006B6942 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		B3DA47FA1EE50650006B6942 /* MsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgViewController.h; sourceTree = "<group>"; };
-		B3DA47FB1EE50650006B6942 /* MsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgViewController.m; sourceTree = "<group>"; };
 		B3DA48091EE50650006B6942 /* icon_tabbar_discovery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tabbar_discovery.png; sourceTree = "<group>"; };
 		B3DA480A1EE50650006B6942 /* icon_tabbar_discovery_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tabbar_discovery_selected.png; sourceTree = "<group>"; };
 		B3DA480B1EE50650006B6942 /* icon_tabbar_homepage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tabbar_homepage.png; sourceTree = "<group>"; };
@@ -1225,6 +1175,12 @@
 				9C8C09561F5D023A00A75954 /* JSYHCouponViewController.h */,
 				9C8C09571F5D023A00A75954 /* JSYHCouponViewController.m */,
 				9C8C09581F5D023A00A75954 /* JSYHCouponViewController.xib */,
+				9C0A7FF31F8C75BE00684168 /* JSYHSpecificationViewController.h */,
+				9C0A7FF41F8C75BE00684168 /* JSYHSpecificationViewController.m */,
+				9C0A7FF51F8C75BE00684168 /* JSYHSpecificationViewController.xib */,
+				9C0A7FF81F8C927E00684168 /* JSYHAboutUsViewController.h */,
+				9C0A7FF91F8C927E00684168 /* JSYHAboutUsViewController.m */,
+				9C0A7FFA1F8C927E00684168 /* JSYHAboutUsViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1547,9 +1503,6 @@
 				9C8995FD1EEE3D9D0097AF38 /* HomeFoodDetailViewController.h */,
 				9C8995FE1EEE3D9D0097AF38 /* HomeFoodDetailViewController.m */,
 				9C8995FF1EEE3D9D0097AF38 /* HomeFoodDetailViewController.xib */,
-				9C8996021EEE431F0097AF38 /* HomeStoreDetailViewController.h */,
-				9C8996031EEE431F0097AF38 /* HomeStoreDetailViewController.m */,
-				9C8996041EEE431F0097AF38 /* HomeStoreDetailViewController.xib */,
 				9C8996111EEE65050097AF38 /* ShoppingChartViewController.h */,
 				9C8996121EEE65050097AF38 /* ShoppingChartViewController.m */,
 				9C8996131EEE65050097AF38 /* ShoppingChartViewController.xib */,
@@ -1606,12 +1559,6 @@
 				9C628F7C1F4C667E0014E828 /* HomeDishTableViewCell.h */,
 				9C628F7D1F4C667E0014E828 /* HomeDishTableViewCell.m */,
 				9C628F7E1F4C667E0014E828 /* HomeDishTableViewCell.xib */,
-				9C8995CD1EE658BD0097AF38 /* HomeShoppingCartView.h */,
-				9C8995CE1EE658BD0097AF38 /* HomeShoppingCartView.m */,
-				9C8995D01EE658CE0097AF38 /* HomeShoppingCartView.xib */,
-				9C8995D21EE65A250097AF38 /* HomeShoppingCartTableViewCell.h */,
-				9C8995D31EE65A250097AF38 /* HomeShoppingCartTableViewCell.m */,
-				9C8995D41EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib */,
 				9C8995E91EED35C50097AF38 /* HomeFilterView.h */,
 				9C8995EA1EED35C50097AF38 /* HomeFilterView.m */,
 				9C8995EC1EED35D30097AF38 /* HomeFilterView.xib */,
@@ -1669,6 +1616,9 @@
 				9C8C09A21F6E5F8B00A75954 /* JSYHCombListHeaderTableViewCell.h */,
 				9C8C09A31F6E5F8B00A75954 /* JSYHCombListHeaderTableViewCell.m */,
 				9C8C09A41F6E5F8B00A75954 /* JSYHCombListHeaderTableViewCell.xib */,
+				9C0A7FFD1F8C99E800684168 /* JSYHFirstCouponView.h */,
+				9C0A7FFE1F8C99E800684168 /* JSYHFirstCouponView.m */,
+				9C0A80001F8C99FB00684168 /* JSYHFirstCouponView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1707,54 +1657,8 @@
 		B3DA47F81EE50650006B6942 /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				B3DA47F91EE50650006B6942 /* Controller */,
-				B3DA47FF1EE50650006B6942 /* View */,
 			);
 			path = Message;
-			sourceTree = "<group>";
-		};
-		B3DA47F91EE50650006B6942 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				B3DA47FA1EE50650006B6942 /* MsgViewController.h */,
-				B3DA47FB1EE50650006B6942 /* MsgViewController.m */,
-				9C89965C1EF519280097AF38 /* MsgViewController.xib */,
-				9C8996681EF52A780097AF38 /* MsgEditViewController.h */,
-				9C8996691EF52A780097AF38 /* MsgEditViewController.m */,
-				9C89966A1EF52A780097AF38 /* MsgEditViewController.xib */,
-				9C85D8001F4A7B6E00622EBF /* MsgDetailViewController.h */,
-				9C85D8011F4A7B6E00622EBF /* MsgDetailViewController.m */,
-				9C85D8021F4A7B6E00622EBF /* MsgDetailViewController.xib */,
-				9C85D8051F4A7DEF00622EBF /* MsgChooseIndentViewController.h */,
-				9C85D8061F4A7DEF00622EBF /* MsgChooseIndentViewController.m */,
-				9C85D8071F4A7DEF00622EBF /* MsgChooseIndentViewController.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		B3DA47FF1EE50650006B6942 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9C89965E1EF51A640097AF38 /* MsgTableViewCell.h */,
-				9C89965F1EF51A640097AF38 /* MsgTableViewCell.m */,
-				9C8996601EF51A640097AF38 /* MsgTableViewCell.xib */,
-				9C8996631EF51DA90097AF38 /* MsgTableHeaderView.h */,
-				9C8996641EF51DA90097AF38 /* MsgTableHeaderView.m */,
-				9C8996661EF51DBA0097AF38 /* MsgTableHeaderView.xib */,
-				9C85D7FB1F4A754C00622EBF /* MsgDetailTableViewCell.h */,
-				9C85D7FC1F4A754C00622EBF /* MsgDetailTableViewCell.m */,
-				9C85D7FD1F4A754C00622EBF /* MsgDetailTableViewCell.xib */,
-				9C85D80B1F4A94BE00622EBF /* MsgChooseIndentHeaderView.h */,
-				9C85D80C1F4A94BE00622EBF /* MsgChooseIndentHeaderView.m */,
-				9C85D80E1F4A94CD00622EBF /* MsgChooseIndentHeaderView.xib */,
-				9C85D8101F4A9A8700622EBF /* MsgChooseIndentTableViewCell.h */,
-				9C85D8111F4A9A8700622EBF /* MsgChooseIndentTableViewCell.m */,
-				9C85D8121F4A9A8700622EBF /* MsgChooseIndentTableViewCell.xib */,
-				9C85D81F1F4ADF2E00622EBF /* MsgChooseIdentCellTableViewCell.h */,
-				9C85D8201F4ADF2E00622EBF /* MsgChooseIdentCellTableViewCell.m */,
-				9C85D8211F4ADF2E00622EBF /* MsgChooseIdentCellTableViewCell.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		B3DA48081EE50650006B6942 /* Resource */ = {
@@ -1977,11 +1881,9 @@
 				9C8C09A61F6E5F8B00A75954 /* JSYHCombListHeaderTableViewCell.xib in Resources */,
 				9C8C094B1F5BE79300A75954 /* JSYHFeedbackViewController.xib in Resources */,
 				B3DA48631EE50650006B6942 /* icon_tabbar_nearby_selected.png in Resources */,
-				9C8995D11EE658CE0097AF38 /* HomeShoppingCartView.xib in Resources */,
 				9C8C096B1F5D44D800A75954 /* JSYHAddressMapViewController.xib in Resources */,
 				B38940751EE69B3100407E45 /* IQKeyboardManager.bundle in Resources */,
 				9C8996011EEE3D9D0097AF38 /* HomeFoodDetailViewController.xib in Resources */,
-				9C85D7FF1F4A754C00622EBF /* MsgDetailTableViewCell.xib in Resources */,
 				9C89966F1EF5461E0097AF38 /* citydata.plist in Resources */,
 				9C628FB31F4F0E0C0014E828 /* JSAddAddressViewController.xib in Resources */,
 				B389405C1EE69B3000407E45 /* LICENSE in Resources */,
@@ -1992,7 +1894,6 @@
 				9C628F801F4C667E0014E828 /* HomeDishTableViewCell.xib in Resources */,
 				9C8995CA1EE6589B0097AF38 /* HomeSearchView.xib in Resources */,
 				9C8995DB1EE691500097AF38 /* HomeComboRecomendViewController.xib in Resources */,
-				9C89965D1EF519280097AF38 /* MsgViewController.xib in Resources */,
 				9CDCC4DD1F1C5F040005FB76 /* PersonalViewController.xib in Resources */,
 				9C8C099C1F6A63CB00A75954 /* JSYHCombListTableViewCell.xib in Resources */,
 				9C89960B1EEE4C970097AF38 /* HomeComboViewController.xib in Resources */,
@@ -2002,12 +1903,12 @@
 				9C628FBF1F4F2BA40014E828 /* JSYHUserNickNameEditViewController.xib in Resources */,
 				9C85D7FA1F46DD2B00622EBF /* JSYHSharedView.xib in Resources */,
 				9C8995CC1EE6589B0097AF38 /* HomeTableViewCell.xib in Resources */,
+				9C0A7FFC1F8C927E00684168 /* JSYHAboutUsViewController.xib in Resources */,
 				B3DA48511EE50650006B6942 /* icon_tabbar_discovery_selected.png in Resources */,
 				9CDCC5AB1F3C50F20005FB76 /* JSYHSearchHeaderCollectionReusableView.xib in Resources */,
 				B3DA485B1EE50650006B6942 /* icon_tabbar_mine@2x.png in Resources */,
 				B3DA47931EE50174006B6942 /* LaunchScreen.storyboard in Resources */,
 				B3DA47901EE50174006B6942 /* Assets.xcassets in Resources */,
-				9C85D80F1F4A94CD00622EBF /* MsgChooseIndentHeaderView.xib in Resources */,
 				B3DA48671EE50650006B6942 /* LCTabBarBadge@2x.png in Resources */,
 				B3DA48521EE50650006B6942 /* icon_tabbar_homepage.png in Resources */,
 				B3DA48581EE50650006B6942 /* icon_tabbar_merchant_selected.png in Resources */,
@@ -2015,27 +1916,21 @@
 				9C8996101EEE617A0097AF38 /* HomSearchTableViewCell.xib in Resources */,
 				9C8995ED1EED35D30097AF38 /* HomeFilterView.xib in Resources */,
 				B3DA48551EE50650006B6942 /* icon_tabbar_homepage_selected@2x.png in Resources */,
-				9C85D8091F4A7DEF00622EBF /* MsgChooseIndentViewController.xib in Resources */,
-				9C8996671EF51DBA0097AF38 /* MsgTableHeaderView.xib in Resources */,
-				9C89966C1EF52A780097AF38 /* MsgEditViewController.xib in Resources */,
-				9C8995D61EE65A250097AF38 /* HomeShoppingCartTableViewCell.xib in Resources */,
 				9C8C097E1F612D8A00A75954 /* JSYHMSDishViewController.xib in Resources */,
 				B3DA485F1EE50650006B6942 /* icon_tabbar_misc@2x.png in Resources */,
 				B3DA48651EE50650006B6942 /* icon_tabbar_onsite_new@2x.png in Resources */,
 				9CDCC5B01F3D4EBC0005FB76 /* JSYHHomeStoreActivityView.xib in Resources */,
 				9C89965B1EF2E28C0097AF38 /* IndentDetailViewController.xib in Resources */,
-				9C85D8231F4ADF2E00622EBF /* MsgChooseIdentCellTableViewCell.xib in Resources */,
 				9C8995461EE52CE40097AF38 /* HomeViewController.xib in Resources */,
 				B3DA48661EE50650006B6942 /* icon_tabbar_onsite_selected@2x.png in Resources */,
 				9C8995FC1EED7B6A0097AF38 /* HomeStoreRightTableViewCell.xib in Resources */,
 				9C8C095A1F5D023A00A75954 /* JSYHCouponViewController.xib in Resources */,
-				9C8996061EEE431F0097AF38 /* HomeStoreDetailViewController.xib in Resources */,
 				9C8C09901F6238E000A75954 /* JSYHDrinkViewController.xib in Resources */,
-				9C85D8141F4A9A8700622EBF /* MsgChooseIndentTableViewCell.xib in Resources */,
 				9CDB2E9E1F1764820072DBF6 /* HomeStandardChooseView.xib in Resources */,
 				B38940931EE69CEA00407E45 /* inforViewController.xib in Resources */,
 				B3DA48611EE50650006B6942 /* icon_tabbar_misc_selected@2x.png in Resources */,
 				B3DA48561EE50650006B6942 /* icon_tabbar_merchant_normal.png in Resources */,
+				9C0A80011F8C99FB00684168 /* JSYHFirstCouponView.xib in Resources */,
 				9C8C09741F5E92C800A75954 /* JSYHGuideViewController.xib in Resources */,
 				9CDB2EA61F176FA90072DBF6 /* HomeStandardCollectionViewCell.xib in Resources */,
 				B3DA48501EE50650006B6942 /* icon_tabbar_discovery.png in Resources */,
@@ -2047,11 +1942,9 @@
 				9C8996451EF2CD1B0097AF38 /* IndentConfirmViewController.xib in Resources */,
 				9C628FDC1F59461B0014E828 /* JSYHPayWayViewController.xib in Resources */,
 				9C89963F1EF2CA310097AF38 /* CollectTableViewCell.xib in Resources */,
-				9C85D8041F4A7B6E00622EBF /* MsgDetailViewController.xib in Resources */,
 				9C8C09861F62214F00A75954 /* JSYHMSShopTagCollectionViewCell.xib in Resources */,
 				9C8C09501F5BEB6900A75954 /* JSYHFeedbackCollectionViewCell.xib in Resources */,
 				9C8C09951F66218100A75954 /* JSYHEditRemarksViewController.xib in Resources */,
-				9C8996621EF51A640097AF38 /* MsgTableViewCell.xib in Resources */,
 				9C89962D1EF2C0B30097AF38 /* IndentTableViewCell.xib in Resources */,
 				B3DA484B1EE50650006B6942 /* IndentViewController.xib in Resources */,
 				9C8996151EEE65050097AF38 /* ShoppingChartViewController.xib in Resources */,
@@ -2070,6 +1963,7 @@
 				9C8995AD1EE590640097AF38 /* HomeActivityViewController.xib in Resources */,
 				9C8995F71EED40F00097AF38 /* HomeStoreViewController.xib in Resources */,
 				9CDCC5A61F3C4FCF0005FB76 /* JSSHSearchCollectionViewCell.xib in Resources */,
+				9C0A7FF71F8C75BE00684168 /* JSYHSpecificationViewController.xib in Resources */,
 				9CDCC4DB1F1C5B8D0005FB76 /* SettingUpController.xib in Resources */,
 				B3DA48591EE50650006B6942 /* icon_tabbar_merchant_selected@2x.png in Resources */,
 				B38940971EE69CEA00407E45 /* PassWordViewController.xib in Resources */,
@@ -2186,6 +2080,7 @@
 				9C8995E71EED2EDE0097AF38 /* HomeClassificationListViewController.m in Sources */,
 				9C85D7EF1F4683AF00622EBF /* JSYHHomeStoreActivityViewController.m in Sources */,
 				9C8995591EE57DA10097AF38 /* LCPanGestureRecognizer.m in Sources */,
+				9C0A7FFF1F8C99E800684168 /* JSYHFirstCouponView.m in Sources */,
 				9CB799EA1F03D68E00597B6A /* UserManager.m in Sources */,
 				9C628F701F4BFD340014E828 /* SDCollectionViewCell.m in Sources */,
 				9C628FD51F56550D0014E828 /* JSYHPreOrderDishTableViewCell.m in Sources */,
@@ -2204,23 +2099,20 @@
 				B3DA486E1EE50650006B6942 /* PPNetworkCache.m in Sources */,
 				B3DA48411EE50650006B6942 /* TabBarBadge.m in Sources */,
 				9C628FD01F556C5E0014E828 /* JSYHPreOrderTableViewCell.m in Sources */,
-				9C8995D51EE65A250097AF38 /* HomeShoppingCartTableViewCell.m in Sources */,
+				9C0A7FFB1F8C927E00684168 /* JSYHAboutUsViewController.m in Sources */,
+				9C0A7FF61F8C75BE00684168 /* JSYHSpecificationViewController.m in Sources */,
 				B38940B31EE69D4C00407E45 /* UIFont+Fonts.m in Sources */,
 				9C628FA71F4ED6280014E828 /* FMDatabase.m in Sources */,
-				9C8996651EF51DA90097AF38 /* MsgTableHeaderView.m in Sources */,
 				B38940761EE69B3100407E45 /* LICENSE.md in Sources */,
 				B38940651EE69B3000407E45 /* SWActionSheet.m in Sources */,
 				9C8996141EEE65050097AF38 /* ShoppingChartViewController.m in Sources */,
 				9CDB2EAA1F17767F0072DBF6 /* HomeStandarHeaderCollectionReusableView.m in Sources */,
 				9C8C09591F5D023A00A75954 /* JSYHCouponViewController.m in Sources */,
 				B38940B51EE69D4C00407E45 /* UIResponder+Adapt.m in Sources */,
-				9C85D8131F4A9A8700622EBF /* MsgChooseIndentTableViewCell.m in Sources */,
-				9C8995CF1EE658BD0097AF38 /* HomeShoppingCartView.m in Sources */,
 				9CDB2EA51F176FA90072DBF6 /* HomeStandardCollectionViewCell.m in Sources */,
 				B389409C1EE69CEA00407E45 /* shippTableViewCell.m in Sources */,
 				B38940981EE69CEA00407E45 /* PersonalViewController.m in Sources */,
 				9C628FBE1F4F2BA40014E828 /* JSYHUserNickNameEditViewController.m in Sources */,
-				B3DA484E1EE50650006B6942 /* MsgViewController.m in Sources */,
 				B3DA48491EE50650006B6942 /* HomeViewController.m in Sources */,
 				9C89961E1EEE68AE0097AF38 /* ShoppingCartSmallTableViewCell.m in Sources */,
 				9C89962C1EF2C0B30097AF38 /* IndentTableViewCell.m in Sources */,
@@ -2250,22 +2142,18 @@
 				B389409A1EE69CEA00407E45 /* shippingViewController.m in Sources */,
 				B3DA48441EE50650006B6942 /* NJKWebViewProgressView.m in Sources */,
 				B38940B61EE69D4C00407E45 /* UIView+CCExtension.m in Sources */,
-				9C85D8081F4A7DEF00622EBF /* MsgChooseIndentViewController.m in Sources */,
 				B389406A1EE69B3100407E45 /* IQUIView+Hierarchy.m in Sources */,
 				9C628F711F4BFD340014E828 /* SDCycleScrollView.m in Sources */,
-				9C8996611EF51A640097AF38 /* MsgTableViewCell.m in Sources */,
 				9C89960A1EEE4C970097AF38 /* HomeComboViewController.m in Sources */,
 				9C89965A1EF2E28C0097AF38 /* IndentDetailViewController.m in Sources */,
 				9C8996381EF2C9ED0097AF38 /* DisCountViewController.m in Sources */,
 				B3DA47821EE50174006B6942 /* main.m in Sources */,
 				9CDCC5A51F3C4FCF0005FB76 /* JSSHSearchCollectionViewCell.m in Sources */,
 				B3DA48701EE50650006B6942 /* OpenUDID.m in Sources */,
-				9C8996051EEE431F0097AF38 /* HomeStoreDetailViewController.m in Sources */,
 				B38940AF1EE69D4C00407E45 /* AbstractActionSheetPicker+Interface.m in Sources */,
 				9C628F6F1F4BFD340014E828 /* TAPageControl.m in Sources */,
 				9C8C09811F61359600A75954 /* JSYHTagModel.m in Sources */,
 				9C628FDB1F59461B0014E828 /* JSYHPayWayViewController.m in Sources */,
-				9C85D8031F4A7B6E00622EBF /* MsgDetailViewController.m in Sources */,
 				9CDB2E941F1751B80072DBF6 /* MineTableViewCell.m in Sources */,
 				9C8C09941F66218100A75954 /* JSYHEditRemarksViewController.m in Sources */,
 				B3DA486D1EE50650006B6942 /* HeaderModel.m in Sources */,
@@ -2285,7 +2173,6 @@
 				B3DA48681EE50650006B6942 /* AESCipher.m in Sources */,
 				9C8996311EF2C39D0097AF38 /* IndentCellTableViewCell.m in Sources */,
 				9C8C09851F62214F00A75954 /* JSYHMSShopTagCollectionViewCell.m in Sources */,
-				9C89966B1EF52A780097AF38 /* MsgEditViewController.m in Sources */,
 				9C628F951F4E84C00014E828 /* JSYHCateModel.m in Sources */,
 				B3DA48421EE50650006B6942 /* TabBarItem.m in Sources */,
 				9C628FC21F4F3B4F0014E828 /* JSYHLocationManager.m in Sources */,
@@ -2306,10 +2193,8 @@
 				9C628FBA1F4F26D30014E828 /* JSYHUserModel.m in Sources */,
 				9C85D7F41F46881400622EBF /* JSYHStoreActivityHeaderTableViewCell.m in Sources */,
 				B38940691EE69B3100407E45 /* IQUITextFieldView+Additions.m in Sources */,
-				9C85D7FE1F4A754C00622EBF /* MsgDetailTableViewCell.m in Sources */,
 				9CDB2E9C1F1764700072DBF6 /* HomeStandardChooseView.m in Sources */,
 				B38940741EE69B3100407E45 /* IQUIView+IQKeyboardToolbar.m in Sources */,
-				9C85D8221F4ADF2E00622EBF /* MsgChooseIdentCellTableViewCell.m in Sources */,
 				9C628FA81F4ED6280014E828 /* FMDatabaseAdditions.m in Sources */,
 				9C8995CB1EE6589B0097AF38 /* HomeTableViewCell.m in Sources */,
 				B389406C1EE69B3100407E45 /* IQUIWindow+Hierarchy.m in Sources */,
@@ -2340,7 +2225,6 @@
 				9C628F9A1F4E85180014E828 /* JSYHComboModel.m in Sources */,
 				9CDCC5AE1F3D4EAB0005FB76 /* JSYHHomeStoreActivityView.m in Sources */,
 				9CB799E71F03D54100597B6A /* ShoppingCartManager.m in Sources */,
-				9C85D80D1F4A94BE00622EBF /* MsgChooseIndentHeaderView.m in Sources */,
 				B38940731EE69B3100407E45 /* IQToolbar.m in Sources */,
 				9C8C09621F5D063A00A75954 /* JSYHCouponModel.m in Sources */,
 				9C8C095E1F5D030000A75954 /* JSYHCouponTableViewCell.m in Sources */,
@@ -2517,7 +2401,7 @@
 				INFOPLIST_FILE = YYDineTogether/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JuShan.YYDineTogether;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jushan.merchant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2552,7 +2436,7 @@
 				INFOPLIST_FILE = YYDineTogether/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JuShan.YYDineTogether;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jushan.merchant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -199,6 +199,29 @@
     }];
 }
 
+- (void)getCombTagsWithSuccess:(PPHttpRequestSuccess)success
+                        Failed:(PPHttpRequestFailed)failed {
+    [self setHeaderToken];
+    [PPNetworkHelper GET:URL_ComboTags parameters:nil success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        failed(error);
+    }];
+}
+
+- (void)getCombsWithTagid:(NSString *)tagid
+                     page:(NSString *)page
+                  Success:(PPHttpRequestSuccess)success
+                   Failed:(PPHttpRequestFailed)failed {
+    [self setHeaderToken];
+    NSDictionary *dic = @{@"tagid":tagid};
+    [PPNetworkHelper GET:URL_Combos parameters:dic success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        failed(error);
+    }];
+}
+
 - (void)postOrderWithDic:(NSDictionary *)dic
                    Success:(PPHttpRequestSuccess)success
                     Failed:(PPHttpRequestFailed)failed {

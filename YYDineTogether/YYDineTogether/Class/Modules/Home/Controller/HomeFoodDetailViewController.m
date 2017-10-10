@@ -12,7 +12,6 @@
 @interface HomeFoodDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UIButton *subtractButton;
-@property (strong, nonatomic) HomeShoppingCartView *shoppingView;
 
 @property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
@@ -81,20 +80,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)shoppingCartAction:(id)sender {
-//    if (_shoppingView == nil) {
-//        self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
-//            [_shoppingView removeShoppingCartView];
-//            _shoppingView = nil;
-//        }];
-//        [_shoppingView addGestureRecognizer:tap];
-//        [_shoppingView showShoppingCartView];
-//    } else {
-//        [_shoppingView removeShoppingCartView];
-//        _shoppingView = nil;
-//    }
-}
 - (IBAction)clearShoppingCartAction:(id)sender {
     ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
     [self.navigationController pushViewController:shoppingCartVC animated:YES];

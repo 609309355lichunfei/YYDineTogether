@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IndentViewController">
             <connections>
                 <outlet property="completeBT" destination="ZkG-FM-Y6W" id="aMq-HA-Vq4"/>
+                <outlet property="loginBT" destination="1Mv-VB-glv" id="ks6-kx-Crm"/>
                 <outlet property="refundBT" destination="sQz-DF-m8Z" id="gfC-HE-Emq"/>
                 <outlet property="tableView" destination="fdP-kY-YBI" id="00q-hD-0Rc"/>
+                <outlet property="unloginBGView" destination="Pu0-fb-arP" id="Ulr-ox-IOL"/>
                 <outlet property="unpaidBT" destination="iif-W9-QWg" id="WJe-TN-VWx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -113,17 +121,53 @@
                         <constraint firstItem="1Nb-d2-9xz" firstAttribute="centerX" secondItem="iOm-51-5E1" secondAttribute="centerX" id="Pkt-yv-8K4"/>
                     </constraints>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pu0-fb-arP">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Mv-VB-glv">
+                            <rect key="frame" x="143.5" y="306.5" width="88" height="30"/>
+                            <color key="backgroundColor" red="0.97254901959999995" green="0.23137254900000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="88" id="CJR-0Q-KcF"/>
+                            </constraints>
+                            <state key="normal" title="立即登录">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="loginAction:" destination="-1" eventType="touchUpInside" id="ihm-h2-vIp"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登陆后查看外卖订单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDV-1b-3h2">
+                            <rect key="frame" x="110.5" y="264" width="153" height="24"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="17"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="tDV-1b-3h2" firstAttribute="centerX" secondItem="Pu0-fb-arP" secondAttribute="centerX" id="D2N-cz-MZQ"/>
+                        <constraint firstItem="1Mv-VB-glv" firstAttribute="top" secondItem="tDV-1b-3h2" secondAttribute="bottom" constant="18.5" id="Nyv-dP-OJg"/>
+                        <constraint firstItem="1Mv-VB-glv" firstAttribute="centerY" secondItem="Pu0-fb-arP" secondAttribute="centerY" constant="20" id="iSt-b1-sA0"/>
+                        <constraint firstItem="1Mv-VB-glv" firstAttribute="centerX" secondItem="Pu0-fb-arP" secondAttribute="centerX" id="xjn-9K-ae3"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="iOm-51-5E1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8LP-R1-S3b"/>
                 <constraint firstAttribute="bottom" secondItem="e7E-W4-v3j" secondAttribute="bottom" constant="44" id="Evc-yt-gI8"/>
+                <constraint firstItem="Pu0-fb-arP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JZz-It-dac"/>
                 <constraint firstAttribute="trailing" secondItem="e7E-W4-v3j" secondAttribute="trailing" id="ZTx-N0-st2"/>
                 <constraint firstItem="e7E-W4-v3j" firstAttribute="top" secondItem="iOm-51-5E1" secondAttribute="bottom" id="adr-kT-SGu"/>
+                <constraint firstAttribute="trailing" secondItem="Pu0-fb-arP" secondAttribute="trailing" id="b9a-JV-p40"/>
                 <constraint firstAttribute="trailing" secondItem="iOm-51-5E1" secondAttribute="trailing" id="cP8-Ks-V6F"/>
                 <constraint firstItem="e7E-W4-v3j" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kWL-Wq-xcN"/>
+                <constraint firstItem="Pu0-fb-arP" firstAttribute="top" secondItem="iOm-51-5E1" secondAttribute="bottom" id="mnk-ur-QE6"/>
+                <constraint firstAttribute="bottom" secondItem="Pu0-fb-arP" secondAttribute="bottom" id="q4Q-ao-oVu"/>
                 <constraint firstItem="iOm-51-5E1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vfa-86-xSv"/>
             </constraints>
+            <point key="canvasLocation" x="45.5" y="78.5"/>
         </view>
     </objects>
 </document>

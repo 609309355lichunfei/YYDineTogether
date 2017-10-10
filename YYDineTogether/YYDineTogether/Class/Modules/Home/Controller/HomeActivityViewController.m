@@ -7,7 +7,6 @@
 //
 
 #import "HomeActivityViewController.h"
-#import "HomeShoppingCartView.h"
 #import "JSYHSharedView.h"
 #import "JSYHComboModel.h"
 #import "JSYHDishModel.h"
@@ -18,7 +17,6 @@
     CGFloat _tableViewLastContentOffSetY;
 }
 
-@property (strong, nonatomic) HomeShoppingCartView *shoppingView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -131,20 +129,6 @@
     [self.tableView reloadData];
 }
 
-- (IBAction)shoppingCartAction:(id)sender {
-//    if (_shoppingView == nil) {
-//        self.shoppingView = [[[NSBundle mainBundle] loadNibNamed:@"HomeShoppingCartView" owner:self options:nil] lastObject];
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
-//            [_shoppingView removeShoppingCartView];
-//            _shoppingView = nil;
-//        }];
-//        [_shoppingView addGestureRecognizer:tap];
-//        [_shoppingView showShoppingCartView];
-//    } else {
-//        [_shoppingView removeShoppingCartView];
-//        _shoppingView = nil;
-//    }
-}
 - (IBAction)clearShoppingCartAction:(id)sender {
     ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
     [self.navigationController pushViewController:shoppingCartVC animated:YES];
@@ -153,6 +137,7 @@
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 - (IBAction)sharedAction:(id)sender {
     JSYHSharedView *sharedView = [[[NSBundle mainBundle] loadNibNamed:@"JSYHSharedView" owner:self options:nil] firstObject];
     sharedView.frame = kScreen_Bounds;

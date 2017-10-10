@@ -1,13 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeStoreViewController">
             <connections>
@@ -26,7 +32,6 @@
                 <outlet property="shopNameLabel" destination="5vM-cC-SCt" id="Qt9-G7-76l"/>
                 <outlet property="shoppingCartBTBottom" destination="37m-NR-VzG" id="apu-R6-PBR"/>
                 <outlet property="shoppingCartCountLabel" destination="ne6-Ta-Le2" id="xNk-Yn-bz9"/>
-                <outlet property="statusLabel" destination="4fj-Rf-jzV" id="o2l-Vp-zSp"/>
                 <outlet property="totalPriceLabel" destination="X3v-sf-mvW" id="jXG-40-nxw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -112,33 +117,20 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商家忙碌中" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fj-Rf-jzV">
-                                    <rect key="frame" x="8" y="63" width="75" height="17"/>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="12"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <gestureRecognizers/>
                             <constraints>
                                 <constraint firstItem="uPO-8I-pDq" firstAttribute="centerY" secondItem="YFG-nP-gXm" secondAttribute="centerY" id="3Vh-AN-EjJ"/>
                                 <constraint firstItem="YFG-nP-gXm" firstAttribute="leading" secondItem="5vM-cC-SCt" secondAttribute="leading" id="B5y-do-Bdx"/>
-                                <constraint firstItem="4fj-Rf-jzV" firstAttribute="bottom" secondItem="XPe-Pb-B2o" secondAttribute="bottom" id="BVK-Lu-dXN"/>
                                 <constraint firstItem="uPO-8I-pDq" firstAttribute="leading" secondItem="YFG-nP-gXm" secondAttribute="trailing" constant="7.5" id="Kqf-oE-8PI"/>
                                 <constraint firstItem="XPe-Pb-B2o" firstAttribute="leading" secondItem="pQ0-M6-KBX" secondAttribute="leading" constant="8" id="a8b-kX-trw"/>
                                 <constraint firstAttribute="trailing" secondItem="uPO-8I-pDq" secondAttribute="trailing" constant="8" id="cad-9Q-Fqb"/>
                                 <constraint firstItem="XPe-Pb-B2o" firstAttribute="centerY" secondItem="pQ0-M6-KBX" secondAttribute="centerY" id="iFp-d1-vth"/>
-                                <constraint firstItem="4fj-Rf-jzV" firstAttribute="width" secondItem="XPe-Pb-B2o" secondAttribute="width" id="j0C-zt-bxo"/>
                                 <constraint firstItem="YFG-nP-gXm" firstAttribute="top" secondItem="5vM-cC-SCt" secondAttribute="bottom" constant="8" id="nWU-sZ-QKk"/>
                                 <constraint firstItem="5vM-cC-SCt" firstAttribute="top" secondItem="XPe-Pb-B2o" secondAttribute="top" id="ogn-nm-XrX"/>
-                                <constraint firstItem="4fj-Rf-jzV" firstAttribute="centerX" secondItem="XPe-Pb-B2o" secondAttribute="centerX" id="ucQ-MB-a7b"/>
                                 <constraint firstItem="5vM-cC-SCt" firstAttribute="leading" secondItem="XPe-Pb-B2o" secondAttribute="trailing" constant="8" id="z6G-ss-uS8"/>
                             </constraints>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="YrK-6p-AIJ" appends="YES" id="EKu-iZ-r12"/>
-                            </connections>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -249,9 +241,6 @@
                                         <constraint firstItem="NWM-Hv-snx" firstAttribute="leading" secondItem="X3v-sf-mvW" secondAttribute="trailing" id="Skc-Kq-X0d"/>
                                         <constraint firstItem="X3v-sf-mvW" firstAttribute="centerX" secondItem="I3L-n9-HA9" secondAttribute="centerX" id="yFc-4Q-WPB"/>
                                     </constraints>
-                                    <connections>
-                                        <outletCollection property="gestureRecognizers" destination="eBE-oX-AfV" appends="YES" id="2Ld-Kf-NRt"/>
-                                    </connections>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" red="0.88719951919999995" green="0.88719951919999995" blue="0.88719951919999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -395,16 +384,6 @@
             </constraints>
             <point key="canvasLocation" x="73.5" y="103.5"/>
         </view>
-        <tapGestureRecognizer id="YrK-6p-AIJ">
-            <connections>
-                <action selector="storeDetailAction:" destination="-1" id="Zkm-al-hXu"/>
-            </connections>
-        </tapGestureRecognizer>
-        <tapGestureRecognizer id="eBE-oX-AfV">
-            <connections>
-                <action selector="shoppingCartAction:" destination="-1" id="L0M-Pg-P1y"/>
-            </connections>
-        </tapGestureRecognizer>
         <tapGestureRecognizer id="K2f-FQ-Z7P" userLabel="activityTap">
             <connections>
                 <action selector="activityAction:" destination="-1" id="D09-gK-WEL"/>

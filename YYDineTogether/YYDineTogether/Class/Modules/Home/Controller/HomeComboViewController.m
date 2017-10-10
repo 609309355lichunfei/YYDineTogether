@@ -11,6 +11,7 @@
 #import "HomeActivityViewController.h"
 #import "JSYHComboModel.h"
 #import "SDCycleScrollView.h"
+#import "HomeComboRecomendViewController.h"
 
 @interface HomeComboViewController ()<SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *comboView;
@@ -48,10 +49,37 @@
 
 - (void)getConnect{
     [MBProgressHUD showMessage:@"加载中..."];
-    [[JSRequestManager sharedManager] comboWithSuccess:^(id responseObject) {
+//    [[JSRequestManager sharedManager] comboWithSuccess:^(id responseObject) {
+//        [MBProgressHUD hideHUD];
+//        NSDictionary *dataDic = responseObject[@"data"];
+//        NSArray *combs = dataDic[@"combs"];
+//        for (NSInteger i = 0; i < combs.count; i ++) {
+//            NSDictionary *combDic = combs[i];
+//            JSYHComboModel *model = [[JSYHComboModel alloc] init];
+//            [model setValuesForKeysWithDictionary:combDic];
+//            switch (i) {
+//                case 0:
+//                    self.firstComb = model;
+//                    break;
+//                case 1:
+//                    self.secondComb = model;
+//                    break;
+//                case 2:
+//                    self.thirdComb = model;
+//                    break;
+//                default:
+//                    [self.combsArray addObject:model];
+//                    break;
+//            }
+//        }
+//        [self fillData];
+//    } Failed:^(NSError *error) {
+//        [MBProgressHUD hideHUD];
+//    }];
+    [[JSRequestManager sharedManager] getCombTagsWithSuccess:^(id responseObject) {
         [MBProgressHUD hideHUD];
         NSDictionary *dataDic = responseObject[@"data"];
-        NSArray *combs = dataDic[@"combs"];
+        NSArray *combs = dataDic[@"combtags"];
         for (NSInteger i = 0; i < combs.count; i ++) {
             NSDictionary *combDic = combs[i];
             JSYHComboModel *model = [[JSYHComboModel alloc] init];
@@ -94,20 +122,20 @@
 }
 
 - (IBAction)firstCombAction:(id)sender {
-    HomeActivityViewController *vc = [[HomeActivityViewController alloc] init];
-    vc.combId = [_firstComb.combid stringValue];
+    HomeComboRecomendViewController *vc = [[HomeComboRecomendViewController alloc] init];
+    vc.tagid = [_firstComb.combid stringValue];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)secondCombTap:(id)sender {
-    HomeActivityViewController *vc = [[HomeActivityViewController alloc] init];
-    vc.combId = [_secondComb.combid stringValue];
+    HomeComboRecomendViewController *vc = [[HomeComboRecomendViewController alloc] init];
+    vc.tagid = [_secondComb.combid stringValue];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)thirdCombTap:(id)sender {
-    HomeActivityViewController *vc = [[HomeActivityViewController alloc] init];
-    vc.combId = [_thirdComb.combid stringValue];
+    HomeComboRecomendViewController *vc = [[HomeComboRecomendViewController alloc] init];
+    vc.tagid = [_thirdComb.combid stringValue];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -115,8 +143,8 @@
 #pragma mark - cycleScrollViewDelegate
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
     JSYHComboModel *model = self.combsArray[index];
-    HomeActivityViewController *vc = [[HomeActivityViewController alloc] init];
-    vc.combId = [model.combid stringValue];
+    HomeComboRecomendViewController *vc = [[HomeComboRecomendViewController alloc] init];
+    vc.tagid = [model.combid stringValue];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

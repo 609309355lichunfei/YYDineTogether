@@ -21,6 +21,7 @@
 #import "JSYHPayWayViewController.h"
 #import "JSYHCouponViewController.h"
 #import "JSYHCouponModel.h"
+#import "JSYHSpecificationViewController.h"
 
 @interface IndentConfirmViewController ()<UITableViewDelegate, UITableViewDataSource, MAMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -36,6 +37,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *redLabel;
 @property (weak, nonatomic) IBOutlet UILabel *resultPriceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postcost;
+@property (weak, nonatomic) IBOutlet UILabel *totalpriceLabel;//小计
+
 @property (strong, nonatomic) MAMapView *mapView;
 @property (strong, nonatomic) MAPointAnnotation *userAnnotation;
 @property (strong, nonatomic) MAPolyline *commonPolyline;
@@ -96,6 +99,7 @@
         [[DB_Helper defaultHelper] updateAddress:addressModel];
         [self getAddress];
         self.resultPriceLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.lastprice];
+        self.totalpriceLabel.text = self.resultPriceLabel.text;
 //        [NSString stringWithFormat:@"%ld",[self.orderModel.lastprice integerValue] - [self.redLabel.text integerValue] + [self.postcost.text integerValue]];
         self.activityLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.cut];
         self.distanceLabel.text = self.orderModel.distance;
@@ -174,6 +178,7 @@
                 }
                 lastprice = [NSNumber numberWithFloat:lastpriceFloat];
                 self.resultPriceLabel.text = [NSString stringWithFormat:@"%@",lastprice];
+                self.totalpriceLabel.text = self.resultPriceLabel.text;
             } Failed:^(NSError *error) {
                 
             }];
@@ -199,7 +204,7 @@
             }
             lastprice = [NSNumber numberWithFloat:lastpriceFloat];
             self.resultPriceLabel.text = [NSString stringWithFormat:@"%@",lastprice];
-            
+            self.totalpriceLabel.text = self.resultPriceLabel.text;
         } Failed:^(NSError *error) {
             
         }];
@@ -266,9 +271,16 @@
         }
         NSNumber *price = [NSNumber numberWithFloat:priceFloat];
         self.resultPriceLabel.text = [NSString stringWithFormat:@"%@",price];
+        self.totalpriceLabel.text = self.resultPriceLabel.text;
     };
     [self.navigationController pushViewController:couponVC animated:YES];
 }
+
+- (IBAction)specificationAction:(id)sender {
+    JSYHSpecificationViewController *specificationVC = [[JSYHSpecificationViewController alloc] init];
+    [self.navigationController pushViewController:specificationVC animated:YES];
+}
+
 
 - (void)addressChange {
     [self.mapView removeOverlay:self.commonPolyline];

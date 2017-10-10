@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShoppingChartViewController">
             <connections>
@@ -142,6 +148,17 @@
                                 <action selector="backAction:" destination="-1" eventType="touchUpInside" id="Mbp-gY-8Yw"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJS-GB-EYG">
+                            <rect key="frame" x="331" y="20" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="6BD-H3-W7e"/>
+                                <constraint firstAttribute="height" constant="44" id="Li6-dm-t5d"/>
+                            </constraints>
+                            <state key="normal" image="ShopCart_delete"/>
+                            <connections>
+                                <action selector="clearShopcartAction:" destination="-1" eventType="touchUpInside" id="xEE-B0-cLN"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.97254901959999995" green="0.23137254900000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -149,6 +166,8 @@
                         <constraint firstAttribute="height" constant="64" id="3hw-29-ONf"/>
                         <constraint firstAttribute="bottom" secondItem="Vv5-Do-7rC" secondAttribute="bottom" constant="8" id="4xt-sM-WmL"/>
                         <constraint firstAttribute="bottom" secondItem="0yu-p9-vw9" secondAttribute="bottom" id="DhS-K1-NIb"/>
+                        <constraint firstAttribute="trailing" secondItem="DJS-GB-EYG" secondAttribute="trailing" id="Msp-ox-I0g"/>
+                        <constraint firstAttribute="bottom" secondItem="DJS-GB-EYG" secondAttribute="bottom" id="VkV-dA-A6S"/>
                         <constraint firstItem="0yu-p9-vw9" firstAttribute="leading" secondItem="Qgy-PT-Qu8" secondAttribute="leading" id="opd-qb-a6r"/>
                     </constraints>
                 </view>
@@ -173,6 +192,7 @@
         </view>
     </objects>
     <resources>
+        <image name="ShopCart_delete" width="13" height="16"/>
         <image name="back" width="32" height="32"/>
         <image name="shoppingCart" width="57" height="57"/>
     </resources>

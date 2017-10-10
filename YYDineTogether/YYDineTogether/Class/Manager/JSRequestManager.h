@@ -145,6 +145,25 @@
 
 
 /**
+ 套餐列表
+
+ */
+- (void)getCombTagsWithSuccess:(PPHttpRequestSuccess)success
+                        Failed:(PPHttpRequestFailed)failed;
+
+
+/**
+ 套餐列表
+
+ @param tagid tagid
+ @param page 页数
+ */
+- (void)getCombsWithTagid:(NSString *)tagid
+                     page:(NSString *)page
+                  Success:(PPHttpRequestSuccess)success
+                   Failed:(PPHttpRequestFailed)failed;
+
+/**
  提交预订单
 
  @param dic data

@@ -28,7 +28,6 @@
 #import "UIResponder+Adapt.h"
 #import "UIFont+Fonts.h"
 #import "UIBarButtonItem+Extension.h"
-#import "HomeShoppingCartView.h"
 #import "ShoppingChartViewController.h"
 #import "ShoppingCartManager.h"
 #import "JSRequestManager.h"

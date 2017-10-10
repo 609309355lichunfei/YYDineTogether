@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *completeBT;
 @property (weak, nonatomic) IBOutlet UIButton *unpaidBT;
 @property (weak, nonatomic) IBOutlet UIButton *refundBT;
+@property (weak, nonatomic) IBOutlet UIView *unloginBGView;
+@property (weak, nonatomic) IBOutlet UIButton *loginBT;
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
 
@@ -51,7 +53,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.tableView.mj_header beginRefreshing];
+    
+    if ([JSRequestManager sharedManager].userName == nil || [JSRequestManager sharedManager].userName.length == 0) {
+        self.unloginBGView.hidden = NO;
+    }else {
+        self.unloginBGView.hidden = YES;
+        [self.tableView.mj_header beginRefreshing];
+    }
 }
 
 - (void)getConnectWithType:(DataLoadType)dataloadType {
@@ -85,6 +93,12 @@
         }
     }];
 }
+
+- (IBAction)loginAction:(id)sender {
+    LoginViewController *loginVC = [[LoginViewController alloc] init];
+    [self.tabBarController presentViewController:loginVC animated:YES completion:nil];
+}
+
 
 - (IBAction)completeAction:(id)sender {
     if (self.currentBT == _completeBT) {

@@ -15,9 +15,11 @@
     NSInteger _pageIndex;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *myTitleLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
+@property (weak, nonatomic) IBOutlet UIView *shoppingcartBGView;
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
 @end
@@ -30,29 +32,21 @@
     [self registUI];
 }
 
-- (void)registUI {
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.myTitleLabel.text = self.titleStr;
-    self.shoppingCartCountLabel.layer.cornerRadius = 9;
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     if ([ShoppingCartManager sharedManager].count == 0) {
         self.shoppingCartCountLabel.hidden = YES;
-        self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
     } else {
         self.shoppingCartCountLabel.hidden = NO;
         self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].count];
-        self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
     }
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"JSYHShoppingCartCountChanged" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-        if ([ShoppingCartManager sharedManager].count == 0) {
-            self.shoppingCartCountLabel.hidden = YES;
-            self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
-        } else {
-            self.shoppingCartCountLabel.hidden = NO;
-            self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].count];
-            self.totalPriceLabel.text = [NSString stringWithFormat:@"¥ %@",[ShoppingCartManager sharedManager].totalPrice];
-        }
-        
-    }];
+}
+
+- (void)registUI {
+    self.shoppingCartCountLabel.layer.cornerRadius = 9;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.myTitleLabel.text = self.titleStr;
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"JSYHDrinkTableViewCell"];
     MJWeakSelf;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

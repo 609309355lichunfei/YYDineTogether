@@ -1,13 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
@@ -110,7 +116,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiR-bq-lMX">
-                    <rect key="frame" x="317" y="565" width="50" height="50"/>
+                    <rect key="frame" x="8" y="565" width="50" height="50"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shoppingCart" translatesAutoresizingMaskIntoConstraints="NO" id="lvo-pQ-8gt">
                             <rect key="frame" x="-3.5" y="-3.5" width="57" height="57"/>
@@ -148,7 +154,7 @@
                 <constraint firstItem="D9L-ag-ik3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DNO-VH-ej6"/>
                 <constraint firstAttribute="trailing" secondItem="D9L-ag-ik3" secondAttribute="trailing" id="GNG-YY-xe3"/>
                 <constraint firstItem="D9L-ag-ik3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HzR-39-05G"/>
-                <constraint firstAttribute="trailing" secondItem="YiR-bq-lMX" secondAttribute="trailing" constant="8" id="aqx-k6-YzA"/>
+                <constraint firstItem="YiR-bq-lMX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="iOJ-Iv-HRn"/>
                 <constraint firstAttribute="bottom" secondItem="YiR-bq-lMX" secondAttribute="bottom" constant="52" id="plO-03-Wza"/>
                 <constraint firstAttribute="trailing" secondItem="aa4-OX-qJO" secondAttribute="trailing" id="qcE-kJ-Y88"/>
                 <constraint firstAttribute="bottom" secondItem="D9L-ag-ik3" secondAttribute="bottom" constant="44" id="svm-zU-P4n"/>
