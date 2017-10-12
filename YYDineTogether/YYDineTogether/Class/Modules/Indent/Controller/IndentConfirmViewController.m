@@ -38,6 +38,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *resultPriceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postcost;
 @property (weak, nonatomic) IBOutlet UILabel *totalpriceLabel;//小计
+@property (weak, nonatomic) IBOutlet UILabel *combcutLabel;
 
 @property (strong, nonatomic) MAMapView *mapView;
 @property (strong, nonatomic) MAPointAnnotation *userAnnotation;
@@ -103,6 +104,7 @@
 //        [NSString stringWithFormat:@"%ld",[self.orderModel.lastprice integerValue] - [self.redLabel.text integerValue] + [self.postcost.text integerValue]];
         self.activityLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.cut];
         self.distanceLabel.text = self.orderModel.distance;
+        self.combcutLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.combcut];
         CGFloat tableViewHeight = 0;
         for (JSYHShopModel *model in self.orderModel.shops) {
             tableViewHeight += model.orderHeight;
@@ -176,6 +178,9 @@
                 if (_is_first == 1) {
                     lastpriceFloat = lastpriceFloat + [self.orderModel.cut floatValue];
                 }
+                if (lastpriceFloat < 0 || lastpriceFloat == 0) {
+                    lastpriceFloat = 0.01;
+                }
                 lastprice = [NSNumber numberWithFloat:lastpriceFloat];
                 self.resultPriceLabel.text = [NSString stringWithFormat:@"%@",lastprice];
                 self.totalpriceLabel.text = self.resultPriceLabel.text;
@@ -201,6 +206,9 @@
             CGFloat lastpriceFloat = lastprice.integerValue / 100.0 - [self.redLabel.text floatValue];
             if (_is_first == 1) {
                 lastpriceFloat = lastpriceFloat + [self.orderModel.cut floatValue];
+            }
+            if (lastpriceFloat < 0 || lastpriceFloat == 0) {
+                lastpriceFloat = 0.01;
             }
             lastprice = [NSNumber numberWithFloat:lastpriceFloat];
             self.resultPriceLabel.text = [NSString stringWithFormat:@"%@",lastprice];
@@ -261,6 +269,7 @@
 }
 - (IBAction)couponTapAction:(id)sender {
     JSYHCouponViewController *couponVC = [[JSYHCouponViewController alloc] init];
+    couponVC.shopcount = self.dataArray.count;
     couponVC.chooseCoupon = ^(JSYHCouponModel *model) {
         self.redLabel.text = [NSString stringWithFormat:@"%@",model.value];
         _is_first = model.is_first;
@@ -268,6 +277,10 @@
         CGFloat priceFloat = [self.orderModel.lastprice floatValue] - [self.redLabel.text integerValue];
         if (_is_first == 1) {
             priceFloat = priceFloat + [self.orderModel.cut floatValue];
+            
+        }
+        if (priceFloat < 0 || priceFloat == 0) {
+            priceFloat = 0.01;
         }
         NSNumber *price = [NSNumber numberWithFloat:priceFloat];
         self.resultPriceLabel.text = [NSString stringWithFormat:@"%@",price];
@@ -347,10 +360,11 @@
     {
         MAPolylineRenderer *polylineRenderer = [[MAPolylineRenderer alloc] initWithPolyline:overlay];
         
-        polylineRenderer.lineWidth    = 3.f;
-        polylineRenderer.strokeColor  = [UIColor colorWithRed:0 green:1 blue:0 alpha:0.6];
+        polylineRenderer.lineWidth    = 6.f;
+        polylineRenderer.strokeColor  = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.6];
         polylineRenderer.lineJoinType = kMALineJoinRound;
         polylineRenderer.lineCapType  = kMALineCapRound;
+        polylineRenderer.lineDash = YES;
         
         return polylineRenderer;
     }

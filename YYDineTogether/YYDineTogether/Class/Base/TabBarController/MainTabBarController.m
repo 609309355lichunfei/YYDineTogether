@@ -42,6 +42,11 @@ PropertyNSMutableArray(VCS);//tabbar root VC
     [self removeOriginControls];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self removeOriginControls];
+}
+
 #pragma mark ————— 初始化TabBar —————
 -(void)setUpTabBar{
     [self.tabBar addSubview:({

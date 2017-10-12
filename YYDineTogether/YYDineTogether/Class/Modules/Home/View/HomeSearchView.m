@@ -26,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UIView *searchResultView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic) NSArray *hotKeywordArray;
+
 @property (strong, nonatomic) NSMutableArray *keywordArray;
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
@@ -57,7 +59,7 @@
 //    [_recommendView addSubview:_textView];
     
     self.keywordArray = [[[DB_Helper defaultHelper] getKeywordArray] mutableCopy];
-    
+    self.hotKeywordArray = @[@"泡椒牛蛙",@"奶茶",@"农家小炒肉",@"干锅包菜",@"泡芙",@"大鸡排",@"重庆小面",@"皮蛋瘦肉粥",@"啤酒炸鸡",@"抹茶拿铁"];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView registerNib:[UINib nibWithNibName:@"JSSHSearchCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"JSSHSearchCollectionViewCell"];
@@ -135,7 +137,7 @@
     if (section == 1) {
         return self.keywordArray.count;
     }
-    return 0;
+    return self.hotKeywordArray.count;
 }
 
 //- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -146,8 +148,10 @@
     if (indexPath.section == 1) {
         NSString *keyword = self.keywordArray[indexPath.row];
         return CGSizeMake([keyword widthForFont:[UIFont systemFontOfSize:12]] + 16, 20);
+    } else {
+        NSString *keyword = self.hotKeywordArray[indexPath.row];
+        return CGSizeMake([keyword widthForFont:[UIFont systemFontOfSize:12]] + 16, 20);
     }
-    return CGSizeMake(40, 20);
 }
 
 
@@ -179,7 +183,7 @@
     if (indexPath.section == 1) {
         cell.titleLabel.text = self.keywordArray[indexPath.row];
     } else {
-        cell.titleLabel.text = @"牛蛙";
+        cell.titleLabel.text = self.hotKeywordArray[indexPath.row];
     }
     return cell;
 }
@@ -189,6 +193,8 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
         self.didSelectBlock(self.keywordArray[indexPath.row]);
+    } else {
+        self.didSelectBlock(self.hotKeywordArray[indexPath.row]);
     }
     
 }

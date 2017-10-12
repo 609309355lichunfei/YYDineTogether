@@ -11,11 +11,8 @@
 
 @interface HomeDishTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
-@property (weak, nonatomic) IBOutlet UILabel *dishStarLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dishSalesCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dishDistanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *shopNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *discountPriceLabel;
 @property (weak, nonatomic) IBOutlet UIView *discountDiscoverView;
@@ -59,11 +56,8 @@
 - (void)setDishModel:(JSYHDishModel *)dishModel {
     _dishModel = dishModel;
     [self.logoImageView setImageWithURL:[NSURL URLWithString:_dishModel.logo] placeholder:[UIImage imageNamed:@"default_dish"]];
-    self.nameLabel.text = [NSString stringWithFormat:@"%@(%@)",_dishModel.name,_dishModel.shopname];
-    self.shopNameLabel.text = [NSString stringWithFormat:@"(%@)",_dishModel.shopname];
+    self.nameLabel.text = [NSString stringWithFormat:@"%@-%@",_dishModel.name,_dishModel.shopname];
     self.dishDistanceLabel.text = _dishModel.distance;
-    self.dishSalesCountLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.salescount];
-    self.dishStarLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.star];
     self.discountPriceLabel.hidden = [_dishModel.discountprice isEqualToNumber:_dishModel.price] ? YES : NO;
     self.discountDiscoverView.hidden = self.discountPriceLabel.isHidden;
     self.discountPriceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.discountprice];

@@ -81,6 +81,18 @@
     [self.dishsTableView reloadData];
 }
 
+- (IBAction)phoneAction:(id)sender {
+    NSString *phone = self.shopModel.phone;
+    UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"是否要联系商户?" message:phone preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        NSString *allString = [NSString stringWithFormat:@"tel:%@",phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:allString]];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
+    [alerVC addAction:action];
+    [alerVC addAction:cancelAction];
+    [self.viewController presentViewController:alerVC animated:YES completion:nil];
+}
 
 
 

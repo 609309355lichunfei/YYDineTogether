@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSNumber *discountprice;
 @property (strong, nonatomic) NSMutableArray *shops;
 @property (strong, nonatomic) NSArray *sortedshops;
+@property (strong, nonatomic) NSNumber *combcut;
 @property (strong, nonatomic) JSYHAddressModel *addressModel;
 
 

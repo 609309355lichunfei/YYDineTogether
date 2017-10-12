@@ -70,10 +70,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mPF-1O-Wc3">
                     <rect key="frame" x="10" y="587" width="50" height="50"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shoppingCart" translatesAutoresizingMaskIntoConstraints="NO" id="YPk-pu-It9">
-                            <rect key="frame" x="-3.5" y="-3.5" width="57" height="57"/>
-                            <gestureRecognizers/>
-                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GM-pF-djW">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <state key="normal" image="shoppingCart"/>
+                            <connections>
+                                <action selector="clearShoppingCartAction:" destination="-1" eventType="touchUpInside" id="tl2-W0-qYH"/>
+                            </connections>
+                        </button>
                         <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qn5-UM-QFP">
                             <rect key="frame" x="32" y="0.0" width="18" height="18"/>
                             <color key="backgroundColor" red="0.97254901959999995" green="0.23137254900000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,16 +91,15 @@
                     </subviews>
                     <gestureRecognizers/>
                     <constraints>
-                        <constraint firstItem="YPk-pu-It9" firstAttribute="centerX" secondItem="mPF-1O-Wc3" secondAttribute="centerX" id="57q-hz-T42"/>
+                        <constraint firstAttribute="trailing" secondItem="4GM-pF-djW" secondAttribute="trailing" id="3Ww-dH-tjX"/>
+                        <constraint firstItem="4GM-pF-djW" firstAttribute="top" secondItem="mPF-1O-Wc3" secondAttribute="top" id="7CC-EE-vKT"/>
                         <constraint firstAttribute="trailing" secondItem="Qn5-UM-QFP" secondAttribute="trailing" id="8O2-gW-EQX"/>
+                        <constraint firstAttribute="bottom" secondItem="4GM-pF-djW" secondAttribute="bottom" id="8ht-Zb-14w"/>
                         <constraint firstAttribute="width" constant="50" id="H0y-Ty-O1U"/>
                         <constraint firstItem="Qn5-UM-QFP" firstAttribute="top" secondItem="mPF-1O-Wc3" secondAttribute="top" id="HbM-2j-trY"/>
-                        <constraint firstItem="YPk-pu-It9" firstAttribute="centerY" secondItem="mPF-1O-Wc3" secondAttribute="centerY" id="S9m-y7-z78"/>
+                        <constraint firstItem="4GM-pF-djW" firstAttribute="leading" secondItem="mPF-1O-Wc3" secondAttribute="leading" id="TOf-pz-ixG"/>
                         <constraint firstAttribute="height" constant="50" id="gpw-Nr-dTY"/>
                     </constraints>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="bMH-tH-jw1" appends="YES" id="qt1-aW-FJf"/>
-                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -113,11 +115,6 @@
                 <constraint firstItem="mPF-1O-Wc3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="yEE-Lc-PFZ"/>
             </constraints>
         </view>
-        <tapGestureRecognizer id="bMH-tH-jw1" userLabel="shopcartTap">
-            <connections>
-                <action selector="clearShoppingCartAction:" destination="-1" id="rwU-AK-LN3"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="back" width="32" height="32"/>

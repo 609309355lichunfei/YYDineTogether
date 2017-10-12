@@ -55,7 +55,16 @@
 }
 
 - (void)updateHeightWithActivity {
-    self.height = 100 + self.activites.count * 22;
+    if (self.activites.count > 2) {
+        if (_optinal) {
+            self.height = 100 + self.activites.count * 22;
+        } else {
+            self.height = 138;
+        }
+    } else {
+        self.height = 100 + self.activites.count * 22;
+    }
+    
 }
 
 - (void)updateHeightWithDish {

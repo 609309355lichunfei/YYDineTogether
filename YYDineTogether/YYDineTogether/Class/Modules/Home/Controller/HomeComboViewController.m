@@ -124,18 +124,21 @@
 - (IBAction)firstCombAction:(id)sender {
     HomeComboRecomendViewController *vc = [[HomeComboRecomendViewController alloc] init];
     vc.tagid = [_firstComb.combid stringValue];
+    vc.mytitle = _firstComb.name;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)secondCombTap:(id)sender {
     HomeComboRecomendViewController *vc = [[HomeComboRecomendViewController alloc] init];
     vc.tagid = [_secondComb.combid stringValue];
+    vc.mytitle = _secondComb.name;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)thirdCombTap:(id)sender {
     HomeComboRecomendViewController *vc = [[HomeComboRecomendViewController alloc] init];
     vc.tagid = [_thirdComb.combid stringValue];
+    vc.mytitle = _thirdComb.name;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -145,6 +148,7 @@
     JSYHComboModel *model = self.combsArray[index];
     HomeComboRecomendViewController *vc = [[HomeComboRecomendViewController alloc] init];
     vc.tagid = [model.combid stringValue];
+    vc.mytitle = model.name;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

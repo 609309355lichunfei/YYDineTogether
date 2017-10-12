@@ -54,6 +54,8 @@
 #define URL_Login [NSString stringWithFormat:@"%@/v1/login/", URL_main]
 //注册接口
 #define URL_Register [NSString stringWithFormat:@"%@/register/", URL_main]
+//短信验证码
+#define URL_Sms [NSString stringWithFormat:@"%@/v1/sms/", URL_main]
 //登出接口
 #define URL_Logout [NSString stringWithFormat:@"%@/v1/logout/", URL_main]
 //banner

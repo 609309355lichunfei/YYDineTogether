@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JSYHAddressMapViewController">
             <connections>
@@ -15,6 +21,7 @@
                 <outlet property="addressTitleLabel" destination="jfw-ak-jAz" id="z6b-Ga-wME"/>
                 <outlet property="doneBT" destination="xY9-hg-QKq" id="JTV-hM-QTf"/>
                 <outlet property="mapBGView" destination="Mgu-Wo-hXk" id="gND-dn-2cd"/>
+                <outlet property="searchBar" destination="ezM-kO-PhF" id="lQB-SK-jaL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -132,17 +139,27 @@
                         <constraint firstAttribute="bottom" secondItem="2kg-Zg-sfT" secondAttribute="bottom" constant="8" id="gWV-tG-MnJ"/>
                     </constraints>
                 </view>
+                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="您的地址" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ezM-kO-PhF">
+                    <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="I7f-MP-Qby"/>
+                    </connections>
+                </searchBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="xkQ-sU-UBv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1We-UL-VF7"/>
                 <constraint firstAttribute="trailing" secondItem="JtM-O8-Np0" secondAttribute="trailing" id="6ON-aa-Krh"/>
+                <constraint firstItem="ezM-kO-PhF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="A6Q-Op-hbw"/>
                 <constraint firstAttribute="bottom" secondItem="Mgu-Wo-hXk" secondAttribute="bottom" id="I3E-if-7Iw"/>
                 <constraint firstAttribute="trailing" secondItem="xkQ-sU-UBv" secondAttribute="trailing" id="JYB-Om-sd0"/>
                 <constraint firstAttribute="trailing" secondItem="Mgu-Wo-hXk" secondAttribute="trailing" id="KK3-0E-5OL"/>
+                <constraint firstAttribute="trailing" secondItem="ezM-kO-PhF" secondAttribute="trailing" id="PBF-RM-eyY"/>
                 <constraint firstItem="ujm-Xv-F7Y" firstAttribute="centerY" secondItem="Mgu-Wo-hXk" secondAttribute="centerY" constant="-10" id="Sym-wy-s2W"/>
                 <constraint firstItem="Mgu-Wo-hXk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TVL-Xk-lqj"/>
                 <constraint firstItem="ujm-Xv-F7Y" firstAttribute="centerX" secondItem="Mgu-Wo-hXk" secondAttribute="centerX" id="UcU-Rv-jDV"/>
+                <constraint firstItem="ezM-kO-PhF" firstAttribute="top" secondItem="xkQ-sU-UBv" secondAttribute="bottom" id="Zdd-Eg-qE7"/>
                 <constraint firstItem="xkQ-sU-UBv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gbB-Fn-PrN"/>
                 <constraint firstAttribute="bottom" secondItem="JtM-O8-Np0" secondAttribute="bottom" id="l1Y-Sc-ZT2"/>
                 <constraint firstItem="JtM-O8-Np0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nNv-Us-ddm"/>

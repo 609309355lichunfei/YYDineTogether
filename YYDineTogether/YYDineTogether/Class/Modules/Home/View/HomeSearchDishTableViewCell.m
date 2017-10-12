@@ -13,9 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *dishStarLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dishSalesCountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dishDistanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *shopNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UIView *priceCoverView;
 @property (weak, nonatomic) IBOutlet UILabel *discountPriceLabel;
@@ -64,8 +62,6 @@
     _dishModel = dishModel;
     [self.logoImageView setImageWithURL:[NSURL URLWithString:_dishModel.logo] placeholder:nil];
     self.nameLabel.text = _dishModel.name;
-    self.shopNameLabel.text = [NSString stringWithFormat:@"(%@)",_dishModel.shopname];
-    self.dishDistanceLabel.text = _dishModel.distance;
     self.dishSalesCountLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.salescount];
     self.priceLabel.hidden = [_dishModel.price isEqualToNumber:_dishModel.discountprice] ? YES : NO;
     self.priceCoverView.hidden = self.priceLabel.isHidden;

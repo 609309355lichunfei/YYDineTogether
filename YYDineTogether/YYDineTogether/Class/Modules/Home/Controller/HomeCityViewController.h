@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeCityViewController : UIViewController
-@property (strong, nonatomic) UILabel *cityLabel;
+
 @end

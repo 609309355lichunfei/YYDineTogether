@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSNumber *shopid;
 @property (strong, nonatomic) NSString *distance;
 @property (strong, nonatomic) NSString *notice_info;
+@property (strong, nonatomic) NSString *phone;
 
 @property (strong, nonatomic) NSNumber *lat;
 @property (strong, nonatomic) NSNumber *lng;
@@ -25,6 +26,9 @@
 @property (strong, nonatomic) NSMutableArray *cates;
 
 #pragma mark 自加属性
+
+@property (assign, nonatomic) BOOL optinal;
+
 @property (assign, nonatomic) CGFloat height;
 
 @property (assign, nonatomic) CGFloat shopCartHeight;

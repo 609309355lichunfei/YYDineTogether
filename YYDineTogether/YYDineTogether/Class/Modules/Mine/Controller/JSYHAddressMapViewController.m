@@ -10,14 +10,16 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
+#import "POIAnnotation.h"
 
 
-@interface JSYHAddressMapViewController ()<MAMapViewDelegate, AMapSearchDelegate>
+@interface JSYHAddressMapViewController ()<MAMapViewDelegate, AMapSearchDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *addressTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressDetailLabel;
 @property (weak, nonatomic) IBOutlet UIButton *doneBT;
 @property (weak, nonatomic) IBOutlet UIView *addressBGView;
 @property (weak, nonatomic) IBOutlet UIView *mapBGView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (strong, nonatomic) MAMapView *mapView;
 @property (strong, nonatomic) AMapSearchAPI *search;
@@ -88,6 +90,65 @@
         self.addressDetailLabel.text = _poi.address;
     }
 }
+
+/* POI 搜索回调. */
+- (void)onPOISearchDone:(AMapPOISearchBaseRequest *)request response:(AMapPOISearchResponse *)response
+{
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    
+    if (response.pois.count == 0)
+    {
+        return;
+    }
+    
+    NSMutableArray *poiAnnotations = [NSMutableArray arrayWithCapacity:response.pois.count];
+    
+    [response.pois enumerateObjectsUsingBlock:^(AMapPOI *obj, NSUInteger idx, BOOL *stop) {
+
+        [poiAnnotations addObject:[[POIAnnotation alloc] initWithPOI:obj]];
+
+    }];
+    
+    /* 将结果以annotation的形式加载到地图上. */
+//    [self.mapView addAnnotations:poiAnnotations];
+    
+    /* 如果只有一个结果，设置其为中心点. */
+    if (poiAnnotations.count > 1)
+    {
+        [self.mapView setCenterCoordinate:[poiAnnotations[0] coordinate]];
+    }
+    /* 如果有多个结果, 设置地图使所有的annotation都可见. */
+//    else
+//    {
+//        [self.mapView showAnnotations:poiAnnotations animated:NO];
+//    }
+}
+
+#pragma mark - searchBarDelegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self searchPoiByKeyword:searchBar.text];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchPoiByKeyword:(NSString *)keyword
+{
+    AMapPOIKeywordsSearchRequest *request = [[AMapPOIKeywordsSearchRequest alloc] init];
+    request.keywords = keyword;
+    //    request.keywords            = @"北京大学";
+    request.city                = @"宁波";
+    //    request.types               = @"高等院校";
+    //    request.requireExtension    = YES;
+    //
+    //    /*  搜索SDK 3.2.0 中新增加的功能，只搜索本城市的POI。*/
+    request.cityLimit           = YES;
+    request.requireSubPOIs      = YES;
+    
+    [self.search AMapPOIKeywordsSearch:request];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -118,9 +118,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiR-bq-lMX">
                     <rect key="frame" x="8" y="565" width="50" height="50"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shoppingCart" translatesAutoresizingMaskIntoConstraints="NO" id="lvo-pQ-8gt">
-                            <rect key="frame" x="-3.5" y="-3.5" width="57" height="57"/>
-                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2J1-Vr-ojK">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <state key="normal" title="Button" image="shoppingCart"/>
+                            <connections>
+                                <action selector="shoppingCartTapAction:" destination="-1" eventType="touchUpInside" id="fBR-aQ-N10"/>
+                            </connections>
+                        </button>
                         <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Bj-Oa-el3">
                             <rect key="frame" x="32" y="0.0" width="18" height="18"/>
                             <color key="backgroundColor" red="0.97254901959999995" green="0.23137254900000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -135,16 +139,15 @@
                     </subviews>
                     <gestureRecognizers/>
                     <constraints>
-                        <constraint firstItem="lvo-pQ-8gt" firstAttribute="centerY" secondItem="YiR-bq-lMX" secondAttribute="centerY" id="Asu-Qo-3qv"/>
+                        <constraint firstItem="2J1-Vr-ojK" firstAttribute="top" secondItem="YiR-bq-lMX" secondAttribute="top" id="Lqg-bs-taA"/>
                         <constraint firstItem="2Bj-Oa-el3" firstAttribute="top" secondItem="YiR-bq-lMX" secondAttribute="top" id="PjA-1H-xc8"/>
+                        <constraint firstAttribute="bottom" secondItem="2J1-Vr-ojK" secondAttribute="bottom" id="UEw-Jd-5fb"/>
                         <constraint firstAttribute="width" constant="50" id="anS-Ez-Cbj"/>
                         <constraint firstAttribute="trailing" secondItem="2Bj-Oa-el3" secondAttribute="trailing" id="g5s-Me-wk8"/>
-                        <constraint firstItem="lvo-pQ-8gt" firstAttribute="centerX" secondItem="YiR-bq-lMX" secondAttribute="centerX" id="hEr-1n-mOM"/>
+                        <constraint firstItem="2J1-Vr-ojK" firstAttribute="leading" secondItem="YiR-bq-lMX" secondAttribute="leading" id="ihe-h0-e08"/>
+                        <constraint firstAttribute="trailing" secondItem="2J1-Vr-ojK" secondAttribute="trailing" id="pMr-dY-d4k"/>
                         <constraint firstAttribute="height" constant="50" id="sIG-Qv-zQB"/>
                     </constraints>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="ygc-fB-5Lf" appends="YES" id="2mm-h0-Chp"/>
-                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -164,11 +167,6 @@
         <tapGestureRecognizer id="3Gu-PM-ZSC" userLabel="locationTap">
             <connections>
                 <action selector="locationAction:" destination="-1" id="5bo-c3-WC2"/>
-            </connections>
-        </tapGestureRecognizer>
-        <tapGestureRecognizer id="ygc-fB-5Lf" userLabel="shoppingCartTap">
-            <connections>
-                <action selector="shoppingCartTapAction:" destination="-1" id="bAL-eU-N2D"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

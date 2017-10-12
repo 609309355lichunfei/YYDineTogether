@@ -52,6 +52,10 @@
         NSNumber *priceNumber = value;
         float price = priceNumber.integerValue / 100.0;
         self.cut = [NSNumber numberWithFloat:price];
+    } else if ([key isEqualToString:@"combcut"]) {
+        NSNumber *priceNumber = value;
+        float price = priceNumber.integerValue / 100.0;
+        self.combcut = [NSNumber numberWithFloat:price];
     }
 }
 

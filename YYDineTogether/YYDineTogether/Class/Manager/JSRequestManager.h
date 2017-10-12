@@ -31,6 +31,16 @@
                    Failed:(PPHttpRequestFailed)failed;
 
 
+/**
+ 短信验证码接口
+
+ @param phoneNumber 手机号
+ */
+- (void)postSmsPhoneNumber:(NSString *)phoneNumber
+                   Success:(PPHttpRequestSuccess)success
+                    Failed:(PPHttpRequestFailed)failed;
+
+
 
 /**
  获取首页商店

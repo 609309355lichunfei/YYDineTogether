@@ -30,6 +30,7 @@
     [super viewDidLoad];
     self.navigationItem.title = @"我的";
      //设计头像图片圆形
+    self.iconimage.layer.cornerRadius = 40;
     [self.view addSubview:self.tableview];
     
     
@@ -44,7 +45,7 @@
     }else {
         [[JSRequestManager sharedManager] getMemberInfoSuccess:^(id responseObject) {
             [[JSYHUserModel defaultModel] setValuesForKeysWithDictionary:responseObject[@"data"]];
-            [self.iconimage setImageWithURL:[NSURL URLWithString:[JSYHUserModel defaultModel].logo] placeholder:nil];
+            [self.iconimage setImageWithURL:[NSURL URLWithString:[JSYHUserModel defaultModel].logo] placeholder:[UIImage imageNamed:@"default_user"]];
             self.userNameLabel.text = [JSYHUserModel defaultModel].nickname;
         } Failed:^(NSError *error) {
             
@@ -68,8 +69,10 @@
 - (UITableView *)tableview {
     
     if (!_tableview) {
-        _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 200, KScreenWidth, KScreenHeight - 264) style:UITableViewStyleGrouped];
+        _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 200, KScreenWidth, KScreenHeight - 264) style:UITableViewStylePlain];
         _tableview.delegate = self;
+        
+        _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableview.dataSource= self;
         [_tableview registerNib:[UINib nibWithNibName:@"MineTableViewCell" bundle:nil] forCellReuseIdentifier:@"MineTableViewCell"];
       //  _tableview.backgroundColor = [UIColor whiteColor];
@@ -92,6 +95,17 @@
     
     return 50;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 12;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = UIColorHex(0xededed);
+    return view;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MineTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -173,9 +187,9 @@
         }
     }else if (indexPath.section == 1){
         if (indexPath.row == 0) {
-            UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"是否要联系客服?" message:@"010-23355623" preferredStyle:(UIAlertControllerStyleAlert)];
+            UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"是否要联系客服?" message:@"0574-87566681" preferredStyle:(UIAlertControllerStyleAlert)];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
-                NSString *allString = [NSString stringWithFormat:@"tel:010-23355623"];
+                NSString *allString = [NSString stringWithFormat:@"tel:0574-87566681"];
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:allString]];
             }];
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];

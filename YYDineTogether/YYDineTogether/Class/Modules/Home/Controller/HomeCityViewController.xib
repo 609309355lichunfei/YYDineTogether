@@ -1,16 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeCityViewController">
             <connections>
-                <outlet property="tableView" destination="23o-aL-i3W" id="pUz-Xp-dc3"/>
+                <outlet property="mapBackGroundView" destination="tu4-4c-Mez" id="ZVQ-Gg-cRc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,56 +25,53 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnE-f2-hjI">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cya-2u-VzN">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="配送区域" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nu6-Wc-IiG">
+                            <rect key="frame" x="151.5" y="30.5" width="72.5" height="25.5"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="18"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGe-Ec-3JV">
+                            <rect key="frame" x="0.0" y="20" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="8jG-0u-jIG"/>
+                                <constraint firstAttribute="width" constant="44" id="SNa-dN-cQe"/>
+                            </constraints>
+                            <state key="normal" image="Navigation_left"/>
+                            <connections>
+                                <action selector="backAction:" destination="-1" eventType="touchUpInside" id="gDf-n9-Zoj"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="64" id="zco-oU-1Dk"/>
+                        <constraint firstAttribute="height" constant="64" id="Kjx-nx-j2l"/>
+                        <constraint firstAttribute="bottom" secondItem="CGe-Ec-3JV" secondAttribute="bottom" id="TjV-M1-57H"/>
+                        <constraint firstAttribute="bottom" secondItem="nu6-Wc-IiG" secondAttribute="bottom" constant="8" id="kdY-hT-jWX"/>
+                        <constraint firstItem="nu6-Wc-IiG" firstAttribute="centerX" secondItem="cya-2u-VzN" secondAttribute="centerX" id="rHB-Cx-HFU"/>
+                        <constraint firstItem="CGe-Ec-3JV" firstAttribute="leading" secondItem="cya-2u-VzN" secondAttribute="leading" id="typ-g1-iN5"/>
                     </constraints>
-                    <color key="barTintColor" red="0.97254901959999995" green="0.23137254900000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
-                    <textAttributes key="titleTextAttributes">
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </textAttributes>
-                    <items>
-                        <navigationItem title="选择城市" id="kDQ-PA-DIH">
-                            <barButtonItem key="leftBarButtonItem" id="ifN-KH-hAe">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="77h-JH-rEm">
-                                    <rect key="frame" x="16" y="26" width="32" height="32"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="back">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="backAction:" destination="-1" eventType="touchUpInside" id="lUd-1V-6Eg"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="23o-aL-i3W">
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tu4-4c-Mez">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="Pdc-Z6-8lr"/>
-                        <outlet property="delegate" destination="-1" id="0ao-M0-Fcv"/>
-                    </connections>
-                </tableView>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="NnE-f2-hjI" secondAttribute="trailing" id="F5v-CC-JZq"/>
-                <constraint firstItem="NnE-f2-hjI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="IeW-I5-R2U"/>
-                <constraint firstAttribute="trailing" secondItem="23o-aL-i3W" secondAttribute="trailing" id="aBZ-eh-Mqo"/>
-                <constraint firstItem="23o-aL-i3W" firstAttribute="top" secondItem="NnE-f2-hjI" secondAttribute="bottom" id="eAp-ni-KHH"/>
-                <constraint firstAttribute="bottom" secondItem="23o-aL-i3W" secondAttribute="bottom" id="nqV-dw-wMa"/>
-                <constraint firstItem="23o-aL-i3W" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rZE-Pn-sPj"/>
-                <constraint firstItem="NnE-f2-hjI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="t9R-lh-btF"/>
+                <constraint firstAttribute="trailing" secondItem="tu4-4c-Mez" secondAttribute="trailing" id="APW-0z-v4O"/>
+                <constraint firstItem="cya-2u-VzN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AV1-aG-N5k"/>
+                <constraint firstItem="cya-2u-VzN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="O4J-zu-kki"/>
+                <constraint firstItem="tu4-4c-Mez" firstAttribute="top" secondItem="cya-2u-VzN" secondAttribute="bottom" id="bU2-fb-bZH"/>
+                <constraint firstAttribute="bottom" secondItem="tu4-4c-Mez" secondAttribute="bottom" id="cVs-RZ-fbQ"/>
+                <constraint firstItem="tu4-4c-Mez" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="f2d-mc-wVX"/>
+                <constraint firstAttribute="trailing" secondItem="cya-2u-VzN" secondAttribute="trailing" id="li0-m3-Lbd"/>
             </constraints>
         </view>
     </objects>
     <resources>
-        <image name="back" width="32" height="32"/>
+        <image name="Navigation_left" width="32" height="32"/>
     </resources>
 </document>

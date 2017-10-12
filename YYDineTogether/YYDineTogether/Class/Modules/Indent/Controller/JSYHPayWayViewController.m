@@ -8,6 +8,7 @@
 
 #import "JSYHPayWayViewController.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "IndentDetailViewController.h"
 
 @interface JSYHPayWayViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
@@ -25,7 +26,13 @@
 - (IBAction)backAction:(id)sender {
     UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"是否要退出支付?" message:@"" preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        [[AppDelegate shareAppDelegate].mainTabBar setSelectedIndex:1];
         [self.navigationController popToRootViewControllerAnimated:YES];
+        
+        IndentDetailViewController *indentDetialVC = [[IndentDetailViewController alloc] init];
+        indentDetialVC.order_no = self.order_no;
+        [[AppDelegate shareAppDelegate].mainTabBar.navigationController pushViewController:indentDetialVC animated:YES];
+        
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
     [alerVC addAction:action];
@@ -45,9 +52,11 @@
             if ([resultDic[@"resultStatus"] isEqualToString:@"6001"]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"JSZPpayResult" object:@"6001"];
                 [AppManager showToastWithMsg:@"支付失败"];
+                [[AppDelegate shareAppDelegate].mainTabBar setSelectedIndex:1];
                 [self.navigationController popToRootViewControllerAnimated:YES];
             } else {
                 [AppManager showToastWithMsg:@"支付成功"];
+                [[AppDelegate shareAppDelegate].mainTabBar setSelectedIndex:1];
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }
         }];

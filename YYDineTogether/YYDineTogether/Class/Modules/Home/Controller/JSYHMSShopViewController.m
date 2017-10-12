@@ -145,6 +145,9 @@
     NSMutableArray *dataArray = tagModel.dataArray;
     JSYHShopModel *model = dataArray[indexPath.row];
     cell.shopModel = model;
+    cell.activityBlock = ^(){
+        [tableView reloadRow:indexPath.row inSection:indexPath.section withRowAnimation:(UITableViewRowAnimationNone)];
+    };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

@@ -57,8 +57,12 @@
         return;
     }
     NSMutableDictionary *addressDic = [@{@"address":[NSString stringWithFormat:@"%@%@",self.firstAddressTF.text, self.addressTextField.text],@"username":self.nameTextField.text,@"phone":self.phoneTextField.text,@"addressid":@"0"} mutableCopy];
-    [addressDic setValue:[NSNumber numberWithFloat:_lng] forKey:@"lng"];
-    [addressDic setValue:[NSNumber numberWithFloat:_lat] forKey:@"lat"];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setPositiveFormat:@"0.00000"];
+    NSNumber *lngNumber = [NSNumber numberWithFloat:_lng];
+    NSNumber *latNumber = [NSNumber numberWithFloat:_lat];
+    [addressDic setValue:[formatter stringFromNumber:lngNumber] forKey:@"lng"];
+    [addressDic setValue:[formatter stringFromNumber:latNumber] forKey:@"lat"];
     [[JSRequestManager sharedManager] postMemberAddressWithDic:addressDic Success:^(id responseObject) {
         [self.navigationController popViewControllerAnimated:YES];
     } Failed:^(NSError *error) {

@@ -11,6 +11,8 @@
 @class JSYHCouponModel;
 @interface JSYHCouponViewController : UIViewController
 
+@property (assign, nonatomic) NSInteger shopcount;
+
 @property (copy, nonatomic) void (^chooseCoupon)(JSYHCouponModel *model);
 
 @end

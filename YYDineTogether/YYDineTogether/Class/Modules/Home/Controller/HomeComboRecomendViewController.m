@@ -13,7 +13,7 @@
 #import "JSYHCombListHeaderTableViewCell.h"
 #import "HomeActivityViewController.h"
 
-@interface HomeComboRecomendViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>{
+@interface HomeComboRecomendViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate,CAAnimationDelegate>{
     NSInteger _pageIndex;
 }
 
@@ -22,9 +22,12 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
 
+@property (strong, nonatomic) UIBezierPath *path;
+@property (nonatomic, strong) CALayer *dotLayer;
 
 @end
 
@@ -37,6 +40,7 @@
 }
 
 - (void)registUI {
+    self.titleLabel.text = self.mytitle;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.shoppingCartCountLabel.layer.cornerRadius = 9;
     if ([ShoppingCartManager sharedManager].count == 0) {
@@ -145,9 +149,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         
-        return KScreenWidth * 188 / 750 + 60;
+        return KScreenWidth * 300 / 750;
     }
-    return 220;
+    return 230;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -168,18 +172,101 @@
         return cell;
     }
     JSYHCombListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSYHCombListTableViewCell" forIndexPath:indexPath];
+    __weak JSYHCombListTableViewCell *weakCell = cell;
+    cell.addBlock = ^{
+        CGRect parentRect = [weakCell convertRect:weakCell.addBT.frame toView:self.view];
+        
+            // 这里是动画开始的方法
+        [self joinCartAnimationWithRect:parentRect];
+            
+        
+    };
     JSYHComboModel *combModel = self.dataArray[indexPath.row];
     cell.combModel = combModel;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
+#pragma mark -加入购物车动画
+-(void)joinCartAnimationWithRect:(CGRect)rect
+{
+    CGFloat endPoint_x = 40;
+    CGFloat endPoint_y = kScreenHeight - 45;
+    
+    CGFloat startX = rect.origin.x;
+    CGFloat startY = rect.origin.y;
+    
+    _path= [UIBezierPath bezierPath];
+    [_path moveToPoint:CGPointMake(startX, startY)];
+    
+    //三点曲线
+    [_path addCurveToPoint:CGPointMake(endPoint_x, endPoint_y)
+             controlPoint1:CGPointMake(startX, startY)
+             controlPoint2:CGPointMake(startX - 180, startY - 200)];
+    _dotLayer = [CALayer layer];
+    _dotLayer.backgroundColor = UIColorFromRGB(0xfd5352).CGColor;
+    _dotLayer.frame = CGRectMake(0, 0, 20, 20);
+    _dotLayer.cornerRadius = 10;
+    [self.view.layer addSublayer:_dotLayer];
+    [self groupAnimation];
+}
+#pragma mark - 组合动画
+-(void)groupAnimation
+{
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    animation.path = _path.CGPath;
+    animation.rotationMode = kCAAnimationRotateAuto;
+    
+    CABasicAnimation *alphaAnimation = [CABasicAnimation animationWithKeyPath:@"alpha"];
+    alphaAnimation.duration = 0.5f;
+    alphaAnimation.fromValue = [NSNumber numberWithFloat:1.0];
+    alphaAnimation.toValue = [NSNumber numberWithFloat:0.1];
+    alphaAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    
+    CAAnimationGroup *groups = [CAAnimationGroup animation];
+    groups.animations = @[animation,alphaAnimation];
+    groups.duration = 0.6f;
+    groups.removedOnCompletion = NO;
+    groups.fillMode = kCAFillModeForwards;
+    groups.delegate = self;
+    [groups setValue:@"groupsAnimation" forKey:@"animationName"];
+    [_dotLayer addAnimation:groups forKey:nil];
+    [self performSelector:@selector(removeFromLayer:) withObject:_dotLayer afterDelay:0.6f];
+}
+- (void)removeFromLayer:(CALayer *)layerAnimation{
+    
+    [layerAnimation removeFromSuperlayer];
+}
+
+#pragma mark - CAAnimationDelegate
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    
+    if ([[anim valueForKey:@"animationName"]isEqualToString:@"groupsAnimation"]) {
+        
+        CABasicAnimation *shakeAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        shakeAnimation.duration = 0.25f;
+        shakeAnimation.fromValue = [NSNumber numberWithFloat:0.9];
+        shakeAnimation.toValue = [NSNumber numberWithFloat:1];
+        shakeAnimation.autoreverses = YES;
+        // 这里是下方的自定义View上面 放的btn. 自己随便定义一个 0.-
+        //        [_shopCartView.btnBackImg.layer addAnimation:shakeAnimation forKey:nil];
+        
+        
+        [_shoppingCartCountLabel.layer addAnimation:shakeAnimation forKey:nil];
+        
+    }
+}
+
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeActivityViewController *combVC = [[HomeActivityViewController alloc] init];
-    JSYHComboModel *model = self.dataArray[indexPath.row];
-    combVC.combId = model.combid.stringValue;
-    [self.navigationController pushViewController:combVC animated:YES];
+    if (indexPath.section == 1) {
+        
+        HomeActivityViewController *combVC = [[HomeActivityViewController alloc] init];
+        JSYHComboModel *model = self.dataArray[indexPath.row];
+        combVC.combId = model.combid.stringValue;
+        [self.navigationController pushViewController:combVC animated:YES];
+    }
 }
 
 - (NSMutableArray *)dataArray {

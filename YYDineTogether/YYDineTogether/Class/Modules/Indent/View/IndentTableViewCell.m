@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *timerImageView;
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *btBGViewHeight;
 
 @property (strong, nonatomic) NSTimer *timer;
 
@@ -104,9 +105,10 @@
             self.timerLabel.hidden = NO;
             self.firstBT.hidden = YES;
             self.secondBT.hidden = NO;
+            self.btBGViewHeight.constant = 50;
             break;}
         case 2:{
-            self.statusLabel.text = @"等待商家接单 (0/5)";
+            self.statusLabel.text = @"等待商家接单";
             if (300 > ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) && ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) > 0) {
                 _time = 300 - ([AppManager getNowTimestamp] - _orderModel.paytime) + [UserManager sharedManager].timerinterval + 10;
                 NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
@@ -142,6 +144,7 @@
             self.timerLabel.hidden = NO;
             self.firstBT.hidden = NO;
             self.secondBT.hidden = YES;
+            self.btBGViewHeight.constant = 50;
             break;}
         case 3:
             self.statusLabel.text = @"等待商家接单";
@@ -149,6 +152,7 @@
             self.timerLabel.hidden = YES;
             self.firstBT.hidden = YES;
             self.secondBT.hidden = YES;
+            self.btBGViewHeight.constant = 0;
             break;
         case 4:
             self.statusLabel.text = @"订单进行中";
@@ -156,6 +160,7 @@
             self.timerLabel.hidden = YES;
             self.firstBT.hidden = YES;
             self.secondBT.hidden = YES;
+            self.btBGViewHeight.constant = 0;
             break;
         case 9:
             self.statusLabel.text = @"配送中";
@@ -163,6 +168,7 @@
             self.timerLabel.hidden = YES;
             self.firstBT.hidden = YES;
             self.secondBT.hidden = YES;
+            self.btBGViewHeight.constant = 0;
             break;
         case 10:
             self.statusLabel.text = @"已完成";
@@ -170,6 +176,7 @@
             self.timerLabel.hidden = YES;
             self.firstBT.hidden = YES;
             self.secondBT.hidden = YES;
+            self.btBGViewHeight.constant = 0;
             break;
         case 11:
             self.statusLabel.text = @"支付超时";
@@ -177,6 +184,7 @@
             self.timerLabel.hidden = YES;
             self.firstBT.hidden = YES;
             self.secondBT.hidden = YES;
+            self.btBGViewHeight.constant = 0;
             break;
         case 12:
             self.statusLabel.text = @"已取消";
@@ -184,6 +192,7 @@
             self.timerLabel.hidden = YES;
             self.firstBT.hidden = YES;
             self.secondBT.hidden = YES;
+            self.btBGViewHeight.constant = 0;
             break;
         case 13:
             self.statusLabel.text = @"已退款";
@@ -191,6 +200,7 @@
             self.timerLabel.hidden = YES;
             self.firstBT.hidden = YES;
             self.secondBT.hidden = YES;
+            self.btBGViewHeight.constant = 0;
             break;
         case 14:
             self.statusLabel.text = @"接单超时";
@@ -198,6 +208,7 @@
             self.timerLabel.hidden = YES;
             self.firstBT.hidden = YES;
             self.secondBT.hidden = YES;
+            self.btBGViewHeight.constant = 0;
             break;
         case 15:
             self.statusLabel.text = @"配送超时";
@@ -205,6 +216,7 @@
             self.timerLabel.hidden = YES;
             self.firstBT.hidden = YES;
             self.secondBT.hidden = YES;
+            self.btBGViewHeight.constant = 0;
             break;
             
         default:
@@ -254,6 +266,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     JSYHPreOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IndentCellTableViewCell" forIndexPath:indexPath];
+    cell.phoneBT.hidden = YES;
     JSYHShopModel *model = self.dataArray[indexPath.row];
     cell.shopModel = model;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

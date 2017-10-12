@@ -14,4 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (strong, nonatomic) JSYHShopModel *shopModel;
+
+@property (copy, nonatomic) void(^activityBlock)();
 @end

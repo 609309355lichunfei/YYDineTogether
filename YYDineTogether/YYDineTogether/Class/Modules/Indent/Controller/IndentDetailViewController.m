@@ -35,11 +35,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *timerBGHeight;
 
 @property (weak, nonatomic) IBOutlet UIButton *secondBT;
-
-@property (weak, nonatomic) IBOutlet UIButton *firstAffirmBT;
 @property (weak, nonatomic) IBOutlet UIButton *secondAffirmBT;
-@property (weak, nonatomic) IBOutlet UIButton *reminderBT;
 
+@property (weak, nonatomic) IBOutlet UILabel *combCutLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *activityLabel;//优惠
 @property (weak, nonatomic) IBOutlet UILabel *redLabel;//红包
@@ -49,7 +47,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *order_noLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (weak, nonatomic) IBOutlet UILabel *goingMessageLabel;
 
 @property (strong, nonatomic) JSYHOrderModel *orderModel;
 
@@ -79,8 +79,15 @@
 
 - (void)registUI {
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.secondBT.layer.cornerRadius = 4;
+    self.secondAffirmBT.layer.cornerRadius = 4;
+    self.secondAffirmBT.layer.borderWidth = 0.5;
+    self.secondAffirmBT.layer.borderColor = [UIColorFromRGB(0xfd5353) CGColor];
     [self.tableView registerNib:[UINib nibWithNibName:@"JSYHPreOrderTableViewCell" bundle:nil] forCellReuseIdentifier:@"IndentDetailTableViewCell"];
-     [self getConnect];
+    self.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self getConnect];
+    }];
+    [self.scrollView.mj_header beginRefreshing];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -88,32 +95,30 @@
     [self.timer invalidate];
 }
 
+- (void)resetUI {
+    self.titleViewHeight.constant = 410;
+    self.timerBGHeight.constant = 0;
+    self.completeBGView.hidden = YES;
+    self.secondAffirmBT.hidden = YES;
+    self.secondBT.hidden = NO;
+}
+
 - (void)getConnect {
-//    [MBProgressHUD showMessage:@"进入订单详情"];
     if (self.timer) {
         [self.timer invalidate];
         self.timer = nil;
     }
     [[JSRequestManager sharedManager] getorderWithOrderNo:self.order_no Success:^(id responseObject) {
-//        [MBProgressHUD hideHUD];
+        [self resetUI];
+        [self.scrollView.mj_header endRefreshing];
         NSDictionary *orderDic = responseObject[@"data"][@"order"];
         JSYHOrderModel *model = [[JSYHOrderModel alloc] init];
         [model setValuesForKeysWithDictionary:orderDic];
         self.orderModel = model;
         if ((_orderModel.status > 1 && _orderModel.status < 5) || _orderModel.status == 9) {
             self.mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, self.titleView.width, self.titleView.height - 100)];
-            self.firstAffirmBT.layer.cornerRadius = 4;
-            self.firstAffirmBT.layer.borderWidth = 0.5;
-            self.firstAffirmBT.layer.borderColor = [UIColorFromRGB(0xfd5353) CGColor];
-            self.secondAffirmBT.layer.cornerRadius = 4;
-            self.secondAffirmBT.layer.borderWidth = 0.5;
-            self.secondAffirmBT.layer.borderColor = [UIColorFromRGB(0xfd5353) CGColor];
-            self.reminderBT.layer.cornerRadius = 4;
-            self.reminderBT.layer.borderWidth = 0.5;
-            self.reminderBT.layer.borderColor = [UIColorFromRGB(0xfd5353) CGColor];
             
             self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-            
             self.mapView.delegate = self;
             self.mapView.showsScale = NO;
             self.mapView.showsCompass = NO;
@@ -122,27 +127,43 @@
             switch (_orderModel.status) {
                 case 2:{
                     self.statusImageView.image = [UIImage imageNamed:@"indent_status1"];
-                    [self.secondBT setTitle:@"取消订单" forState:(UIControlStateNormal)];
-                    
+                    [self.secondAffirmBT setTitle:@"取消订单" forState:(UIControlStateNormal)];
+                    self.goingMessageLabel.text = @"等待商家接单";
                     break;
                 }
                 case 3:
-                    self.statusImageView.image = [UIImage imageNamed:@"indent_status1"];
-                    break;
+                {self.statusImageView.image = [UIImage imageNamed:@"indent_status1"];
+                    CLLocationCoordinate2D ridercoordinate = CLLocationCoordinate2DMake([self.orderModel.riderlat doubleValue], [self.orderModel.riderlng doubleValue]);
+                    self.riderAnnotation = [[MAPointAnnotation alloc] init];
+                    self.riderAnnotation.coordinate = ridercoordinate;
+                    self.riderAnnotation.title = @"骑手";
+                    [self.mapView addAnnotation:self.riderAnnotation];
+                break;}
                 case 4:
-                    self.statusImageView.image = [UIImage imageNamed:@"indent_status2"];
-                    break;
+                {self.statusImageView.image = [UIImage imageNamed:@"indent_status2"];
+                    CLLocationCoordinate2D ridercoordinate = CLLocationCoordinate2DMake([self.orderModel.riderlat doubleValue], [self.orderModel.riderlng doubleValue]);
+                    self.riderAnnotation = [[MAPointAnnotation alloc] init];
+                    self.riderAnnotation.coordinate = ridercoordinate;
+                    self.riderAnnotation.title = @"骑手";
+                    [self.mapView addAnnotation:self.riderAnnotation];
+                    break;}
                 case 9:
-                    self.statusImageView.image = [UIImage imageNamed:@"indent_status3"];
-                    break;
+                {self.statusImageView.image = [UIImage imageNamed:@"indent_status3"];
+                    CLLocationCoordinate2D ridercoordinate = CLLocationCoordinate2DMake([self.orderModel.riderlat doubleValue], [self.orderModel.riderlng doubleValue]);
+                    self.riderAnnotation = [[MAPointAnnotation alloc] init];
+                    self.riderAnnotation.coordinate = ridercoordinate;
+                    self.riderAnnotation.title = @"骑手";
+                    [self.mapView addAnnotation:self.riderAnnotation];
+                    break;}
                 default:
                     break;
             }
         } else {
             self.completeBGView.hidden = NO;
-            self.titleViewHeight.constant = 250;
+            
             switch (_orderModel.status) {
                 case 1:{
+                    self.titleViewHeight.constant = 250;
                     self.statusLabel.text = @"未支付";
                     self.messageLabel.text = @"逾期未付款,订单将自动取消";
                     [self.secondBT setTitle:@"继续支付" forState:(UIControlStateNormal)];
@@ -162,7 +183,7 @@
                             _time --;
                             if (timer == 0) {
                                 [AppManager showToastWithMsg:@"支付超时"];
-                                [self.navigationController popViewControllerAnimated:YES];
+                                [self.scrollView.mj_header beginRefreshing];
                             }
                             NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
                             if (_time % 60 > 9) {
@@ -182,31 +203,36 @@
                     
                     break;}
                 case 10:
+                    self.titleViewHeight.constant = 200;
                     self.statusLabel.text = @"已完成";
                     self.messageLabel.text = @"订单已完成";
                     self.secondBT.hidden = YES;
                     break;
                 case 11:
+                    self.titleViewHeight.constant = 200;
                     self.statusLabel.text = @"支付超时";
                     self.messageLabel.text = @"未付款,订单已自动取消";
                     self.secondBT.hidden = YES;
                     break;
                 case 12:
+                    self.titleViewHeight.constant = 200;
                     self.statusLabel.text = @"已取消";
-                    self.messageLabel.text = @"订单已取消";
+                    self.messageLabel.text = @"订单已取消,退款金额将于1-3个工作日内返还您的支付账户";
                     self.secondBT.hidden = YES;
                     break;
                 case 13:
+                    self.titleViewHeight.constant = 200;
                     self.statusLabel.text = @"已退款";
                     self.messageLabel.text = @"订单退款成功";
                     self.secondBT.hidden = YES;
                     break;
                 case 14:
                     self.statusLabel.text = @"接单超时";
-                    self.messageLabel.text = @"商家未接单,稍后客服将联系您退款";
+                    self.messageLabel.text = @"商家未接单,退款金额将于1-3个工作日内返还您的支付账户";
                     self.secondBT.hidden = YES;
                     break;
                 case 15:
+                    self.titleViewHeight.constant = 200;
                     self.statusLabel.text = @"配送超时";
                     self.messageLabel.text = @"配送超时,请耐心等候";
                     self.secondBT.hidden = YES;
@@ -225,6 +251,7 @@
         self.order_noLabel.text = self.orderModel.order_no;
         self.timeLabel.text = [AppManager timestampSwitchTime:self.orderModel.ordertime];
         self.addressLabel.text = self.orderModel.address;
+        self.combCutLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.combcut];
         
 //        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([self.orderModel.riderlat doubleValue], [self.orderModel.riderlng doubleValue]);
 //        MAPointAnnotation *annotation = [[MAPointAnnotation alloc] init];
@@ -251,11 +278,6 @@
         if ((_orderModel.status > 1 && _orderModel.status < 5) || _orderModel.status == 9) {
         NSInteger shopCount = self.orderModel.sortedshops.count;
 //        CLLocationCoordinate2D *commonPolylineCoords = malloc(sizeof(CLLocationCoordinate2D) * shopCount + 1);
-        CLLocationCoordinate2D ridercoordinate = CLLocationCoordinate2DMake([self.orderModel.riderlat doubleValue], [self.orderModel.riderlng doubleValue]);
-        self.riderAnnotation = [[MAPointAnnotation alloc] init];
-        self.riderAnnotation.coordinate = ridercoordinate;
-        self.riderAnnotation.title = @"骑手";
-        [self.mapView addAnnotation:self.riderAnnotation];
         for (NSInteger i = 0; i < shopCount; i ++) {
             JSYHShopModel *model = self.dataArray[i];
             CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.lat doubleValue], [model.lng doubleValue]);
@@ -284,6 +306,8 @@
         [self.tableView reloadData];
         
     } Failed:^(NSError *error) {
+        
+        [self.scrollView.mj_header endRefreshing];
         [AppManager showToastWithMsg:@"查看订单失败"];
         [self.navigationController popViewControllerAnimated:YES];
     }];
@@ -292,6 +316,20 @@
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (IBAction)serviceAction:(id)sender {
+    UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"是否要联系客服?" message:@"0574-87566681" preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        NSString *allString = [NSString stringWithFormat:@"tel:0574-87566681"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:allString]];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
+    [alerVC addAction:action];
+    [alerVC addAction:cancelAction];
+    [self.navigationController presentViewController:alerVC animated:YES completion:nil];
+}
+
+
 - (IBAction)againAction:(id)sender {
     if (self.orderModel.status == 1) {
         JSYHPayWayViewController *payVC = [[JSYHPayWayViewController alloc] init];

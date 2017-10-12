@@ -9,6 +9,7 @@
 #import "SettingUpController.h"
 #import "PassWordViewController.h"
 #import <JPUSHService.h>
+#import <SDWebImage/SDImageCache.h>
 
 @interface SettingUpController ()
 @property (weak, nonatomic) IBOutlet UIButton *logOutBT;
@@ -41,6 +42,9 @@
 }
 
 - (IBAction)clearCacheAction:(id)sender {
+    [[SDImageCache sharedImageCache] cleanDiskWithCompletionBlock:^{
+        [AppManager showToastWithMsg:@"清除成功"];
+    }];
 }
 
 - (IBAction)logOutAction:(id)sender {

@@ -116,7 +116,7 @@
     //self.tableViewHeight.constant = 128 * self.dataArray.count;
     [self.tableView reloadData];
     self.discoutpriceLabel.text = [NSString stringWithFormat:@"%@",self.model.price];
-    self.priceLabel.text = [NSString stringWithFormat:@"%@",self.model.originalprice];
+    self.priceLabel.text = [NSString stringWithFormat:@"原 ¥%@",self.model.originalprice];
     if ([self.model.originalprice isEqualToNumber:self.model.price]) {
         self.priceLabel.text = @"";
         self.pricecoverView.hidden = YES;

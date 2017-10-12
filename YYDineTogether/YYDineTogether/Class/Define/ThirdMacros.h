@@ -19,7 +19,8 @@
 // 腾讯
 #define kAppKey_Tencent          @"1104810843"
 
-const static NSString *APIKey = @"65617411177f992e7842acba3f635839";
+//高德地图
+const static NSString *APIKey = @"5b625b8f41e6a788f82f3b7a4d3184ad";
 
 const static NSString *TableID = @"";
 

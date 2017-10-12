@@ -21,6 +21,7 @@
                 <outlet property="shoppingCartCountLabel" destination="FcJ-3g-fIY" id="Byo-Rv-OFm"/>
                 <outlet property="shoppingCartView" destination="F6V-BG-QQv" id="Ixn-ea-9u3"/>
                 <outlet property="tableView" destination="ivQ-fJ-dLg" id="Vzn-br-sLg"/>
+                <outlet property="titleLabel" destination="xF5-Nk-uXB" id="HGR-Xm-2JN"/>
                 <outlet property="totalPriceLabel" destination="v5K-WJ-MM3" id="hEr-BY-QEh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -96,6 +97,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGA-5f-oVx">
                                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                             <state key="normal" backgroundImage="shoppingCart"/>
+                                            <connections>
+                                                <action selector="clearShoppingCartAction:" destination="-1" eventType="touchUpInside" id="Kut-er-Ds7"/>
+                                            </connections>
                                         </button>
                                         <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcJ-3g-fIY">
                                             <rect key="frame" x="26" y="0.0" width="18" height="18"/>

@@ -22,14 +22,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.contentView.layer.borderWidth = 0.4;
+    self.contentView.layer.borderWidth = 0.2;
     self.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
 }
 
 - (void)setDishModel:(JSYHDishModel *)dishModel {
     _dishModel = dishModel;
     [self.dishImageView setImageWithURL:[NSURL URLWithString:_dishModel.logo] placeholder:nil];
-    self.dishNameLabel.text = _dishModel.dishname;
+    self.dishNameLabel.text = [NSString stringWithFormat:@"%@-%@",_dishModel.dishname,_dishModel.shopname];
     self.dishPriceLabel.text = [NSString stringWithFormat:@"¥ %@",_dishModel.price];
 }
 

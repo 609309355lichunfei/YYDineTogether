@@ -9,7 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface JSYHCateModel : NSObject
-@property (strong, nonatomic) NSString *cateid;
+@property (strong, nonatomic) NSNumber *cateid;
 @property (strong, nonatomic) NSString *catename;
 @property (strong, nonatomic) NSMutableArray *dishs;
+
+#pragma mark - 自加属性
+
+@property (assign, nonatomic) BOOL selected;
 @end

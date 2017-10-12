@@ -60,8 +60,12 @@
         return;
     }
     NSMutableDictionary *addressDic = [@{@"address":[NSString stringWithFormat:@"%@%@",self.firstAddressLB.text,self.addressTF.text],@"username":self.nameTF.text,@"phone":self.phoneTF.text,@"addressid":_addressModel.addressid} mutableCopy];
-    [addressDic setValue:[NSNumber numberWithFloat:self.lng] forKey:@"lng"];
-    [addressDic setValue:[NSNumber numberWithFloat:self.lat] forKey:@"lat"];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setPositiveFormat:@"0.00000"];
+    NSNumber *lngNumber = [NSNumber numberWithFloat:_lng];
+    NSNumber *latNumber = [NSNumber numberWithFloat:_lat];
+    [addressDic setValue:[formatter stringFromNumber:lngNumber] forKey:@"lng"];
+    [addressDic setValue:[formatter stringFromNumber:latNumber] forKey:@"lat"];
     [MBProgressHUD showMessage:@"修改中"];
     [[JSRequestManager sharedManager] putMemberAddressWithDic:addressDic Success:^(id responseObject) {
         [MBProgressHUD hideHUD];

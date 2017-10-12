@@ -23,6 +23,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UIView *storeView;
+@property (weak, nonatomic) IBOutlet UIButton *activityBT;
 
 @end
 
@@ -48,6 +49,7 @@
     self.shopSalesCountLabel.text = [NSString stringWithFormat:@"%ld单",(long)_shopModel.salescount];
     self.distanceLabel.text = _shopModel.distance;
     [self.storeView removeAllSubviews];
+    [self.activityBT setTitle:[NSString stringWithFormat:@"%ld个活动",_shopModel.activites.count] forState:(UIControlStateNormal)];
     for (NSInteger i = 0; i < _shopModel.activites.count; i ++){
         JSYHActivityModel *model = _shopModel.activites[i];
         JSYHHomeStoreActivityView *view = [[[NSBundle mainBundle] loadNibNamed:@"JSYHHomeStoreActivityView" owner:self options:nil] lastObject];
@@ -55,6 +57,11 @@
         [self.storeView addSubview:view];
         [view setActivityModel:model];
     }
+}
+- (IBAction)activityAction:(id)sender {
+    _shopModel.optinal = !_shopModel.optinal;
+    [_shopModel updateHeightWithActivity];
+    self.activityBlock();
 }
 
 @end

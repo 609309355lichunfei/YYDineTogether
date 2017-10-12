@@ -18,6 +18,7 @@
 
 @interface HomeStoreViewController ()<UITableViewDelegate, UITableViewDataSource>{
     BOOL _isCombo;
+    BOOL _isScroll;
 }
 @property (weak, nonatomic) IBOutlet UIButton *foodButton;
 @property (weak, nonatomic) IBOutlet UITableView *leftTableView;
@@ -39,7 +40,6 @@
 
 
 @property (strong, nonatomic) NSMutableArray *catesArray;
-@property (strong, nonatomic) NSMutableArray *dishsArray;
 
 
 @property (strong, nonatomic) JSYHShopModel *shopModel;
@@ -133,11 +133,9 @@
     }
     [self.leftTableView reloadData];
     if (_shopModel.cates.count > 0) {
+        [self.rightTableView reloadData];
         [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:(UITableViewScrollPositionTop)];
         [self tableView:self.leftTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        JSYHCateModel *cateModel = [_shopModel.cates firstObject];
-        self.dishsArray = cateModel.dishs;
-        [self.rightTableView reloadData];
     }
 }
 
@@ -187,11 +185,14 @@
     if (tableView == _leftTableView) {
         return 30;
     } else {
-        return 65;
+        return 80;
     }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (tableView == _rightTableView) {
+        return self.catesArray.count;
+    }
     return 1;
 }
 
@@ -199,8 +200,51 @@
     if (tableView == self.leftTableView) {
         return self.catesArray.count;
     } else {
-        return self.dishsArray.count;
+        JSYHCateModel *model = self.catesArray[section];
+        return model.dishs.count;
     }
+}
+
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    if (tableView == _rightTableView) {
+//        JSYHCateModel *model = self.catesArray[section];
+//        return model.catename;
+//    }
+//    return nil;
+//
+//}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (tableView == _rightTableView) {
+        UIView *view = [[UIView alloc] init];
+        view.backgroundColor = [UIColor whiteColor];
+        UILabel *title = [[UILabel alloc] init];
+        JSYHCateModel *model = self.catesArray[section];
+        title.text = model.catename;
+        title.font = [UIFont systemFontOfSize:11];
+        title.frame = CGRectMake(0, 0, 200, 20);
+        [view addSubview:title];
+        return view;
+    }
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (tableView == _rightTableView) {
+        return 20;
+    }
+    return 0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor whiteColor];
+    return view;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -209,15 +253,16 @@
         JSYHCateModel *model = self.catesArray[indexPath.row];
         
         cell.backgroundColor = [UIColor whiteColor];
-        cell.textLabel.textColor = [UIColor lightGrayColor];
+        cell.textLabel.textColor = model.selected ? [UIColor redColor] : [UIColor lightGrayColor];
         cell.textLabel.text = model.catename;
-        cell.textLabel.font = [UIFont systemFontOfSize:11];
+        cell.textLabel.font = [UIFont systemFontOfSize:10];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
         cell.textLabel.numberOfLines = 0;
         return cell;
     } else {
         HomeStoreRightTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeStoreRightTableViewCell" forIndexPath:indexPath];
-        JSYHDishModel *model = self.dishsArray[indexPath.row];
+        JSYHCateModel *cateModel = self.catesArray[indexPath.section];
+        JSYHDishModel *model = cateModel.dishs[indexPath.row];
         cell.dishModel = model;
         cell.shopname = _shopModel.name;
         cell.shoplogo = _shopModel.logo;
@@ -234,34 +279,52 @@
             [self.navigationController pushViewController:comboVC animated:YES];
         } else {
             HomeFoodDetailViewController *foodDetailVC = [[HomeFoodDetailViewController alloc] init];
-            JSYHDishModel *dishModel = self.dishsArray[indexPath.row];
+            JSYHCateModel *cateModel = self.catesArray[indexPath.section];
+            JSYHDishModel *dishModel = cateModel.dishs[indexPath.row];
             foodDetailVC.dishModel = dishModel;
             [self.navigationController pushViewController:foodDetailVC animated:YES];
         }
     } else {
         JSYHCateModel *model = self.catesArray[indexPath.row];
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        cell.textLabel.textColor = [UIColor redColor];
-        self.dishsArray = model.dishs;
-        [self.rightTableView reloadData];
+        for (JSYHCateModel *catemodle in self.catesArray) {
+            catemodle.selected = NO;
+        }
+        model.selected = YES;
+        [_leftTableView reloadData];
+        
+        if (model.dishs.count > 0) {
+            _isScroll = NO;
+            [_rightTableView scrollToRow:0 inSection:indexPath.row atScrollPosition:(UITableViewScrollPositionTop) animated:YES];
+        }
+        
     }
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == _leftTableView) {
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        cell.textLabel.textColor = [UIColor lightGrayColor];
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if (scrollView == _rightTableView) {
+        if (_isScroll == NO) {
+            return;
+        }
+        NSIndexPath *index = [_rightTableView indexPathsForVisibleRows].firstObject;
+        for (JSYHCateModel *cateModel in self.catesArray) {
+            cateModel.selected = NO;
+        }
+        JSYHCateModel *cate = self.catesArray[index.section];
+        cate.selected = YES;
+        [_leftTableView reloadData];
+    }
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    if (scrollView == _rightTableView) {
+        _isScroll = YES;
     }
 }
 
 #pragma mark - 懒加载
-- (NSMutableArray *)dishsArray {
-    if (_dishsArray == nil) {
-        _dishsArray = [NSMutableArray array];
-    }
-    return _dishsArray;
-}
-
 - (NSMutableArray *)catesArray {
     if (_catesArray == nil) {
         _catesArray = [NSMutableArray array];

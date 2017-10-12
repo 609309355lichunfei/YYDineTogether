@@ -11,4 +11,7 @@
 @class JSYHComboModel;
 @interface JSYHCombListTableViewCell : UITableViewCell
 @property (strong, nonatomic) JSYHComboModel *combModel;
+@property (weak, nonatomic) IBOutlet UIButton *addBT;
+
+@property (copy, nonatomic) void (^addBlock)();
 @end

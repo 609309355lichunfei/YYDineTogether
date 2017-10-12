@@ -42,6 +42,7 @@
 }
 
 - (void)registUI {
+    self.logoImageView.layer.cornerRadius = 35;
     [self getConnect];
 }
 
@@ -59,7 +60,7 @@
     self.nickNameTF.text = [JSYHUserModel defaultModel].nickname;
     self.sexTF.text = [JSYHUserModel defaultModel].sex == 0 ? @"男" : @"女";
     self.dateTF.text = [AppManager birthTimestanpSwitchTime:[JSYHUserModel defaultModel].birthday];
-    [self.logoImageView setImageWithURL:[NSURL URLWithString:[JSYHUserModel defaultModel].logo] placeholder:nil];
+    [self.logoImageView setImageWithURL:[NSURL URLWithString:[JSYHUserModel defaultModel].logo] placeholder:[UIImage imageNamed:@"default_user"]];
 }
 
 - (IBAction)backAction:(id)sender {
