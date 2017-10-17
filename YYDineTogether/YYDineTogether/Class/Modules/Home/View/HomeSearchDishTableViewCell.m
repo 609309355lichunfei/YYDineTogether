@@ -42,7 +42,7 @@
     } else {
         _numberLabel.text =  [NSString stringWithFormat:@"%ld",[_numberLabel.text integerValue] + 1];
     }
-    _dishModel.count = [_numberLabel.text integerValue];
+    _dishModel.shopcartCount = [_numberLabel.text integerValue];
     [[ShoppingCartManager sharedManager] addToShoppingCartWithDish:_dishModel];
 }
 
@@ -54,7 +54,7 @@
     } else {
         _numberLabel.text =  [NSString stringWithFormat:@"%ld",[_numberLabel.text integerValue] - 1];
     }
-    _dishModel.count = [_numberLabel.text integerValue];
+    _dishModel.shopcartCount = [_numberLabel.text integerValue];
     [[ShoppingCartManager sharedManager] removeFromeShoppingCartWithDish:_dishModel];
 }
 
@@ -66,12 +66,12 @@
     self.priceLabel.hidden = [_dishModel.price isEqualToNumber:_dishModel.discountprice] ? YES : NO;
     self.priceCoverView.hidden = self.priceLabel.isHidden;
     self.dishStarLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.star];
-    self.discountPriceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.discountprice];
-    self.priceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.price];
-    if (_dishModel.count > 0) {
+    self.discountPriceLabel.text = [NSString stringWithFormat:@"¥ %@",_dishModel.discountprice];
+    self.priceLabel.text = [NSString stringWithFormat:@"¥ %@",_dishModel.price];
+    if (_dishModel.shopcartCount > 0) {
         _numberLabel.hidden = NO;
         _subtractButton.hidden = NO;
-        _numberLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.count];
+        _numberLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.shopcartCount];
     } else {
         _numberLabel.hidden = YES;
         _subtractButton.hidden = YES;

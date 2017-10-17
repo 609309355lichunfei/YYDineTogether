@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *shopSalesCountLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *backView;
+@property (weak, nonatomic) IBOutlet UIImageView *optionImageView;
 
 
 @property (weak, nonatomic) IBOutlet UIView *storeView;
@@ -57,9 +58,11 @@
         [self.storeView addSubview:view];
         [view setActivityModel:model];
     }
+    _optionImageView.highlighted = _shopModel.optinal;
 }
 - (IBAction)activityAction:(id)sender {
     _shopModel.optinal = !_shopModel.optinal;
+    _optionImageView.highlighted = _shopModel.optinal;
     [_shopModel updateHeightWithActivity];
     self.activityBlock();
 }

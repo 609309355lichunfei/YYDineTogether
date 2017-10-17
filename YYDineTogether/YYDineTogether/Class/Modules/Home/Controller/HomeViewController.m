@@ -211,6 +211,8 @@
     _combpageIndex = dataloadType == DataLoadTypeNone ? 0 : _combpageIndex + 1;
     [[JSRequestManager sharedManager] homepageCombWithPage:[NSString stringWithFormat:@"%ld",_combpageIndex] lng:[JSYHLocationManager sharedManager].lng lat:[JSYHLocationManager sharedManager].lat Success:^(id responseObject) {
         NSDictionary *dataDic = responseObject[@"data"];
+        NSArray *carttips = dataDic[@"carttips"];
+        [ShoppingCartManager sharedManager].carttips = carttips;
         NSArray *combsArray = dataDic[@"combs"];
         if (combsArray.count < 20) {
             self.tableView.mj_footer.hidden = YES;
@@ -545,6 +547,7 @@
         [self.tabBarController.navigationController pushViewController:activityVC animated:YES];
     } else if (index == 1) {
         HomeComboRecomendViewController *combVC = [[HomeComboRecomendViewController alloc] init];
+        combVC.mytitle = @"套餐活动";
         [self.tabBarController.navigationController pushViewController:combVC animated:YES];
     }
     

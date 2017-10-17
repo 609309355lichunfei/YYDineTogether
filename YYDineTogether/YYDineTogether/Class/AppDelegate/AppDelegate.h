@@ -23,5 +23,7 @@
 
 @property (strong, nonatomic) LCPanNavigationController *mainNavi;
 
+@property (strong, nonatomic) NSString *order_no;
+
 @end
 

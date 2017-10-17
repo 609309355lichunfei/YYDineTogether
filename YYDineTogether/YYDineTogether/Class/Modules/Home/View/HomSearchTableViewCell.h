@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) JSYHShopModel *shopModel;
 
+@property (copy, nonatomic) void(^activityBlock)();
+
 @end

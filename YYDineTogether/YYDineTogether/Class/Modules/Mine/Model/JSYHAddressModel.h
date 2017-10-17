@@ -13,6 +13,7 @@
 @property (strong, nonatomic) NSNumber *lng;
 @property (strong, nonatomic) NSNumber *lat;
 @property (strong, nonatomic) NSString *address;
+@property (strong, nonatomic) NSString *addressdet;
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSString *phone;
 

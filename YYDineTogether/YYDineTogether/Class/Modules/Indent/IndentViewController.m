@@ -11,6 +11,7 @@
 #import "IndentConfirmViewController.h"
 #import "IndentDetailViewController.h"
 #import "JSYHOrderModel.h"
+#import <JPUSHService.h>
 
 @interface IndentViewController ()<UITableViewDataSource, UITableViewDelegate>{
     NSInteger _pageIndex;
@@ -34,6 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self registUI];
+    
 }
 
 - (void)registUI {
@@ -53,7 +55,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [JPUSHService resetBadge];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     if ([JSRequestManager sharedManager].userName == nil || [JSRequestManager sharedManager].userName.length == 0) {
         self.unloginBGView.hidden = NO;
     }else {

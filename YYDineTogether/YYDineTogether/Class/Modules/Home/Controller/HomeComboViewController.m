@@ -41,6 +41,9 @@
 }
 
 - (void)registUI {
+    if (self.cycleScrollView.delegate == self) {
+        return;
+    }
     [self getConnect];
     self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:self.comboView.bounds imageURLStringsGroup:@[]];
     self.cycleScrollView.delegate = self;

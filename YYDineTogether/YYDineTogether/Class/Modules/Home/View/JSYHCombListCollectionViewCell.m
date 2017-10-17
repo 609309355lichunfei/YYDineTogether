@@ -29,8 +29,10 @@
 - (void)setDishModel:(JSYHDishModel *)dishModel {
     _dishModel = dishModel;
     [self.dishImageView setImageWithURL:[NSURL URLWithString:_dishModel.logo] placeholder:nil];
-    self.dishNameLabel.text = [NSString stringWithFormat:@"%@-%@",_dishModel.dishname,_dishModel.shopname];
-    self.dishPriceLabel.text = [NSString stringWithFormat:@"¥ %@",_dishModel.price];
+    self.dishNameLabel.text = [NSString stringWithFormat:@"%@-%@",_dishModel.shopname,_dishModel.dishname];
+    self.countLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.count];
+    NSNumber *priceNumber = [NSNumber numberWithFloat:_dishModel.price.floatValue * _dishModel.count];
+    self.dishPriceLabel.text = [NSString stringWithFormat:@"¥ %@",priceNumber];
 }
 
 @end

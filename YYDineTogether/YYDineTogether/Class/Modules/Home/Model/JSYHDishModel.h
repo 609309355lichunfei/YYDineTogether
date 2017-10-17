@@ -27,10 +27,10 @@
 @property (strong, nonatomic) NSString *dishname;
 @property (strong, nonatomic) NSString *combid;
 @property (strong, nonatomic) NSString *iscomb;
-
+@property (assign, nonatomic) NSInteger count;
 #pragma mark 自加属性
 @property (assign, nonatomic) CGFloat height;
 
-@property (assign, nonatomic) NSInteger count;
+@property (assign, nonatomic) NSInteger shopcartCount;
 
 @end

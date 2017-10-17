@@ -78,7 +78,7 @@
         MAPolygonRenderer *polygonRenderer = [[MAPolygonRenderer alloc] initWithPolygon:overlay];
         polygonRenderer.lineWidth   = 4.f;
         polygonRenderer.strokeColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:1];
-        polygonRenderer.fillColor   = [UIColor redColor];
+//        polygonRenderer.fillColor   = [UIColor redColor];
         
         return polygonRenderer;
     }

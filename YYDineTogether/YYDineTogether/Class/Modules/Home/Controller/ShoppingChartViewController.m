@@ -66,7 +66,12 @@
 
 - (void)registUI {
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.scrollLabel.text = @"                   首次跨店下单立减15元，跨店满30减5，满50减10，满100减20";
+    if ([ShoppingCartManager sharedManager].carttips != nil &&[ShoppingCartManager sharedManager].carttips.count > 0) {
+        self.scrollLabel.text = @"                             ";
+        for (NSString *tip in [ShoppingCartManager sharedManager].carttips) {
+            self.scrollLabel.text = [NSString stringWithFormat:@"%@%@",self.scrollLabel.text,tip];
+        }
+    }
     self.scrollLabel.font = [UIFont fontWithName:App_FamilyFontName size:11];
     self.scrollLabel.textColor = UIColorFromRGB(0xFE4337);
     self.scrollLabel.backgroundColor = UIColorFromRGB(0xFDDEAA);

@@ -12,7 +12,6 @@
 @interface HomeDishTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *dishDistanceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *discountPriceLabel;
 @property (weak, nonatomic) IBOutlet UIView *discountDiscoverView;
@@ -37,7 +36,7 @@
     } else {
         _numberLabel.text =  [NSString stringWithFormat:@"%ld",[_numberLabel.text integerValue] + 1];
     }
-    _dishModel.count = [_numberLabel.text integerValue];
+    _dishModel.shopcartCount = [_numberLabel.text integerValue];
     [[ShoppingCartManager sharedManager] addToShoppingCartWithDish:_dishModel];
 }
 
@@ -49,7 +48,7 @@
     } else {
         _numberLabel.text =  [NSString stringWithFormat:@"%ld",[_numberLabel.text integerValue] - 1];
     }
-    _dishModel.count = [_numberLabel.text integerValue];
+    _dishModel.shopcartCount = [_numberLabel.text integerValue];
     [[ShoppingCartManager sharedManager] removeFromeShoppingCartWithDish:_dishModel];
 }
 
@@ -62,10 +61,10 @@
     self.discountDiscoverView.hidden = self.discountPriceLabel.isHidden;
     self.discountPriceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.discountprice];
     self.priceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.price];
-    if (_dishModel.count > 0) {
+    if (_dishModel.shopcartCount > 0) {
         _numberLabel.hidden = NO;
         _subtractButton.hidden = NO;
-        _numberLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.count];
+        _numberLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.shopcartCount];
     } else {
         _numberLabel.hidden = YES;
         _subtractButton.hidden = YES;

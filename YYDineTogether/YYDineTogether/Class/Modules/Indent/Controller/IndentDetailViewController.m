@@ -50,6 +50,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet UILabel *goingMessageLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondTimerViewHeight;
+@property (weak, nonatomic) IBOutlet UILabel *secondTimerLabel;
 
 @property (strong, nonatomic) JSYHOrderModel *orderModel;
 
@@ -96,11 +98,16 @@
 }
 
 - (void)resetUI {
-    self.titleViewHeight.constant = 410;
+    self.titleViewHeight.constant = 430;
     self.timerBGHeight.constant = 0;
+    self.secondTimerViewHeight.constant = 0;
     self.completeBGView.hidden = YES;
     self.secondAffirmBT.hidden = YES;
     self.secondBT.hidden = NO;
+    if (self.mapView) {
+        [self.mapView removeFromSuperview];
+        self.mapView = nil;
+    }
 }
 
 - (void)getConnect {
@@ -115,10 +122,13 @@
         JSYHOrderModel *model = [[JSYHOrderModel alloc] init];
         [model setValuesForKeysWithDictionary:orderDic];
         self.orderModel = model;
+        
+        
+        
         if ((_orderModel.status > 1 && _orderModel.status < 5) || _orderModel.status == 9) {
-            self.mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, self.titleView.width, self.titleView.height - 100)];
+            self.mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 250)];
             
-            self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             self.mapView.delegate = self;
             self.mapView.showsScale = NO;
             self.mapView.showsCompass = NO;
@@ -128,31 +138,70 @@
                 case 2:{
                     self.statusImageView.image = [UIImage imageNamed:@"indent_status1"];
                     [self.secondAffirmBT setTitle:@"取消订单" forState:(UIControlStateNormal)];
+                    self.secondAffirmBT.hidden = NO;
+                    self.secondTimerViewHeight.constant = 20;
                     self.goingMessageLabel.text = @"等待商家接单";
+                    if (300 > ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.paytime) && ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.paytime) > 0) {
+                        _time = 300 - ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.paytime) + 10;
+                        NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
+                        if (_time % 60 > 9) {
+                            NSString *second = [NSString stringWithFormat:@"%ld",_time % 60];
+                            self.secondTimerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
+                        } else {
+                            NSString *second = [NSString stringWithFormat:@"0%ld",_time % 60];
+                            self.secondTimerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
+                        }
+                        self.timer = [NSTimer timerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
+                            _time --;
+                            if (timer == 0) {
+                                [AppManager showToastWithMsg:@"接单超时"];
+                                [self.scrollView.mj_header beginRefreshing];
+                            }
+                            NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
+                            if (_time % 60 > 9) {
+                                NSString *second = [NSString stringWithFormat:@"%ld",_time % 60];
+                                self.secondTimerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
+                            } else {
+                                NSString *second = [NSString stringWithFormat:@"0%ld",_time % 60];
+                                self.secondTimerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
+                            }
+                            
+                            
+                        } repeats:YES];
+                        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:(NSRunLoopCommonModes)];
+                    } else {
+                        self.secondTimerLabel.text = @"00:00";
+                    }
                     break;
                 }
                 case 3:
                 {self.statusImageView.image = [UIImage imageNamed:@"indent_status1"];
-                    CLLocationCoordinate2D ridercoordinate = CLLocationCoordinate2DMake([self.orderModel.riderlat doubleValue], [self.orderModel.riderlng doubleValue]);
-                    self.riderAnnotation = [[MAPointAnnotation alloc] init];
-                    self.riderAnnotation.coordinate = ridercoordinate;
-                    self.riderAnnotation.title = @"骑手";
-                    [self.mapView addAnnotation:self.riderAnnotation];
+                    self.titleViewHeight.constant = 370;
+//                    CLLocationCoordinate2D ridercoordinate = CLLocationCoordinate2DMake([self.orderModel.riderlat doubleValue], [self.orderModel.riderlng doubleValue]);
+                    self.goingMessageLabel.text = @"部分商家接单,等待配送";
+//                    self.riderAnnotation = [[MAPointAnnotation alloc] init];
+//                    self.riderAnnotation.coordinate = ridercoordinate;
+//                    self.riderAnnotation.title = @"骑手";
+//                    [self.mapView addAnnotation:self.riderAnnotation];
                 break;}
                 case 4:
                 {self.statusImageView.image = [UIImage imageNamed:@"indent_status2"];
+                    self.titleViewHeight.constant = 370;
                     CLLocationCoordinate2D ridercoordinate = CLLocationCoordinate2DMake([self.orderModel.riderlat doubleValue], [self.orderModel.riderlng doubleValue]);
                     self.riderAnnotation = [[MAPointAnnotation alloc] init];
                     self.riderAnnotation.coordinate = ridercoordinate;
                     self.riderAnnotation.title = @"骑手";
+                    self.goingMessageLabel.text = @"骑手正赶往店里,请耐心等待";
                     [self.mapView addAnnotation:self.riderAnnotation];
                     break;}
                 case 9:
                 {self.statusImageView.image = [UIImage imageNamed:@"indent_status3"];
+                    self.titleViewHeight.constant = 370;
                     CLLocationCoordinate2D ridercoordinate = CLLocationCoordinate2DMake([self.orderModel.riderlat doubleValue], [self.orderModel.riderlng doubleValue]);
                     self.riderAnnotation = [[MAPointAnnotation alloc] init];
                     self.riderAnnotation.coordinate = ridercoordinate;
                     self.riderAnnotation.title = @"骑手";
+                    self.goingMessageLabel.text = @"骑手正赶往你地方,请耐心等待";
                     [self.mapView addAnnotation:self.riderAnnotation];
                     break;}
                 default:
@@ -227,6 +276,7 @@
                     self.secondBT.hidden = YES;
                     break;
                 case 14:
+                    self.titleViewHeight.constant = 200;
                     self.statusLabel.text = @"接单超时";
                     self.messageLabel.text = @"商家未接单,退款金额将于1-3个工作日内返还您的支付账户";
                     self.secondBT.hidden = YES;
@@ -247,10 +297,10 @@
         self.resultPriceLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.lastprice];
         self.activityLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.cut];
         self.postcost.text = [self.orderModel.postcost stringValue];
-        self.redLabel.text = [self.orderModel.couponvalue stringValue];
+        self.redLabel.text = [NSString stringWithFormat:@"- ¥%@",[self.orderModel.couponvalue stringValue]];
         self.order_noLabel.text = self.orderModel.order_no;
         self.timeLabel.text = [AppManager timestampSwitchTime:self.orderModel.ordertime];
-        self.addressLabel.text = self.orderModel.address;
+        self.addressLabel.text = [NSString stringWithFormat:@"%@%@",self.orderModel.address,self.orderModel.addressdet];
         self.combCutLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.combcut];
         
 //        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([self.orderModel.riderlat doubleValue], [self.orderModel.riderlng doubleValue]);
@@ -337,13 +387,21 @@
         payVC.price = [NSString stringWithFormat:@"%@", self.orderModel.lastprice];
         [self.navigationController pushViewController:payVC animated:YES];
     } else if (self.orderModel.status == 2) {
-        [[JSRequestManager sharedManager] cancelorderWithOrderNO:self.orderModel.order_no Success:^(id responseObject) {
-//            [MBProgressHUD hideHUD];
-            [self.navigationController popViewControllerAnimated:YES];
-        } Failed:^(NSError *error) {
-//            [MBProgressHUD hideHUD];
-            [AppManager showToastWithMsg:@"取消成功"];
+        UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"是否要取消订单?" message:@"" preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+            [[JSRequestManager sharedManager] cancelorderWithOrderNO:self.orderModel.order_no Success:^(id responseObject) {
+                //            [MBProgressHUD hideHUD];
+                [self.navigationController popViewControllerAnimated:YES];
+            } Failed:^(NSError *error) {
+                //            [MBProgressHUD hideHUD];
+                [AppManager showToastWithMsg:@"取消成功"];
+            }];
         }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
+        [alerVC addAction:action];
+        [alerVC addAction:cancelAction];
+        [self presentViewController:alerVC animated:YES completion:nil];
+        
     }
     
 }

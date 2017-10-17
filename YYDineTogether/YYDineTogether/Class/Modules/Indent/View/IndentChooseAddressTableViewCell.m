@@ -30,7 +30,7 @@
     _addressModel = addressModel;
     self.nameLabel.text = _addressModel.username;
     self.phoneLabel.text = _addressModel.phone;
-    self.addressLabel.text = _addressModel.address;
+    self.addressLabel.text = [NSString stringWithFormat:@"%@%@",_addressModel.address,_addressModel.addressdet];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

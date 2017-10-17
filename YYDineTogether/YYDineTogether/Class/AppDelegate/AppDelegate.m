@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <AlipaySDK/AlipaySDK.h>
+#import "IndentDetailViewController.h"
 // 引入JPush功能所需头文件
 #import <JPUSHService.h>
 // iOS10注册APNs所需头文件
@@ -108,6 +109,12 @@
         // 支付跳转支付宝钱包进行支付，处理支付结果
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
+            [[AppDelegate shareAppDelegate].mainNavi popToRootViewControllerAnimated:YES];
+            [[AppDelegate shareAppDelegate].mainTabBar setSelectedIndex:1];
+            
+            IndentDetailViewController *indentDetialVC = [[IndentDetailViewController alloc] init];
+            indentDetialVC.order_no = self.order_no;
+            [[AppDelegate shareAppDelegate].mainTabBar.navigationController pushViewController:indentDetialVC animated:YES];
         }];
         
         // 授权跳转支付宝钱包进行支付，处理支付结果
@@ -115,6 +122,12 @@
             NSLog(@"result = %@",resultDic);
             // 解析 auth code
             NSString *result = resultDic[@"result"];
+            [[AppDelegate shareAppDelegate].mainNavi popToRootViewControllerAnimated:YES];
+            [[AppDelegate shareAppDelegate].mainTabBar setSelectedIndex:1];
+            
+            IndentDetailViewController *indentDetialVC = [[IndentDetailViewController alloc] init];
+            indentDetialVC.order_no = self.order_no;
+            [[AppDelegate shareAppDelegate].mainTabBar.navigationController pushViewController:indentDetialVC animated:YES];
             NSString *authCode = nil;
             if (result.length>0) {
                 NSArray *resultArr = [result componentsSeparatedByString:@"&"];
@@ -138,6 +151,12 @@
         // 支付跳转支付宝钱包进行支付，处理支付结果
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
+            [[AppDelegate shareAppDelegate].mainNavi popToRootViewControllerAnimated:YES];
+            [[AppDelegate shareAppDelegate].mainTabBar setSelectedIndex:1];
+            
+            IndentDetailViewController *indentDetialVC = [[IndentDetailViewController alloc] init];
+            indentDetialVC.order_no = self.order_no;
+            [[AppDelegate shareAppDelegate].mainTabBar.navigationController pushViewController:indentDetialVC animated:YES];
         }];
         
         // 授权跳转支付宝钱包进行支付，处理支付结果
@@ -145,6 +164,12 @@
             NSLog(@"result = %@",resultDic);
             // 解析 auth code
             NSString *result = resultDic[@"result"];
+            [[AppDelegate shareAppDelegate].mainNavi popToRootViewControllerAnimated:YES];
+            [[AppDelegate shareAppDelegate].mainTabBar setSelectedIndex:1];
+            
+            IndentDetailViewController *indentDetialVC = [[IndentDetailViewController alloc] init];
+            indentDetialVC.order_no = self.order_no;
+            [[AppDelegate shareAppDelegate].mainTabBar.navigationController pushViewController:indentDetialVC animated:YES];
             NSString *authCode = nil;
             if (result.length>0) {
                 NSArray *resultArr = [result componentsSeparatedByString:@"&"];

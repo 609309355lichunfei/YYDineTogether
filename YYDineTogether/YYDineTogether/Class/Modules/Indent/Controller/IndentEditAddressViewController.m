@@ -36,7 +36,8 @@
     self.doneBT.layer.cornerRadius = 2;
     self.nameTF.text = _addressModel.username;
     self.phoneTF.text = _addressModel.phone;
-    self.addressTF.text = _addressModel.address;
+    self.firstAddressLB.text = _addressModel.address;
+    self.addressTF.text = _addressModel.addressdet;
 }
 
 - (IBAction)backAction:(id)sender {
@@ -59,7 +60,7 @@
         [AppManager showToastWithMsg:@"请填写地址"];
         return;
     }
-    NSMutableDictionary *addressDic = [@{@"address":[NSString stringWithFormat:@"%@%@",self.firstAddressLB.text,self.addressTF.text],@"username":self.nameTF.text,@"phone":self.phoneTF.text,@"addressid":_addressModel.addressid} mutableCopy];
+    NSMutableDictionary *addressDic = [@{@"address":self.firstAddressLB.text,@"addressdet":self.addressTF.text,@"username":self.nameTF.text,@"phone":self.phoneTF.text,@"addressid":_addressModel.addressid} mutableCopy];
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setPositiveFormat:@"0.00000"];
     NSNumber *lngNumber = [NSNumber numberWithFloat:_lng];

@@ -67,9 +67,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1RB-ZH-GsD">
-                        <rect key="frame" x="306" y="91" width="66" height="29"/>
+                        <rect key="frame" x="294" y="91" width="86" height="29"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="66" id="K8y-4X-3Tg"/>
+                            <constraint firstAttribute="width" constant="86" id="K8y-4X-3Tg"/>
                             <constraint firstAttribute="height" constant="29" id="QSj-qp-lfY"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
@@ -105,6 +105,13 @@
                             <constraint firstAttribute="height" constant="1" id="7En-y2-IGQ"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_down" highlightedImage="home_up" translatesAutoresizingMaskIntoConstraints="NO" id="Pwv-Jr-jKQ">
+                        <rect key="frame" x="362" y="91" width="15" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="29" id="Rd8-Xr-Ihg"/>
+                            <constraint firstAttribute="width" constant="15" id="Sw5-gb-9U7"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="CXr-hd-H2U" secondAttribute="trailing" id="0sb-NG-2lm"/>
@@ -115,6 +122,7 @@
                     <constraint firstAttribute="bottom" secondItem="EBk-ii-8Xq" secondAttribute="bottom" id="JdO-tl-MBd"/>
                     <constraint firstItem="oWf-Ad-1Z5" firstAttribute="top" secondItem="udh-Ju-lj2" secondAttribute="bottom" constant="8" id="M7T-eH-EAA"/>
                     <constraint firstItem="udh-Ju-lj2" firstAttribute="leading" secondItem="Yvf-x2-Itr" secondAttribute="trailing" constant="12" id="MhS-0Q-2vS"/>
+                    <constraint firstItem="Pwv-Jr-jKQ" firstAttribute="leading" secondItem="1RB-ZH-GsD" secondAttribute="trailing" constant="-18" id="OCw-nA-goc"/>
                     <constraint firstAttribute="trailingMargin" secondItem="sLo-bz-n8d" secondAttribute="trailing" constant="0.5" id="Pju-0d-xnL"/>
                     <constraint firstItem="EM8-tU-cxA" firstAttribute="leading" secondItem="OkB-Dt-zgS" secondAttribute="trailing" constant="8" id="Rkp-ng-xqu"/>
                     <constraint firstItem="HPc-O6-fbh" firstAttribute="centerY" secondItem="lOT-kj-L3k" secondAttribute="centerY" id="TJV-xH-29B"/>
@@ -122,12 +130,13 @@
                     <constraint firstItem="oWf-Ad-1Z5" firstAttribute="trailing" secondItem="udh-Ju-lj2" secondAttribute="trailing" id="aXo-x9-1XB"/>
                     <constraint firstItem="CXr-hd-H2U" firstAttribute="leading" secondItem="Yvf-x2-Itr" secondAttribute="trailing" constant="14" id="aoW-v8-8uo"/>
                     <constraint firstItem="CXr-hd-H2U" firstAttribute="top" secondItem="Yvf-x2-Itr" secondAttribute="top" id="f8w-pe-3Xv"/>
+                    <constraint firstAttribute="trailing" secondItem="1RB-ZH-GsD" secondAttribute="trailing" id="gz4-jz-876"/>
                     <constraint firstItem="a0m-9M-YWJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="hTd-ii-YTb"/>
                     <constraint firstItem="udh-Ju-lj2" firstAttribute="bottom" secondItem="Yvf-x2-Itr" secondAttribute="bottom" id="ixf-L7-6aY"/>
-                    <constraint firstItem="1RB-ZH-GsD" firstAttribute="trailing" secondItem="oWf-Ad-1Z5" secondAttribute="trailing" id="l0P-vT-sEU"/>
                     <constraint firstItem="HPc-O6-fbh" firstAttribute="leading" secondItem="lOT-kj-L3k" secondAttribute="trailing" constant="8" id="lNh-jg-eSZ"/>
                     <constraint firstItem="EBk-ii-8Xq" firstAttribute="top" secondItem="a0m-9M-YWJ" secondAttribute="bottom" constant="5" id="lOr-gS-zfZ"/>
                     <constraint firstItem="EM8-tU-cxA" firstAttribute="centerY" secondItem="OkB-Dt-zgS" secondAttribute="centerY" id="mfb-j1-6B1"/>
+                    <constraint firstItem="Pwv-Jr-jKQ" firstAttribute="centerY" secondItem="1RB-ZH-GsD" secondAttribute="centerY" id="no0-ar-rG9"/>
                     <constraint firstItem="EBk-ii-8Xq" firstAttribute="top" secondItem="oWf-Ad-1Z5" secondAttribute="bottom" constant="8" id="oUZ-8k-beZ"/>
                     <constraint firstAttribute="trailing" secondItem="a0m-9M-YWJ" secondAttribute="trailing" id="ofy-q5-VZD"/>
                     <constraint firstAttribute="trailingMargin" secondItem="udh-Ju-lj2" secondAttribute="trailing" id="pVm-s9-Zyv"/>
@@ -147,6 +156,7 @@
                 <outlet property="distanceLabel" destination="sLo-bz-n8d" id="iYv-Ka-di6"/>
                 <outlet property="logoImageView" destination="Yvf-x2-Itr" id="vrZ-eR-eHj"/>
                 <outlet property="nameLabel" destination="CXr-hd-H2U" id="22A-7n-ctG"/>
+                <outlet property="optionImageView" destination="Pwv-Jr-jKQ" id="aqY-ht-U0Q"/>
                 <outlet property="shopSalesCountLabel" destination="EM8-tU-cxA" id="Yhn-4Z-bm2"/>
                 <outlet property="shopStarLabel" destination="HPc-O6-fbh" id="odv-kO-Nwh"/>
                 <outlet property="storeView" destination="oWf-Ad-1Z5" id="LBX-Zq-rHC"/>
@@ -155,6 +165,8 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="home_down" width="7" height="4"/>
+        <image name="home_up" width="7" height="4"/>
         <image name="icon" width="300" height="300"/>
     </resources>
 </document>

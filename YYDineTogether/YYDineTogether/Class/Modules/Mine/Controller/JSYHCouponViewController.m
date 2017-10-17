@@ -54,6 +54,9 @@
         for (NSDictionary *couponDic in couponDicArray) {
             JSYHCouponModel * model = [[JSYHCouponModel alloc] init];
             [model setValuesForKeysWithDictionary:couponDic];
+            if (model.is_first == 1 && _shopcount < 3) {
+                model.overdue = 1;
+            }
             [self.dataArray addObject:model];
         }
         
@@ -95,7 +98,7 @@
         return;
     }
     if (self.chooseCoupon != nil) {
-        if (model.is_first && _shopcount < 2) {
+        if (model.is_first && _shopcount < 3) {
             [AppManager showToastWithMsg:@"该订单不支持首单红包"];
             return;
         }

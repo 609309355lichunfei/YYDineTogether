@@ -16,6 +16,10 @@
 		9C0A80051F8F3E6E00684168 /* JSYHUserNoteBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0A80031F8F3E6E00684168 /* JSYHUserNoteBookViewController.m */; };
 		9C0A80061F8F3E6E00684168 /* JSYHUserNoteBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0A80041F8F3E6E00684168 /* JSYHUserNoteBookViewController.xib */; };
 		9C0A800F1F8F52B500684168 /* POIAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0A800E1F8F52B500684168 /* POIAnnotation.m */; };
+		9C0A80161F920B5200684168 /* HomeStoreDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0A80141F920B5000684168 /* HomeStoreDetailViewController.xib */; };
+		9C0A80171F920B5200684168 /* HomeStoreDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0A80151F920B5100684168 /* HomeStoreDetailViewController.m */; };
+		9C0A801B1F94510800684168 /* JSYHHomeStoreLeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0A80191F94510800684168 /* JSYHHomeStoreLeftTableViewCell.m */; };
+		9C0A801C1F94510800684168 /* JSYHHomeStoreLeftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0A801A1F94510800684168 /* JSYHHomeStoreLeftTableViewCell.xib */; };
 		9C2AEE1B1F6F8A330045E3F1 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2AEE1A1F6F8A330045E3F1 /* libsqlite3.0.tbd */; };
 		9C2AEE1D1F6F9B570045E3F1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2AEE1C1F6F9B570045E3F1 /* UserNotifications.framework */; };
 		9C628F6C1F4BFD340014E828 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C628F5F1F4BFD340014E828 /* TAAbstractDotView.m */; };
@@ -67,6 +71,8 @@
 		9C628FF21F5958B90014E828 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C628FF11F5958B90014E828 /* Foundation.framework */; };
 		9C628FF41F5958C50014E828 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C628FF31F5958C50014E828 /* CFNetwork.framework */; };
 		9C628FF61F5958D20014E828 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C628FF51F5958D20014E828 /* CoreMotion.framework */; };
+		9C6652D11F959B4800159DCA /* JSYHUpdateAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6652D01F959B4800159DCA /* JSYHUpdateAlertView.m */; };
+		9C6652D31F959B5C00159DCA /* JSYHUpdateAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C6652D21F959B5C00159DCA /* JSYHUpdateAlertView.xib */; };
 		9C85D7EF1F4683AF00622EBF /* JSYHHomeStoreActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85D7ED1F4683AF00622EBF /* JSYHHomeStoreActivityViewController.m */; };
 		9C85D7F01F4683AF00622EBF /* JSYHHomeStoreActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C85D7EE1F4683AF00622EBF /* JSYHHomeStoreActivityViewController.xib */; };
 		9C85D7F41F46881400622EBF /* JSYHStoreActivityHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85D7F21F46881400622EBF /* JSYHStoreActivityHeaderTableViewCell.m */; };
@@ -334,6 +340,12 @@
 		9C0A80041F8F3E6E00684168 /* JSYHUserNoteBookViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JSYHUserNoteBookViewController.xib; sourceTree = "<group>"; };
 		9C0A800D1F8F52B400684168 /* POIAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIAnnotation.h; sourceTree = "<group>"; };
 		9C0A800E1F8F52B500684168 /* POIAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIAnnotation.m; sourceTree = "<group>"; };
+		9C0A80131F920B4F00684168 /* HomeStoreDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeStoreDetailViewController.h; sourceTree = "<group>"; };
+		9C0A80141F920B5000684168 /* HomeStoreDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeStoreDetailViewController.xib; sourceTree = "<group>"; };
+		9C0A80151F920B5100684168 /* HomeStoreDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeStoreDetailViewController.m; sourceTree = "<group>"; };
+		9C0A80181F94510800684168 /* JSYHHomeStoreLeftTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSYHHomeStoreLeftTableViewCell.h; sourceTree = "<group>"; };
+		9C0A80191F94510800684168 /* JSYHHomeStoreLeftTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSYHHomeStoreLeftTableViewCell.m; sourceTree = "<group>"; };
+		9C0A801A1F94510800684168 /* JSYHHomeStoreLeftTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JSYHHomeStoreLeftTableViewCell.xib; sourceTree = "<group>"; };
 		9C2AEE1A1F6F8A330045E3F1 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		9C2AEE1C1F6F9B570045E3F1 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		9C2AEE1E1F6F9C2B0045E3F1 /* YYDineTogether.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YYDineTogether.entitlements; sourceTree = "<group>"; };
@@ -415,6 +427,9 @@
 		9C628FF11F5958B90014E828 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9C628FF31F5958C50014E828 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		9C628FF51F5958D20014E828 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		9C6652CF1F959B4800159DCA /* JSYHUpdateAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSYHUpdateAlertView.h; sourceTree = "<group>"; };
+		9C6652D01F959B4800159DCA /* JSYHUpdateAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSYHUpdateAlertView.m; sourceTree = "<group>"; };
+		9C6652D21F959B5C00159DCA /* JSYHUpdateAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JSYHUpdateAlertView.xib; sourceTree = "<group>"; };
 		9C85D7EC1F4683AF00622EBF /* JSYHHomeStoreActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSYHHomeStoreActivityViewController.h; sourceTree = "<group>"; };
 		9C85D7ED1F4683AF00622EBF /* JSYHHomeStoreActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSYHHomeStoreActivityViewController.m; sourceTree = "<group>"; };
 		9C85D7EE1F4683AF00622EBF /* JSYHHomeStoreActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSYHHomeStoreActivityViewController.xib; sourceTree = "<group>"; };
@@ -1510,6 +1525,9 @@
 				9C8995F31EED40F00097AF38 /* HomeStoreViewController.h */,
 				9C8995F41EED40F00097AF38 /* HomeStoreViewController.m */,
 				9C8995F51EED40F00097AF38 /* HomeStoreViewController.xib */,
+				9C0A80131F920B4F00684168 /* HomeStoreDetailViewController.h */,
+				9C0A80151F920B5100684168 /* HomeStoreDetailViewController.m */,
+				9C0A80141F920B5000684168 /* HomeStoreDetailViewController.xib */,
 				9C8995FD1EEE3D9D0097AF38 /* HomeFoodDetailViewController.h */,
 				9C8995FE1EEE3D9D0097AF38 /* HomeFoodDetailViewController.m */,
 				9C8995FF1EEE3D9D0097AF38 /* HomeFoodDetailViewController.xib */,
@@ -1629,6 +1647,12 @@
 				9C0A7FFD1F8C99E800684168 /* JSYHFirstCouponView.h */,
 				9C0A7FFE1F8C99E800684168 /* JSYHFirstCouponView.m */,
 				9C0A80001F8C99FB00684168 /* JSYHFirstCouponView.xib */,
+				9C0A80181F94510800684168 /* JSYHHomeStoreLeftTableViewCell.h */,
+				9C0A80191F94510800684168 /* JSYHHomeStoreLeftTableViewCell.m */,
+				9C0A801A1F94510800684168 /* JSYHHomeStoreLeftTableViewCell.xib */,
+				9C6652CF1F959B4800159DCA /* JSYHUpdateAlertView.h */,
+				9C6652D01F959B4800159DCA /* JSYHUpdateAlertView.m */,
+				9C6652D21F959B5C00159DCA /* JSYHUpdateAlertView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1892,6 +1916,7 @@
 				B3DA48541EE50650006B6942 /* icon_tabbar_homepage_selected.png in Resources */,
 				9C8C09551F5BFF7A00A75954 /* HomeSearchDishTableViewCell.xib in Resources */,
 				9C8C09A61F6E5F8B00A75954 /* JSYHCombListHeaderTableViewCell.xib in Resources */,
+				9C0A801C1F94510800684168 /* JSYHHomeStoreLeftTableViewCell.xib in Resources */,
 				9C8C094B1F5BE79300A75954 /* JSYHFeedbackViewController.xib in Resources */,
 				B3DA48631EE50650006B6942 /* icon_tabbar_nearby_selected.png in Resources */,
 				9C8C096B1F5D44D800A75954 /* JSYHAddressMapViewController.xib in Resources */,
@@ -1917,6 +1942,7 @@
 				9C85D7FA1F46DD2B00622EBF /* JSYHSharedView.xib in Resources */,
 				9C0A80061F8F3E6E00684168 /* JSYHUserNoteBookViewController.xib in Resources */,
 				9C8995CC1EE6589B0097AF38 /* HomeTableViewCell.xib in Resources */,
+				9C6652D31F959B5C00159DCA /* JSYHUpdateAlertView.xib in Resources */,
 				9C0A7FFC1F8C927E00684168 /* JSYHAboutUsViewController.xib in Resources */,
 				B3DA48511EE50650006B6942 /* icon_tabbar_discovery_selected.png in Resources */,
 				9CDCC5AB1F3C50F20005FB76 /* JSYHSearchHeaderCollectionReusableView.xib in Resources */,
@@ -1952,6 +1978,7 @@
 				B3DA485D1EE50650006B6942 /* icon_tabbar_mine_selected@2x.png in Resources */,
 				9CDB2E971F1758300072DBF6 /* DisCountViewController.xib in Resources */,
 				9C8C09A11F6BBC1200A75954 /* JSYHCombListCollectionViewCell.xib in Resources */,
+				9C0A80161F920B5200684168 /* HomeStoreDetailViewController.xib in Resources */,
 				9C8996741EF7B3440097AF38 /* HomeCityViewController.xib in Resources */,
 				9C8996451EF2CD1B0097AF38 /* IndentConfirmViewController.xib in Resources */,
 				9C628FDC1F59461B0014E828 /* JSYHPayWayViewController.xib in Resources */,
@@ -2117,6 +2144,7 @@
 				9C0A7FFB1F8C927E00684168 /* JSYHAboutUsViewController.m in Sources */,
 				9C0A7FF61F8C75BE00684168 /* JSYHSpecificationViewController.m in Sources */,
 				B38940B31EE69D4C00407E45 /* UIFont+Fonts.m in Sources */,
+				9C0A801B1F94510800684168 /* JSYHHomeStoreLeftTableViewCell.m in Sources */,
 				9C628FA71F4ED6280014E828 /* FMDatabase.m in Sources */,
 				B38940761EE69B3100407E45 /* LICENSE.md in Sources */,
 				B38940651EE69B3000407E45 /* SWActionSheet.m in Sources */,
@@ -2201,6 +2229,7 @@
 				B389405D1EE69B3000407E45 /* AbstractActionSheetPicker.m in Sources */,
 				9C8C096A1F5D44D800A75954 /* JSYHAddressMapViewController.m in Sources */,
 				B38940621EE69B3000407E45 /* ActionSheetMultipleStringPicker.m in Sources */,
+				9C6652D11F959B4800159DCA /* JSYHUpdateAlertView.m in Sources */,
 				B3DA48451EE50650006B6942 /* RootWebViewController.m in Sources */,
 				B3DA484A1EE50650006B6942 /* IndentViewController.m in Sources */,
 				9C8C099B1F6A63CB00A75954 /* JSYHCombListTableViewCell.m in Sources */,
@@ -2208,6 +2237,7 @@
 				9C628FBA1F4F26D30014E828 /* JSYHUserModel.m in Sources */,
 				9C85D7F41F46881400622EBF /* JSYHStoreActivityHeaderTableViewCell.m in Sources */,
 				B38940691EE69B3100407E45 /* IQUITextFieldView+Additions.m in Sources */,
+				9C0A80171F920B5200684168 /* HomeStoreDetailViewController.m in Sources */,
 				9CDB2E9C1F1764700072DBF6 /* HomeStandardChooseView.m in Sources */,
 				B38940741EE69B3100407E45 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				9C628FA81F4ED6280014E828 /* FMDatabaseAdditions.m in Sources */,

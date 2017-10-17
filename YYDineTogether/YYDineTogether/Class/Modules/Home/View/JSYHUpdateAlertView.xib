@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="JSYHUpdateAlertView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GEg-Z1-YSg">
+                    <rect key="frame" x="0.0" y="194" width="375" height="300"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="updateAlert" translatesAutoresizingMaskIntoConstraints="NO" id="oe5-XG-jCM">
+                            <rect key="frame" x="14" y="0.0" width="308" height="300"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BA0-1e-myL">
+                            <rect key="frame" x="217.5" y="266" width="76" height="22"/>
+                            <state key="normal" image="updateAlertUpdate"/>
+                            <connections>
+                                <action selector="updateAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="umN-A0-N52"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cf5-KY-cwp">
+                            <rect key="frame" x="101.5" y="266" width="76" height="22"/>
+                            <state key="normal" image="updateAlertCancel"/>
+                            <connections>
+                                <action selector="cancelAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="5mh-j7-gh9"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="聚膳宅配" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fv4-WZ-gQJ">
+                            <rect key="frame" x="90" y="171" width="44" height="15.5"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="11"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="cf5-KY-cwp" secondAttribute="bottom" constant="12" id="0A5-ze-J5O"/>
+                        <constraint firstItem="oe5-XG-jCM" firstAttribute="leading" secondItem="fv4-WZ-gQJ" secondAttribute="trailing" constant="-120" id="2cP-1h-MO4"/>
+                        <constraint firstItem="fv4-WZ-gQJ" firstAttribute="top" secondItem="oe5-XG-jCM" secondAttribute="bottom" constant="-129" id="Q7N-8c-PWE"/>
+                        <constraint firstItem="BA0-1e-myL" firstAttribute="leading" secondItem="cf5-KY-cwp" secondAttribute="trailing" constant="40" id="aHz-Fv-Ydt"/>
+                        <constraint firstItem="oe5-XG-jCM" firstAttribute="top" secondItem="GEg-Z1-YSg" secondAttribute="top" id="c1Q-ii-IkQ"/>
+                        <constraint firstAttribute="height" constant="300" id="nam-fy-0GD"/>
+                        <constraint firstItem="oe5-XG-jCM" firstAttribute="centerX" secondItem="GEg-Z1-YSg" secondAttribute="centerX" constant="-20" id="qAu-dR-o0H"/>
+                        <constraint firstAttribute="bottom" secondItem="oe5-XG-jCM" secondAttribute="bottom" id="rO5-Z8-wlY"/>
+                        <constraint firstItem="cf5-KY-cwp" firstAttribute="top" secondItem="BA0-1e-myL" secondAttribute="top" id="wFH-m8-pyy"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="cf5-KY-cwp" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" constant="-48" id="07g-3T-GQC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GEg-Z1-YSg" secondAttribute="trailing" id="8VX-v1-KjY"/>
+                <constraint firstItem="GEg-Z1-YSg" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="VJL-Mn-2ca"/>
+                <constraint firstItem="GEg-Z1-YSg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="xKM-L5-A7z"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="alertLabel" destination="fv4-WZ-gQJ" id="13R-DB-mL3"/>
+            </connections>
+            <point key="canvasLocation" x="37.5" y="124.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="updateAlert" width="308" height="302"/>
+        <image name="updateAlertCancel" width="76" height="22"/>
+        <image name="updateAlertUpdate" width="76" height="22"/>
+    </resources>
+</document>

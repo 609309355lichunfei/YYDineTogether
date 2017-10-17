@@ -218,6 +218,9 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     JSYHShopModel *model = self.dataArray[indexPath.row];
     cell.shopModel = model;
+    cell.activityBlock = ^{
+        [tableView reloadRowAtIndexPath:indexPath withRowAnimation:(UITableViewRowAnimationAutomatic)];
+    };
 //    cell.type = ViewControllerTypeTypeFood;
     return cell;
 }

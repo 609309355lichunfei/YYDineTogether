@@ -56,6 +56,10 @@
         NSNumber *priceNumber = value;
         float price = priceNumber.integerValue / 100.0;
         self.combcut = [NSNumber numberWithFloat:price];
+    }else if ([key isEqualToString:@"couponvalue"]) {
+        NSNumber *priceNumber = value;
+        float price = priceNumber.integerValue / 100.0;
+        self.couponvalue = [NSNumber numberWithFloat:price];
     }
 }
 

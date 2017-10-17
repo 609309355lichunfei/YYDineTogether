@@ -13,6 +13,8 @@
 @interface ShoppingCartManager : NSObject
 + (ShoppingCartManager *)sharedManager;
 
+@property (strong, nonatomic) NSArray *carttips;//
+
 @property (strong, nonatomic) NSMutableArray *shoppingCartComboArray;
 
 @property (strong, nonatomic) NSMutableArray *shoppingCartDataArray;

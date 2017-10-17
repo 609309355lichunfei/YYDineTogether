@@ -47,10 +47,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="558"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_comb_background" translatesAutoresizingMaskIntoConstraints="NO" id="PVE-BQ-BiZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="600"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="PVE-BQ-BiZ" secondAttribute="height" multiplier="187:300" id="hmC-qE-0HI"/>
-                                            </constraints>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="601"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_comb_backgroundtitle" translatesAutoresizingMaskIntoConstraints="NO" id="VGb-DT-8fS">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="190"/>
                                         </imageView>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fw-dP-O0B">
                                             <rect key="frame" x="30" y="140" width="314" height="406"/>
@@ -135,6 +135,10 @@
                                                 <constraint firstItem="EbY-pI-0UZ" firstAttribute="leading" secondItem="8fw-dP-O0B" secondAttribute="leading" id="zYx-PL-c69"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DC5-Wg-m6A">
+                                            <rect key="frame" x="117" y="50" width="140" height="62"/>
+                                            <color key="backgroundColor" red="0.38821914792060852" green="0.38386952877044678" blue="0.40868115425109863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="套餐一" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="197-4M-Agq">
                                             <rect key="frame" x="142" y="60" width="90" height="42"/>
                                             <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="30"/>
@@ -147,8 +151,15 @@
                                         <constraint firstItem="PVE-BQ-BiZ" firstAttribute="top" secondItem="0Ff-vN-Te0" secondAttribute="top" id="0Df-V2-0PN"/>
                                         <constraint firstAttribute="bottom" secondItem="8fw-dP-O0B" secondAttribute="bottom" constant="12" id="6IH-dw-KQl"/>
                                         <constraint firstItem="8fw-dP-O0B" firstAttribute="top" secondItem="0Ff-vN-Te0" secondAttribute="top" constant="140" id="JSa-WN-0VC"/>
+                                        <constraint firstItem="197-4M-Agq" firstAttribute="width" secondItem="DC5-Wg-m6A" secondAttribute="width" constant="-50" id="NgT-gv-yDX"/>
+                                        <constraint firstAttribute="trailing" secondItem="VGb-DT-8fS" secondAttribute="trailing" id="PhH-zf-8al"/>
+                                        <constraint firstItem="VGb-DT-8fS" firstAttribute="leading" secondItem="0Ff-vN-Te0" secondAttribute="leading" id="Qtk-vc-six"/>
                                         <constraint firstAttribute="trailing" secondItem="PVE-BQ-BiZ" secondAttribute="trailing" id="Roz-ic-vDq"/>
+                                        <constraint firstItem="VGb-DT-8fS" firstAttribute="top" secondItem="0Ff-vN-Te0" secondAttribute="top" id="Rra-qC-wUl"/>
+                                        <constraint firstItem="197-4M-Agq" firstAttribute="centerX" secondItem="DC5-Wg-m6A" secondAttribute="centerX" id="TLi-VA-sv5"/>
+                                        <constraint firstItem="197-4M-Agq" firstAttribute="height" secondItem="DC5-Wg-m6A" secondAttribute="height" constant="-20" id="XcM-1e-CTw"/>
                                         <constraint firstItem="zUL-1A-tyd" firstAttribute="top" secondItem="197-4M-Agq" secondAttribute="bottom" constant="38" id="Zds-8U-oop"/>
+                                        <constraint firstItem="197-4M-Agq" firstAttribute="centerY" secondItem="DC5-Wg-m6A" secondAttribute="centerY" id="fRo-Rd-grN"/>
                                         <constraint firstItem="8fw-dP-O0B" firstAttribute="leading" secondItem="0Ff-vN-Te0" secondAttribute="leading" constant="30" id="mjg-Ub-WY6"/>
                                         <constraint firstItem="PVE-BQ-BiZ" firstAttribute="leading" secondItem="0Ff-vN-Te0" secondAttribute="leading" id="pWI-Sq-x0E"/>
                                         <constraint firstAttribute="trailing" secondItem="8fw-dP-O0B" secondAttribute="trailing" constant="30" id="uAS-kW-SaR"/>
@@ -317,6 +328,7 @@
     <resources>
         <image name="Navigation_left" width="32" height="32"/>
         <image name="home_comb_background" width="375" height="601"/>
+        <image name="home_comb_backgroundtitle" width="375" height="190"/>
         <image name="shoppingCart" width="57" height="57"/>
     </resources>
 </document>

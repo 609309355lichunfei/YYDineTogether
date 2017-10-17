@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginBT;
 @property (weak, nonatomic) IBOutlet UIButton *verificationBT;
 
+@property (strong, nonatomic) NSTimer *timer;
+
 @end
 
 @implementation LoginViewController
@@ -36,9 +38,31 @@
     }];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    if (self.timer) {
+        [self.timer invalidate];
+    }
+}
+
 - (IBAction)getVerificationCodeAction:(id)sender {
+    NSString *phoneStr = [_numberTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (phoneStr == nil || phoneStr.length == 0) {
+        [AppManager showToastWithMsg:@"请输入账号"];
+        return;
+    }
     [[JSRequestManager sharedManager] postSmsPhoneNumber:_numberTF.text Success:^(id responseObject) {
         [AppManager showToastWithMsg:@"验证短信已发送"];
+        self.verificationBT.enabled = NO;
+        [self.verificationBT setBackgroundColor:[UIColor lightGrayColor]];
+        if (self.timer) {
+            [self.timer invalidate];
+            self.timer = nil;
+        }
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:60 block:^(NSTimer * _Nonnull timer) {
+            self.verificationBT.enabled = YES;
+            [self.verificationBT setBackgroundColor:UIColorFromRGB(0xfd5353)];
+        } repeats:NO];
     } Failed:^(NSError *error) {
         [AppManager showToastWithMsg:@"验证码获取失败"];
     }];
@@ -60,21 +84,22 @@
         if ([errorCode isEqualToNumber:@0]) {
             [[ShoppingCartManager sharedManager] shoppingCartReloadData];
             [[ShoppingCartManager sharedManager] addWithAdmin];
-            [self dismissViewControllerAnimated:YES completion:^{
-                [[JSRequestManager sharedManager] getMemberInfoSuccess:^(id responseObject) {
-                    NSNumber *memberid = responseObject[@"data"][@"memberid"];
-                    [JPUSHService setAlias:[NSString stringWithFormat:@"%@",memberid] completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
-                        
-                    } seq:1];
-                    NSNumber *is_first = responseObject[@"data"][@"is_first"];
-                    if ([is_first isEqualToNumber:@1]) {
-                        JSYHFirstCouponView *firstView = [[NSBundle mainBundle] loadNibNamed:@"JSYHFirstCouponView" owner:nil options:nil].lastObject;
-                        firstView.bounds = kScreen_Bounds;
-                        [[AppDelegate shareAppDelegate].mainNavi.view addSubview:firstView];
-                    }
-                } Failed:^(NSError *error) {
+            [[JSRequestManager sharedManager] getMemberInfoSuccess:^(id responseObject) {
+                NSNumber *memberid = responseObject[@"data"][@"memberid"];
+                [JPUSHService setAlias:[NSString stringWithFormat:@"%@",memberid] completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
                     
-                }];
+                } seq:1];
+                NSNumber *is_first = responseObject[@"data"][@"is_first"];
+                if ([is_first isEqualToNumber:@1]) {
+                    JSYHFirstCouponView *firstView = [[NSBundle mainBundle] loadNibNamed:@"JSYHFirstCouponView" owner:nil options:nil].lastObject;
+                    firstView.frame = kScreen_Bounds;
+                    [[AppDelegate shareAppDelegate].window addSubview:firstView];
+                }
+            } Failed:^(NSError *error) {
+                
+            }];
+            [self dismissViewControllerAnimated:YES completion:^{
+                
             }];
         } else {
             [AppManager showToastWithMsg:responseObject[@"message"]];

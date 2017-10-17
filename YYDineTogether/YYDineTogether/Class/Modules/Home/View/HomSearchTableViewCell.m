@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *shopStarLabel;
 @property (weak, nonatomic) IBOutlet UILabel *shopSalesCountLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *optionBT;
+@property (weak, nonatomic) IBOutlet UIImageView *optionImageView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *activityViewHeight;
 @property (weak, nonatomic) IBOutlet UIView *storeView;
@@ -54,7 +56,16 @@
     self.shopSalesCountLabel.text = [NSString stringWithFormat:@"%ld单",(long)_shopModel.salescount];
     self.distanceLabel.text = _shopModel.distance;
     [self.storeView removeAllSubviews];
-    self.activityViewHeight.constant = _shopModel.activites.count * 22;
+    if (_shopModel.activites.count > 2) {
+        if (_shopModel.optinal) {
+            self.activityViewHeight.constant = _shopModel.activites.count * 22;
+        } else {
+            self.activityViewHeight.constant = 2 * 22;
+        }
+    } else {
+        self.activityViewHeight.constant = _shopModel.activites.count * 22;
+    }
+    
     for (NSInteger i = 0; i < _shopModel.activites.count; i ++){
         JSYHActivityModel *model = _shopModel.activites[i];
         JSYHHomeStoreActivityView *view = [[[NSBundle mainBundle] loadNibNamed:@"JSYHHomeStoreActivityView" owner:self options:nil] lastObject];
@@ -62,8 +73,17 @@
         [self.storeView addSubview:view];
         [view setActivityModel:model];
     }
+    _optionImageView.highlighted = _shopModel.optinal;
     self.dataArray = _shopModel.dishs;
     [self.tableView reloadData];
+}
+
+
+- (IBAction)optionAction:(id)sender {
+    _shopModel.optinal = !_shopModel.optinal;
+    _optionImageView.highlighted = _shopModel.optinal;
+    [_shopModel updateHeightWithSearchView];
+    self.activityBlock();
 }
 
 #pragma mark - UITableViewDataSource 

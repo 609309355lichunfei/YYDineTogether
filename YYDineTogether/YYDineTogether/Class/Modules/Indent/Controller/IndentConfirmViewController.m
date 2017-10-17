@@ -49,6 +49,8 @@
 @property (strong, nonatomic) NSString *couponid;
 @property (assign, nonatomic) NSInteger is_first;//是否是新人红包
 
+@property (strong, nonatomic) NSString *couponValue;
+
 @property (strong, nonatomic) NSMutableArray *dataArray;
 
 @end
@@ -78,7 +80,7 @@
     NSArray *combs = [ShoppingCartManager sharedManager].shoppingCartComboArray;
     NSMutableArray *dishsArray = [NSMutableArray array];
     for (JSYHDishModel *model in dishs) {
-        NSDictionary *modelDic = @{@"count":[NSString stringWithFormat:@"%ld",model.count],@"id":[model.dishid stringValue]} ;
+        NSDictionary *modelDic = @{@"count":[NSString stringWithFormat:@"%ld",model.shopcartCount],@"id":[model.dishid stringValue]} ;
         [dishsArray addObject:modelDic];
     }
     NSMutableArray *combsArray = [NSMutableArray array];
@@ -128,7 +130,7 @@
             annotation.coordinate = coordinate;
             annotation.title = model.name;
             [self.mapView addAnnotation:annotation];
-            commonPolylineCoords[i] = coordinate;
+            commonPolylineCoords[i + 1] = coordinate;
         }
         
         CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([self.orderModel.addressModel.lat doubleValue], [self.orderModel.addressModel.lng doubleValue]);
@@ -136,7 +138,7 @@
         self.userAnnotation.coordinate = coordinate;
         self.userAnnotation.title = @"用户";
         [self.mapView addAnnotation:self.userAnnotation];
-        commonPolylineCoords[shopCount] = coordinate;
+        commonPolylineCoords[0] = coordinate;
         
         //构造折线对象
         self.commonPolyline = [MAPolyline polylineWithCoordinates:commonPolylineCoords count:shopCount + 1];
@@ -167,14 +169,14 @@
             self.addressModel = model;
             self.nameLabel.text = self.addressModel.username;
             self.numberLabel.text = self.addressModel.phone;
-            self.addressLabel.text = self.addressModel.address;
+            self.addressLabel.text = [NSString stringWithFormat:@"%@%@",self.addressModel.address,self.addressModel.addressdet];
             [[JSRequestManager sharedManager] getPostcostWithAddressid:[self.addressModel.addressid stringValue] orderNo:self.orderModel.order_no Success:^(id responseObject) {
                 NSNumber *postcost = responseObject[@"data"][@"postcost"];
                 float price = postcost.integerValue / 100.0;
                 postcost = [NSNumber numberWithFloat:price];
                 self.postcost.text = [postcost stringValue];
                 NSNumber *lastprice = responseObject[@"data"][@"lastprice"];
-                CGFloat lastpriceFloat = lastprice.integerValue / 100.0 - [self.redLabel.text floatValue];
+                CGFloat lastpriceFloat = lastprice.integerValue / 100.0 - [self.couponValue floatValue];
                 if (_is_first == 1) {
                     lastpriceFloat = lastpriceFloat + [self.orderModel.cut floatValue];
                 }
@@ -193,7 +195,7 @@
         self.addressModel = addressModel;
         self.nameLabel.text = self.addressModel.username;
         self.numberLabel.text = self.addressModel.phone;
-        self.addressLabel.text = self.addressModel.address;
+        self.addressLabel.text = [NSString stringWithFormat:@"%@%@",self.addressModel.address,self.addressModel.addressdet];
         
         CLLocationCoordinate2D coordenate = CLLocationCoordinate2DMake([self.addressModel.lat doubleValue], [self.addressModel.lng doubleValue]);
         self.userAnnotation.coordinate = coordenate;
@@ -203,7 +205,7 @@
             postcost = [NSNumber numberWithFloat:price];
             self.postcost.text = [postcost stringValue];
             NSNumber *lastprice = responseObject[@"data"][@"lastprice"];
-            CGFloat lastpriceFloat = lastprice.integerValue / 100.0 - [self.redLabel.text floatValue];
+            CGFloat lastpriceFloat = lastprice.integerValue / 100.0 - [self.couponValue floatValue];
             if (_is_first == 1) {
                 lastpriceFloat = lastpriceFloat + [self.orderModel.cut floatValue];
             }
@@ -224,6 +226,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addressChange) name:@"JSYHAddressChange" object:nil];
     
     self.couponid = @"0";
+    self.couponValue = @"0";
     
     self.mapView = [[MAMapView alloc] initWithFrame:self.mapBackGroundView.bounds];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -269,12 +272,14 @@
 }
 - (IBAction)couponTapAction:(id)sender {
     JSYHCouponViewController *couponVC = [[JSYHCouponViewController alloc] init];
+    
     couponVC.shopcount = self.dataArray.count;
     couponVC.chooseCoupon = ^(JSYHCouponModel *model) {
-        self.redLabel.text = [NSString stringWithFormat:@"%@",model.value];
+        self.redLabel.text = [NSString stringWithFormat:@"- ¥%@",model.value];
+        self.couponValue = [NSString stringWithFormat:@"%@",model.value];
         _is_first = model.is_first;
         self.couponid = [model.coupon_id stringValue];
-        CGFloat priceFloat = [self.orderModel.lastprice floatValue] - [self.redLabel.text integerValue];
+        CGFloat priceFloat = [self.orderModel.lastprice floatValue] - [self.couponValue integerValue];
         if (_is_first == 1) {
             priceFloat = priceFloat + [self.orderModel.cut floatValue];
             
@@ -340,6 +345,7 @@
     JSYHPreOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IndentConfirmTableViewCell" forIndexPath:indexPath];
     JSYHShopModel *model = self.dataArray[indexPath.row];
     cell.shopModel = model;
+    cell.phoneBT.hidden = YES;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

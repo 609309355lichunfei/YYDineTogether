@@ -44,7 +44,7 @@ static ShoppingCartManager *_shoppingCartManager;
         for (JSYHDishModel *model in self.shoppingCartDataArray) {
             if ([dishModel.dishid isEqualToNumber:model.dishid]) {
                 isExsit = YES;
-                model.count = model.count + dishModel.count;
+                model.shopcartCount = model.shopcartCount + dishModel.shopcartCount;
             }
         }
         if (isExsit == NO) {
@@ -83,7 +83,7 @@ static ShoppingCartManager *_shoppingCartManager;
 - (void)addToShoppingCartWithDish:(JSYHDishModel *)dishModel {
     for (JSYHDishModel *model in self.shoppingCartDataArray) {
         if ([dishModel.dishid isEqualToNumber:model.dishid]) {
-            model.count ++;
+            model.shopcartCount ++;
             [self shoppingCartCountChanged];
             NSString *userName = [JSRequestManager sharedManager].userName;
             if (userName == nil || userName.length == 0) {
@@ -94,7 +94,7 @@ static ShoppingCartManager *_shoppingCartManager;
         }
     }
     JSYHDishModel *model = [dishModel copy];
-    model.count = 1;
+    model.shopcartCount = 1;
     [self.shoppingCartDataArray addObject:model];
     [self shoppingCartCountChanged];
     NSString *userName = [JSRequestManager sharedManager].userName;
@@ -135,8 +135,8 @@ static ShoppingCartManager *_shoppingCartManager;
 - (void)removeFromeShoppingCartWithDish:(JSYHDishModel *)dishModel {
     for (JSYHDishModel *model in self.shoppingCartDataArray) {
         if ([dishModel.dishid isEqualToNumber: model.dishid]) {
-            model.count = model.count - 1;
-            if (model.count == 0) {
+            model.shopcartCount = model.shopcartCount - 1;
+            if (model.shopcartCount == 0) {
                 [self.shoppingCartDataArray removeObject:model];
                 
             }
@@ -177,11 +177,11 @@ static ShoppingCartManager *_shoppingCartManager;
 - (void)updateCountWithModel:(JSYHDishModel *)dishModel {
     for (JSYHDishModel *model in self.shoppingCartDataArray) {
         if ([dishModel.dishid isEqualToNumber:model.dishid]) {
-            dishModel.count = model.count;
+            dishModel.shopcartCount = model.shopcartCount;
             return;
         }
     }
-    dishModel.count = 0;
+    dishModel.shopcartCount = 0;
 }
 
 - (void)updateComboCountWithModel:(JSYHComboModel *)combModel {
@@ -230,7 +230,7 @@ static ShoppingCartManager *_shoppingCartManager;
 - (NSString *)totalPrice {
     CGFloat total = 0.0;
     for (JSYHDishModel *model in self.shoppingCartDataArray) {
-        total += model.count * [model.discountprice floatValue];
+        total += model.shopcartCount * [model.discountprice floatValue];
     }
     for (JSYHComboModel *model in self.shoppingCartComboArray) {
         total += model.count * [model.price floatValue];
@@ -242,7 +242,7 @@ static ShoppingCartManager *_shoppingCartManager;
 - (NSInteger)count {
     NSInteger count = 0;
     for (JSYHDishModel *dishModel in self.shoppingCartDataArray) {
-        count = dishModel.count + count;
+        count = dishModel.shopcartCount + count;
     }
     for (JSYHComboModel *comboModel in self.shoppingCartComboArray) {
         count = comboModel.count + count;

@@ -14,4 +14,8 @@
 
 @property (strong, nonatomic) JSYHDishModel *dishModel;
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *shopNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
+
 @end

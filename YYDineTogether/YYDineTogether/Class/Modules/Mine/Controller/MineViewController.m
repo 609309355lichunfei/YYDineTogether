@@ -180,6 +180,7 @@
         }else if (indexPath.row == 1){
             JSYHCouponViewController *couponVC = [[JSYHCouponViewController alloc] init];
             couponVC.chooseCoupon = nil;
+            couponVC.shopcount = 4;//显示首单红包可选
             [self.tabBarController.navigationController pushViewController:couponVC animated:YES];
             
         }else{

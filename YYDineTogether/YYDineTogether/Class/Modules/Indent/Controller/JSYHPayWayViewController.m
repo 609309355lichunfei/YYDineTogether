@@ -47,6 +47,7 @@
     [[JSRequestManager sharedManager] payWithPaytype:@"2" Orderno:self.order_no Success:^(id responseObject) {
         [MBProgressHUD hideHUD];
         NSString *schemes = @"JSZPeiApp";
+        [AppDelegate shareAppDelegate].order_no = self.order_no;
         [[AlipaySDK defaultService] payOrder:responseObject[@"data"][@"prepayparam"] fromScheme:schemes callback:^(NSDictionary *resultDic) {
             NSLog(@"reslut = %@",resultDic);
             if ([resultDic[@"resultStatus"] isEqualToString:@"6001"]) {
@@ -54,10 +55,18 @@
                 [AppManager showToastWithMsg:@"支付失败"];
                 [[AppDelegate shareAppDelegate].mainTabBar setSelectedIndex:1];
                 [self.navigationController popToRootViewControllerAnimated:YES];
+                
+                IndentDetailViewController *indentDetialVC = [[IndentDetailViewController alloc] init];
+                indentDetialVC.order_no = self.order_no;
+                [[AppDelegate shareAppDelegate].mainTabBar.navigationController pushViewController:indentDetialVC animated:YES];
             } else {
                 [AppManager showToastWithMsg:@"支付成功"];
                 [[AppDelegate shareAppDelegate].mainTabBar setSelectedIndex:1];
                 [self.navigationController popToRootViewControllerAnimated:YES];
+                
+                IndentDetailViewController *indentDetialVC = [[IndentDetailViewController alloc] init];
+                indentDetialVC.order_no = self.order_no;
+                [[AppDelegate shareAppDelegate].mainTabBar.navigationController pushViewController:indentDetialVC animated:YES];
             }
         }];
         

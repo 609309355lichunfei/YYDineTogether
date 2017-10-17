@@ -115,11 +115,26 @@
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVN-i3-Bp7">
+                                <rect key="frame" x="16" y="0.0" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="11"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wP1-K6-EZu">
+                                <rect key="frame" x="54" y="44.5" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="LrI-FN-3iP" secondAttribute="bottom" constant="8" id="3iq-1C-Gr6"/>
+                            <constraint firstItem="uVN-i3-Bp7" firstAttribute="top" secondItem="dWE-BE-PF1" secondAttribute="top" id="8tN-Cl-nRw"/>
                             <constraint firstAttribute="trailing" secondItem="hvI-ne-P4d" secondAttribute="trailing" id="IoZ-3J-Pq2"/>
+                            <constraint firstItem="wP1-K6-EZu" firstAttribute="centerY" secondItem="kBE-Fb-rnA" secondAttribute="centerY" id="NTC-Qd-liR"/>
+                            <constraint firstItem="uVN-i3-Bp7" firstAttribute="leading" secondItem="dWE-BE-PF1" secondAttribute="leading" constant="16" id="O8d-Mo-7PG"/>
                             <constraint firstItem="kBE-Fb-rnA" firstAttribute="leading" secondItem="LrI-FN-3iP" secondAttribute="trailing" constant="1" id="OPB-ZW-o7h"/>
                             <constraint firstItem="nPb-Ol-QpR" firstAttribute="bottom" secondItem="LrI-FN-3iP" secondAttribute="bottom" id="Vzi-wI-38z"/>
                             <constraint firstItem="nPb-Ol-QpR" firstAttribute="leading" secondItem="kBE-Fb-rnA" secondAttribute="trailing" constant="8" id="X37-ja-M42"/>
@@ -129,6 +144,7 @@
                             <constraint firstAttribute="height" constant="62" id="guX-45-CZ6"/>
                             <constraint firstItem="NRh-lU-He2" firstAttribute="width" secondItem="nPb-Ol-QpR" secondAttribute="width" id="hNt-xo-elD"/>
                             <constraint firstAttribute="bottom" secondItem="hvI-ne-P4d" secondAttribute="bottom" constant="5" id="muw-Gn-HyB"/>
+                            <constraint firstItem="wP1-K6-EZu" firstAttribute="leading" secondItem="kBE-Fb-rnA" secondAttribute="trailing" constant="8" id="pmA-yx-6Rc"/>
                             <constraint firstItem="NRh-lU-He2" firstAttribute="centerX" secondItem="nPb-Ol-QpR" secondAttribute="centerX" id="z7T-4N-Ffx"/>
                         </constraints>
                     </view>
@@ -164,6 +180,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="countLabel" destination="wP1-K6-EZu" id="dDG-Se-lzo"/>
                 <outlet property="discountDiscoverView" destination="NRh-lU-He2" id="GW8-J4-vdI"/>
                 <outlet property="discountPriceLabel" destination="nPb-Ol-QpR" id="Efo-dF-7Fd"/>
                 <outlet property="dishDistanceLabel" destination="B9n-el-5VS" id="8Dl-FU-kxz"/>
@@ -171,6 +188,7 @@
                 <outlet property="nameLabel" destination="I2i-OJ-d50" id="WZV-X5-b0y"/>
                 <outlet property="numberLabel" destination="pAb-7g-sKM" id="fF2-kP-PP5"/>
                 <outlet property="priceLabel" destination="kBE-Fb-rnA" id="KA6-On-oRX"/>
+                <outlet property="shopNameLabel" destination="uVN-i3-Bp7" id="DZk-EY-o8h"/>
                 <outlet property="subtractButton" destination="ElD-IT-lcy" id="Mb4-hM-JR2"/>
             </connections>
             <point key="canvasLocation" x="119.5" y="114"/>

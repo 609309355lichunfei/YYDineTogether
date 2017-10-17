@@ -38,7 +38,7 @@
     }
 //    HomeStandardChooseView *view = [[[NSBundle mainBundle] loadNibNamed:@"HomeStandardChooseView" owner:self options:nil] firstObject];
 //    [view showView];
-    _dishModel.count = [_numberLabel.text integerValue];
+    _dishModel.shopcartCount = [_numberLabel.text integerValue];
     _dishModel.shopname = _shopname;
     _dishModel.shoplogo = _shoplogo;
     [[ShoppingCartManager sharedManager] addToShoppingCartWithDish:_dishModel];
@@ -52,7 +52,7 @@
         _numberLabel.text =  [NSString stringWithFormat:@"%ld",[_numberLabel.text integerValue] - 1];
     }
     
-    _dishModel.count = [_numberLabel.text integerValue];
+    _dishModel.shopcartCount = [_numberLabel.text integerValue];
     [[ShoppingCartManager sharedManager] removeFromeShoppingCartWithDish:_dishModel];
     
 }
@@ -65,10 +65,10 @@
     self.starLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.star];
     self.priceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.price];
     self.infoLabel.textColor = _dishModel.info;
-    if (_dishModel.count > 0) {
+    if (_dishModel.shopcartCount > 0) {
         _numberLabel.hidden = NO;
         _subtractButton.hidden = NO;
-        _numberLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.count];
+        _numberLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.shopcartCount];
     } else {
         _numberLabel.hidden = YES;
         _subtractButton.hidden = YES;

@@ -60,10 +60,10 @@
     self.combImageView.hidden = [_dishModel.iscomb isEqualToString:@"1"] ? NO : YES;
     self.dishNameLabel.text = _dishModel.name;
     self.priceLabel.text = [NSString stringWithFormat:@"%@", _dishModel.discountprice];
-    if (_dishModel.count > 0) {
+    if (_dishModel.shopcartCount > 0) {
         _numberLabel.hidden = NO;
         _subtractButton.hidden = NO;
-        _numberLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.count];
+        _numberLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.shopcartCount];
     } else {
         _numberLabel.hidden = YES;
         _subtractButton.hidden = YES;

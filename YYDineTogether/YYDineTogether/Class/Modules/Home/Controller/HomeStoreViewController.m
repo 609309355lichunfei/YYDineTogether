@@ -15,6 +15,7 @@
 #import "JSYHShopModel.h"
 #import "JSYHCateModel.h"
 #import "JSYHActivityModel.h"
+#import "JSYHHomeStoreLeftTableViewCell.h"
 
 @interface HomeStoreViewController ()<UITableViewDelegate, UITableViewDataSource>{
     BOOL _isCombo;
@@ -91,7 +92,7 @@
         
     }];
     _isCombo = NO;
-    [self.leftTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HomeStoreLeftTableViewCell"];
+    [self.leftTableView registerNib:[UINib nibWithNibName:@"JSYHHomeStoreLeftTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeStoreLeftTableViewCell"];
     [self.rightTableView registerNib:[UINib nibWithNibName:@"HomeStoreRightTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeStoreRightTableViewCell"];
     
     //  创建需要的毛玻璃特效类型
@@ -183,9 +184,13 @@
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == _leftTableView) {
-        return 30;
+        JSYHCateModel *cateModel = self.catesArray[indexPath.row];
+        if (cateModel.catename.length > 5) {
+            return 67;
+        }
+        return 53;
     } else {
-        return 80;
+        return 96;
     }
 }
 
@@ -249,15 +254,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == _leftTableView) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeStoreLeftTableViewCell" forIndexPath:indexPath];
+        JSYHHomeStoreLeftTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeStoreLeftTableViewCell" forIndexPath:indexPath];
         JSYHCateModel *model = self.catesArray[indexPath.row];
         
         cell.backgroundColor = [UIColor whiteColor];
-        cell.textLabel.textColor = model.selected ? [UIColor redColor] : [UIColor lightGrayColor];
-        cell.textLabel.text = model.catename;
-        cell.textLabel.font = [UIFont systemFontOfSize:10];
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        cell.textLabel.numberOfLines = 0;
+        cell.nameLabel.textColor = model.selected ? [UIColor redColor] : [UIColor lightGrayColor];
+        cell.nameLabel.text = model.catename;
         return cell;
     } else {
         HomeStoreRightTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeStoreRightTableViewCell" forIndexPath:indexPath];

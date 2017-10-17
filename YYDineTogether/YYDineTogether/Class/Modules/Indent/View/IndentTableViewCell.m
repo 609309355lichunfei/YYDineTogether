@@ -230,14 +230,22 @@
 
 - (IBAction)firstBTAction:(id)sender {
 //    self.firstBlock(self.orderModel);
-    [MBProgressHUD showMessage:@"取消订单"];
-    [[JSRequestManager sharedManager] cancelorderWithOrderNO:self.orderModel.order_no Success:^(id responseObject) {
-        [MBProgressHUD hideHUD];
-        self.firstBlock(_orderModel);
-    } Failed:^(NSError *error) {
-        [MBProgressHUD hideHUD];
-        [AppManager showToastWithMsg:@"取消成功"];
+    UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"是否要取消订单?" message:@"" preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        [MBProgressHUD showMessage:@"取消订单"];
+        [[JSRequestManager sharedManager] cancelorderWithOrderNO:self.orderModel.order_no Success:^(id responseObject) {
+            [MBProgressHUD hideHUD];
+            self.firstBlock(_orderModel);
+        } Failed:^(NSError *error) {
+            [MBProgressHUD hideHUD];
+            [AppManager showToastWithMsg:@"取消成功"];
+        }];
     }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
+    [alerVC addAction:action];
+    [alerVC addAction:cancelAction];
+    [self.viewController presentViewController:alerVC animated:YES completion:nil];
+    
 }
 
 

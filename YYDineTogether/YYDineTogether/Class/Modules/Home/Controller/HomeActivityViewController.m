@@ -45,6 +45,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self registUI];
 }
 
@@ -162,6 +167,9 @@
 //    cell.type = ViewControllerTypeTypeFood;
     JSYHDishModel *model = self.model.dishs[indexPath.row];
     cell.dishModel = model;
+    cell.nameLabel.text = model.name;
+    cell.shopNameLabel.text = model.shopname;
+    cell.countLabel.text = [NSString stringWithFormat:@" x%ld",model.count];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

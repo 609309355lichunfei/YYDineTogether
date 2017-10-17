@@ -56,7 +56,7 @@
         [AppManager showToastWithMsg:@"请填写地址"];
         return;
     }
-    NSMutableDictionary *addressDic = [@{@"address":[NSString stringWithFormat:@"%@%@",self.firstAddressTF.text, self.addressTextField.text],@"username":self.nameTextField.text,@"phone":self.phoneTextField.text,@"addressid":@"0"} mutableCopy];
+    NSMutableDictionary *addressDic = [@{@"address":self.firstAddressTF.text,@"addressdet": self.addressTextField.text,@"username":self.nameTextField.text,@"phone":self.phoneTextField.text,@"addressid":@"0"} mutableCopy];
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setPositiveFormat:@"0.00000"];
     NSNumber *lngNumber = [NSNumber numberWithFloat:_lng];

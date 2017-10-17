@@ -77,7 +77,16 @@
 }
 
 - (void)updateHeightWithSearchView {
-    self.searchHeigh = 100 + self.activites.count * 22 + self.dishs.count * 77;
+    if (self.activites.count > 2) {
+        if (_optinal) {
+            self.searchHeigh = 100 + self.activites.count * 22 + self.dishs.count * 77;
+        } else {
+            self.searchHeigh = 100 + 2 * 22 + self.dishs.count * 77;
+        }
+    } else {
+        self.searchHeigh = 100 + self.activites.count * 22 + self.dishs.count * 77;
+    }
+    
 }
 
 @end

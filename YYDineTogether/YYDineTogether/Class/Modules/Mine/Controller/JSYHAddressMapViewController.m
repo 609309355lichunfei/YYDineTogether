@@ -13,7 +13,9 @@
 #import "POIAnnotation.h"
 
 
-@interface JSYHAddressMapViewController ()<MAMapViewDelegate, AMapSearchDelegate, UISearchBarDelegate>
+@interface JSYHAddressMapViewController ()<MAMapViewDelegate, AMapSearchDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>{
+    BOOL _isFirst;
+}
 @property (weak, nonatomic) IBOutlet UILabel *addressTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressDetailLabel;
 @property (weak, nonatomic) IBOutlet UIButton *doneBT;
@@ -21,11 +23,19 @@
 @property (weak, nonatomic) IBOutlet UIView *mapBGView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
+
+
+
+@property (weak, nonatomic) IBOutlet UIView *poilistView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISearchBar *poiListSearchBar;
+
 @property (strong, nonatomic) MAMapView *mapView;
 @property (strong, nonatomic) AMapSearchAPI *search;
 @property (strong, nonatomic) AMapPOI *poi;
 
 @property (strong, nonatomic) NSArray<AMapPOI *> *poiArray;
+
 @end
 
 @implementation JSYHAddressMapViewController
@@ -37,23 +47,23 @@
 }
 
 - (void)registUI {
+    _isFirst = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.doneBT.layer.cornerRadius = 20;
     self.addressBGView.layer.cornerRadius = 20;
-    
+    self.search = [[AMapSearchAPI alloc] init];
+    self.search.delegate = self;
     self.mapView = [[MAMapView alloc] initWithFrame:self.mapBGView.bounds];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     self.mapView.delegate = self;
     self.mapView.showsScale = NO;
     self.mapView.showsCompass = NO;
-    self.mapView.showsUserLocation = YES;
-    self.mapView.userTrackingMode = MAUserTrackingModeFollow;
     self.mapView.zoomLevel = 12.5;
     [self.mapBGView addSubview:self.mapView];
     [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake([[JSYHLocationManager sharedManager].lat doubleValue], [[JSYHLocationManager sharedManager].lng doubleValue])];
-    self.search = [[AMapSearchAPI alloc] init];
-    self.search.delegate = self;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"JSYHAddressMapTableviewCell"];
+    
 }
 - (IBAction)backAction:(id)sender {
     
@@ -65,17 +75,38 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)poilistBackAction:(id)sender {
+    if (self.poiListSearchBar.isFirstResponder) {
+        [self.poiListSearchBar resignFirstResponder];
+    }
+    self.poilistView.hidden = YES;
+}
+
+- (IBAction)searchAction:(id)sender {
+    self.poilistView.hidden = NO;
+    [self.poiListSearchBar becomeFirstResponder];
+    [self.tableView reloadData];
+    [self.tableView scrollToTop];
+}
+
+
 - (IBAction)changeTapAction:(id)sender {
-    
+    self.poilistView.hidden = NO;
+    [self.tableView reloadData];
+    [self.tableView scrollToTop];
 }
 
 - (void)mapView:(MAMapView *)mapView mapDidMoveByUser:(BOOL)wasUserAction {
-    CLLocationCoordinate2D coordinate = mapView.centerCoordinate;
-    AMapReGeocodeSearchRequest *regeo = [[AMapReGeocodeSearchRequest alloc] init];
+    if (wasUserAction || _isFirst) {
+        _isFirst = NO;
+        CLLocationCoordinate2D coordinate = mapView.centerCoordinate;
+        AMapReGeocodeSearchRequest *regeo = [[AMapReGeocodeSearchRequest alloc] init];
+        
+        regeo.location                    = [AMapGeoPoint locationWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+        regeo.requireExtension            = YES;
+        [self.search AMapReGoecodeSearch:regeo];
+    }
     
-    regeo.location                    = [AMapGeoPoint locationWithLatitude:coordinate.latitude longitude:coordinate.longitude];
-    regeo.requireExtension            = YES;
-    [self.search AMapReGoecodeSearch:regeo];
 }
 
 - (void)onReGeocodeSearchDone:(AMapReGeocodeSearchRequest *)request response:(AMapReGeocodeSearchResponse *)response
@@ -94,29 +125,32 @@
 /* POI 搜索回调. */
 - (void)onPOISearchDone:(AMapPOISearchBaseRequest *)request response:(AMapPOISearchResponse *)response
 {
-    [self.mapView removeAnnotations:self.mapView.annotations];
+//    [self.mapView removeAnnotations:self.mapView.annotations];
     
     if (response.pois.count == 0)
     {
         return;
     }
+    self.poiArray = response.pois;
+    [self.tableView reloadData];
+    [self.tableView scrollToTop];
     
-    NSMutableArray *poiAnnotations = [NSMutableArray arrayWithCapacity:response.pois.count];
-    
-    [response.pois enumerateObjectsUsingBlock:^(AMapPOI *obj, NSUInteger idx, BOOL *stop) {
-
-        [poiAnnotations addObject:[[POIAnnotation alloc] initWithPOI:obj]];
-
-    }];
+//    NSMutableArray *poiAnnotations = [NSMutableArray arrayWithCapacity:response.pois.count];
+//
+//    [response.pois enumerateObjectsUsingBlock:^(AMapPOI *obj, NSUInteger idx, BOOL *stop) {
+//
+//        [poiAnnotations addObject:[[POIAnnotation alloc] initWithPOI:obj]];
+//
+//    }];
     
     /* 将结果以annotation的形式加载到地图上. */
 //    [self.mapView addAnnotations:poiAnnotations];
     
     /* 如果只有一个结果，设置其为中心点. */
-    if (poiAnnotations.count > 1)
-    {
-        [self.mapView setCenterCoordinate:[poiAnnotations[0] coordinate]];
-    }
+//    if (poiAnnotations.count > 1)
+//    {
+//        [self.mapView setCenterCoordinate:[poiAnnotations[0] coordinate]];
+//    }
     /* 如果有多个结果, 设置地图使所有的annotation都可见. */
 //    else
 //    {
@@ -126,6 +160,7 @@
 
 #pragma mark - searchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
     [self searchPoiByKeyword:searchBar.text];
 }
 
@@ -149,6 +184,40 @@
     [self.search AMapPOIKeywordsSearch:request];
 }
 
+#pragma mark - tableViewDelegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.poiArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSYHAddressMapTableviewCell" forIndexPath:indexPath];
+    AMapPOI *poiModel = self.poiArray[indexPath.row];
+    cell.textLabel.text = poiModel.name;
+    cell.detailTextLabel.text = poiModel.address;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.poiListSearchBar.isFirstResponder) {
+        [self.poiListSearchBar resignFirstResponder];
+    }
+    AMapPOI *poiModel = self.poiArray[indexPath.row];
+    self.poi = poiModel;
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(self.poi.location.latitude, self.poi.location.longitude);
+    [self.mapView setCenterCoordinate:coordinate animated:YES];
+    self.addressTitleLabel.text = self.poi.name;
+    self.addressDetailLabel.text = self.poi.address;
+    self.poilistView.hidden = YES;
+}
+
+
+- (NSArray<AMapPOI *> *)poiArray {
+    if (_poiArray == nil) {
+        _poiArray = [NSArray array];
+    }
+    return _poiArray;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
