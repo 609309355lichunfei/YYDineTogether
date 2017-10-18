@@ -31,8 +31,8 @@
 }
 
 - (void)registUI {
-    self.lng = 0.0;
-    self.lat = 0.0;
+    self.lng = _addressModel.lng.floatValue;
+    self.lat = _addressModel.lat.floatValue;
     self.doneBT.layer.cornerRadius = 2;
     self.nameTF.text = _addressModel.username;
     self.phoneTF.text = _addressModel.phone;

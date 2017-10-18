@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString *distance;
 @property (strong, nonatomic) NSString *notice_info;
 @property (strong, nonatomic) NSString *phone;
+@property (strong, nonatomic) NSString *remark;
 
 @property (strong, nonatomic) NSNumber *lat;
 @property (strong, nonatomic) NSNumber *lng;
@@ -39,7 +40,6 @@
 
 @property (strong, nonatomic) NSMutableArray *dishs;
 
-@property (strong, nonatomic) NSString *remarks;
 
 //首页根据活动获得高度
 - (void)updateHeightWithActivity;

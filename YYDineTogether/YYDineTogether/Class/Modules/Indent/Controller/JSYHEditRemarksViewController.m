@@ -27,7 +27,7 @@
     self.remarksTextView.layer.cornerRadius = 4;
     self.remarksTextView.layer.borderWidth = 0.5;
     self.remarksTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.remarksTextView.text = self.shopModel.remarks;
+    self.remarksTextView.text = self.shopModel.remark;
 }
 
 - (IBAction)backAction:(id)sender {
@@ -39,7 +39,7 @@
         [AppManager showToastWithMsg:@"超过规定字数了"];
         return;
     }
-    self.shopModel.remarks = self.remarksTextView.text;
+    self.shopModel.remark = self.remarksTextView.text;
     [self.shopModel updateHeightWithOrder];
     [self.navigationController popViewControllerAnimated:YES];
 }

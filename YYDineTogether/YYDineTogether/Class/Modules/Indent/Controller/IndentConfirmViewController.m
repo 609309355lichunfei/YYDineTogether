@@ -32,13 +32,17 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *activityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *redLabel;
 @property (weak, nonatomic) IBOutlet UILabel *resultPriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *topPostcostLabe;
 @property (weak, nonatomic) IBOutlet UILabel *postcost;
 @property (weak, nonatomic) IBOutlet UILabel *totalpriceLabel;//小计
 @property (weak, nonatomic) IBOutlet UILabel *combcutLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *noPostcostImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *topNoPostcostImageView;
+
+
 
 @property (strong, nonatomic) MAMapView *mapView;
 @property (strong, nonatomic) MAPointAnnotation *userAnnotation;
@@ -175,6 +179,14 @@
                 float price = postcost.integerValue / 100.0;
                 postcost = [NSNumber numberWithFloat:price];
                 self.postcost.text = [postcost stringValue];
+                self.topPostcostLabe.text = [postcost stringValue];
+                if ([self.postcost.text isEqualToString:@"0"]) {
+                    self.topNoPostcostImageView.hidden = NO;
+                    self.noPostcostImageView.hidden = NO;
+                } else {
+                    self.topNoPostcostImageView.hidden = YES;
+                    self.noPostcostImageView.hidden = YES;
+                }
                 NSNumber *lastprice = responseObject[@"data"][@"lastprice"];
                 CGFloat lastpriceFloat = lastprice.integerValue / 100.0 - [self.couponValue floatValue];
                 if (_is_first == 1) {
@@ -204,6 +216,14 @@
             float price = postcost.integerValue / 100.0;
             postcost = [NSNumber numberWithFloat:price];
             self.postcost.text = [postcost stringValue];
+            self.topPostcostLabe.text = [postcost stringValue];
+            if ([self.postcost.text isEqualToString:@"0"]) {
+                self.topNoPostcostImageView.hidden = NO;
+                self.noPostcostImageView.hidden = NO;
+            } else {
+                self.topNoPostcostImageView.hidden = YES;
+                self.noPostcostImageView.hidden = YES;
+            }
             NSNumber *lastprice = responseObject[@"data"][@"lastprice"];
             CGFloat lastpriceFloat = lastprice.integerValue / 100.0 - [self.couponValue floatValue];
             if (_is_first == 1) {
@@ -252,8 +272,8 @@
 - (IBAction)payAction:(id)sender {
     NSMutableArray *remarksArray = [NSMutableArray array];
     for (JSYHShopModel *shopModel in self.orderModel.shops) {
-        if (shopModel.remarks.length > 0) {
-            NSDictionary *dic = @{@"shopid":[shopModel.shopid stringValue], @"remark":shopModel.remarks};
+        if (shopModel.remark.length > 0) {
+            NSDictionary *dic = @{@"shopid":shopModel.shopid, @"remark":shopModel.remark};
             [remarksArray addObject:dic];
         }
     }
@@ -281,8 +301,10 @@
         self.couponid = [model.coupon_id stringValue];
         CGFloat priceFloat = [self.orderModel.lastprice floatValue] - [self.couponValue integerValue];
         if (_is_first == 1) {
+            self.activityLabel.text = @"0";
             priceFloat = priceFloat + [self.orderModel.cut floatValue];
-            
+        } else {
+            self.activityLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.cut];
         }
         if (priceFloat < 0 || priceFloat == 0) {
             priceFloat = 0.01;

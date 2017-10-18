@@ -45,6 +45,13 @@
     }
 }
 
+- (void)judgeErrorReasonWithError:(NSError *)error {
+    if ([error.userInfo[NSLocalizedDescriptionKey] isEqualToString:@"Request failed: unauthorized (401)"]) {
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        [[AppDelegate shareAppDelegate].mainNavi presentViewController:loginVC animated:YES completion:nil];
+    }
+}
+
 - (void)loginWithUserName:(NSString *)userName
                   Passord:(NSString *)password
                   Success:(PPHttpRequestSuccess)success
@@ -74,6 +81,7 @@
                    Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper POST:URL_Logout parameters:nil success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             [JPUSHService deleteAlias:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
@@ -96,6 +104,7 @@
                    Success:(PPHttpRequestSuccess)success
                     Failed:(PPHttpRequestFailed)failed {
     [PPNetworkHelper POST:URL_Sms parameters:@{@"phone":phoneNumber} success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -115,6 +124,7 @@
     [self setHeaderToken];
     
     [PPNetworkHelper GET:URL_HomePageShop parameters:@{@"page":page,@"areaid":@"1",@"lng":lng,@"lat":lat} success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -122,6 +132,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -133,6 +144,7 @@
                       Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper GET:URL_HomePageDish parameters:@{@"page":page,@"areaid":@"1",@"lng":lng,@"lat":lat} success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -140,6 +152,8 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -151,6 +165,7 @@
                       Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper GET:URL_HomePageComb parameters:@{@"page":page,@"areaid":@"1",@"lng":lng,@"lat":lat} success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -158,6 +173,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -170,6 +186,7 @@
                    Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper GET:URL_Banner parameters:@{@"page":page,@"type":type,@"lng":lng,@"lat":lat} success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -186,6 +203,7 @@
                       Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper GET:URL_ShopDetail parameters:@{@"shopid":shopid} success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -193,6 +211,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -205,6 +224,7 @@
                Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper GET:URL_Shops parameters:@{@"page":page,@"areaid":@"1",@"lng":lng,@"lat":lat,@"tagid":tagid} success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -212,6 +232,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -220,6 +241,7 @@
                  Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper GET:URL_Tags parameters:nil success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -227,6 +249,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -235,6 +258,7 @@
                   Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper GET:URL_Combo parameters:nil success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -242,6 +266,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -253,6 +278,7 @@
                           Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper GET:URL_ComboDetail parameters:@{@"combid":comboid,@"areaid":@"1",@"lng":lng,@"lat":lat} success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -260,6 +286,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -268,6 +295,7 @@
                         Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper GET:URL_ComboTags parameters:nil success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -275,6 +303,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -286,6 +315,7 @@
     [self setHeaderToken];
     NSDictionary *dic = @{@"tagid":tagid};
     [PPNetworkHelper GET:URL_Combos parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -293,6 +323,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -302,6 +333,7 @@
                     Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper POST:URL_Order parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -309,6 +341,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -317,6 +350,7 @@
                          Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper GET:URL_Member_address parameters:nil success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -324,6 +358,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -333,6 +368,7 @@
                          Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper PUT:URL_Member_address parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -340,6 +376,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -347,6 +384,7 @@
 - (void)postMemberAddressWithDic:(NSDictionary *)dic Success:(PPHttpRequestSuccess)success Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper POST:URL_Member_address parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -354,6 +392,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -361,6 +400,7 @@
 - (void)deleteMemeberAddressWithDic:(NSDictionary *)dic Success:(PPHttpRequestSuccess)success Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper DELETE:URL_Member_address parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -368,6 +408,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -375,6 +416,7 @@
 - (void)getMemberInfoSuccess:(PPHttpRequestSuccess)success Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper GET:URL_Member_info parameters:nil success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -382,6 +424,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -392,6 +435,7 @@
                       Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper PUT:URL_Member_info parameters:dic data:data responseCache:nil success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -399,6 +443,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -406,6 +451,7 @@
 - (void)postMemberInfoWithDic:(NSDictionary *)dic data:(NSData *)data Success:(PPHttpRequestSuccess)success Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper POST:URL_Member_info parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -413,6 +459,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -420,6 +467,7 @@
 - (void)deleteMemeberInfoWithDic:(NSDictionary *)dic Success:(PPHttpRequestSuccess)success Failed:(PPHttpRequestFailed)failed {
     [self setHeaderToken];
     [PPNetworkHelper DELETE:URL_Member_info parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -427,6 +475,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -438,6 +487,7 @@
     [self setHeaderToken];
     NSDictionary *dic = @{@"addressid":addressid, @"order_no":orderNo};
     [PPNetworkHelper GET:URL_Postcost parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -445,6 +495,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -459,6 +510,7 @@
     NSMutableDictionary *dic = [@{@"order_no":order_no, @"couponid":couponid, @"addressid":addressid} mutableCopy];
     [dic setValue:remarks forKey:@"remarks"];
     [PPNetworkHelper POST:URL_Member_takeorder parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -466,6 +518,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -476,6 +529,7 @@
     [self setHeaderToken];
     NSDictionary *dic = @{ @"order_no":order_no};
     [PPNetworkHelper GET:URL_Member_order parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -483,6 +537,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -493,6 +548,7 @@
     [self setHeaderToken];
     NSDictionary *dic = @{ @"page":page};
     [PPNetworkHelper GET:URL_Member_orders parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -500,6 +556,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -510,6 +567,7 @@
     [self setHeaderToken];
     NSDictionary *dic = @{@"order_no":orderno};
     [PPNetworkHelper POST:URL_Member_cancelorder parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -517,6 +575,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -528,6 +587,7 @@
     [self setHeaderToken];
     NSDictionary *dic = @{@"order_no":order_no, @"paytype":type};
     [PPNetworkHelper POST:URL_Member_pay parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -535,6 +595,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -550,6 +611,7 @@
     [dic setValue:lng forKey:@"lng"];
     [dic setValue:lat forKey:@"lat"];
     [PPNetworkHelper GET:URL_Search parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -557,6 +619,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -577,6 +640,7 @@
     [PPNetworkHelper uploadImagesWithURL:URL_Feedback parameters:dic name:@"data.png" images:imageArray fileNames:imageNameArray imageScale:0.8 imageType:@"png" progress:^(NSProgress *progress) {
         
     } success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -584,6 +648,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }
@@ -595,6 +660,7 @@
     [self setHeaderToken];
     NSMutableDictionary *dic = [@{ @"page":page} mutableCopy];
     [PPNetworkHelper GET:URL_coupon parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             success(responseObject);
@@ -602,6 +668,7 @@
             [AppManager showToastWithMsg:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
         failed(error);
     }];
 }

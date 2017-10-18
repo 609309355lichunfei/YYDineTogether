@@ -31,8 +31,10 @@
     self.priceLabe.text = [NSString stringWithFormat:@"¥ %@",_couponModel.value];
     self.timeLabel.text = [NSString stringWithFormat:@"%@ - %@",[AppManager couponTimestampSwitchTime:_couponModel.starttime], [AppManager couponTimestampSwitchTime:_couponModel.endtime]];
     if (_couponModel.is_first == 1) {
+        self.nameLabel.text = @"首单跨店红包";
         self.valueLabel.text = @"首单跨店优惠,店铺数>1";
     } else {
+        self.nameLabel.text = @"通用红包";
         self.valueLabel.text = @"无门槛";
     }
     self.dueImageView.hidden = !_couponModel.overdue;

@@ -18,20 +18,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firstcoupon" translatesAutoresizingMaskIntoConstraints="NO" id="Z4j-8u-Yv3">
-                    <rect key="frame" x="20" y="180.5" width="335" height="327"/>
+                    <rect key="frame" x="20" y="160" width="335" height="327"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Z4j-8u-Yv3" secondAttribute="height" multiplier="125:122" id="iWa-bH-gYs"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEt-aL-r8d">
-                    <rect key="frame" x="145" y="457" width="85" height="27"/>
+                    <rect key="frame" x="145" y="436.5" width="85" height="27"/>
                     <state key="normal" image="firstcoupon_receive"/>
                     <connections>
                         <action selector="receiveAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="zlx-Vs-c2M"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKF-eD-rmR">
-                    <rect key="frame" x="155" y="517.5" width="65" height="66"/>
+                    <rect key="frame" x="155" y="497" width="65" height="66"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="65" id="8gZ-3Y-vcK"/>
                         <constraint firstAttribute="height" constant="66" id="jQa-Al-67I"/>
@@ -47,7 +47,7 @@
                 <constraint firstItem="Z4j-8u-Yv3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="AbF-DV-L3R"/>
                 <constraint firstItem="iEt-aL-r8d" firstAttribute="top" secondItem="Z4j-8u-Yv3" secondAttribute="bottom" constant="-50.5" id="Bg8-xw-gxq"/>
                 <constraint firstItem="dKF-eD-rmR" firstAttribute="top" secondItem="Z4j-8u-Yv3" secondAttribute="bottom" constant="10" id="BnC-XJ-HzD"/>
-                <constraint firstItem="Z4j-8u-Yv3" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="CCj-2l-6E8"/>
+                <constraint firstItem="Z4j-8u-Yv3" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="-20" id="CCj-2l-6E8"/>
                 <constraint firstItem="iEt-aL-r8d" firstAttribute="centerX" secondItem="Z4j-8u-Yv3" secondAttribute="centerX" id="Fhv-ef-uk1"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Z4j-8u-Yv3" secondAttribute="trailing" constant="20" id="U1j-L8-NdM"/>
                 <constraint firstItem="dKF-eD-rmR" firstAttribute="centerX" secondItem="Z4j-8u-Yv3" secondAttribute="centerX" id="XQJ-qP-Kqs"/>

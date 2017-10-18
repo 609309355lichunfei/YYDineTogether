@@ -54,7 +54,7 @@
         for (NSDictionary *couponDic in couponDicArray) {
             JSYHCouponModel * model = [[JSYHCouponModel alloc] init];
             [model setValuesForKeysWithDictionary:couponDic];
-            if (model.is_first == 1 && _shopcount < 3) {
+            if (model.is_first == 1 && _shopcount < 2) {
                 model.overdue = 1;
             }
             [self.dataArray addObject:model];

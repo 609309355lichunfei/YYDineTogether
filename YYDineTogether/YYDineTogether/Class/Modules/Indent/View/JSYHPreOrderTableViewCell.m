@@ -72,10 +72,10 @@
     _shopModel = shopModel;
     [self.logoImageView setImageWithURL:[NSURL URLWithString:_shopModel.logo] placeholder:nil];
     self.shopNameLabel.text = _shopModel.name;
-    if (_shopModel.remarks == nil || _shopModel.remarks.length == 0) {
+    if (_shopModel.remark == nil || _shopModel.remark.length == 0) {
         self.remarkLabel.text = @"用户无备注说明";
     } else {
-        self.remarkLabel.text = _shopModel.remarks;
+        self.remarkLabel.text = _shopModel.remark;
     }
     self.dataArray = _shopModel.dishs;
     [self.dishsTableView reloadData];

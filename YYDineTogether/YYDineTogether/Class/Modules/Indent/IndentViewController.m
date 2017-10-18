@@ -86,7 +86,7 @@
         } else {
             [self.tableView.mj_footer endRefreshing];
         }
-        self.tableView.mj_footer.hidden = orderDicArray.count < 20 ? YES : NO;
+        self.tableView.mj_footer.hidden = orderDicArray.count < 5 ? YES : NO;
         [self.tableView reloadData];
     } Failed:^(NSError *error) {
         if (dataloadType == DataLoadTypeNone) {

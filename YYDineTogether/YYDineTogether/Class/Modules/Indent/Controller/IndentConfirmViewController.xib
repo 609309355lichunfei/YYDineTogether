@@ -23,14 +23,16 @@
                 <outlet property="distanceLabel" destination="8bK-Ld-Fjo" id="fPX-3O-GUx"/>
                 <outlet property="mapBackGroundView" destination="R4l-91-Edw" id="mM8-39-91K"/>
                 <outlet property="nameLabel" destination="4N9-V3-UZR" id="Kwj-oH-FfY"/>
+                <outlet property="noPostcostImageView" destination="AeS-BK-XCg" id="IWh-Qd-UWL"/>
                 <outlet property="numberLabel" destination="PvB-ma-tfi" id="n6j-DG-vel"/>
-                <outlet property="postcost" destination="TaO-Qe-2p0" id="f1s-pc-Liq"/>
-                <outlet property="priceLabel" destination="qGz-es-99N" id="geX-CR-5Lc"/>
+                <outlet property="postcost" destination="TaO-Qe-2p0" id="bQI-G1-ZOa"/>
                 <outlet property="redLabel" destination="vxH-fJ-pwI" id="BNZ-HP-Lsh"/>
                 <outlet property="resultPriceLabel" destination="Bnt-n7-APh" id="mJG-IY-BdV"/>
                 <outlet property="tableView" destination="64Y-xc-6MG" id="mqf-MZ-sFv"/>
                 <outlet property="tableViewHeight" destination="OY4-kx-ccs" id="xKN-Yp-Uxx"/>
                 <outlet property="timeLabel" destination="hhb-kA-6YB" id="2r5-Sq-Nbq"/>
+                <outlet property="topNoPostcostImageView" destination="P5J-bm-H30" id="myD-Jb-vjz"/>
+                <outlet property="topPostcostLabe" destination="qGz-es-99N" id="ZAb-SF-nMy"/>
                 <outlet property="totalpriceLabel" destination="HDH-om-T8j" id="8TV-3T-9GP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
