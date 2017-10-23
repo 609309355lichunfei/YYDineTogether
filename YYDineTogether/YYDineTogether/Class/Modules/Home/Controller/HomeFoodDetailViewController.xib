@@ -24,9 +24,8 @@
                 <outlet property="nameLabel" destination="W3O-hp-RwQ" id="7K5-HV-5Ib"/>
                 <outlet property="numberLabel" destination="FfO-x4-Qbx" id="Nwe-3h-hC7"/>
                 <outlet property="priceLabel" destination="clC-fA-a33" id="Ymw-Q5-QVH"/>
-                <outlet property="salescountLabel" destination="LgC-m1-UhE" id="Zw8-tX-AzG"/>
+                <outlet property="shopNameLabel" destination="PoI-hf-Fpz" id="SO1-Hs-o16"/>
                 <outlet property="shoppingCartCountLabel" destination="T6n-j1-hx0" id="3hV-a0-F0b"/>
-                <outlet property="starLabel" destination="EJo-E6-82o" id="3xb-oN-Z1y"/>
                 <outlet property="subtractButton" destination="K4D-eS-bzD" id="fLe-wb-rpw"/>
                 <outlet property="totalPriceLabel" destination="YS7-dy-f6d" id="eLw-Yt-VyZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -52,34 +51,10 @@
                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="赞" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeV-ew-WYF">
-                                            <rect key="frame" x="12" y="40" width="14" height="20"/>
-                                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
-                                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJo-E6-82o">
-                                            <rect key="frame" x="30" y="40" width="31" height="20"/>
-                                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
-                                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgC-m1-UhE">
-                                            <rect key="frame" x="135" y="40" width="22.5" height="20"/>
-                                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
-                                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghy-ga-3Gt">
                                             <rect key="frame" x="12" y="80" width="10" height="22.5"/>
                                             <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="16"/>
                                             <color key="textColor" red="0.97254901959999995" green="0.23137254900000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="月销量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Br2-TP-3fX">
-                                            <rect key="frame" x="89" y="40" width="42" height="20"/>
-                                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
-                                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clC-fA-a33">
@@ -119,30 +94,30 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PoI-hf-Fpz">
+                                            <rect key="frame" x="12" y="42" width="29" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="ghy-ga-3Gt" firstAttribute="top" secondItem="HeV-ew-WYF" secondAttribute="bottom" constant="20" id="4uh-fE-cbR"/>
                                         <constraint firstAttribute="height" constant="115" id="8ez-gO-Yty"/>
-                                        <constraint firstItem="LgC-m1-UhE" firstAttribute="centerY" secondItem="Br2-TP-3fX" secondAttribute="centerY" id="Cz6-3o-goF"/>
+                                        <constraint firstItem="ghy-ga-3Gt" firstAttribute="top" secondItem="PoI-hf-Fpz" secondAttribute="bottom" constant="21" id="8k0-qH-fUz"/>
+                                        <constraint firstItem="PoI-hf-Fpz" firstAttribute="leading" secondItem="W3O-hp-RwQ" secondAttribute="leading" id="9Qd-mJ-IHc"/>
                                         <constraint firstAttribute="trailing" secondItem="ZRw-tl-pb1" secondAttribute="trailing" constant="12" id="Ekm-yw-mK3"/>
                                         <constraint firstItem="W3O-hp-RwQ" firstAttribute="leading" secondItem="mM6-xZ-sd7" secondAttribute="leading" constant="12" id="FMB-ao-Ghq"/>
                                         <constraint firstItem="FfO-x4-Qbx" firstAttribute="centerY" secondItem="ZRw-tl-pb1" secondAttribute="centerY" id="G8K-on-Swt"/>
                                         <constraint firstItem="W3O-hp-RwQ" firstAttribute="top" secondItem="mM6-xZ-sd7" secondAttribute="top" constant="12" id="GYD-tq-UzA"/>
-                                        <constraint firstItem="EJo-E6-82o" firstAttribute="leading" secondItem="HeV-ew-WYF" secondAttribute="trailing" constant="4" id="Ims-E3-viM"/>
-                                        <constraint firstItem="EJo-E6-82o" firstAttribute="centerY" secondItem="HeV-ew-WYF" secondAttribute="centerY" id="NaT-tn-fol"/>
                                         <constraint firstItem="ZRw-tl-pb1" firstAttribute="leading" secondItem="FfO-x4-Qbx" secondAttribute="trailing" id="TKs-50-ivo"/>
                                         <constraint firstItem="FfO-x4-Qbx" firstAttribute="leading" secondItem="K4D-eS-bzD" secondAttribute="trailing" id="TaK-jy-wCx"/>
                                         <constraint firstItem="clC-fA-a33" firstAttribute="leading" secondItem="ghy-ga-3Gt" secondAttribute="trailing" constant="4" id="UTI-Ue-dmw"/>
-                                        <constraint firstItem="Br2-TP-3fX" firstAttribute="leading" secondItem="EJo-E6-82o" secondAttribute="trailing" constant="28" id="ZAa-AV-9p2"/>
-                                        <constraint firstItem="Br2-TP-3fX" firstAttribute="centerY" secondItem="EJo-E6-82o" secondAttribute="centerY" id="dhI-gd-Tld"/>
-                                        <constraint firstItem="LgC-m1-UhE" firstAttribute="leading" secondItem="Br2-TP-3fX" secondAttribute="trailing" constant="4" id="f9s-sm-qfv"/>
-                                        <constraint firstItem="HeV-ew-WYF" firstAttribute="top" secondItem="W3O-hp-RwQ" secondAttribute="bottom" constant="5.5" id="hoi-Vl-qky"/>
+                                        <constraint firstItem="ghy-ga-3Gt" firstAttribute="leading" secondItem="PoI-hf-Fpz" secondAttribute="leading" id="iwp-Qg-P2u"/>
                                         <constraint firstItem="ZRw-tl-pb1" firstAttribute="centerY" secondItem="clC-fA-a33" secondAttribute="centerY" id="jm8-QU-cER"/>
+                                        <constraint firstItem="PoI-hf-Fpz" firstAttribute="top" secondItem="W3O-hp-RwQ" secondAttribute="bottom" constant="7.5" id="lT3-yy-GJJ"/>
                                         <constraint firstItem="clC-fA-a33" firstAttribute="centerY" secondItem="ghy-ga-3Gt" secondAttribute="centerY" id="ovN-Rm-WxH"/>
-                                        <constraint firstItem="HeV-ew-WYF" firstAttribute="leading" secondItem="W3O-hp-RwQ" secondAttribute="leading" id="pAv-Sr-w4J"/>
                                         <constraint firstItem="K4D-eS-bzD" firstAttribute="centerY" secondItem="FfO-x4-Qbx" secondAttribute="centerY" id="yiU-eF-5nl"/>
-                                        <constraint firstItem="ghy-ga-3Gt" firstAttribute="leading" secondItem="HeV-ew-WYF" secondAttribute="leading" id="yrm-7t-rF8"/>
                                     </constraints>
                                 </view>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sDv-Sg-oGO">
@@ -335,7 +310,7 @@
         </view>
     </objects>
     <resources>
-        <image name="back" width="32" height="32"/>
+        <image name="back" width="8" height="15"/>
         <image name="home_+" width="21" height="21"/>
         <image name="home_-" width="21" height="21"/>
         <image name="shoppingCart" width="57" height="57"/>

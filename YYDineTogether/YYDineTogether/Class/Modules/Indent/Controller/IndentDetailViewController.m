@@ -98,7 +98,7 @@
 }
 
 - (void)resetUI {
-    self.titleViewHeight.constant = 430;
+    self.titleViewHeight.constant = 200;
     self.timerBGHeight.constant = 0;
     self.secondTimerViewHeight.constant = 0;
     self.completeBGView.hidden = YES;
@@ -123,8 +123,6 @@
         [model setValuesForKeysWithDictionary:orderDic];
         self.orderModel = model;
         
-        
-        
         if ((_orderModel.status > 1 && _orderModel.status < 5) || _orderModel.status == 9) {
             self.mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 250)];
             
@@ -136,6 +134,7 @@
             [self.titleView addSubview:self.mapView];
             switch (_orderModel.status) {
                 case 2:{
+                    self.titleViewHeight.constant = 430;
                     self.statusImageView.image = [UIImage imageNamed:@"indent_status1"];
                     [self.secondAffirmBT setTitle:@"取消订单" forState:(UIControlStateNormal)];
                     self.secondAffirmBT.hidden = NO;

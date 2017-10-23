@@ -14,4 +14,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *addBT;
 
 @property (copy, nonatomic) void (^addBlock)();
+@property (copy, nonatomic) void(^didSelectBlock)();
 @end

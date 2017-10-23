@@ -46,19 +46,47 @@
     _shopModel = shopModel;
     [self.logoImageView setImageWithURL:[NSURL URLWithString:_shopModel.logo] placeholder:[UIImage imageNamed:@"default_shop"]];
     self.nameLabel.text = _shopModel.name;
-    self.shopStarLabel.text = [NSString stringWithFormat:@"%ld单",(long)_shopModel.star];
-    self.shopSalesCountLabel.text = [NSString stringWithFormat:@"%ld单",(long)_shopModel.salescount];
+    if (_shopModel.star == 0) {
+        self.shopStarLabel.text = @"";
+    } else {
+        self.shopStarLabel.text = [NSString stringWithFormat:@"%ld",(long)_shopModel.star];
+    }
+    if (_shopModel.salescount == 0) {
+        self.shopSalesCountLabel.text = @"";
+    } else {
+        self.shopSalesCountLabel.text = [NSString stringWithFormat:@"%ld单",(long)_shopModel.salescount];
+    }
     self.distanceLabel.text = _shopModel.distance;
     [self.storeView removeAllSubviews];
     [self.activityBT setTitle:[NSString stringWithFormat:@"%ld个活动",_shopModel.activites.count] forState:(UIControlStateNormal)];
-    for (NSInteger i = 0; i < _shopModel.activites.count; i ++){
-        JSYHActivityModel *model = _shopModel.activites[i];
-        JSYHHomeStoreActivityView *view = [[[NSBundle mainBundle] loadNibNamed:@"JSYHHomeStoreActivityView" owner:self options:nil] lastObject];
-        view.frame = CGRectMake(8, 4 + i * 20, 100, 20);
-        [self.storeView addSubview:view];
-        [view setActivityModel:model];
-    }
+    
     _optionImageView.highlighted = _shopModel.optinal;
+    if (_shopModel.activites.count > 2 && _shopModel.optinal) {
+        for (NSInteger i = 0; i < _shopModel.activites.count; i ++){
+            JSYHActivityModel *model = _shopModel.activites[i];
+            JSYHHomeStoreActivityView *view = [[[NSBundle mainBundle] loadNibNamed:@"JSYHHomeStoreActivityView" owner:self options:nil] lastObject];
+            view.frame = CGRectMake(8, 4 + i * 20, 100, 20);
+            [self.storeView addSubview:view];
+            [view setActivityModel:model];
+        }
+    } else if (_shopModel.activites.count < 3){
+        for (NSInteger i = 0; i < _shopModel.activites.count; i ++){
+            JSYHActivityModel *model = _shopModel.activites[i];
+            JSYHHomeStoreActivityView *view = [[[NSBundle mainBundle] loadNibNamed:@"JSYHHomeStoreActivityView" owner:self options:nil] lastObject];
+            view.frame = CGRectMake(8, 4 + i * 20, 100, 20);
+            [self.storeView addSubview:view];
+            [view setActivityModel:model];
+        }
+    } else {
+        for (NSInteger i = 0; i < 2; i ++){
+            JSYHActivityModel *model = _shopModel.activites[i];
+            JSYHHomeStoreActivityView *view = [[[NSBundle mainBundle] loadNibNamed:@"JSYHHomeStoreActivityView" owner:self options:nil] lastObject];
+            view.frame = CGRectMake(8, 4 + i * 20, 100, 20);
+            [self.storeView addSubview:view];
+            [view setActivityModel:model];
+        }
+    }
+    
 }
 - (IBAction)activityAction:(id)sender {
     _shopModel.optinal = !_shopModel.optinal;

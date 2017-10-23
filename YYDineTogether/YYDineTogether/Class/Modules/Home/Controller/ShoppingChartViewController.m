@@ -14,6 +14,7 @@
 #import "JSYHShoppingCartCombTableViewCell.h"
 #import <MAMapKit/MAMapKit.h>
 #import "CBAutoScrollLabel.h"
+#import "JSAddAddressViewController.h"
 
 @interface ShoppingChartViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -166,11 +167,20 @@
                 IndentConfirmViewController *confirmVC = [[IndentConfirmViewController alloc]init];
                 [self.navigationController pushViewController:confirmVC animated:YES];
             } else {
-                [AppManager showToastWithMsg:@"请先添加配送地址"];
+                UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"没有可用配送地址" message:@"是否添加配送地址" preferredStyle:(UIAlertControllerStyleAlert)];
+                UIAlertAction *action = [UIAlertAction actionWithTitle:@"添加" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+                    JSAddAddressViewController *addVC = [[JSAddAddressViewController alloc] init];
+                    [self.navigationController pushViewController:addVC animated:YES];
+                    
+                }];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
+                [alerVC addAction:action];
+                [alerVC addAction:cancelAction];
+                [self.navigationController presentViewController:alerVC animated:YES completion:nil];
             }
         } Failed:^(NSError *error) {
             [MBProgressHUD hideHUD];
-            [AppManager showToastWithMsg:@"请先添加配送地址"];
+            [AppManager showToastWithMsg:@"获取地址失败,请重试"];
         }];
         
 //    } else {

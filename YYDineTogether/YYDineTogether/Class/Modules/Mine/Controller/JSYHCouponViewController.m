@@ -98,7 +98,7 @@
         return;
     }
     if (self.chooseCoupon != nil) {
-        if (model.is_first && _shopcount < 3) {
+        if (model.is_first && _shopcount < 2) {
             [AppManager showToastWithMsg:@"该订单不支持首单红包"];
             return;
         }

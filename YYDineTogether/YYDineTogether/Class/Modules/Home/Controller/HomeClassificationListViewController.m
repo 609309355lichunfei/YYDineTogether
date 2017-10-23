@@ -58,6 +58,15 @@
     self.shopVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addChildViewController:self.shopVC];
     [self.mainView addSubview:self.shopVC.view];
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"JSYHShoppingCartCountChanged" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        if ([ShoppingCartManager sharedManager].count == 0) {
+            self.shoppingCartCountLabel.hidden = YES;
+        } else {
+            self.shoppingCartCountLabel.hidden = NO;
+            self.shoppingCartCountLabel.text = [NSString stringWithFormat:@"%ld",[ShoppingCartManager sharedManager].count];
+        }
+        
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -123,6 +132,10 @@
 #pragma mark - HomeFilterViewDelegate
 - (void)homeFilterViewSelectedString:(NSString *)string {
     
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

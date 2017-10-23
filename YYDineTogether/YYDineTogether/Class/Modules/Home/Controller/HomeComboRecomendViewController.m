@@ -181,6 +181,13 @@
             
         
     };
+    MJWeakSelf;
+    cell.didSelectBlock = ^{
+        HomeActivityViewController *combVC = [[HomeActivityViewController alloc] init];
+        JSYHComboModel *model = _dataArray[indexPath.row];
+        combVC.combId = model.combid.stringValue;
+        [weakSelf.navigationController pushViewController:combVC animated:YES];
+    };
     JSYHComboModel *combModel = self.dataArray[indexPath.row];
     cell.combModel = combModel;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

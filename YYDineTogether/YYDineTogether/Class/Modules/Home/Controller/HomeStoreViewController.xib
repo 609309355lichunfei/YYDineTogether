@@ -112,7 +112,10 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本店营业时间" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPO-8I-pDq">
-                                    <rect key="frame" x="138" y="37" width="229" height="14.5"/>
+                                    <rect key="frame" x="138" y="35" width="229" height="14.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="48" id="QhO-w9-guy"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -121,11 +124,11 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <gestureRecognizers/>
                             <constraints>
-                                <constraint firstItem="uPO-8I-pDq" firstAttribute="centerY" secondItem="YFG-nP-gXm" secondAttribute="centerY" id="3Vh-AN-EjJ"/>
                                 <constraint firstItem="YFG-nP-gXm" firstAttribute="leading" secondItem="5vM-cC-SCt" secondAttribute="leading" id="B5y-do-Bdx"/>
                                 <constraint firstItem="uPO-8I-pDq" firstAttribute="leading" secondItem="YFG-nP-gXm" secondAttribute="trailing" constant="7.5" id="Kqf-oE-8PI"/>
                                 <constraint firstItem="XPe-Pb-B2o" firstAttribute="leading" secondItem="pQ0-M6-KBX" secondAttribute="leading" constant="8" id="a8b-kX-trw"/>
                                 <constraint firstAttribute="trailing" secondItem="uPO-8I-pDq" secondAttribute="trailing" constant="8" id="cad-9Q-Fqb"/>
+                                <constraint firstItem="uPO-8I-pDq" firstAttribute="top" secondItem="YFG-nP-gXm" secondAttribute="top" id="fyr-em-2Ym"/>
                                 <constraint firstItem="XPe-Pb-B2o" firstAttribute="centerY" secondItem="pQ0-M6-KBX" secondAttribute="centerY" id="iFp-d1-vth"/>
                                 <constraint firstItem="YFG-nP-gXm" firstAttribute="top" secondItem="5vM-cC-SCt" secondAttribute="bottom" constant="8" id="nWU-sZ-QKk"/>
                                 <constraint firstItem="5vM-cC-SCt" firstAttribute="top" secondItem="XPe-Pb-B2o" secondAttribute="top" id="ogn-nm-XrX"/>
@@ -382,7 +385,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="back" width="32" height="32"/>
+        <image name="back" width="8" height="15"/>
         <image name="home_down" width="7" height="4"/>
         <image name="home_sc" width="25" height="25"/>
         <image name="shoppingCart" width="57" height="57"/>

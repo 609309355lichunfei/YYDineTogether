@@ -326,15 +326,6 @@
     [self.mapView removeOverlay:self.commonPolyline];
     NSInteger shopCount = self.orderModel.sortedshops.count;
     CLLocationCoordinate2D *commonPolylineCoords = malloc(sizeof(CLLocationCoordinate2D) * shopCount + 1);
-    for (NSInteger i = 0; i < shopCount; i ++) {
-        JSYHShopModel *model = self.dataArray[i];
-        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.lat doubleValue], [model.lng doubleValue]);
-        MAPointAnnotation *annotation = [[MAPointAnnotation alloc] init];
-        annotation.coordinate = coordinate;
-        annotation.title = model.name;
-        [self.mapView addAnnotation:annotation];
-        commonPolylineCoords[i] = coordinate;
-    }
     JSYHAddressModel *addressModel = [[DB_Helper defaultHelper] getAddressModel];
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([addressModel.lat doubleValue], [addressModel.lng doubleValue]);
     [self.mapView removeAnnotation:self.userAnnotation];
@@ -342,7 +333,17 @@
     self.userAnnotation.coordinate = coordinate;
     self.userAnnotation.title = @"用户";
     [self.mapView addAnnotation:self.userAnnotation];
-    commonPolylineCoords[shopCount] = coordinate;
+    commonPolylineCoords[0] = coordinate;
+    for (NSInteger i = 0; i < shopCount; i ++) {
+        JSYHShopModel *model = self.dataArray[i];
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.lat doubleValue], [model.lng doubleValue]);
+        MAPointAnnotation *annotation = [[MAPointAnnotation alloc] init];
+        annotation.coordinate = coordinate;
+        annotation.title = model.name;
+        [self.mapView addAnnotation:annotation];
+        commonPolylineCoords[i + 1] = coordinate;
+    }
+    
     
     //构造折线对象
     self.commonPolyline = [MAPolyline polylineWithCoordinates:commonPolylineCoords count:shopCount + 1];

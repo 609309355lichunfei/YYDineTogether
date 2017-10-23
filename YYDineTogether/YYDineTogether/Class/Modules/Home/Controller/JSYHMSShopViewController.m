@@ -72,16 +72,20 @@
     UITableView *tableView = [[UITableView alloc]  initWithFrame:CGRectMake(KScreenWidth * tagModel.tagIndex, 0, KScreenWidth, self.scrollView.height)];
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.estimatedRowHeight = 0;
+    tableView.estimatedSectionHeaderHeight = 0;
+    tableView.estimatedSectionFooterHeight = 0;
     [tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeClassificationTableViewCell"];
     tableView.tag = 10000 + tagModel.tagIndex;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tagModel.tableView = tableView;
     MJWeakSelf;
+    __weak JSYHTagModel *weakTagModel = tagModel;
     tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf getConnectShopWithDataloadType:DataLoadTypeNone TagModel:tagModel];
+        [weakSelf getConnectShopWithDataloadType:DataLoadTypeNone TagModel:weakTagModel];
     }];
     tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
-        [weakSelf getConnectShopWithDataloadType:DataLoadTypeMore TagModel:tagModel];
+        [weakSelf getConnectShopWithDataloadType:DataLoadTypeMore TagModel:weakTagModel];
     }];
     [self.tableViewArray addObject:tableView];
     [self.scrollContentView addSubview:tableView];
@@ -146,7 +150,8 @@
     JSYHShopModel *model = dataArray[indexPath.row];
     cell.shopModel = model;
     cell.activityBlock = ^(){
-        [tableView reloadRow:indexPath.row inSection:indexPath.section withRowAnimation:(UITableViewRowAnimationNone)];
+//        [tableView reloadRow:indexPath.row inSection:indexPath.section withRowAnimation:(UITableViewRowAnimationNone)];
+        [tableView reloadRowAtIndexPath:indexPath withRowAnimation:(UITableViewRowAnimationNone)];
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

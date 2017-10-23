@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *salescountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *shopNameLabel;
 
 @end
 
@@ -30,6 +31,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self registUI];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[ShoppingCartManager sharedManager] updateCountWithModel:_dishModel];
+    if (_dishModel.shopcartCount > 0) {
+        _numberLabel.hidden = NO;
+        _subtractButton.hidden = NO;
+        _numberLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.shopcartCount];
+    } else {
+        _numberLabel.hidden = YES;
+        _subtractButton.hidden = YES;
+    }
 }
 
 - (void)registUI {
@@ -62,6 +76,7 @@
     self.starLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.star];
 //    self.priceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.discountprice];
     self.priceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.price];
+    self.shopNameLabel.text = _dishModel.shopname;
     self.infoLabel.text = _dishModel.info;
     if (_dishModel.shopcartCount > 0) {
         _numberLabel.hidden = NO;

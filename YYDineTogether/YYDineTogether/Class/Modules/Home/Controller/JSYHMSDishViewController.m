@@ -31,6 +31,7 @@
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"JSZPAPP_Dish"]) {
         UIImageView *guideImageView = [[UIImageView alloc] initWithFrame:kScreen_Bounds];
         [guideImageView setImage:[UIImage imageNamed:@"Home_dishGuide"]];
+        guideImageView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.6];
         guideImageView.contentMode = UIViewContentModeTopRight;
         guideImageView.userInteractionEnabled = YES;
         [kAppWindow addSubview:guideImageView];
@@ -40,6 +41,10 @@
         }];
         [guideImageView addGestureRecognizer:tap];
     }
+    for (JSYHDishModel *model in self.dishArray) {
+        [[ShoppingCartManager sharedManager] updateCountWithModel:model];
+    }
+    [self.tableView reloadData];
 }
 
 - (void)registUI {

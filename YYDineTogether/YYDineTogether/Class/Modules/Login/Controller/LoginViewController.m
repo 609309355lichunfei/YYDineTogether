@@ -11,12 +11,15 @@
 #import "JSYHFirstCouponView.h"
 #import "JSYHUserNoteBookViewController.h"
 
-@interface LoginViewController ()<UITextFieldDelegate>
+@interface LoginViewController ()<UITextFieldDelegate>{
+    NSInteger _time;
+}
 @property (weak, nonatomic) IBOutlet UITextField *numberTF;
 @property (weak, nonatomic) IBOutlet UITextField *verificationTF;
 @property (weak, nonatomic) IBOutlet UIImageView *agreeImageView;
 @property (weak, nonatomic) IBOutlet UIButton *loginBT;
 @property (weak, nonatomic) IBOutlet UIButton *verificationBT;
+@property (weak, nonatomic) IBOutlet UILabel *verificationLabel;
 
 @property (strong, nonatomic) NSTimer *timer;
 
@@ -59,10 +62,20 @@
             [self.timer invalidate];
             self.timer = nil;
         }
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:60 block:^(NSTimer * _Nonnull timer) {
-            self.verificationBT.enabled = YES;
-            [self.verificationBT setBackgroundColor:UIColorFromRGB(0xfd5353)];
-        } repeats:NO];
+        _time = 60;
+        self.verificationLabel.text = [NSString stringWithFormat:@"%lds",_time];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
+            _time --;
+            self.verificationLabel.text = [NSString stringWithFormat:@"%lds",_time];
+            if (_time == 0) {
+                self.verificationBT.enabled = YES;
+                [self.verificationBT setBackgroundColor:UIColorFromRGB(0xfd5353)];
+                self.verificationLabel.text = @"获取验证码";
+                [_timer invalidate];
+                _timer = nil;
+            }
+            
+        } repeats:YES];
     } Failed:^(NSError *error) {
         [AppManager showToastWithMsg:@"验证码获取失败"];
     }];
@@ -79,7 +92,9 @@
         [AppManager showToastWithMsg:@"请输入密码"];
         return;
     }
+    [MBProgressHUD showMessage:@"登录中"];
     [[JSRequestManager sharedManager] loginWithUserName:_numberTF.text Passord:_verificationTF.text Success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
             [[ShoppingCartManager sharedManager] shoppingCartReloadData];
@@ -96,7 +111,6 @@
                     [[AppDelegate shareAppDelegate].window addSubview:firstView];
                 }
             } Failed:^(NSError *error) {
-                
             }];
             [self dismissViewControllerAnimated:YES completion:^{
                 
@@ -106,6 +120,7 @@
         }
         
     } Failed:^(NSError *error) {
+        [MBProgressHUD hideHUD];
         [AppManager showToastWithMsg:@"账号密码错误"];
     }];
     

@@ -21,6 +21,7 @@
                 <outlet property="loginBT" destination="hrK-en-T1l" id="ZnU-Sj-Wz4"/>
                 <outlet property="numberTF" destination="34H-uz-SY4" id="7Bd-AT-FXM"/>
                 <outlet property="verificationBT" destination="t3y-at-hs2" id="S10-Sa-Mew"/>
+                <outlet property="verificationLabel" destination="FoY-mW-ghK" id="Lgt-qY-jkG"/>
                 <outlet property="verificationTF" destination="jc7-pK-VDF" id="2CL-3z-SrJ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="SjC-AI-NyN"/>
             </connections>
@@ -117,7 +118,7 @@
                         <constraint firstAttribute="height" constant="30" id="zLd-hv-Gi8"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
-                    <state key="normal" title="获取验证码">
+                    <state key="normal">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
@@ -174,12 +175,19 @@
                         <outletCollection property="gestureRecognizers" destination="Jmb-Zz-YLx" appends="YES" id="86h-Tn-2Vz"/>
                     </connections>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="获取验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoY-mW-ghK">
+                    <rect key="frame" x="265.5" y="274" width="60" height="17"/>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="1dZ-4c-uZh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0as-3S-n7j"/>
                 <constraint firstItem="qRg-SY-1xB" firstAttribute="top" secondItem="jc7-pK-VDF" secondAttribute="bottom" constant="14" id="1aG-uJ-hfD"/>
+                <constraint firstItem="FoY-mW-ghK" firstAttribute="centerY" secondItem="t3y-at-hs2" secondAttribute="centerY" id="2jo-fs-jMF"/>
                 <constraint firstItem="t3y-at-hs2" firstAttribute="trailing" secondItem="34H-uz-SY4" secondAttribute="trailing" id="2ym-b4-feV"/>
                 <constraint firstItem="kvG-TH-qOe" firstAttribute="leading" secondItem="Aqz-WC-5Mf" secondAttribute="leading" id="3bn-9Y-Q5j"/>
                 <constraint firstItem="qRg-SY-1xB" firstAttribute="width" secondItem="kvG-TH-qOe" secondAttribute="width" id="5YS-Er-OA2"/>
@@ -192,6 +200,7 @@
                 <constraint firstItem="hrK-en-T1l" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="37.5" id="HKj-N1-10R"/>
                 <constraint firstItem="DO9-3J-S4W" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Nqb-7u-0ef"/>
                 <constraint firstItem="5X4-0O-5hX" firstAttribute="top" secondItem="qRg-SY-1xB" secondAttribute="bottom" constant="7.5" id="Pra-Bj-1Kp"/>
+                <constraint firstItem="FoY-mW-ghK" firstAttribute="centerX" secondItem="t3y-at-hs2" secondAttribute="centerX" id="Vo1-ae-me4"/>
                 <constraint firstItem="34H-uz-SY4" firstAttribute="leading" secondItem="Aqz-WC-5Mf" secondAttribute="trailing" constant="12" id="YW2-Rj-KpU"/>
                 <constraint firstItem="DO9-3J-S4W" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZhY-TY-LPL"/>
                 <constraint firstItem="1dZ-4c-uZh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="72" id="aQh-Z8-iTH"/>

@@ -32,6 +32,11 @@
     [super awakeFromNib];
     // Initialization code
     [self registUI];
+    MJWeakSelf;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        weakSelf.didSelectBlock();
+    }];
+    [self.contentView addGestureRecognizer:tap];
 }
 
 - (void)registUI {

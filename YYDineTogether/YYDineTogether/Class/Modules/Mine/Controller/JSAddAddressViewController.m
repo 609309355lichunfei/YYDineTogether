@@ -46,11 +46,6 @@
         [AppManager showToastWithMsg:@"请填写电话号码"];
         return;
     }
-    NSString *addressStr = [_addressTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    if (addressStr.length == 0 || addressStr == nil) {
-        [AppManager showToastWithMsg:@"请填写地址"];
-        return;
-    }
     NSString *firstAddressStr = [_firstAddressTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if (firstAddressStr.length == 0 || firstAddressStr == nil) {
         [AppManager showToastWithMsg:@"请填写地址"];
@@ -63,9 +58,12 @@
     NSNumber *latNumber = [NSNumber numberWithFloat:_lat];
     [addressDic setValue:[formatter stringFromNumber:lngNumber] forKey:@"lng"];
     [addressDic setValue:[formatter stringFromNumber:latNumber] forKey:@"lat"];
+    [MBProgressHUD showMessage:@"添加地址中"];
     [[JSRequestManager sharedManager] postMemberAddressWithDic:addressDic Success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         [self.navigationController popViewControllerAnimated:YES];
     } Failed:^(NSError *error) {
+        [MBProgressHUD hideHUD];
         [AppManager showToastWithMsg:@"添加地址失败"];
     }];
 }

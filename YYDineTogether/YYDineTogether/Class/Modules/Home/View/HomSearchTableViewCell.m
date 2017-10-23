@@ -66,14 +66,39 @@
         self.activityViewHeight.constant = _shopModel.activites.count * 22;
     }
     
-    for (NSInteger i = 0; i < _shopModel.activites.count; i ++){
-        JSYHActivityModel *model = _shopModel.activites[i];
-        JSYHHomeStoreActivityView *view = [[[NSBundle mainBundle] loadNibNamed:@"JSYHHomeStoreActivityView" owner:self options:nil] lastObject];
-        view.frame = CGRectMake(8, 4 + i * 20, 100, 20);
-        [self.storeView addSubview:view];
-        [view setActivityModel:model];
-    }
+//    for (NSInteger i = 0; i < _shopModel.activites.count; i ++){
+//        JSYHActivityModel *model = _shopModel.activites[i];
+//        JSYHHomeStoreActivityView *view = [[[NSBundle mainBundle] loadNibNamed:@"JSYHHomeStoreActivityView" owner:self options:nil] lastObject];
+//        view.frame = CGRectMake(8, 4 + i * 20, 100, 20);
+//        [self.storeView addSubview:view];
+//        [view setActivityModel:model];
+//    }
     _optionImageView.highlighted = _shopModel.optinal;
+    if (_shopModel.activites.count > 2 && _shopModel.optinal) {
+        for (NSInteger i = 0; i < _shopModel.activites.count; i ++){
+            JSYHActivityModel *model = _shopModel.activites[i];
+            JSYHHomeStoreActivityView *view = [[[NSBundle mainBundle] loadNibNamed:@"JSYHHomeStoreActivityView" owner:self options:nil] lastObject];
+            view.frame = CGRectMake(8, 4 + i * 20, 100, 20);
+            [self.storeView addSubview:view];
+            [view setActivityModel:model];
+        }
+    } else if (_shopModel.activites.count < 3){
+        for (NSInteger i = 0; i < _shopModel.activites.count; i ++){
+            JSYHActivityModel *model = _shopModel.activites[i];
+            JSYHHomeStoreActivityView *view = [[[NSBundle mainBundle] loadNibNamed:@"JSYHHomeStoreActivityView" owner:self options:nil] lastObject];
+            view.frame = CGRectMake(8, 4 + i * 20, 100, 20);
+            [self.storeView addSubview:view];
+            [view setActivityModel:model];
+        }
+    } else {
+        for (NSInteger i = 0; i < 2; i ++){
+            JSYHActivityModel *model = _shopModel.activites[i];
+            JSYHHomeStoreActivityView *view = [[[NSBundle mainBundle] loadNibNamed:@"JSYHHomeStoreActivityView" owner:self options:nil] lastObject];
+            view.frame = CGRectMake(8, 4 + i * 20, 100, 20);
+            [self.storeView addSubview:view];
+            [view setActivityModel:model];
+        }
+    }
     self.dataArray = _shopModel.dishs;
     [self.tableView reloadData];
 }

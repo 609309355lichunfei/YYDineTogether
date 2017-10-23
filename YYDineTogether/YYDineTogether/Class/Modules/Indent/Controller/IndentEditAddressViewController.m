@@ -55,7 +55,7 @@
         [AppManager showToastWithMsg:@"请填写电话号码"];
         return;
     }
-    NSString *addressStr = [_addressTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *addressStr = [_firstAddressLB.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if (addressStr.length == 0 || addressStr == nil) {
         [AppManager showToastWithMsg:@"请填写地址"];
         return;

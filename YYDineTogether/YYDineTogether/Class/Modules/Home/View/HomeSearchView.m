@@ -57,7 +57,9 @@
 //    _textView.delegate = self;
 //    _textView.scrollIndicatorInsets = _textView.contentInset;
 //    [_recommendView addSubview:_textView];
-    
+    self.tableView.estimatedRowHeight = 0;
+    self.tableView.estimatedSectionHeaderHeight = 0;
+    self.tableView.estimatedSectionFooterHeight = 0;
     self.keywordArray = [[[DB_Helper defaultHelper] getKeywordArray] mutableCopy];
     self.hotKeywordArray = @[@"泡椒牛蛙",@"奶茶",@"农家小炒肉",@"干锅包菜",@"泡芙",@"大鸡排",@"重庆小面",@"皮蛋瘦肉粥",@"啤酒炸鸡",@"抹茶拿铁"];
     self.collectionView.delegate = self;

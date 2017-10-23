@@ -55,10 +55,10 @@
                     <rect key="frame" x="0.0" y="64" width="375" height="1160"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDA-Vg-k2o">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1040"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="860"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9ab-xc-M6w">
-                                    <rect key="frame" x="0.0" y="444" width="375" height="128"/>
+                                    <rect key="frame" x="0.0" y="264" width="375" height="128"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="128" id="icf-fp-4nB"/>
@@ -69,13 +69,13 @@
                                     </connections>
                                 </tableView>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vz-tL-obX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="430"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eSN-Rd-9bn">
-                                            <rect key="frame" x="0.0" y="250" width="375" height="180"/>
+                                            <rect key="frame" x="0.0" y="250" width="375" height="0.0"/>
                                             <subviews>
                                                 <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXh-FA-g9z">
-                                                    <rect key="frame" x="157" y="138" width="60" height="20"/>
+                                                    <rect key="frame" x="157" y="-42" width="60" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="Chp-4D-Kmq"/>
                                                         <constraint firstAttribute="height" constant="20" id="b14-vV-4K9"/>
@@ -88,8 +88,8 @@
                                                         <action selector="againAction:" destination="-1" eventType="touchUpInside" id="Paj-FW-WNn"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="indent_status1" translatesAutoresizingMaskIntoConstraints="NO" id="pNg-nn-Z0l">
-                                                    <rect key="frame" x="0.0" y="25" width="375" height="49"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="indent_status1" translatesAutoresizingMaskIntoConstraints="NO" id="pNg-nn-Z0l">
+                                                    <rect key="frame" x="5" y="25" width="365" height="49"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="49" id="7nO-ch-7av"/>
                                                     </constraints>
@@ -130,14 +130,14 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="pNg-nn-Z0l" firstAttribute="leading" secondItem="eSN-Rd-9bn" secondAttribute="leading" id="5VS-oK-sW5"/>
+                                                <constraint firstItem="pNg-nn-Z0l" firstAttribute="leading" secondItem="eSN-Rd-9bn" secondAttribute="leading" constant="5" id="5VS-oK-sW5"/>
                                                 <constraint firstItem="YpF-lv-TIx" firstAttribute="top" secondItem="f2A-QL-Xfo" secondAttribute="bottom" constant="8" id="9XR-d1-aAc"/>
                                                 <constraint firstItem="f2A-QL-Xfo" firstAttribute="top" secondItem="pNg-nn-Z0l" secondAttribute="bottom" constant="8" id="MVj-it-43j"/>
                                                 <constraint firstItem="f2A-QL-Xfo" firstAttribute="centerX" secondItem="eSN-Rd-9bn" secondAttribute="centerX" id="XGQ-kL-lhR"/>
                                                 <constraint firstItem="nXh-FA-g9z" firstAttribute="centerX" secondItem="eSN-Rd-9bn" secondAttribute="centerX" id="cg9-zr-PEM"/>
                                                 <constraint firstItem="YpF-lv-TIx" firstAttribute="centerX" secondItem="eSN-Rd-9bn" secondAttribute="centerX" id="rcM-FJ-Wvy"/>
                                                 <constraint firstItem="pNg-nn-Z0l" firstAttribute="top" secondItem="eSN-Rd-9bn" secondAttribute="top" constant="25" id="xNJ-eE-0i8"/>
-                                                <constraint firstAttribute="trailing" secondItem="pNg-nn-Z0l" secondAttribute="trailing" id="yLw-iZ-Leu"/>
+                                                <constraint firstAttribute="trailing" secondItem="pNg-nn-Z0l" secondAttribute="trailing" constant="5" id="yLw-iZ-Leu"/>
                                                 <constraint firstAttribute="bottom" secondItem="nXh-FA-g9z" secondAttribute="bottom" constant="22" id="ybl-fS-JBA"/>
                                             </constraints>
                                         </view>
@@ -224,7 +224,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="430" id="0dg-fo-csW"/>
+                                        <constraint firstAttribute="height" constant="250" id="0dg-fo-csW"/>
                                         <constraint firstItem="V6u-nR-fqR" firstAttribute="top" secondItem="7vz-tL-obX" secondAttribute="top" id="2SN-eY-peK"/>
                                         <constraint firstItem="eSN-Rd-9bn" firstAttribute="leading" secondItem="7vz-tL-obX" secondAttribute="leading" id="2sF-Ag-Gmv"/>
                                         <constraint firstAttribute="bottom" secondItem="eSN-Rd-9bn" secondAttribute="bottom" id="KjG-Bf-xBc"/>
@@ -235,7 +235,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RYD-M5-d5H">
-                                    <rect key="frame" x="0.0" y="587" width="375" height="45"/>
+                                    <rect key="frame" x="0.0" y="407" width="375" height="45"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活动优惠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bq-Hb-f6m">
                                             <rect key="frame" x="12" y="15" width="56" height="15"/>
@@ -288,7 +288,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LuW-gG-47c">
-                                    <rect key="frame" x="0.0" y="693" width="375" height="45"/>
+                                    <rect key="frame" x="0.0" y="513" width="375" height="45"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="红包" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGz-fc-afx">
                                             <rect key="frame" x="12" y="15" width="28" height="15"/>
@@ -319,7 +319,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pO7-yx-oRH">
-                                    <rect key="frame" x="0.0" y="739" width="375" height="45"/>
+                                    <rect key="frame" x="0.0" y="559" width="375" height="45"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="配送费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQl-hE-EoF">
                                             <rect key="frame" x="12" y="15" width="42" height="15"/>
@@ -361,7 +361,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1XA-pf-gMC">
-                                    <rect key="frame" x="0.0" y="785" width="375" height="40"/>
+                                    <rect key="frame" x="0.0" y="605" width="375" height="40"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="实付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="US7-91-cgS">
                                             <rect key="frame" x="282" y="10" width="30" height="21"/>
@@ -394,7 +394,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWq-Da-8fz">
-                                    <rect key="frame" x="0.0" y="839" width="375" height="40"/>
+                                    <rect key="frame" x="0.0" y="659" width="375" height="40"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5R-Qo-L81">
                                             <rect key="frame" x="12" y="10" width="60" height="21"/>
@@ -411,7 +411,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8U-Wa-LRv">
-                                    <rect key="frame" x="0.0" y="880" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="700" width="375" height="50"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpc-iI-kds">
                                             <rect key="frame" x="12" y="15" width="45" height="21"/>
@@ -436,7 +436,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="27P-DZ-ya5">
-                                    <rect key="frame" x="0.0" y="931" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="751" width="375" height="50"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收货地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eW-dq-6DU">
                                             <rect key="frame" x="12" y="15" width="60" height="21"/>
@@ -464,7 +464,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7iV-IR-KQ1">
-                                    <rect key="frame" x="0.0" y="982" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="802" width="375" height="50"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下单时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iW-bl-RzT">
                                             <rect key="frame" x="12" y="15" width="60" height="21"/>
@@ -489,7 +489,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wu4-Lb-rFQ">
-                                    <rect key="frame" x="0.0" y="647" width="375" height="45"/>
+                                    <rect key="frame" x="0.0" y="467" width="375" height="45"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="套餐优惠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48v-YY-i1a">
                                             <rect key="frame" x="12" y="15" width="56" height="15"/>
@@ -644,12 +644,12 @@
                 <constraint firstItem="h3e-FB-hXk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qpB-jL-dar"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="95.5" y="364"/>
+            <point key="canvasLocation" x="290" y="364"/>
         </view>
     </objects>
     <resources>
         <image name="JSZPLogo" width="40" height="40"/>
-        <image name="Navigation_left" width="32" height="32"/>
+        <image name="Navigation_left" width="8" height="15"/>
         <image name="indent_service" width="18" height="18"/>
         <image name="indent_status1" width="344" height="34"/>
         <image name="indent_timer" width="13" height="13"/>

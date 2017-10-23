@@ -55,7 +55,8 @@
 - (void)setDishModel:(JSYHDishModel *)dishModel {
     _dishModel = dishModel;
     [self.logoImageView setImageWithURL:[NSURL URLWithString:_dishModel.logo] placeholder:[UIImage imageNamed:@"default_dish"]];
-    self.nameLabel.text = [NSString stringWithFormat:@"%@-%@",_dishModel.name,_dishModel.shopname];
+    self.nameLabel.text = [NSString stringWithFormat:@"%@",_dishModel.name];
+    self.shopNameLabel.text = _dishModel.shopname;
     self.dishDistanceLabel.text = _dishModel.distance;
     self.discountPriceLabel.hidden = [_dishModel.discountprice isEqualToNumber:_dishModel.price] ? YES : NO;
     self.discountDiscoverView.hidden = self.discountPriceLabel.isHidden;

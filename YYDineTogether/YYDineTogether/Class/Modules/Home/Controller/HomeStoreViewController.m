@@ -56,6 +56,16 @@
     [self registUI];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    for (JSYHCateModel *model in self.catesArray) {
+        for (JSYHDishModel *dishModel in model.dishs) {
+            [[ShoppingCartManager sharedManager] updateCountWithModel:dishModel];
+        }
+    }
+    [self.rightTableView reloadData];
+}
+
 - (void)getConnectShopDetail {
     [MBProgressHUD showMessage:@"进入店铺"];
     [[JSRequestManager sharedManager] shopDetailWithShopid:self.shopid Success:^(id responseObject) {

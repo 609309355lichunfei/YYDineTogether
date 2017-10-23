@@ -22,8 +22,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.contentView.layer.borderWidth = 0.2;
-    self.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.contentView.layer.borderWidth = 0.4;
+    self.contentView.layer.borderColor = UIColorFromRGB(0xf5f5f5).CGColor;
 }
 
 - (void)setDishModel:(JSYHDishModel *)dishModel {
@@ -31,7 +31,7 @@
     [self.dishImageView setImageWithURL:[NSURL URLWithString:_dishModel.logo] placeholder:nil];
     self.dishNameLabel.text = [NSString stringWithFormat:@"%@-%@",_dishModel.shopname,_dishModel.dishname];
     self.countLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.count];
-    NSNumber *priceNumber = [NSNumber numberWithFloat:_dishModel.price.floatValue * _dishModel.count];
+    NSNumber *priceNumber = _dishModel.price;
     self.dishPriceLabel.text = [NSString stringWithFormat:@"¥ %@",priceNumber];
 }
 

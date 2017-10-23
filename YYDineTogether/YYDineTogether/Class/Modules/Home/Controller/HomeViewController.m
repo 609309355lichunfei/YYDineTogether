@@ -98,6 +98,9 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewFunctionCell" bundle:nil] forCellReuseIdentifier:@"HomeTableViewFunctionCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeDishTableViewCell" bundle:nil] forCellReuseIdentifier:@"HomeDishTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"JSYHCombListTableViewCell" bundle:nil] forCellReuseIdentifier:@"JSYHHomePageCombListTableViewCell"];
+    self.tableView.estimatedRowHeight = 0;
+    self.tableView.estimatedSectionHeaderHeight = 0;
+    self.tableView.estimatedSectionFooterHeight = 0;
     self.automaticallyAdjustsScrollViewInsets = NO;
     MJWeakSelf;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -313,7 +316,7 @@
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 355 + KScreenWidth * 188 / 750;
+        return 142 + KScreenWidth * 650 / 750;
     }
     if (_isStoreDataSource) {
 //        JSYHShopModel *model = self.shopArray[indexPath.row];
@@ -402,6 +405,13 @@
             
             // 这里是动画开始的方法
             [self joinCartAnimationWithRect:parentRect];
+        };
+        MJWeakSelf;
+        cell.didSelectBlock = ^{
+            HomeActivityViewController *combVC = [[HomeActivityViewController alloc] init];
+            JSYHComboModel *model = _dataArray[indexPath.row];
+            combVC.combId = model.combid.stringValue;
+            [weakSelf.tabBarController.navigationController pushViewController:combVC animated:YES];
         };
         JSYHComboModel *combModel = self.dataArray[indexPath.row];
         cell.combModel = combModel;

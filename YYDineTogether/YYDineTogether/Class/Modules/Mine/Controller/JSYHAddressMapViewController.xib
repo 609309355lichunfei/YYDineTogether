@@ -146,7 +146,7 @@
                                 <constraint firstAttribute="height" constant="44" id="NzE-AF-xEP"/>
                                 <constraint firstAttribute="width" constant="57" id="fXL-Qw-9tj"/>
                             </constraints>
-                            <state key="normal" image="home_search"/>
+                            <state key="normal" image="home_searchwhite"/>
                             <connections>
                                 <action selector="searchAction:" destination="-1" eventType="touchUpInside" id="MaN-F8-dEt"/>
                             </connections>
@@ -237,7 +237,7 @@
     <resources>
         <image name="Navigation_left" width="32" height="32"/>
         <image name="back" width="32" height="32"/>
-        <image name="home_search" width="16" height="16"/>
+        <image name="home_searchwhite" width="16" height="16"/>
         <image name="indent_userLocation" width="27" height="28"/>
         <image name="mine_rightArrow" width="8" height="15"/>
     </resources>
