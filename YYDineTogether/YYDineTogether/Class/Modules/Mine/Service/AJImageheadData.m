@@ -97,8 +97,14 @@
             NSLog(@"进入拍照页面");
         }];
     } else {
-        UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"你当前的摄像头不可用" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
-        [alertView show];
+        UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"请检查相机设置" message:@"" preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"去设置" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleCancel) handler:nil];
+        [alerVC addAction:action];
+        [alerVC addAction:cancelAction];
+        [kRootViewController presentViewController:alerVC animated:YES completion:nil];
     }
 }
 
@@ -130,8 +136,14 @@
     }
     else
     {
-        UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"相册打开失败" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
-        [alertView show];
+        UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"请检查相册权限" message:@"" preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"去设置" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleCancel) handler:nil];
+        [alerVC addAction:action];
+        [alerVC addAction:cancelAction];
+        [kRootViewController presentViewController:alerVC animated:YES completion:nil];
     }
 }
 
@@ -164,7 +176,7 @@
             // 把图片转成data
             NSData *data;
             if (!UIImagePNGRepresentation(editImage)) {
-                data = UIImageJPEGRepresentation(editImage, 0.0001);
+                data = UIImageJPEGRepresentation(editImage, 0.1);
                 [weakSelf setupCompletionWithImage:editImage data:data];
             } else {
                 data = UIImagePNGRepresentation(editImage);

@@ -18,6 +18,7 @@
 #import "JSYHFeedbackViewController.h"
 #import "JSYHCouponViewController.h"
 #import "JSYHAboutUsViewController.h"
+#import "JSYHShareAPPViewController.h"
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *iconimage;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
@@ -85,7 +86,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (section == 0) return 2;
+    if (section == 0) return 3;
     if (section == 1) return 2;
 
     return 1;
@@ -109,7 +110,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MineTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    cell.littleImage.hidden = YES;
+    cell.mynewLittleImage.hidden = YES;
     if (indexPath.section == 0) {
 //        if (indexPath.row == 0) {
 //            cell.myLabel.text = @"我的吃货";
@@ -124,13 +126,19 @@
 //            cell.myLabel.text = @"我的收藏";
 //            cell.myImageView.image = [UIImage imageNamed:@"mine_record"];
 //        }
+        
         if (indexPath.row == 0) {
             cell.myLabel.text = @"收货地址";
             cell.myImageView.image = [UIImage imageNamed:@"mine_address"];
-        }else if (indexPath.row == 1){
+        } else if (indexPath.row == 1) {
+            cell.myLabel.text = @"邀请有礼";
+            cell.littleImage.hidden = NO;
+            cell.myImageView.image = [UIImage imageNamed:@"mine_invite"];
+        } else if (indexPath.row == 2){
             cell.myLabel.text = @"我的红包";
+            cell.mynewLittleImage.hidden = NO;
             cell.myImageView.image = [UIImage imageNamed:@"mine_redBag"];
-        }else if (indexPath.row == 2){
+        }else if (indexPath.row == 3){
             cell.myLabel.text = @"我的收藏";
             cell.myImageView.image = [UIImage imageNamed:@"mine_record"];
         }
@@ -177,10 +185,14 @@
         if (indexPath.row == 0) {
             shippingViewController * ship = [shippingViewController new];
             [self.tabBarController.navigationController pushViewController:ship animated:YES];
-        }else if (indexPath.row == 1){
+        } else if (indexPath.row == 1) {
+            JSYHShareAPPViewController *shareAppVC = [[JSYHShareAPPViewController alloc] init];
+            [self.tabBarController.navigationController pushViewController:shareAppVC animated:YES];
+        } else if (indexPath.row == 2){
             JSYHCouponViewController *couponVC = [[JSYHCouponViewController alloc] init];
             couponVC.chooseCoupon = nil;
             couponVC.shopcount = 4;//显示首单红包可选
+            couponVC.totalPrice = @100000;//显示满减可选
             [self.tabBarController.navigationController pushViewController:couponVC animated:YES];
             
         }else{

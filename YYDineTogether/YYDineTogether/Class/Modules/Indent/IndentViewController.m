@@ -149,15 +149,18 @@
     IndentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IndentTableViewCell" forIndexPath:indexPath];
     JSYHOrderModel *model = self.dataArray[indexPath.row];
     cell.orderModel = model;
+    MJWeakSelf;
     cell.firstBlock = ^(JSYHOrderModel *model){
-        [self.tableView.mj_header beginRefreshing];
-    };
-    MJWeakSelf
-    cell.firstBlock = ^(JSYHOrderModel *model){
-        
+        [weakSelf.tableView.mj_header beginRefreshing];
     };
     cell.secondBlock = ^(JSYHOrderModel *model){
-        
+        [weakSelf.tableView.mj_header beginRefreshing];
+    };
+    cell.seletedBlock = ^{
+        IndentDetailViewController *detailVC = [[IndentDetailViewController alloc] init];
+        JSYHOrderModel *model = _dataArray[indexPath.row];
+        detailVC.order_no = model.order_no;
+        [self.tabBarController.navigationController pushViewController:detailVC animated:YES];
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

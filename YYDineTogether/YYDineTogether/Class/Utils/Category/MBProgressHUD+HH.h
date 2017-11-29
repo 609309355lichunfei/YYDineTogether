@@ -2,7 +2,7 @@
 //  MBProgressHUD+HH.h
 //  ManyMouseMall
 //
-//  Created by 韩珍珍 on 15/10/27.
+//  Created by 吴頔 on 15/10/27.
 //  Copyright © 2015年 DS. All rights reserved.
 //
 

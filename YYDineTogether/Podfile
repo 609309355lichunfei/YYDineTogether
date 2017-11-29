@@ -12,4 +12,5 @@ pod 'AMap3DMap-NO-IDFA' #3D地图SDK(2D地图和3D地图不能同时使用)
 pod 'AMapSearch-NO-IDFA' #搜索服务SDK
 pod 'AMapLocation-NO-IDFA'
 pod 'JPush', '~>3.0.2'
+pod 'WechatOpenSDK'
 end

@@ -18,8 +18,11 @@
 @property (strong, nonatomic) NSNumber *shopid;
 @property (strong, nonatomic) NSString *distance;
 @property (strong, nonatomic) NSString *notice_info;
+@property (strong, nonatomic) NSString *intr_info;
 @property (strong, nonatomic) NSString *phone;
 @property (strong, nonatomic) NSString *remark;
+@property (strong, nonatomic) NSString *address;
+@property (strong, nonatomic) NSString *addressdet;
 
 @property (strong, nonatomic) NSNumber *lat;
 @property (strong, nonatomic) NSNumber *lng;

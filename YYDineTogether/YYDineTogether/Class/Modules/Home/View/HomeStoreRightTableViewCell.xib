@@ -125,6 +125,19 @@
                             <constraint firstAttribute="height" constant="0.5" id="SvY-gO-Tib"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oq8-8Q-Ug1">
+                        <rect key="frame" x="136" y="84" width="20" height="1"/>
+                        <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="G9o-Bq-9F0"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2Q-Wa-EvS">
+                        <rect key="frame" x="136" y="78" width="20" height="13"/>
+                        <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="9"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="W9J-fU-RjR" firstAttribute="leading" secondItem="14h-aa-QF1" secondAttribute="leading" id="3tR-UI-YSY"/>
@@ -138,7 +151,10 @@
                     <constraint firstItem="IMT-n8-vi2" firstAttribute="leading" secondItem="tYx-tx-KrK" secondAttribute="trailing" id="I6Y-Vf-OHX"/>
                     <constraint firstAttribute="trailing" secondItem="toN-SS-ZfK" secondAttribute="trailing" id="M39-8I-tcN"/>
                     <constraint firstItem="XVr-rJ-2Z3" firstAttribute="centerY" secondItem="xVb-Sa-wYV" secondAttribute="centerY" id="NaK-A2-aK5"/>
+                    <constraint firstItem="oq8-8Q-Ug1" firstAttribute="centerY" secondItem="C2Q-Wa-EvS" secondAttribute="centerY" id="Ocs-EH-dgi"/>
                     <constraint firstAttribute="trailingMargin" secondItem="14h-aa-QF1" secondAttribute="trailing" id="PSW-WB-1ST"/>
+                    <constraint firstItem="oq8-8Q-Ug1" firstAttribute="centerX" secondItem="C2Q-Wa-EvS" secondAttribute="centerX" id="RES-gT-IkM"/>
+                    <constraint firstItem="C2Q-Wa-EvS" firstAttribute="leading" secondItem="XVr-rJ-2Z3" secondAttribute="trailing" constant="14" id="SBa-Ug-ypq"/>
                     <constraint firstItem="XVr-rJ-2Z3" firstAttribute="leading" secondItem="xVb-Sa-wYV" secondAttribute="trailing" constant="1" id="Vu5-Aa-HDP"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Gi2-46-R0j" secondAttribute="trailing" constant="8" id="eKk-6e-RoI"/>
                     <constraint firstItem="Gi2-46-R0j" firstAttribute="top" secondItem="14h-aa-QF1" secondAttribute="bottom" constant="3" id="eWe-3P-weH"/>
@@ -155,10 +171,14 @@
                     <constraint firstItem="Gi2-46-R0j" firstAttribute="leading" secondItem="14h-aa-QF1" secondAttribute="leading" id="i2p-Ju-gDy"/>
                     <constraint firstAttribute="bottom" secondItem="xVb-Sa-wYV" secondAttribute="bottom" constant="5.5" id="qFj-OZ-GUF"/>
                     <constraint firstAttribute="bottom" secondItem="toN-SS-ZfK" secondAttribute="bottom" id="rkt-0V-CvH"/>
+                    <constraint firstItem="oq8-8Q-Ug1" firstAttribute="width" secondItem="C2Q-Wa-EvS" secondAttribute="width" id="tTG-Su-9TA"/>
                     <constraint firstItem="xVb-Sa-wYV" firstAttribute="leading" secondItem="14h-aa-QF1" secondAttribute="leading" id="wcp-uh-iM9"/>
+                    <constraint firstItem="C2Q-Wa-EvS" firstAttribute="bottom" secondItem="XVr-rJ-2Z3" secondAttribute="bottom" id="xxX-To-XNh"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="discountDiscoverView" destination="oq8-8Q-Ug1" id="Y7T-T8-36v"/>
+                <outlet property="discountPriceLabel" destination="C2Q-Wa-EvS" id="prm-fe-Lkw"/>
                 <outlet property="infoLabel" destination="Gi2-46-R0j" id="1rp-Hx-xJg"/>
                 <outlet property="logoImageView" destination="WDj-dc-tUE" id="wEw-9R-32f"/>
                 <outlet property="nameLabel" destination="14h-aa-QF1" id="RoJ-Wn-1xU"/>

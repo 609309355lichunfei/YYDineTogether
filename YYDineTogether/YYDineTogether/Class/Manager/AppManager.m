@@ -254,4 +254,11 @@
     
 }
 
++ (void)umengEvent:(NSString *)eventId attributes:(NSDictionary *)attributes number:(NSNumber *)number{
+    NSString *numberKey = @"__ct__";
+    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:attributes];
+    [mutableDictionary setObject:[number stringValue] forKey:numberKey];
+    [MobClick event:eventId attributes:mutableDictionary];
+}
+
 @end

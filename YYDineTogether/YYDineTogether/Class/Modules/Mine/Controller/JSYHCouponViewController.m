@@ -55,7 +55,9 @@
             JSYHCouponModel * model = [[JSYHCouponModel alloc] init];
             [model setValuesForKeysWithDictionary:couponDic];
             if (model.is_first == 1 && _shopcount < 2) {
-                model.overdue = 1;
+                model.canUse = NO;
+            } else if ((model.is_first == 0 && ![model.full isEqualToNumber:@0]) && [model.full compare:_totalPrice] == NSOrderedDescending) {
+                model.canUse = NO;
             }
             [self.dataArray addObject:model];
         }
@@ -94,14 +96,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     JSYHCouponModel *model = self.dataArray[indexPath.row];
-    if (model.overdue == 1) {
+    if (model.overdue == 1 || !model.canUse) {
         return;
     }
     if (self.chooseCoupon != nil) {
-        if (model.is_first && _shopcount < 2) {
-            [AppManager showToastWithMsg:@"该订单不支持首单红包"];
-            return;
-        }
         self.chooseCoupon (model);
         [self.navigationController popViewControllerAnimated:YES];
     }

@@ -151,10 +151,19 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="go4-OT-aQm">
                                 <rect key="frame" x="0.0" y="403.5" width="509" height="127.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_banner" translatesAutoresizingMaskIntoConstraints="NO" id="Cu0-t8-tYc">
+                                        <rect key="frame" x="0.0" y="0.0" width="509" height="127.5"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
+                                    <constraint firstItem="Cu0-t8-tYc" firstAttribute="leading" secondItem="go4-OT-aQm" secondAttribute="leading" id="T7s-an-Rx9"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cu0-t8-tYc" secondAttribute="bottom" id="W61-lK-PnR"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cu0-t8-tYc" secondAttribute="trailing" id="Xu8-ir-Lrt"/>
                                     <constraint firstAttribute="width" secondItem="go4-OT-aQm" secondAttribute="height" multiplier="750:188" id="dUW-qc-DEF"/>
+                                    <constraint firstItem="Cu0-t8-tYc" firstAttribute="top" secondItem="go4-OT-aQm" secondAttribute="top" id="nIM-F3-wqn"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4s-sg-hZN">
@@ -233,6 +242,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="home_banner" width="375" height="94"/>
         <image name="home_cate" width="41" height="61"/>
         <image name="home_combo" width="66" height="66"/>
         <image name="home_drink" width="43" height="61"/>

@@ -27,6 +27,7 @@
 #import "JSYHDrinkViewController.h"
 #import "JSYHCombListTableViewCell.h"
 #import "JSYHMSSearchViewController.h"
+#import "JSYHShareAPPViewController.h"
 
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate ,UIGestureRecognizerDelegate, CLLocationManagerDelegate, SDCycleScrollViewDelegate, CAAnimationDelegate>{
     BOOL _isStoreDataSource;
@@ -53,6 +54,8 @@
 @property (strong, nonatomic) NSMutableArray *dishArray;
 
 @property (strong, nonatomic) NSMutableArray *combArray;
+
+@property (strong, nonatomic) NSMutableArray *bannersArray;
 
 @property (strong, nonatomic) NSMutableArray *bannerImageUrlArray;
 
@@ -154,9 +157,9 @@
             [self.shopArray addObject:model];
         }
         self.dataArray = self.shopArray;
-        NSArray *bannersArray = dataDic[@"banners"];
+        self.bannersArray = dataDic[@"banners"];
         [self.bannerImageUrlArray removeAllObjects];
-        for (NSDictionary *bannerDic in bannersArray) {
+        for (NSDictionary *bannerDic in self.bannersArray) {
             [self.bannerImageUrlArray addObject:bannerDic[@"logo"]];
         }
         [self.tableView reloadData];
@@ -171,6 +174,7 @@
 }
 
 - (void)getConnectHomePageDish:(DataLoadType)dataLoadType {
+    [MobClick event:@"home_dish_list"];
     _dishpageIndex = dataLoadType == DataLoadTypeNone ? 0 : _dishpageIndex + 1;
     [[JSRequestManager sharedManager] homepageDishWithPage:NSStringFormat(@"%ld",_dishpageIndex) lng:[JSYHLocationManager sharedManager].lng lat:[JSYHLocationManager sharedManager].lat Success:^(id responseObject) {
         
@@ -194,9 +198,9 @@
             [self.dishArray addObject:model];
         }
         self.dataArray = self.dishArray;
-        NSArray *bannersArray = dataDic[@"banners"];
+        self.bannersArray = dataDic[@"banners"];
         [self.bannerImageUrlArray removeAllObjects];
-        for (NSDictionary *bannerDic in bannersArray) {
+        for (NSDictionary *bannerDic in self.bannersArray) {
             [self.bannerImageUrlArray addObject:bannerDic[@"logo"]];
         }
         [self.tableView reloadData];
@@ -211,6 +215,7 @@
 }
 
 - (void)getConnectHomePageComb:(DataLoadType)dataloadType {
+    [MobClick event:@"home_meal_list"];
     _combpageIndex = dataloadType == DataLoadTypeNone ? 0 : _combpageIndex + 1;
     [[JSRequestManager sharedManager] homepageCombWithPage:[NSString stringWithFormat:@"%ld",_combpageIndex] lng:[JSYHLocationManager sharedManager].lng lat:[JSYHLocationManager sharedManager].lat Success:^(id responseObject) {
         NSDictionary *dataDic = responseObject[@"data"];
@@ -234,9 +239,9 @@
             [self.combArray addObject:model];
         }
         self.dataArray = self.combArray;
-        NSArray *bannersArray = dataDic[@"banners"];
+        self.bannersArray = dataDic[@"banners"];
         [self.bannerImageUrlArray removeAllObjects];
-        for (NSDictionary *bannerDic in bannersArray) {
+        for (NSDictionary *bannerDic in self.bannersArray) {
             [self.bannerImageUrlArray addObject:bannerDic[@"logo"]];
         }
         [self.tableView reloadData];
@@ -551,16 +556,26 @@
 
 #pragma mark - SDCycleScrollViewDelegate
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
-    if (index == 0) {
+    NSDictionary *bannerDic = self.bannersArray[index];
+    NSNumber *type = bannerDic[@"type"];
+    
+    if ([type isEqualToNumber:@1]) {
         JSYHHomeStoreActivityViewController *activityVC = [[JSYHHomeStoreActivityViewController alloc] init];
         activityVC.type = [NSString stringWithFormat:@"%ld",index + 1];
         [self.tabBarController.navigationController pushViewController:activityVC animated:YES];
-    } else if (index == 1) {
+    } else if ([type isEqualToNumber:@3]) {
         HomeComboRecomendViewController *combVC = [[HomeComboRecomendViewController alloc] init];
         combVC.mytitle = @"套餐活动";
         [self.tabBarController.navigationController pushViewController:combVC animated:YES];
+    } else if ([type isEqualToNumber:@4]) {
+        if([JSRequestManager sharedManager].token == nil || [JSRequestManager sharedManager].token.length == 0) {
+            LoginViewController *loginVC = [[LoginViewController alloc] init];
+            [self presentViewController:loginVC animated:YES completion:nil];
+            return;
+        }
+        JSYHShareAPPViewController *shareAppVC = [[JSYHShareAPPViewController alloc] init];
+        [self.tabBarController.navigationController pushViewController:shareAppVC animated:YES];
     }
-    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -611,6 +626,13 @@
         _bannerImageUrlArray = [NSMutableArray array];
     }
     return _bannerImageUrlArray;
+}
+
+- (NSMutableArray *)bannersArray {
+    if (_bannersArray == nil) {
+        _bannersArray = [NSMutableArray array];
+    }
+    return _bannersArray;
 }
 
 

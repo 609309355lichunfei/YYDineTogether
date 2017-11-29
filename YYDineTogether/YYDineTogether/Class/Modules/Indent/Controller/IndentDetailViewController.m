@@ -16,9 +16,7 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
 
-@interface IndentDetailViewController ()<UITableViewDelegate, UITableViewDataSource,MAMapViewDelegate> {
-    NSInteger _time;
-}
+@interface IndentDetailViewController ()<UITableViewDelegate, UITableViewDataSource,MAMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
@@ -141,27 +139,30 @@
                     self.secondTimerViewHeight.constant = 20;
                     self.goingMessageLabel.text = @"等待商家接单";
                     if (300 > ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.paytime) && ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.paytime) > 0) {
-                        _time = 300 - ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.paytime) + 10;
-                        NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
-                        if (_time % 60 > 9) {
-                            NSString *second = [NSString stringWithFormat:@"%ld",_time % 60];
+                        NSInteger time = 300 - ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.paytime) + 10;
+                        NSString *minute = [NSString stringWithFormat:@"%ld",time / 60];
+                        if (time % 60 > 9) {
+                            NSString *second = [NSString stringWithFormat:@"%ld",time % 60];
                             self.secondTimerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                         } else {
-                            NSString *second = [NSString stringWithFormat:@"0%ld",_time % 60];
+                            NSString *second = [NSString stringWithFormat:@"0%ld",time % 60];
                             self.secondTimerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                         }
                         self.timer = [NSTimer timerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
-                            _time --;
-                            if (timer == 0) {
+                            NSInteger time = 300 - ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.paytime) + 10;
+                            if (time < 1) {
                                 [AppManager showToastWithMsg:@"接单超时"];
                                 [self.scrollView.mj_header beginRefreshing];
+                                [_timer invalidate];
+                                _timer = nil;
+                                return ;
                             }
-                            NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
-                            if (_time % 60 > 9) {
-                                NSString *second = [NSString stringWithFormat:@"%ld",_time % 60];
+                            NSString *minute = [NSString stringWithFormat:@"%ld",time / 60];
+                            if (time % 60 > 9) {
+                                NSString *second = [NSString stringWithFormat:@"%ld",time % 60];
                                 self.secondTimerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                             } else {
-                                NSString *second = [NSString stringWithFormat:@"0%ld",_time % 60];
+                                NSString *second = [NSString stringWithFormat:@"0%ld",time % 60];
                                 self.secondTimerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                             }
                             
@@ -170,6 +171,7 @@
                         [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:(NSRunLoopCommonModes)];
                     } else {
                         self.secondTimerLabel.text = @"00:00";
+                        [self.scrollView.mj_header beginRefreshing];
                     }
                     break;
                 }
@@ -218,27 +220,30 @@
                     self.secondBT.hidden = NO;
                     self.timerBGHeight.constant = 30;
                     if (600 > ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) && ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) > 0) {
-                        _time = 600 - ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) + 10;
-                        NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
-                        if (_time % 60 > 9) {
-                            NSString *second = [NSString stringWithFormat:@"%ld",_time % 60];
+                        NSInteger time = 600 - ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) + 10;
+                        NSString *minute = [NSString stringWithFormat:@"%ld",time / 60];
+                        if (time % 60 > 9) {
+                            NSString *second = [NSString stringWithFormat:@"%ld",time % 60];
                             self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                         } else {
-                            NSString *second = [NSString stringWithFormat:@"0%ld",_time % 60];
+                            NSString *second = [NSString stringWithFormat:@"0%ld",time % 60];
                             self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                         }
                         self.timer = [NSTimer timerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
-                            _time --;
-                            if (timer == 0) {
+                            NSInteger time = 600 - ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) + 10;
+                            if (time < 1) {
                                 [AppManager showToastWithMsg:@"支付超时"];
                                 [self.scrollView.mj_header beginRefreshing];
+                                [_timer invalidate];
+                                _timer = nil;
+                                return;
                             }
-                            NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
-                            if (_time % 60 > 9) {
-                                NSString *second = [NSString stringWithFormat:@"%ld",_time % 60];
+                            NSString *minute = [NSString stringWithFormat:@"%ld",time / 60];
+                            if (time % 60 > 9) {
+                                NSString *second = [NSString stringWithFormat:@"%ld",time % 60];
                                 self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                             } else {
-                                NSString *second = [NSString stringWithFormat:@"0%ld",_time % 60];
+                                NSString *second = [NSString stringWithFormat:@"0%ld",time % 60];
                                 self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                             }
                             
@@ -247,6 +252,7 @@
                         [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:(NSRunLoopCommonModes)];
                     } else {
                         self.timerLabel.text = @"00:00";
+                        [self.scrollView.mj_header beginRefreshing];
                     }
                     
                     break;}
@@ -357,7 +363,6 @@
     } Failed:^(NSError *error) {
         
         [self.scrollView.mj_header endRefreshing];
-        [AppManager showToastWithMsg:@"查看订单失败"];
         [self.navigationController popViewControllerAnimated:YES];
     }];
 }
@@ -393,7 +398,6 @@
                 [self.navigationController popViewControllerAnimated:YES];
             } Failed:^(NSError *error) {
                 //            [MBProgressHUD hideHUD];
-                [AppManager showToastWithMsg:@"取消成功"];
             }];
         }];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];

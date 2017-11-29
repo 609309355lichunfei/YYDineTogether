@@ -13,9 +13,7 @@
 #import "JSYHPreOrderTableViewCell.h"
 #import "JSYHPayWayViewController.h"
 
-@interface IndentTableViewCell ()<UITableViewDelegate, UITableViewDataSource> {
-    NSInteger _time;
-}
+@interface IndentTableViewCell ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *secondBT;
@@ -42,6 +40,13 @@
 }
 
 - (void)registUI {
+    MJWeakSelf;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        if (_seletedBlock) {
+            _seletedBlock();
+        }
+    }];
+    [self.contentView addGestureRecognizer:tap];
     self.secondBT.layer.cornerRadius = 2;
     self.firstBT.layer.cornerRadius = 2;
     self.firstBT.layer.borderWidth = 0.5;
@@ -70,26 +75,29 @@
         case 1:{
             self.statusLabel.text = @"待支付";
             if (600 > ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) && ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) > 0) {
-                _time = 600 - ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) + 10;
-                NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
-                if (_time % 60 > 9) {
-                    NSString *second = [NSString stringWithFormat:@"%ld",_time % 60];
+                NSInteger time = 600 - ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) + 10;
+                NSString *minute = [NSString stringWithFormat:@"%ld",time / 60];
+                if (time % 60 > 9) {
+                    NSString *second = [NSString stringWithFormat:@"%ld",time % 60];
                     self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                 } else {
-                    NSString *second = [NSString stringWithFormat:@"0%ld",_time % 60];
+                    NSString *second = [NSString stringWithFormat:@"0%ld",time % 60];
                     self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                 }
                     self.timer = [NSTimer timerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
-                        _time --;
-                        if (_time == 0) {
+                         NSInteger time = 600 - ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) + 10;
+                        if (time < 1) {
+                            self.timerLabel.text = @"00:00";
                             [_timer invalidate];
+                            _timer = nil;
+                            return ;
                         }
-                        NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
-                        if (_time % 60 > 9) {
-                            NSString *second = [NSString stringWithFormat:@"%ld",_time % 60];
+                        NSString *minute = [NSString stringWithFormat:@"%ld",time / 60];
+                        if (time % 60 > 9) {
+                            NSString *second = [NSString stringWithFormat:@"%ld",time % 60];
                             self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                         } else {
-                            NSString *second = [NSString stringWithFormat:@"0%ld",_time % 60];
+                            NSString *second = [NSString stringWithFormat:@"0%ld",time % 60];
                             self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                         }
                         
@@ -110,27 +118,30 @@
         case 2:{
             self.statusLabel.text = @"等待商家接单";
             if (300 > ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) && ([AppManager getNowTimestamp] + [UserManager sharedManager].timerinterval - _orderModel.ordertime) > 0) {
-                _time = 300 - ([AppManager getNowTimestamp] - _orderModel.paytime) + [UserManager sharedManager].timerinterval + 10;
-                NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
-                if (_time % 60 > 9) {
-                    NSString *second = [NSString stringWithFormat:@"%ld",_time % 60];
+                NSInteger time = 300 - ([AppManager getNowTimestamp] - _orderModel.paytime) + [UserManager sharedManager].timerinterval + 10;
+                NSString *minute = [NSString stringWithFormat:@"%ld",time / 60];
+                if (time % 60 > 9) {
+                    NSString *second = [NSString stringWithFormat:@"%ld",time % 60];
                     self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                 } else {
-                    NSString *second = [NSString stringWithFormat:@"0%ld",_time % 60];
+                    NSString *second = [NSString stringWithFormat:@"0%ld",time % 60];
                     self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                 }
                 if (self.timer == nil) {
                     self.timer = [NSTimer timerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
-                        _time --;
-                        if (_time == 0) {
-                            [self.timer invalidate];
+                        NSInteger time = 300 - ([AppManager getNowTimestamp] - _orderModel.paytime) + [UserManager sharedManager].timerinterval + 10;
+                        if (time < 1) {
+                            self.timerLabel.text = @"00:00";
+                            [_timer invalidate];
+                            _timer = nil;
+                            return ;
                         }
-                        NSString *minute = [NSString stringWithFormat:@"%ld",_time / 60];
-                        if (_time % 60 > 9) {
-                            NSString *second = [NSString stringWithFormat:@"%ld",_time % 60];
+                        NSString *minute = [NSString stringWithFormat:@"%ld",time / 60];
+                        if (time % 60 > 9) {
+                            NSString *second = [NSString stringWithFormat:@"%ld",time % 60];
                             self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                         } else {
-                            NSString *second = [NSString stringWithFormat:@"0%ld",_time % 60];
+                            NSString *second = [NSString stringWithFormat:@"0%ld",time % 60];
                             self.timerLabel.text = [NSString stringWithFormat:@"%@:%@",minute,second];
                         }
                     } repeats:YES];
@@ -238,7 +249,6 @@
             self.firstBlock(_orderModel);
         } Failed:^(NSError *error) {
             [MBProgressHUD hideHUD];
-            [AppManager showToastWithMsg:@"取消成功"];
         }];
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
@@ -279,11 +289,6 @@
     cell.shopModel = model;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
-}
-
-#pragma mark - UITableViewDelegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
 }
 
 #pragma mark -懒加载

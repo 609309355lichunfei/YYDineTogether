@@ -11,11 +11,13 @@
 #import "JSYHShopModel.h"
 #import "JSYHDishModel.h"
 #import "JSYHEditRemarksViewController.h"
+#import "HomeStoreViewController.h"
 
 @interface JSYHPreOrderTableViewCell ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *shopNameLabel;
 @property (weak, nonatomic) IBOutlet UITableView *dishsTableView;
+@property (weak, nonatomic) IBOutlet UIView *shopBGView;
 
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
@@ -36,6 +38,13 @@
     self.dishsTableView.dataSource = self;
     [self.dishsTableView registerNib:[UINib nibWithNibName:@"JSYHPreOrderDishTableViewCell" bundle:nil] forCellReuseIdentifier:@"JSYHPreOrderDishTableViewCell"];
     MJWeakSelf;
+    UITapGestureRecognizer *shopTap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        HomeStoreViewController *storeVC = [[HomeStoreViewController alloc] init];
+        JSYHShopModel *model = _shopModel;
+        storeVC.shopid = [model.shopid stringValue];
+        [self.viewController.navigationController pushViewController:storeVC animated:YES];
+    }];
+    [self.shopBGView addGestureRecognizer:shopTap];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
         JSYHEditRemarksViewController *remarksVC = [[JSYHEditRemarksViewController alloc] init];
         remarksVC.shopModel = weakSelf.shopModel;

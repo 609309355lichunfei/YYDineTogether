@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class JSYHShopModel;
 @interface HomeStoreDetailViewController : UIViewController
-
+@property (strong, nonatomic) JSYHShopModel *shopModel;
 @end

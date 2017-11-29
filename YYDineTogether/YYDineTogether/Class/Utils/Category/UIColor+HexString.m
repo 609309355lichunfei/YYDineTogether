@@ -2,8 +2,8 @@
 //  UIColor+HexString.m
 //  EWDicom
 //
-//  Created by 李春菲 on 17/6/2.
-//  Copyright © 2017年 lichunfei. All rights reserved.
+//  Created by 吴頔 on 17/6/2.
+//  Copyright © 2017年 wudi. All rights reserved.
 //
 
 #import "UIColor+HexString.h"

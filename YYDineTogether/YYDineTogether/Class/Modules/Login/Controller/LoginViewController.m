@@ -11,9 +11,7 @@
 #import "JSYHFirstCouponView.h"
 #import "JSYHUserNoteBookViewController.h"
 
-@interface LoginViewController ()<UITextFieldDelegate>{
-    NSInteger _time;
-}
+@interface LoginViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *numberTF;
 @property (weak, nonatomic) IBOutlet UITextField *verificationTF;
 @property (weak, nonatomic) IBOutlet UIImageView *agreeImageView;
@@ -22,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *verificationLabel;
 
 @property (strong, nonatomic) NSTimer *timer;
+
+@property (assign, nonatomic) NSInteger newSecond;
 
 @end
 
@@ -54,7 +54,9 @@
         [AppManager showToastWithMsg:@"请输入账号"];
         return;
     }
+    [MBProgressHUD showMessage:@"请求验证码中..."];
     [[JSRequestManager sharedManager] postSmsPhoneNumber:_numberTF.text Success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         [AppManager showToastWithMsg:@"验证短信已发送"];
         self.verificationBT.enabled = NO;
         [self.verificationBT setBackgroundColor:[UIColor lightGrayColor]];
@@ -62,12 +64,13 @@
             [self.timer invalidate];
             self.timer = nil;
         }
-        _time = 60;
-        self.verificationLabel.text = [NSString stringWithFormat:@"%lds",_time];
+        self.newSecond = [AppManager getNowTimestamp];
+        __block NSInteger time = 60;
+        self.verificationLabel.text = [NSString stringWithFormat:@"%lds",time];
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
-            _time --;
-            self.verificationLabel.text = [NSString stringWithFormat:@"%lds",_time];
-            if (_time == 0) {
+            time = 60 - ([AppManager getNowTimestamp] - self.newSecond);
+            self.verificationLabel.text = [NSString stringWithFormat:@"%lds",time];
+            if (time == 0) {
                 self.verificationBT.enabled = YES;
                 [self.verificationBT setBackgroundColor:UIColorFromRGB(0xfd5353)];
                 self.verificationLabel.text = @"获取验证码";
@@ -77,7 +80,15 @@
             
         } repeats:YES];
     } Failed:^(NSError *error) {
-        [AppManager showToastWithMsg:@"验证码获取失败"];
+        [MBProgressHUD hideHUD];
+        UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"请检查网络连接" message:@"" preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"去设置" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleCancel) handler:nil];
+        [alerVC addAction:action];
+        [alerVC addAction:cancelAction];
+        [self.navigationController presentViewController:alerVC animated:YES completion:nil];
     }];
 }
 
@@ -121,7 +132,14 @@
         
     } Failed:^(NSError *error) {
         [MBProgressHUD hideHUD];
-        [AppManager showToastWithMsg:@"账号密码错误"];
+        UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"请检查网络连接" message:@"" preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"去设置" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleCancel) handler:nil];
+        [alerVC addAction:action];
+        [alerVC addAction:cancelAction];
+        [self.navigationController presentViewController:alerVC animated:YES completion:nil];
     }];
     
 }

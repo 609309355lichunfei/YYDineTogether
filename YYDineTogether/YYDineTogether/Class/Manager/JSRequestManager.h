@@ -14,6 +14,7 @@
 @property (assign, nonatomic) BOOL jpushLogin;
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *token;
+@property (strong, nonatomic) NSString *memberid;
 
 + (JSRequestManager *)sharedManager;
 
@@ -358,6 +359,16 @@
 - (void)getCouponWithPage:(NSString *)page
                   Success:(PPHttpRequestSuccess)success
                    Failed:(PPHttpRequestFailed)failed;
+
+
+/**
+ 分享
+
+ @param success 成功
+ @param failed 失败
+ */
+- (void)shareSuccess:(PPHttpRequestSuccess)success
+              Failed:(PPHttpRequestFailed)failed;
 
 
 

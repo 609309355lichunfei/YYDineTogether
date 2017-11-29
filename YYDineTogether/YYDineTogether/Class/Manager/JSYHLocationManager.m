@@ -39,6 +39,16 @@ static const double pi = 3.14159265358979324;
 }
 
 - (void)resetLocationManager{
+    if (![CLLocationManager locationServicesEnabled]) {
+        UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"请检查网络定位设置" message:@"" preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"去设置" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleCancel) handler:nil];
+        [alerVC addAction:action];
+        [alerVC addAction:cancelAction];
+        [kRootViewController presentViewController:alerVC animated:YES completion:nil];
+    }
     if (self.locationManager) {
         [self.locationManager startUpdatingLocation];
         return;

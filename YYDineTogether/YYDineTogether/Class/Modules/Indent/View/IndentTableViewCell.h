@@ -14,4 +14,5 @@
 
 @property (copy, nonatomic) void (^firstBlock)(JSYHOrderModel *model);
 @property (copy, nonatomic) void (^secondBlock)(JSYHOrderModel *model);
+@property (copy, nonatomic) void(^seletedBlock)();
 @end

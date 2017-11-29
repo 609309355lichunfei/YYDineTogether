@@ -168,9 +168,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4k-La-PFh">
-                            <rect key="frame" x="0.0" y="0.0" width="60" height="64"/>
+                            <rect key="frame" x="0.0" y="28" width="60" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="Fai-mS-2fX"/>
+                                <constraint firstAttribute="height" constant="36" id="cTX-ol-6sf"/>
                             </constraints>
                             <state key="normal" image="back">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -188,7 +189,6 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="n4k-La-PFh" firstAttribute="top" secondItem="Ab6-uO-ZGJ" secondAttribute="top" id="Y3j-Fq-Qb6"/>
                         <constraint firstItem="n4k-La-PFh" firstAttribute="leading" secondItem="Ab6-uO-ZGJ" secondAttribute="leading" id="Znc-NU-IHb"/>
                         <constraint firstAttribute="height" constant="64" id="nOB-z0-M2O"/>
                         <constraint firstAttribute="bottom" secondItem="4pQ-lk-IyE" secondAttribute="bottom" constant="8" id="qec-ls-HMr"/>

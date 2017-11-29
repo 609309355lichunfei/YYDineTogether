@@ -51,8 +51,7 @@
 @property (strong, nonatomic) JSYHAddressModel *addressModel;
 @property (strong, nonatomic) JSYHCouponModel *couponModel;
 @property (strong, nonatomic) NSString *couponid;
-@property (assign, nonatomic) NSInteger is_first;//是否是新人红包
-
+@property (assign, nonatomic) NSInteger is_canActivity;//是否是新人红包
 @property (strong, nonatomic) NSString *couponValue;
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
@@ -153,8 +152,66 @@
         [MBProgressHUD hideHUD];
     } Failed:^(NSError *error) {
         [MBProgressHUD hideHUD];
-        [AppManager showToastWithMsg:@"预定订单失败"];
     }];
+}
+
+//整理数据
+- (void)collationData {
+    NSDictionary *order = self.dataDic[@"order"];
+    self.orderModel = [[JSYHOrderModel alloc] init];
+    [self.orderModel setValuesForKeysWithDictionary:order];
+    
+    NSDictionary *address = order[@"address"];
+    JSYHAddressModel *addressModel = [[JSYHAddressModel alloc] init];
+    [addressModel setValuesForKeysWithDictionary:address];
+    [[DB_Helper defaultHelper] updateAddress:addressModel];
+    [self getAddress];
+    self.resultPriceLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.lastprice];
+    self.totalpriceLabel.text = self.resultPriceLabel.text;
+    //        [NSString stringWithFormat:@"%ld",[self.orderModel.lastprice integerValue] - [self.redLabel.text integerValue] + [self.postcost.text integerValue]];
+    self.activityLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.cut];
+    self.distanceLabel.text = self.orderModel.distance;
+    self.combcutLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.combcut];
+    CGFloat tableViewHeight = 0;
+    for (JSYHShopModel *model in self.orderModel.shops) {
+        tableViewHeight += model.orderHeight;
+    }
+    self.tableViewHeight.constant = tableViewHeight;
+    self.dataArray = [NSMutableArray array];
+    for (NSInteger i = 0; i < self.orderModel.sortedshops.count; i ++) {
+        NSNumber *shopid = self.orderModel.sortedshops[i];
+        for (JSYHShopModel *model in self.orderModel.shops) {
+            if (model.shopid == shopid) {
+                [self.dataArray addObject:model];
+            }
+        }
+    }
+    NSInteger shopCount = self.orderModel.sortedshops.count;
+    CLLocationCoordinate2D *commonPolylineCoords = malloc(sizeof(CLLocationCoordinate2D) * shopCount + 1);
+    for (NSInteger i = 0; i < shopCount; i ++) {
+        JSYHShopModel *model = self.dataArray[i];
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.lat doubleValue], [model.lng doubleValue]);
+        MAPointAnnotation *annotation = [[MAPointAnnotation alloc] init];
+        annotation.coordinate = coordinate;
+        annotation.title = model.name;
+        [self.mapView addAnnotation:annotation];
+        commonPolylineCoords[i + 1] = coordinate;
+    }
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([self.orderModel.addressModel.lat doubleValue], [self.orderModel.addressModel.lng doubleValue]);
+    self.userAnnotation = [[MAPointAnnotation alloc] init];
+    self.userAnnotation.coordinate = coordinate;
+    self.userAnnotation.title = @"用户";
+    [self.mapView addAnnotation:self.userAnnotation];
+    commonPolylineCoords[0] = coordinate;
+    
+    //构造折线对象
+    self.commonPolyline = [MAPolyline polylineWithCoordinates:commonPolylineCoords count:shopCount + 1];
+    [self.mapView addOverlay:self.commonPolyline];
+    JSYHShopModel *model = [self.dataArray firstObject];
+    self.mapView.centerCoordinate = CLLocationCoordinate2DMake([model.lat doubleValue], [model.lng doubleValue]);
+    [self.tableView reloadData];
+    [MBProgressHUD hideHUD];
 }
 
 - (void)getAddress{
@@ -189,7 +246,7 @@
                 }
                 NSNumber *lastprice = responseObject[@"data"][@"lastprice"];
                 CGFloat lastpriceFloat = lastprice.integerValue / 100.0 - [self.couponValue floatValue];
-                if (_is_first == 1) {
+                if (_is_canActivity == 1) {
                     lastpriceFloat = lastpriceFloat + [self.orderModel.cut floatValue];
                 }
                 if (lastpriceFloat < 0 || lastpriceFloat == 0) {
@@ -226,7 +283,7 @@
             }
             NSNumber *lastprice = responseObject[@"data"][@"lastprice"];
             CGFloat lastpriceFloat = lastprice.integerValue / 100.0 - [self.couponValue floatValue];
-            if (_is_first == 1) {
+            if (_is_canActivity == 1) {
                 lastpriceFloat = lastpriceFloat + [self.orderModel.cut floatValue];
             }
             if (lastpriceFloat < 0 || lastpriceFloat == 0) {
@@ -260,7 +317,8 @@
     
     
     [self.tableView registerNib:[UINib nibWithNibName:@"JSYHPreOrderTableViewCell" bundle:nil] forCellReuseIdentifier:@"IndentConfirmTableViewCell"];
-    [self getConnectOrder];
+//    [self getConnectOrder];
+    [self collationData];
 }
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -293,14 +351,19 @@
 - (IBAction)couponTapAction:(id)sender {
     JSYHCouponViewController *couponVC = [[JSYHCouponViewController alloc] init];
     
+    couponVC.totalPrice = [NSNumber numberWithInteger:(self.totalpriceLabel.text.integerValue + _orderModel.full)];
     couponVC.shopcount = self.dataArray.count;
     couponVC.chooseCoupon = ^(JSYHCouponModel *model) {
         self.redLabel.text = [NSString stringWithFormat:@"- ¥%@",model.value];
         self.couponValue = [NSString stringWithFormat:@"%@",model.value];
-        _is_first = model.is_first;
+        if (model.is_first == 1 || ![model.full isEqualToNumber:@0]) {
+            _is_canActivity = 1;
+        } else {
+            _is_canActivity = 0;
+        }
         self.couponid = [model.coupon_id stringValue];
         CGFloat priceFloat = [self.orderModel.lastprice floatValue] - [self.couponValue integerValue];
-        if (_is_first == 1) {
+        if (_is_canActivity == 1) {
             self.activityLabel.text = @"0";
             priceFloat = priceFloat + [self.orderModel.cut floatValue];
         } else {

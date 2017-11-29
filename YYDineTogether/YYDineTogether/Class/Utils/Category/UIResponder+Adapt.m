@@ -2,8 +2,8 @@
 //  UIResponder+Adapt.m
 //  CGGometry
 //
-//  Created by 李春菲 on 16/10/19.
-//  Copyright © 2016年 lichunfei. All rights reserved.
+//  Created by 吴頔 on 16/10/19.
+//  Copyright © 2016年 wudi. All rights reserved.
 //
 #import <Foundation/Foundation.h>
 #pragma mark - 枚举 设计图类型

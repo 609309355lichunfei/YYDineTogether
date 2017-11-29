@@ -11,6 +11,7 @@
 #import "JSYHUserModel.h"
 #import "LoginViewController.h"
 #import <JPUSHService.h>
+#import "HeaderModel.h"
 
 #define JSRequest_Token [NSString stringWithFormat:@"bearer %@",_token]
 
@@ -29,6 +30,7 @@
         manager = [[JSRequestManager alloc] init];
         manager.token = [[NSUserDefaults standardUserDefaults] valueForKey:@"JSYHToken"];
         manager.userName = [[NSUserDefaults standardUserDefaults] valueForKey:@"JSYHUserName"];
+        manager.memberid = [[NSUserDefaults standardUserDefaults] valueForKey:@"JSYHMemberId"];
         
     });
     return manager;
@@ -43,12 +45,27 @@
         _token = token;
         [PPNetworkHelper setValue:JSRequest_Token forHTTPHeaderField:@"Authorization"];
     }
+    HeaderModel *model = [[HeaderModel alloc] init];
+    [PPNetworkHelper setValue:@"1" forHTTPHeaderField:@"Jszp-Aera"];
+    [PPNetworkHelper setValue:model.version forHTTPHeaderField:@"Jszp-Ios-Version"];
+    [PPNetworkHelper setValue:model.imei forHTTPHeaderField:@"Jszp-Client-SN"];
+    [PPNetworkHelper setValue:[JSYHLocationManager sharedManager].lat forHTTPHeaderField:@"Jszp-Lat"];
+    [PPNetworkHelper setValue:[JSYHLocationManager sharedManager].lng forHTTPHeaderField:@"Jszp-Lng"];
 }
 
 - (void)judgeErrorReasonWithError:(NSError *)error {
     if ([error.userInfo[NSLocalizedDescriptionKey] isEqualToString:@"Request failed: unauthorized (401)"]) {
         LoginViewController *loginVC = [[LoginViewController alloc] init];
         [[AppDelegate shareAppDelegate].mainNavi presentViewController:loginVC animated:YES completion:nil];
+    } else {
+        UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"请检查网络连接" message:@"" preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"去设置" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleCancel) handler:nil];
+        [alerVC addAction:action];
+        [alerVC addAction:cancelAction];
+        [kRootViewController presentViewController:alerVC animated:YES completion:nil];
     }
 }
 
@@ -91,6 +108,7 @@
             _userName = nil;
             [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"JSYHToken"];
             [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"JSYHUserName"];
+            [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"JSYHMemberId"];
             success(responseObject);
         } else {
             [AppManager showToastWithMsg:responseObject[@"message"]];
@@ -419,6 +437,9 @@
         [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {
+            NSNumber *memberIdNumber = responseObject[@"data"][@"memberid"];
+            NSString *memberid = memberIdNumber.stringValue;
+            [[NSUserDefaults standardUserDefaults] setValue:memberid forKey:@"JSYHMemberId"];
             success(responseObject);
         } else {
             [AppManager showToastWithMsg:responseObject[@"message"]];
@@ -660,6 +681,23 @@
     [self setHeaderToken];
     NSMutableDictionary *dic = [@{ @"page":page} mutableCopy];
     [PPNetworkHelper GET:URL_coupon parameters:dic success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
+        NSNumber *errorCode = responseObject[@"errorCode"];
+        if ([errorCode isEqualToNumber:@0]) {
+            success(responseObject);
+        } else {
+            [AppManager showToastWithMsg:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [self judgeErrorReasonWithError:error];
+        failed(error);
+    }];
+}
+
+- (void)shareSuccess:(PPHttpRequestSuccess)success
+              Failed:(PPHttpRequestFailed)failed {
+    [self setHeaderToken];
+    [PPNetworkHelper POST:URL_Share parameters:nil success:^(id responseObject) {
         [MBProgressHUD hideHUD];
         NSNumber *errorCode = responseObject[@"errorCode"];
         if ([errorCode isEqualToNumber:@0]) {

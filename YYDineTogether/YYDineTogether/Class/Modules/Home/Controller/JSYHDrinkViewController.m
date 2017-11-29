@@ -46,7 +46,9 @@
     self.shoppingCartCountLabel.layer.cornerRadius = 9;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.myTitleLabel.text = self.titleStr;
-    
+    self.tableView.estimatedRowHeight = 0;
+    self.tableView.estimatedSectionHeaderHeight = 0;
+    self.tableView.estimatedSectionFooterHeight = 0;
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:@"JSYHDrinkTableViewCell"];
     MJWeakSelf;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -111,6 +113,9 @@
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSYHDrinkTableViewCell" forIndexPath:indexPath];
     JSYHShopModel *model = self.dataArray[indexPath.row];
     cell.shopModel = model;
+    cell.activityBlock = ^{
+        [tableView reloadRowAtIndexPath:indexPath withRowAnimation:(UITableViewRowAnimationAutomatic)];
+    };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

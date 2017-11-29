@@ -2,7 +2,7 @@
 //  UIView+CCExtension.m
 //  Circle
 //
-//  Created by 韩珍 on 15/7/15.
+//  Created by 吴頔 on 15/7/15.
 //  Copyright (c) 2015年 zhongyi. All rights reserved.
 //
 

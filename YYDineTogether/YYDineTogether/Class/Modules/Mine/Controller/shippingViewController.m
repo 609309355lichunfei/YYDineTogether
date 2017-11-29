@@ -95,7 +95,6 @@
         [self.tableView.mj_header beginRefreshing];
     } Failed:^(NSError *error) {
         [MBProgressHUD hideHUD];
-        [AppManager showToastWithMsg:@"删除失败"];
     }];
 }
 

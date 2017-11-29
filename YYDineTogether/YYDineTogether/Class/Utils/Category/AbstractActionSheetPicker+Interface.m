@@ -2,8 +2,8 @@
 //  XKPEActionSheetPicker.m
 //  PestatePatient
 //
-//  Created by YJunxiao on 16/1/6.
-//  Copyright © 2016年 袁俊晓. All rights reserved.
+//  Created by 吴頔 on 16/1/6.
+//  Copyright © 2016年 wudi. All rights reserved.
 //
 
 #import "AbstractActionSheetPicker+Interface.h"

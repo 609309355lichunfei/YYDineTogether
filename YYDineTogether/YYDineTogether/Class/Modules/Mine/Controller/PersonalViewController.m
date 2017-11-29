@@ -148,7 +148,6 @@
         [JSYHUserModel defaultModel].ischangelogo = @"0";
         [self.navigationController popViewControllerAnimated:YES];
     } Failed:^(NSError *error) {
-        [AppManager showToastWithMsg:@"保存失败"];
     }];
     
 }

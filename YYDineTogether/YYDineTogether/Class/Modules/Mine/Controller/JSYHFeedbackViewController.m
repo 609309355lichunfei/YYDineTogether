@@ -79,7 +79,6 @@
         [AppManager showToastWithMsg:@"提交成功"];
         [self.navigationController popViewControllerAnimated:YES];
     } Failed:^(NSError *error) {
-        [AppManager showToastWithMsg:@"提交失败"];
     }];
 }
 

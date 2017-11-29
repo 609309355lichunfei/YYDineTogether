@@ -54,6 +54,7 @@
 + (AppDelegate *)shareAppDelegate{
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
+
 -(UIViewController *)getCurrentVC{
     
     UIViewController *result = nil;

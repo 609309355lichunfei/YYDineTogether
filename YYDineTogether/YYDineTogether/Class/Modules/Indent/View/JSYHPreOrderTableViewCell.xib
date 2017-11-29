@@ -118,6 +118,7 @@
                 <outlet property="logoImageView" destination="hw1-Rz-p2u" id="rgr-Mv-OxR"/>
                 <outlet property="phoneBT" destination="aWp-YJ-XUS" id="TJe-EJ-eqz"/>
                 <outlet property="remarkLabel" destination="UNw-rk-PWB" id="voN-pT-W99"/>
+                <outlet property="shopBGView" destination="Mfk-as-VSk" id="Sw7-cx-t1z"/>
                 <outlet property="shopNameLabel" destination="hZq-9c-nAO" id="Lg4-sD-9mn"/>
             </connections>
             <point key="canvasLocation" x="46.5" y="185.5"/>

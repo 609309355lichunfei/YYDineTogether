@@ -40,4 +40,6 @@
  */
 #import <YYKit/YYKit.h>
 #import "MBProgressHUD+HH.h"
+#import <UMCommon/UMCommon.h>           // 公共组件是所有友盟产品的基础组件，必选
+#import <UMAnalytics/MobClick.h>
 #endif /* PrefixHeader_h */

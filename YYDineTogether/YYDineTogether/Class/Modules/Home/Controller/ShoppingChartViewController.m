@@ -15,6 +15,7 @@
 #import <MAMapKit/MAMapKit.h>
 #import "CBAutoScrollLabel.h"
 #import "JSAddAddressViewController.h"
+#import "JSYHDishModel.h"
 
 @interface ShoppingChartViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -114,6 +115,7 @@
 }
 - (IBAction)payAction:(id)sender {
     if ([ShoppingCartManager sharedManager].shoppingCartDataArray.count + [ShoppingCartManager sharedManager].shoppingCartComboArray.count == 0) {
+        [AppManager showToastWithMsg:@"购物车为空，无法支付"];
         return;
     }
     
@@ -164,8 +166,32 @@
             [MBProgressHUD hideHUD];
             NSArray *addressDicArray = responseObject[@"data"][@"addresses"];
             if (addressDicArray.count > 0) {
-                IndentConfirmViewController *confirmVC = [[IndentConfirmViewController alloc]init];
-                [self.navigationController pushViewController:confirmVC animated:YES];
+                
+                [MBProgressHUD showMessage:@"预制订单中"];
+                NSArray *dishs = [ShoppingCartManager sharedManager].shoppingCartDataArray;
+                NSArray *combs = [ShoppingCartManager sharedManager].shoppingCartComboArray;
+                NSMutableArray *dishsArray = [NSMutableArray array];
+                for (JSYHDishModel *model in dishs) {
+                    NSDictionary *modelDic = @{@"count":[NSString stringWithFormat:@"%ld",model.shopcartCount],@"id":[model.dishid stringValue]} ;
+                    [dishsArray addObject:modelDic];
+                }
+                NSMutableArray *combsArray = [NSMutableArray array];
+                for (JSYHComboModel *model in combs) {
+                    NSDictionary *modelDic = @{@"id":[model.combid stringValue], @"count":[NSString stringWithFormat:@"%ld",model.count]};
+                    [combsArray addObject:modelDic];
+                }
+                NSDictionary *dic = @{@"dishs":dishsArray,@"combs":combsArray};
+                [[JSRequestManager sharedManager] postOrderWithDic:dic Success:^(id responseObject) {
+                    NSDictionary *data = responseObject[@"data"];
+                    IndentConfirmViewController *confirmVC = [[IndentConfirmViewController alloc]init];
+                    confirmVC.dataDic = data;
+                    [self.navigationController pushViewController:confirmVC animated:YES];
+                } Failed:^(NSError *error) {
+                    [MBProgressHUD hideHUD];
+                    [AppManager showToastWithMsg:@"预定订单失败"];
+                }];
+                
+                
             } else {
                 UIAlertController *alerVC = [UIAlertController alertControllerWithTitle:@"没有可用配送地址" message:@"是否添加配送地址" preferredStyle:(UIAlertControllerStyleAlert)];
                 UIAlertAction *action = [UIAlertAction actionWithTitle:@"添加" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
@@ -180,7 +206,6 @@
             }
         } Failed:^(NSError *error) {
             [MBProgressHUD hideHUD];
-            [AppManager showToastWithMsg:@"获取地址失败,请重试"];
         }];
         
 //    } else {

@@ -104,6 +104,8 @@
 #define URL_Feedback [NSString stringWithFormat:@"%@/v1/feedback/", URL_main]
 //红包
 #define URL_coupon [NSString stringWithFormat:@"%@/v1/coupon/", URL_main]
+//分享
+#define URL_Share [NSString stringWithFormat:@"%@/v1/member/share/", URL_main]
 
 
 

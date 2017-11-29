@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface IndentConfirmViewController : UIViewController
-
+@property (strong, nonatomic) NSDictionary *dataDic;
 @end

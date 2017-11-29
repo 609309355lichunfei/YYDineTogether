@@ -42,7 +42,7 @@
         return;
     }
     NSString *phoneStr = [_phoneTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    if (phoneStr == 0 || phoneStr == nil) {
+    if (phoneStr.length == 0 || phoneStr == nil) {
         [AppManager showToastWithMsg:@"请填写电话号码"];
         return;
     }
@@ -64,7 +64,6 @@
         [self.navigationController popViewControllerAnimated:YES];
     } Failed:^(NSError *error) {
         [MBProgressHUD hideHUD];
-        [AppManager showToastWithMsg:@"添加地址失败"];
     }];
 }
 

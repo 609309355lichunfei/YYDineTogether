@@ -14,8 +14,10 @@
 #import "JSYHHomeStoreActivityView.h"
 #import "JSYHShopModel.h"
 #import "JSYHCateModel.h"
+#import "JSYHDishModel.h"
 #import "JSYHActivityModel.h"
 #import "JSYHHomeStoreLeftTableViewCell.h"
+#import "HomeStoreDetailViewController.h"
 
 @interface HomeStoreViewController ()<UITableViewDelegate, UITableViewDataSource>{
     BOOL _isCombo;
@@ -107,7 +109,7 @@
     
     //  创建需要的毛玻璃特效类型
     
-    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     
     //  毛玻璃view 视图
     
@@ -132,8 +134,8 @@
     self.shopNameLabel.text = _shopModel.name;
     self.noticeLabel.text = _shopModel.notice_info;
     self.catesArray = self.shopModel.cates;
-    [self.logoImageView setImageWithURL:[NSURL URLWithString:self.shopModel.logo] placeholder:[UIImage imageNamed:@"icon"]];
-    [self.backgroundImageView setImageWithURL:[NSURL URLWithString:self.shopModel.logo] placeholder:[UIImage imageNamed:@"icon"]];
+    [self.logoImageView setImageWithURL:[NSURL URLWithString:self.shopModel.logo] placeholder:nil];
+    [self.backgroundImageView setImageWithURL:[NSURL URLWithString:self.shopModel.logo] placeholder:nil];
     [self.activityButton setTitle:[NSString stringWithFormat:@"%ld个活动",_shopModel.activites.count] forState:(UIControlStateNormal)];
     for (NSInteger i = 0; i < _shopModel.activites.count; i ++){
         JSYHActivityModel *model = _shopModel.activites[i];
@@ -148,6 +150,24 @@
         [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:(UITableViewScrollPositionTop)];
         [self tableView:self.leftTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     }
+    _isScroll = YES;
+    if (_dishModel) {
+        for (NSInteger i = 0; i < self.catesArray.count; i ++) {
+            JSYHCateModel *cateModel = self.catesArray[i];
+            NSArray *dishsArray = cateModel.dishs;
+            for (NSInteger j = 0; j < dishsArray.count; j ++) {
+                JSYHDishModel *dishModel = dishsArray[j];
+                if ([dishModel.dishid isEqualToNumber:_dishModel.dishid]) {
+                    [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] animated:NO scrollPosition:(UITableViewScrollPositionTop)];
+                    [self tableView:self.leftTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+                    [self.rightTableView scrollToRow:j inSection:i atScrollPosition:(UITableViewScrollPositionTop) animated:NO];
+                    HomeStoreRightTableViewCell *cell = [self.rightTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:j inSection:i]];
+                    [cell twinkBGView];
+                    return;
+                }
+            }
+        }
+    }
 }
 
 - (IBAction)backAction:(id)sender {
@@ -156,6 +176,13 @@
 - (IBAction)flowAction:(id)sender {
     
 }
+
+- (IBAction)shopdetailAction:(id)sender {
+    HomeStoreDetailViewController *detailVC = [[HomeStoreDetailViewController alloc] init];
+    detailVC.shopModel = _shopModel;
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
+
 
 - (IBAction)clearShoppingCartAction:(id)sender {
     ShoppingChartViewController *shoppingCartVC = [[ShoppingChartViewController alloc] init];
@@ -327,6 +354,7 @@
         JSYHCateModel *cate = self.catesArray[index.section];
         cate.selected = YES;
         [_leftTableView reloadData];
+        [self.leftTableView scrollToRow:index.section inSection:0 atScrollPosition:(UITableViewScrollPositionMiddle) animated:NO];
     }
 }
 

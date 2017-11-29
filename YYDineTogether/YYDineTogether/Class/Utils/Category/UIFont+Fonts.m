@@ -2,8 +2,8 @@
 //  UIFont+Fonts.m
 //  ZiPeiYi
 //
-//  Created by 李春菲 on 15/12/16.
-//  Copyright © 2015年 李春菲. All rights reserved.
+//  Created by 吴頔 on 15/12/16.
+//  Copyright © 2015年 wudi. All rights reserved.
 //
 
 #import "UIFont+Fonts.h"

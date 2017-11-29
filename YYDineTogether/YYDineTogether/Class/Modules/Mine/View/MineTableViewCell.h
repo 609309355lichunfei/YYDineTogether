@@ -11,5 +11,7 @@
 @interface MineTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *myImageView;
 @property (weak, nonatomic) IBOutlet UILabel *myLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *littleImage;
+@property (weak, nonatomic) IBOutlet UIImageView *mynewLittleImage;
 
 @end

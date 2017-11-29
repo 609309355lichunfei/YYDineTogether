@@ -134,6 +134,9 @@
                                 <constraint firstItem="5vM-cC-SCt" firstAttribute="top" secondItem="XPe-Pb-B2o" secondAttribute="top" id="ogn-nm-XrX"/>
                                 <constraint firstItem="5vM-cC-SCt" firstAttribute="leading" secondItem="XPe-Pb-B2o" secondAttribute="trailing" constant="8" id="z6G-ss-uS8"/>
                             </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="r8M-Xf-Pai" appends="YES" id="T7r-Em-H4z"/>
+                            </connections>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -381,6 +384,11 @@
         <tapGestureRecognizer id="K2f-FQ-Z7P" userLabel="activityTap">
             <connections>
                 <action selector="activityAction:" destination="-1" id="D09-gK-WEL"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="r8M-Xf-Pai" userLabel="shopDetailTap">
+            <connections>
+                <action selector="shopdetailAction:" destination="-1" id="e2i-Gp-J75"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

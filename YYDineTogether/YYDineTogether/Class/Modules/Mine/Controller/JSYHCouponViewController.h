@@ -13,6 +13,8 @@
 
 @property (assign, nonatomic) NSInteger shopcount;
 
+@property (strong, nonatomic) NSNumber *totalPrice;
+
 @property (copy, nonatomic) void (^chooseCoupon)(JSYHCouponModel *model);
 
 @end

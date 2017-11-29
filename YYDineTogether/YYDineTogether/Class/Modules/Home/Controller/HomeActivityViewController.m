@@ -11,6 +11,8 @@
 #import "JSYHComboModel.h"
 #import "JSYHDishModel.h"
 #import "HomeDishTableViewCell.h"
+#import "HomeFoodDetailViewController.h"
+#import "HomeStoreViewController.h"
 
 @interface HomeActivityViewController ()<UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>{
     CGFloat _mainScrollViewLastContentOffSetY;
@@ -45,7 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    [MobClick event:@"meal_detail"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -172,6 +174,14 @@
     cell.countLabel.text = [NSString stringWithFormat:@" x%ld",model.count];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    HomeStoreViewController *storeVC = [[HomeStoreViewController alloc] init];
+    JSYHDishModel *model = self.model.dishs[indexPath.row];
+    storeVC.shopid = [NSString stringWithFormat:@"%ld",model.shopid];
+    storeVC.dishModel = model;
+    [self.navigationController pushViewController:storeVC animated:YES];
 }
 
 - (NSMutableArray *)dataArray {

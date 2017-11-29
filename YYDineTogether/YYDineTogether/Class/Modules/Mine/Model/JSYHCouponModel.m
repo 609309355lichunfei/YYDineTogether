@@ -10,6 +10,14 @@
 
 @implementation JSYHCouponModel
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.canUse = YES;
+    }
+    return self;
+}
+
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
     if ([key isEqualToString:@"id"]) {
         self.coupon_id = value;
@@ -22,6 +30,10 @@
         NSNumber *priceNumber = value;
         float price = priceNumber.integerValue / 100.0;
         self.value = [NSNumber numberWithFloat:price];
+    } else if ([key isEqualToString:@"full"]) {
+        NSNumber *priceNumber = value;
+        float price = priceNumber.integerValue / 100.0;
+        self.full = [NSNumber numberWithFloat:price];
     }
 }
 

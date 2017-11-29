@@ -16,4 +16,10 @@
 @property (strong, nonatomic) NSNumber *value;
 @property (assign, nonatomic) NSInteger is_first;
 @property (assign, nonatomic) NSInteger overdue;
+@property (strong, nonatomic) NSNumber *full;
+
+#pragma mark - 自加属性
+
+@property (assign, nonatomic) BOOL canUse;
+
 @end

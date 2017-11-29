@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *salesCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *discountPriceLabel;
+@property (weak, nonatomic) IBOutlet UIView *discountDiscoverView;
 
 @end
 
@@ -64,7 +66,10 @@
     self.salesCountLabel.text = [NSString stringWithFormat:@"%d",_dishModel.salescount];
     self.starLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.star];
     self.priceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.price];
-    self.infoLabel.textColor = _dishModel.info;
+    self.discountPriceLabel.hidden = [_dishModel.discountprice isEqualToNumber:_dishModel.price] ? YES : NO;
+    self.discountDiscoverView.hidden = self.discountPriceLabel.isHidden;
+    self.discountPriceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.discountprice];
+    self.infoLabel.text = _dishModel.info;
     if (_dishModel.shopcartCount > 0) {
         _numberLabel.hidden = NO;
         _subtractButton.hidden = NO;
@@ -73,6 +78,18 @@
         _numberLabel.hidden = YES;
         _subtractButton.hidden = YES;
     }
+}
+
+- (void)twinkBGView {
+    [UIView animateWithDuration:0.7 animations:^{
+        self.contentView.backgroundColor = [UIColor colorWithRGB:0x0795e7 alpha:0.1];
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.7 animations:^{
+            self.contentView.backgroundColor = [UIColor whiteColor];
+        } completion:^(BOOL finished) {
+            
+        }];
+    }];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

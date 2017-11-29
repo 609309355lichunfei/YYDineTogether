@@ -81,6 +81,7 @@ static ShoppingCartManager *_shoppingCartManager;
 }
 
 - (void)addToShoppingCartWithDish:(JSYHDishModel *)dishModel {
+    [MobClick event:@"add_dish"];
     for (JSYHDishModel *model in self.shoppingCartDataArray) {
         if ([dishModel.dishid isEqualToNumber:model.dishid]) {
             model.shopcartCount ++;
@@ -105,6 +106,7 @@ static ShoppingCartManager *_shoppingCartManager;
 }
 
 - (void)addToShoppingCartWitComb:(JSYHComboModel *)combModel {
+    [MobClick event:@"add_meal"];
     for (JSYHComboModel *model in self.shoppingCartComboArray) {
         if ([model.combid isEqualToNumber:combModel.combid]) {
             model.count ++;

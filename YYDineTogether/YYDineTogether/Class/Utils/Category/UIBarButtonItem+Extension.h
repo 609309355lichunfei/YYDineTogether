@@ -2,7 +2,7 @@
 //  UIBarButtonItem+Extension.h
 //  ManyMouseMall
 //
-//  Created by 韩珍珍 on 15/10/20.
+//  Created by 吴頔 on 15/10/20.
 //  Copyright © 2015年 DS. All rights reserved.
 //
 

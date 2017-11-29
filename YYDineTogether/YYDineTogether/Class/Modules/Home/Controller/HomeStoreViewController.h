@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class JSYHDishModel;
 @interface HomeStoreViewController : UIViewController
 @property (strong, nonatomic) NSString *shopid;
+@property (strong, nonatomic) JSYHDishModel *dishModel;
 @end

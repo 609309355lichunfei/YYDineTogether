@@ -34,6 +34,7 @@
     _drinkBlock();
 }
 - (IBAction)comboAction:(id)sender {
+    [MobClick event:@"home_meal_button"];
     _comboBlock();
 }
 - (IBAction)fruitAction:(id)sender {

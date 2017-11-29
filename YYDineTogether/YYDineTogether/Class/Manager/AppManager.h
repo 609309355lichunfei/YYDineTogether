@@ -44,4 +44,6 @@
 
 + (NSString *)birthTimestanpSwitchTime:(NSInteger)timestamp;
 
++ (void)umengEvent:(NSString *)eventId attributes:(NSDictionary *)attributes number:(NSNumber *)number;
+
 @end
