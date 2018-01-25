@@ -14,6 +14,7 @@
 #import "MineViewController.h"
 #import "TabBarItem.h"
 #import "IndentViewController.h"
+#import "TabBarItem.h"
 @interface MainTabBarController ()<TabBarDelegate>
 
 PropertyNSMutableArray(VCS);//tabbar root VC
@@ -122,6 +123,10 @@ PropertyNSMutableArray(VCS);//tabbar root VC
     self.TabBar.selectedItem.selected = NO;
     self.TabBar.selectedItem = self.TabBar.tabBarItems[selectedIndex];
     self.TabBar.selectedItem.selected = YES;
+    if (selectedIndex == 2) {
+        TabBarItem *item = [AppDelegate shareAppDelegate].mainTabBar.TabBar.tabBarItems.lastObject;
+        item.tabBarItem.badgeValue = nil;
+    }
 }
 
 #pragma mark ————— 取出系统自带的tabbar并把里面的按钮删除掉 —————

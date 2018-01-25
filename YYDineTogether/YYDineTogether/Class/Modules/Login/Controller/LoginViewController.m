@@ -10,6 +10,7 @@
 #import <JPUSHService.h>
 #import "JSYHFirstCouponView.h"
 #import "JSYHUserNoteBookViewController.h"
+#import "TabBarItem.h"
 
 @interface LoginViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *numberTF;
@@ -117,6 +118,9 @@
                 } seq:1];
                 NSNumber *is_first = responseObject[@"data"][@"is_first"];
                 if ([is_first isEqualToNumber:@1]) {
+                    [kUserDefaults setBool:YES forKey:@"JSZP-NewCoupon"];
+                    TabBarItem *item = [AppDelegate shareAppDelegate].mainTabBar.TabBar.tabBarItems.lastObject;
+                    item.tabBarItem.badgeValue = @"";
                     JSYHFirstCouponView *firstView = [[NSBundle mainBundle] loadNibNamed:@"JSYHFirstCouponView" owner:nil options:nil].lastObject;
                     firstView.frame = kScreen_Bounds;
                     [[AppDelegate shareAppDelegate].window addSubview:firstView];

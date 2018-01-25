@@ -18,4 +18,6 @@
 @property (assign, nonatomic) double latdouble;
 + (JSYHLocationManager *)sharedManager;
 
+- (void)resetLocationManager;
+
 @end

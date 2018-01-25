@@ -207,6 +207,7 @@
 		9CDCC5AB1F3C50F20005FB76 /* JSYHSearchHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CDCC5A91F3C50F20005FB76 /* JSYHSearchHeaderCollectionReusableView.xib */; };
 		9CDCC5AE1F3D4EAB0005FB76 /* JSYHHomeStoreActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDCC5AD1F3D4EAB0005FB76 /* JSYHHomeStoreActivityView.m */; };
 		9CDCC5B01F3D4EBC0005FB76 /* JSYHHomeStoreActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CDCC5AF1F3D4EBC0005FB76 /* JSYHHomeStoreActivityView.xib */; };
+		9CF8147D1FD7A94800BB3629 /* HSUpdateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF8147B1FD7A94700BB3629 /* HSUpdateApp.m */; };
 		B389405C1EE69B3000407E45 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B389401D1EE69B3000407E45 /* LICENSE */; };
 		B389405D1EE69B3000407E45 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B38940201EE69B3000407E45 /* AbstractActionSheetPicker.m */; };
 		B389405E1EE69B3000407E45 /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B38940221EE69B3000407E45 /* ActionSheetCustomPicker.m */; };
@@ -330,6 +331,19 @@
 			remoteInfo = YYDineTogether;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9C8C11FA1FDE29FB008A66A0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00ABD77171EA03E326A38570 /* Pods-YYDineTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYDineTogether.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YYDineTogether/Pods-YYDineTogether.debug.xcconfig"; sourceTree = "<group>"; };
@@ -599,6 +613,11 @@
 		9C8C09A41F6E5F8B00A75954 /* JSYHCombListHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSYHCombListHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		9C8C09A81F6E711F00A75954 /* CBAutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAutoScrollLabel.h; sourceTree = "<group>"; };
 		9C8C09A91F6E711F00A75954 /* CBAutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAutoScrollLabel.m; sourceTree = "<group>"; };
+		9C8C11EA1FDE29F9008A66A0 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		9C8C11ED1FDE29FA008A66A0 /* NotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		9C8C11EE1FDE29FA008A66A0 /* NotificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		9C8C11F11FDE29FA008A66A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		9C8C11F31FDE29FA008A66A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C913EAC1FA038820083503A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		9C913EAD1FA038830083503A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		9CA011661F5BAA3800867F64 /* JSYHComboTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSYHComboTableViewCell.h; sourceTree = "<group>"; };
@@ -647,6 +666,8 @@
 		9CDCC5AC1F3D4EAB0005FB76 /* JSYHHomeStoreActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSYHHomeStoreActivityView.h; sourceTree = "<group>"; };
 		9CDCC5AD1F3D4EAB0005FB76 /* JSYHHomeStoreActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSYHHomeStoreActivityView.m; sourceTree = "<group>"; };
 		9CDCC5AF1F3D4EBC0005FB76 /* JSYHHomeStoreActivityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSYHHomeStoreActivityView.xib; sourceTree = "<group>"; };
+		9CF8147B1FD7A94700BB3629 /* HSUpdateApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSUpdateApp.m; sourceTree = "<group>"; };
+		9CF8147C1FD7A94700BB3629 /* HSUpdateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSUpdateApp.h; sourceTree = "<group>"; };
 		B389401D1EE69B3000407E45 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B389401F1EE69B3000407E45 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractActionSheetPicker.h; sourceTree = "<group>"; };
 		B38940201EE69B3000407E45 /* AbstractActionSheetPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractActionSheetPicker.m; sourceTree = "<group>"; };
@@ -895,6 +916,7 @@
 				9C628FC31F4F40570014E828 /* CoreLocation.framework */,
 				9C8996461EF2D39C0097AF38 /* MapKit.framework */,
 				5547863895558573680B5D19 /* Pods_YYDineTogether.framework */,
+				9C8C11EA1FDE29F9008A66A0 /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1046,6 +1068,17 @@
 				9C8C09A91F6E711F00A75954 /* CBAutoScrollLabel.m */,
 			);
 			path = autoLabel;
+			sourceTree = "<group>";
+		};
+		9C8C11EC1FDE29FA008A66A0 /* JSZPNotificationExtention */ = {
+			isa = PBXGroup;
+			children = (
+				9C8C11ED1FDE29FA008A66A0 /* NotificationViewController.h */,
+				9C8C11EE1FDE29FA008A66A0 /* NotificationViewController.m */,
+				9C8C11F01FDE29FA008A66A0 /* MainInterface.storyboard */,
+				9C8C11F31FDE29FA008A66A0 /* Info.plist */,
+			);
+			path = JSZPNotificationExtention;
 			sourceTree = "<group>";
 		};
 		B389401C1EE69B3000407E45 /* ActionSheetPicker-3.0 */ = {
@@ -1318,6 +1351,7 @@
 				B3DA477F1EE50174006B6942 /* YYDineTogether */,
 				B3DA479C1EE50174006B6942 /* YYDineTogetherTests */,
 				B3DA47A71EE50174006B6942 /* YYDineTogetherUITests */,
+				9C8C11EC1FDE29FA008A66A0 /* JSZPNotificationExtention */,
 				B3DA477E1EE50174006B6942 /* Products */,
 				645F783CAED06FC4FAD00636 /* Frameworks */,
 				712BFA5A40740F86A5310D8B /* Pods */,
@@ -1767,6 +1801,8 @@
 		B3DA48211EE50650006B6942 /* ThridParty */ = {
 			isa = PBXGroup;
 			children = (
+				9CF8147C1FD7A94700BB3629 /* HSUpdateApp.h */,
+				9CF8147B1FD7A94700BB3629 /* HSUpdateApp.m */,
 				9C79D4C01FC15AE6008E7C91 /* UMAnalytics.framework */,
 				9C79D4C11FC15AE6008E7C91 /* UMCommon.framework */,
 				9C8C09A71F6E711F00A75954 /* autoLabel */,
@@ -1837,6 +1873,7 @@
 				B3DA477B1EE50174006B6942 /* Resources */,
 				38D98307C63131FC8D6C62EC /* [CP] Embed Pods Frameworks */,
 				BA0EB9111427D5FDF76B4092 /* [CP] Copy Pods Resources */,
+				9C8C11FA1FDE29FB008A66A0 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -2275,6 +2312,7 @@
 				B3DA48451EE50650006B6942 /* RootWebViewController.m in Sources */,
 				B3DA484A1EE50650006B6942 /* IndentViewController.m in Sources */,
 				9C8C099B1F6A63CB00A75954 /* JSYHCombListTableViewCell.m in Sources */,
+				9CF8147D1FD7A94800BB3629 /* HSUpdateApp.m in Sources */,
 				B3DA483F1EE50650006B6942 /* MainTabBarController.m in Sources */,
 				9C628FBA1F4F26D30014E828 /* JSYHUserModel.m in Sources */,
 				9C85D7F41F46881400622EBF /* JSYHStoreActivityHeaderTableViewCell.m in Sources */,
@@ -2352,6 +2390,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		9C8C11F01FDE29FA008A66A0 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C8C11F11FDE29FA008A66A0 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		B3DA47891EE50174006B6942 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2469,6 +2515,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = YYDineTogether/YYDineTogether.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W34656ASXP;
@@ -2508,6 +2555,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = YYDineTogether/YYDineTogether.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W34656ASXP;

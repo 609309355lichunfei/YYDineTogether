@@ -60,7 +60,7 @@
     // notice: 2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil
     // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
     [JPUSHService setupWithOption:launchOptions appKey:JPushAppKey
-                          channel:JPushAppKey
+                          channel:JPushChannel
                  apsForProduction:YES
             advertisingIdentifier:nil];
 }
@@ -149,11 +149,13 @@
 {
     if([resp isKindOfClass:[SendMessageToWXResp class]])
     {
-        NSString *strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
-        NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+//        NSString *strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
+//        NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//        [alert show];
+        if (resp.errCode == 0) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"JSZPSharedSuccess" object:nil];
+        }
     }
 }
 
@@ -243,6 +245,10 @@
             }
             NSLog(@"授权结果 authCode = %@", authCode?:@"");
         }];
+    } else if ([url.host isEqualToString:@"platformId=wechat"]){
+        BOOL isSuc = [WXApi handleOpenURL:url delegate:self];
+        NSLog(@"url %@ isSuc %d",url,isSuc == YES ? 1 : 0);
+        return  isSuc;
     }
     return YES;
 }

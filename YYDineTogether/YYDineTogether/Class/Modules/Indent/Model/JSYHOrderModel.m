@@ -34,32 +34,39 @@
         }
     } else if ([key isEqualToString:@"lastprice"]) {
         NSNumber *priceNumber = value;
-        float price = priceNumber.integerValue / 100.0;
-        self.lastprice = [NSNumber numberWithFloat:price];
+        double price = priceNumber.integerValue / 100.0;
+        NSString *priceStr = [NSString stringWithFormat:@"%.2f",price];
+        self.lastprice = [NSNumber numberWithString:priceStr];
     } else if ([key isEqualToString:@"price"]) {
         NSNumber *priceNumber = value;
-        float price = priceNumber.integerValue / 100.0;
-        self.price = [NSNumber numberWithFloat:price];
+        double price = priceNumber.integerValue / 100.0;
+        NSString *priceStr = [NSString stringWithFormat:@"%.2f",price];
+        self.price = [NSNumber numberWithString:priceStr];
     } else if ([key isEqualToString:@"postcost"]) {
         NSNumber *priceNumber = value;
-        float price = priceNumber.integerValue / 100.0;
-        self.postcost = [NSNumber numberWithFloat:price];
+        double price = priceNumber.integerValue / 100.0;
+        NSString *priceStr = [NSString stringWithFormat:@"%.2f",price];
+        self.postcost = [NSNumber numberWithString:priceStr];
     } else if ([key isEqualToString:@"discountprice"]) {
         NSNumber *priceNumber = value;
-        float price = priceNumber.integerValue / 100.0;
-        self.discountprice = [NSNumber numberWithFloat:price];
+        double price = priceNumber.integerValue / 100.0;
+        NSString *priceStr = [NSString stringWithFormat:@"%.2f",price];
+        self.discountprice = [NSNumber numberWithString:priceStr];
     } else if ([key isEqualToString:@"cut"]) {
         NSNumber *priceNumber = value;
-        float price = priceNumber.integerValue / 100.0;
-        self.cut = [NSNumber numberWithFloat:price];
+        double price = priceNumber.integerValue / 100.0;
+        NSString *priceStr = [NSString stringWithFormat:@"%.2f",price];
+        self.cut = [NSNumber numberWithString:priceStr];
     } else if ([key isEqualToString:@"combcut"]) {
         NSNumber *priceNumber = value;
-        float price = priceNumber.integerValue / 100.0;
-        self.combcut = [NSNumber numberWithFloat:price];
+        double price = priceNumber.integerValue / 100.0;
+        NSString *priceStr = [NSString stringWithFormat:@"%.2f",price];
+        self.combcut = [NSNumber numberWithString:priceStr];
     }else if ([key isEqualToString:@"couponvalue"]) {
         NSNumber *priceNumber = value;
-        float price = priceNumber.integerValue / 100.0;
-        self.couponvalue = [NSNumber numberWithFloat:price];
+        double price = priceNumber.integerValue / 100.0;
+        NSString *priceStr = [NSString stringWithFormat:@"%.2f",price];
+        self.couponvalue = [NSNumber numberWithString:priceStr];
     }
 }
 

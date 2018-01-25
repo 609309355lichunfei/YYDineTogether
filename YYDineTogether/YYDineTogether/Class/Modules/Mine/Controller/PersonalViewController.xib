@@ -76,8 +76,11 @@
                         <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="KGm-Nc-ib4">
                             <rect key="frame" x="355" y="0.0" width="8" height="50"/>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="吃饭啦" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WEW-VE-TXT">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WEW-VE-TXT">
                             <rect key="frame" x="56" y="15" width="287" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="gET-Re-5Ll"/>
+                            </constraints>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
@@ -112,7 +115,7 @@
                         <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="71R-tp-JNd">
                             <rect key="frame" x="355" y="0.0" width="8" height="50"/>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="男" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kPL-Hr-SXE">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kPL-Hr-SXE">
                             <rect key="frame" x="56" y="16" width="287" height="21"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
@@ -148,7 +151,7 @@
                         <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="NAm-yH-9gU">
                             <rect key="frame" x="355" y="0.0" width="8" height="50"/>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="08-09" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e4s-nS-reN">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e4s-nS-reN">
                             <rect key="frame" x="56" y="15" width="287" height="21"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
@@ -260,7 +263,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="Navigation_left" width="32" height="32"/>
+        <image name="Navigation_left" width="8" height="15"/>
         <image name="mine_defaultHead" width="80" height="80"/>
         <image name="mine_rightArrow" width="8" height="15"/>
     </resources>

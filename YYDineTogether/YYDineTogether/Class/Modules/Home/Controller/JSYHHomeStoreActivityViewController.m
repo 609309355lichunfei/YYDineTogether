@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *shoppingCartCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
+@property (weak, nonatomic) IBOutlet UIImageView *titleImageView;
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
 
@@ -40,6 +41,17 @@
 }
 
 - (void)registUI {
+    NSString *startTime = @"2017-12-23 21:00:00";
+    NSString *endTime = @"2017-12-25 21:00:00";
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSDate *startDate = [dateFormatter dateFromString:startTime];
+    NSDate *endDate = [dateFormatter dateFromString:endTime];
+    NSDate *nowDate = [NSDate date];
+    if ([nowDate compare:startDate] == kCFCompareGreaterThan && [nowDate compare:endDate] == kCFCompareLessThan) {
+        _titleImageView.image = [UIImage imageNamed:@"home_christmas_banner"];
+    }
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     _typeIndex = [_type integerValue];
     self.shoppingCartCountLabel.layer.cornerRadius = 9;
@@ -198,6 +210,9 @@
                 cell.bottomView.hidden = YES;
                 JSYHShopModel *model = self.dataArray[indexPath.row];
                 cell.shopModel = model;
+                cell.activityBlock = ^{
+                    [tableView reloadRowAtIndexPath:indexPath withRowAnimation:(UITableViewRowAnimationNone)];
+                };
                 return cell;
             }
                 break;

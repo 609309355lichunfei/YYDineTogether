@@ -287,6 +287,7 @@
     cell.phoneBT.hidden = YES;
     JSYHShopModel *model = self.dataArray[indexPath.row];
     cell.shopModel = model;
+    cell.remarkLabel.userInteractionEnabled = NO;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

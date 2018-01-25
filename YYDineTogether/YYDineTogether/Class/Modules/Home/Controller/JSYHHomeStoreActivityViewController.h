@@ -10,4 +10,5 @@
 
 @interface JSYHHomeStoreActivityViewController : UIViewController
 @property (strong, nonatomic) NSString *type;
+@property (strong, nonatomic) NSDictionary *bannerDic;
 @end

@@ -28,6 +28,9 @@
 #import "JSYHCombListTableViewCell.h"
 #import "JSYHMSSearchViewController.h"
 #import "JSYHShareAPPViewController.h"
+#import "TabBarItem.h"
+#import "HSUpdateApp.h"
+#import "JSYHUpdateAlertView.h"
 
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate ,UIGestureRecognizerDelegate, CLLocationManagerDelegate, SDCycleScrollViewDelegate, CAAnimationDelegate>{
     BOOL _isStoreDataSource;
@@ -91,6 +94,20 @@
 }
 
 - (void)registUI {
+    [HSUpdateApp hs_updateWithAPPID:@"1287825110" withBundleId:@"com.JuShan.YYDineTogether" block:^(NSDictionary *appInfoDic,NSString *currentVersion, NSString *storeVersion, NSString *openUrl, BOOL isUpdate) {
+        if (isUpdate) {
+            JSYHUpdateAlertView *updateView = [[JSYHUpdateAlertView alloc] initWithFrame:kScreen_Bounds];
+            NSString *currentVersionReleaseDate = appInfoDic[@"currentVersionReleaseDate"];
+            NSString *year = [currentVersionReleaseDate componentsSeparatedByString:@"T"].firstObject;
+            NSString *day = [currentVersionReleaseDate componentsSeparatedByString:@"T"].lastObject;
+            day = [day componentsSeparatedByString:@"Z"].firstObject;
+            currentVersionReleaseDate = [NSString stringWithFormat:@"%@ %@",year, day];
+        
+            NSString *fileSizeBytes = appInfoDic[@"fileSizeBytes"];
+            updateView.alertLabel.text = [NSString stringWithFormat:@"1.版本:%@\n\n2.更新时间:%@",storeVersion, currentVersionReleaseDate];
+            [kAppWindow addSubview:updateView];
+        }
+    }];
     _lastOffSideY = 0;
     [JSYHLocationManager sharedManager];
     
@@ -561,11 +578,13 @@
     
     if ([type isEqualToNumber:@1]) {
         JSYHHomeStoreActivityViewController *activityVC = [[JSYHHomeStoreActivityViewController alloc] init];
-        activityVC.type = [NSString stringWithFormat:@"%ld",index + 1];
+        activityVC.type = @"1";
+        activityVC.bannerDic = bannerDic;
         [self.tabBarController.navigationController pushViewController:activityVC animated:YES];
     } else if ([type isEqualToNumber:@3]) {
         HomeComboRecomendViewController *combVC = [[HomeComboRecomendViewController alloc] init];
         combVC.mytitle = @"套餐活动";
+        combVC.bannerDic = bannerDic;
         [self.tabBarController.navigationController pushViewController:combVC animated:YES];
     } else if ([type isEqualToNumber:@4]) {
         if([JSRequestManager sharedManager].token == nil || [JSRequestManager sharedManager].token.length == 0) {

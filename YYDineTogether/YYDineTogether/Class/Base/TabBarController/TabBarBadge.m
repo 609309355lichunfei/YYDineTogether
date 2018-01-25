@@ -21,7 +21,7 @@
         
 //        NSString *bundlePath = [[NSBundle bundleForClass:self.class] pathForResource:@"LCTabBarController" ofType:@"bundle"];
 //        NSString *imagePath = [bundlePath stringByAppendingPathComponent:@"LCTabBarBadge@2x.png"];
-        [self setBackgroundImage:[self resizedImageFromMiddle:IMAGE_NAMED(@"LCTabBarBadge")]
+        [self setBackgroundImage:IMAGE_NAMED(@"mine_badge")
                         forState:UIControlStateNormal];
     }
     return self;
@@ -58,12 +58,12 @@
             
         } else {
             
-            frame.size.width = 12.0f;
+            frame.size.width = 6.0f;
             frame.size.height = frame.size.width;
         }
         
-        frame.origin.x = 58.0f * ([UIScreen mainScreen].bounds.size.width / self.tabBarItemCount) / 375.0f * 4.0f;
-        frame.origin.y = 2.0f;
+        frame.origin.x = 53.0f * ([UIScreen mainScreen].bounds.size.width / self.tabBarItemCount) / 375.0f * 4.0f;
+        frame.origin.y = 3.0f;
         self.frame = frame;
     }
 }

@@ -19,6 +19,7 @@
 #import "JSYHCouponViewController.h"
 #import "JSYHAboutUsViewController.h"
 #import "JSYHShareAPPViewController.h"
+#import "TabBarItem.h"
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *iconimage;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
@@ -33,9 +34,10 @@
      //设计头像图片圆形
     self.iconimage.layer.cornerRadius = 40;
     [self.view addSubview:self.tableview];
-    
-    
-    
+    MJWeakSelf;
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"JSZPMineViewControllerReloadView" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        [weakSelf.tableview reloadData];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -52,14 +54,15 @@
             
         }];
     }
+    [self.tableview reloadData];
     
 }
 
 - (IBAction)userTapAction:(id)sender {
     if ([self.userNameLabel.text isEqualToString:@"登录/注册"]) {
-        LoginViewController *loginVC = [[LoginViewController alloc] init];
-        [self.tabBarController presentViewController:loginVC animated:YES completion:^{
-        }];
+//        LoginViewController *loginVC = [[LoginViewController alloc] init];
+//        [self.tabBarController presentViewController:loginVC animated:YES completion:^{
+//        }];
     } else {
         PersonalViewController * persona = [PersonalViewController new];
         [self.tabBarController.navigationController pushViewController:persona animated:YES];
@@ -136,7 +139,14 @@
             cell.myImageView.image = [UIImage imageNamed:@"mine_invite"];
         } else if (indexPath.row == 2){
             cell.myLabel.text = @"我的红包";
-            cell.mynewLittleImage.hidden = NO;
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            BOOL newCoupon = [userDefaults boolForKey:@"JSZP-NewCoupon"];
+            if (newCoupon) {
+                cell.mynewLittleImage.hidden = NO;
+            } else {
+                cell.mynewLittleImage.hidden = YES;
+            }
+            
             cell.myImageView.image = [UIImage imageNamed:@"mine_redBag"];
         }else if (indexPath.row == 3){
             cell.myLabel.text = @"我的收藏";
@@ -193,6 +203,7 @@
             couponVC.chooseCoupon = nil;
             couponVC.shopcount = 4;//显示首单红包可选
             couponVC.totalPrice = @100000;//显示满减可选
+            [kUserDefaults setBool:NO forKey:@"JSZP-NewCoupon"];
             [self.tabBarController.navigationController pushViewController:couponVC animated:YES];
             
         }else{

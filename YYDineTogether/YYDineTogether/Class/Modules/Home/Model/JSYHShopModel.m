@@ -33,7 +33,9 @@
         for (NSDictionary *cate in value) {
             JSYHCateModel *model = [[JSYHCateModel alloc] init];
             [model setValuesForKeysWithDictionary:cate];
-            [cates addObject:model];
+            if (model.dishs.count > 0) {
+                [cates addObject:model];
+            }
         }
         self.cates = cates;
     } else if ([key isEqualToString:@"dishs"]) {

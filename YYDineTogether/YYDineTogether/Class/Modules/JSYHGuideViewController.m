@@ -23,6 +23,10 @@
     [self registUI];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
 - (void)registUI {
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"JSYHGuideCollectionViewCell"];
     self.dataArray = [@[@"LaunchIcon1",@"LaunchIcon2",@"LaunchIcon3"] mutableCopy];

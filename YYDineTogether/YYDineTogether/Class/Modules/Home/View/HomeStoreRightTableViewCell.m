@@ -65,10 +65,10 @@
     self.nameLabel.text = _dishModel.name;
     self.salesCountLabel.text = [NSString stringWithFormat:@"%d",_dishModel.salescount];
     self.starLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.star];
-    self.priceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.price];
+    self.priceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.discountprice];
     self.discountPriceLabel.hidden = [_dishModel.discountprice isEqualToNumber:_dishModel.price] ? YES : NO;
     self.discountDiscoverView.hidden = self.discountPriceLabel.isHidden;
-    self.discountPriceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.discountprice];
+    self.discountPriceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.price];
     self.infoLabel.text = _dishModel.info;
     if (_dishModel.shopcartCount > 0) {
         _numberLabel.hidden = NO;

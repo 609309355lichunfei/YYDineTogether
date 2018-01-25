@@ -19,16 +19,19 @@
     [super setValue:value forKey:key];
     if ([key isEqualToString:@"price"]) {
         NSNumber *priceNumber = value;
-        float price = priceNumber.integerValue / 100.0;
-        self.price = [NSNumber numberWithFloat:price];
+        double price = priceNumber.integerValue / 100.0;
+        NSString *priceStr = [NSString stringWithFormat:@"%.2f",price];
+        self.price = [NSNumber numberWithString:priceStr];
     } else if ([key isEqualToString:@"discountprice"]) {
         NSNumber *priceNumber = value;
-        float price = priceNumber.integerValue / 100.0;
-        self.discountprice = [NSNumber numberWithFloat:price];
+        double price = priceNumber.integerValue / 100.0;
+        NSString *priceStr = [NSString stringWithFormat:@"%.2f",price];
+        self.discountprice = [NSNumber numberWithString:priceStr];
     } else if ([key isEqualToString:@"totalprice"]) {
         NSNumber *priceNumber = value;
-        float price = priceNumber.integerValue / 100.0;
-        self.totalprice = [NSNumber numberWithFloat:price];
+        double price = priceNumber.integerValue / 100.0;
+        NSString *priceStr = [NSString stringWithFormat:@"%.2f",price];
+        self.totalprice = [NSNumber numberWithString:priceStr];
     }
 }
 

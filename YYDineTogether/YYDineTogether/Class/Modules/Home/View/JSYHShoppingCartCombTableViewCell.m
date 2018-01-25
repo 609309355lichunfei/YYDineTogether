@@ -51,7 +51,7 @@
 - (void)setCombModel:(JSYHComboModel *)combModel {
     _combModel = combModel;
     self.combNameLabel.text = _combModel.name;
-    NSNumber *price = [NSNumber numberWithFloat:(_combModel.price.floatValue * 1)];
+    NSNumber *price = [NSNumber numberWithFloat:(_combModel.price.doubleValue * 1)];
     self.priceLabel.text = [NSString stringWithFormat:@"%@",price];
     self.numberLabel.text = [NSString stringWithFormat:@"%ld",_combModel.count];
     if (_combModel.count > 0) {

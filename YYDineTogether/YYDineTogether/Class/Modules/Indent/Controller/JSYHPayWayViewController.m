@@ -38,7 +38,6 @@
     [alerVC addAction:action];
     [alerVC addAction:cancelAction];
     [self.navigationController presentViewController:alerVC animated:YES completion:nil];
-    
 }
 
 

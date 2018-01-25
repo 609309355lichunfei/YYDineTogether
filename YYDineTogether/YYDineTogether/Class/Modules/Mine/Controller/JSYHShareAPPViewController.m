@@ -9,6 +9,7 @@
 #import "JSYHShareAPPViewController.h"
 #import <WXApi.h>
 #import "JSYHShareAppView.h"
+#import "TabBarItem.h"
 
 @interface JSYHShareAPPViewController (){
     enum WXScene _scene;
@@ -16,6 +17,8 @@
 @property (strong, nonatomic) NSString *mytitle;
 @property (strong, nonatomic) NSString *mydescription;
 @property (strong, nonatomic) NSString *myUrl;
+
+@property (strong, nonatomic) JSYHShareAppView *shareView;
 
 
 @end
@@ -26,6 +29,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.automaticallyAdjustsScrollViewInsets = NO;
+    MJWeakSelf;
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"JSZPSharedSuccess" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        [weakSelf.shareView removeFromSuperview];
+        [kUserDefaults setBool:YES forKey:@"JSZP-NewCoupon"];
+        TabBarItem *item = [AppDelegate shareAppDelegate].mainTabBar.TabBar.tabBarItems.lastObject;
+        item.tabBarItem.badgeValue = @"";
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 - (IBAction)backAction:(id)sender {
@@ -39,16 +50,17 @@
         self.mytitle = dataDic[@"title"];
         self.mydescription = dataDic[@"desc"];
         self.myUrl = dataDic[@"url"];
-        JSYHShareAppView *shareView = [[JSYHShareAppView alloc] initWithFrame:kScreen_Bounds];
-        shareView.friendsBlock = ^{
+        self.shareView = [[JSYHShareAppView alloc] initWithFrame:kScreen_Bounds];
+        MJWeakSelf;
+        _shareView.friendsBlock = ^{
             _scene = WXSceneTimeline;
-            [self sendLinkContent];
+            [weakSelf sendLinkContent];
         };
-        shareView.wxBlock = ^{
+        _shareView.wxBlock = ^{
             _scene = WXSceneSession;
-            [self sendLinkContent];
+            [weakSelf sendLinkContent];
         };
-        [kAppWindow addSubview:shareView];
+        [kAppWindow addSubview:_shareView];
     } Failed:^(NSError *error) {
         [MBProgressHUD hideHUD];
     }];
@@ -59,7 +71,8 @@
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = self.mytitle;
     message.description = self.mydescription;
-    [message setThumbImage:[UIImage imageNamed:@"res2.png"]];
+    
+    [message setThumbImage:[UIImage imageNamed:@"JSZPLogo"]];
     
     WXWebpageObject *ext = [WXWebpageObject object];
     ext.webpageUrl = self.myUrl;
@@ -91,6 +104,10 @@
     resp.bText = NO;
     
     [WXApi sendResp:resp];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

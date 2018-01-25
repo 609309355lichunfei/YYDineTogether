@@ -28,12 +28,14 @@
     [super setValue:value forKey:key];
     if ([key isEqualToString:@"value"]) {
         NSNumber *priceNumber = value;
-        float price = priceNumber.integerValue / 100.0;
-        self.value = [NSNumber numberWithFloat:price];
+        double price = priceNumber.integerValue / 100.0;
+        NSString *priceStr = [NSString stringWithFormat:@"%.2f",price];
+        self.value = [NSNumber numberWithString:priceStr];
     } else if ([key isEqualToString:@"full"]) {
         NSNumber *priceNumber = value;
-        float price = priceNumber.integerValue / 100.0;
-        self.full = [NSNumber numberWithFloat:price];
+        double price = priceNumber.integerValue / 100.0;
+        NSString *priceStr = [NSString stringWithFormat:@"%.2f",price];
+        self.full = [NSNumber numberWithString:priceStr];
     }
 }
 

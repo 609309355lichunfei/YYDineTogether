@@ -60,8 +60,8 @@
     self.dishDistanceLabel.text = _dishModel.distance;
     self.discountPriceLabel.hidden = [_dishModel.discountprice isEqualToNumber:_dishModel.price] ? YES : NO;
     self.discountDiscoverView.hidden = self.discountPriceLabel.isHidden;
-    self.discountPriceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.discountprice];
-    self.priceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.price];
+    self.discountPriceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.price];
+    self.priceLabel.text = [NSString stringWithFormat:@"%@",_dishModel.discountprice];
     if (_dishModel.shopcartCount > 0) {
         _numberLabel.hidden = NO;
         _subtractButton.hidden = NO;

@@ -232,10 +232,10 @@ static ShoppingCartManager *_shoppingCartManager;
 - (NSString *)totalPrice {
     CGFloat total = 0.0;
     for (JSYHDishModel *model in self.shoppingCartDataArray) {
-        total += model.shopcartCount * [model.discountprice floatValue];
+        total += model.shopcartCount * [model.discountprice doubleValue];
     }
     for (JSYHComboModel *model in self.shoppingCartComboArray) {
-        total += model.count * [model.price floatValue];
+        total += model.count * [model.price doubleValue];
     }
     NSNumber *price = [NSNumber numberWithFloat:total];
     return [NSString stringWithFormat:@"%@",price];

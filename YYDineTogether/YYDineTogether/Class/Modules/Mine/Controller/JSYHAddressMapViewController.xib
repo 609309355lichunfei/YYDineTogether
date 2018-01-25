@@ -235,8 +235,8 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="Navigation_left" width="32" height="32"/>
-        <image name="back" width="32" height="32"/>
+        <image name="Navigation_left" width="8" height="15"/>
+        <image name="back" width="8" height="15"/>
         <image name="home_searchwhite" width="16" height="16"/>
         <image name="indent_userLocation" width="27" height="28"/>
         <image name="mine_rightArrow" width="8" height="15"/>

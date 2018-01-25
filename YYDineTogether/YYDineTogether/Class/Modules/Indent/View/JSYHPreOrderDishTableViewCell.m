@@ -28,7 +28,7 @@
     self.nameLabel.text = _dishModel.name;
     self.countLabel.text = [NSString stringWithFormat:@"%ld",_dishModel.count];
     NSNumber *price = _dishModel.discountprice == nil ? _dishModel.price : _dishModel.discountprice;
-    CGFloat dishpriceFload = [price floatValue] * _dishModel.count;
+    CGFloat dishpriceFload = [price doubleValue] * _dishModel.count;
     NSNumber *dishprice = [NSNumber numberWithFloat:dishpriceFload];
     self.priceLabel.text = [NSString stringWithFormat:@"%@",dishprice];
 }

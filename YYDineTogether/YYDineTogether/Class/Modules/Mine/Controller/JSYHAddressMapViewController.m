@@ -71,7 +71,7 @@
 }
 
 - (IBAction)doneAction:(id)sender {
-    self.chooseAddressBlock([NSString stringWithFormat:@"%@%@",self.addressDetailLabel.text,self.addressTitleLabel.text], self.poi.location.latitude , self.poi.location.longitude);
+    self.chooseAddressBlock(self.addressTitleLabel.text, self.poi.location.latitude , self.poi.location.longitude);
     [self.navigationController popViewControllerAnimated:YES];
 }
 

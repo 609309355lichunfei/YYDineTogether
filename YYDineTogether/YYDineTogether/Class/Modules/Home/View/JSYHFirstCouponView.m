@@ -18,9 +18,11 @@
 }
 */
 - (IBAction)closeAction:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"JSZPMineViewControllerReloadView" object:nil];
     [self removeFromSuperview];
 }
 - (IBAction)receiveAction:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"JSZPMineViewControllerReloadView" object:nil];
     [self removeFromSuperview];
 }
 

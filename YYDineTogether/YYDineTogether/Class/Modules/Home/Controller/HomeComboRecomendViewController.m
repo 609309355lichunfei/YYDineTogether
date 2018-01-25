@@ -168,6 +168,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         JSYHCombListHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSYHCombListHeaderTableViewCell" forIndexPath:indexPath];
+        NSString *startTime = @"2017-12-23 21:00:00";
+        NSString *endTime = @"2017-12-25 21:00:00";
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        NSDate *startDate = [dateFormatter dateFromString:startTime];
+        NSDate *endDate = [dateFormatter dateFromString:endTime];
+        NSDate *nowDate = [NSDate date];
+        if ([nowDate compare:startDate] == kCFCompareGreaterThan && [nowDate compare:endDate] == kCFCompareLessThan) {
+            cell.titleImageView.image = [UIImage imageNamed:@"home_christmas_banner"];
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }

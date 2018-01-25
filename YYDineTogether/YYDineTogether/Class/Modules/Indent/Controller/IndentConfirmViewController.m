@@ -245,9 +245,9 @@
                     self.noPostcostImageView.hidden = YES;
                 }
                 NSNumber *lastprice = responseObject[@"data"][@"lastprice"];
-                CGFloat lastpriceFloat = lastprice.integerValue / 100.0 - [self.couponValue floatValue];
+                CGFloat lastpriceFloat = lastprice.integerValue / 100.0 - [self.couponValue doubleValue];
                 if (_is_canActivity == 1) {
-                    lastpriceFloat = lastpriceFloat + [self.orderModel.cut floatValue];
+                    lastpriceFloat = lastpriceFloat + [self.orderModel.cut doubleValue];
                 }
                 if (lastpriceFloat < 0 || lastpriceFloat == 0) {
                     lastpriceFloat = 0.01;
@@ -282,9 +282,9 @@
                 self.noPostcostImageView.hidden = YES;
             }
             NSNumber *lastprice = responseObject[@"data"][@"lastprice"];
-            CGFloat lastpriceFloat = lastprice.integerValue / 100.0 - [self.couponValue floatValue];
+            CGFloat lastpriceFloat = lastprice.integerValue / 100.0 - [self.couponValue doubleValue];
             if (_is_canActivity == 1) {
-                lastpriceFloat = lastpriceFloat + [self.orderModel.cut floatValue];
+                lastpriceFloat = lastpriceFloat + [self.orderModel.cut doubleValue];
             }
             if (lastpriceFloat < 0 || lastpriceFloat == 0) {
                 lastpriceFloat = 0.01;
@@ -362,10 +362,10 @@
             _is_canActivity = 0;
         }
         self.couponid = [model.coupon_id stringValue];
-        CGFloat priceFloat = [self.orderModel.lastprice floatValue] - [self.couponValue integerValue];
+        CGFloat priceFloat = [self.orderModel.lastprice doubleValue] - [self.couponValue integerValue];
         if (_is_canActivity == 1) {
             self.activityLabel.text = @"0";
-            priceFloat = priceFloat + [self.orderModel.cut floatValue];
+            priceFloat = priceFloat + [self.orderModel.cut doubleValue];
         } else {
             self.activityLabel.text = [NSString stringWithFormat:@"%@",self.orderModel.cut];
         }

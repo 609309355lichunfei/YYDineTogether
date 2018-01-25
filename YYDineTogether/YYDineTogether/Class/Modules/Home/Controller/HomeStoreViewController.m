@@ -163,6 +163,7 @@
                     [self.rightTableView scrollToRow:j inSection:i atScrollPosition:(UITableViewScrollPositionTop) animated:NO];
                     HomeStoreRightTableViewCell *cell = [self.rightTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:j inSection:i]];
                     [cell twinkBGView];
+                    _isScroll = YES;
                     return;
                 }
             }

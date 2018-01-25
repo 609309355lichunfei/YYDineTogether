@@ -11,4 +11,5 @@
 @interface HomeComboRecomendViewController : UIViewController
 @property (strong, nonatomic) NSString *tagid;
 @property (strong, nonatomic) NSString *mytitle;
+@property (strong, nonatomic) NSDictionary *bannerDic;
 @end
